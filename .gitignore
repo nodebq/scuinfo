@@ -27,7 +27,7 @@ build/
 node_modules
 config.js
 token
-msyql.js
+mysql.js
 .idea
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

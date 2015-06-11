@@ -1,0 +1,162 @@
+
+<% include header %>
+<% include bar%>
+
+<div class="container">
+<section id="profile" class="container">
+    <div class="user-info">
+        <div class="avatar" id="avatar">
+
+        </div>
+        <div class=".am-text-truncate profile-nickname" id="nickname">-</div>
+       <div class="profile-data">
+             <a href="/u/<%= page.userId%>/posts">
+            <div class="profile-post">
+                <div class="profile-post-count" id="profile-post-count"><span class="am-icon-spin am-icon-refresh postsCountLoadIcon"></span></div>
+                <div class="profile-post-name">帖子</div>
+            </div>
+             </a>
+           <a href="/u/<%= page.userId%>/like">
+            <div class="profile-like">
+                <div class="profile-like-count" id="profile-like-count"><span class="am-icon-spin am-icon-refresh postsCountLoadIcon"></span></div>
+                <div class="profile-like-name">喜欢</div>
+            </div>
+               </a>
+
+
+        </div>
+        <div class="profile-setting">
+            <!--<span class="am-icon-cog am-icon-lg"></span>-->
+
+             <div class="profile-building">
+                 <a class="am-btn am-btn-default" href="/post?content=%23%E5%BB%BA%E8%AE%AE%23">
+                     <i class="am-icon-pencil-square-o"></i>
+                     反馈
+                 </a>
+                 </div>
+                  </div>
+       </div>
+
+</section>
+
+    <% if(userId==page.userId){%>
+
+    <!--<a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM3OTM3Mg==&mid=202789123&idx=1&sn=5459b253c874d897c5533db5e3f2eb7e#rd">-->
+    <!--<div id="scene-building"><p>您主页的场景正在</p><p>迁移和建设！</p><p>一定尽快上线！主人！</p>-->
+    <!--<p>点击关注微信scuinfo</p>-->
+        <!--<p>获取最新动态</p>-->
+    <!--</div>-->
+    <!--</a>-->
+<section id="scene" class="">
+    <ul class="am-avg-sm-4">
+        <li class="scene-border-normal-two">
+            <a href="/score">
+
+            <div class="scene-item">
+    <div class="scene-item-icon">
+<span class="am-icon-line-chart am-icon-md">
+</span></div>
+    <div class="scene-item-text">成绩</div>
+</div></a>
+        </li>
+        <li class="scene-border-normal-two">
+            <a href="/major">
+
+            <div class="scene-item">
+                <div class="scene-item-icon">
+<span class="am-icon-calendar am-icon-md">
+</span></div>
+                <div class="scene-item-text">课表</div>
+            </div></a>
+        </li>
+        <li class="scene-border-normal-two">
+            <a href="/book">
+
+            <div class="scene-item">
+                <div class="scene-item-icon">
+<span class="am-icon-book am-icon-md">
+</span></div>
+                <div class="scene-item-text">图书</div>
+            </div></a>
+        </li>
+        <li class="scene-border-normal-one">
+            <a href="/exam">
+
+            <div class="scene-item">
+                <div class="scene-item-icon">
+<span class="am-icon-table am-icon-md">
+</span></div>
+                <div class="scene-item-text">考表</div>
+            </div>
+                </a>
+        </li>
+
+        <li class="scene-border-normal-two">
+            <a href="/fm">
+
+            <div class="scene-item">
+                <div class="scene-item-icon">
+<span class="am-icon-music am-icon-md">
+</span></div>
+                <div class="scene-item-text">电台</div>
+            </div>
+                </a>
+        </li>
+
+        <li class="scene-border-normal-two">
+            <a href="http://weibo.com/scuinfo">
+            <div class="scene-item">
+                <div class="scene-item-icon">
+<span class="am-icon-weibo am-icon-md">
+</span></div>
+                <div class="scene-item-text">关注微博</div>
+            </div></a>
+        </li>
+        <li class="scene-border-normal-two">
+            <a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM3OTM3Mg==&mid=202789123&idx=1&sn=5459b253c874d897c5533db5e3f2eb7e#rd">
+            <div class="scene-item">
+                <div class="scene-item-icon">
+<span class="am-icon-weixin am-icon-md">
+</span></div>
+                <div class="scene-item-text">关注微信</div>
+            </div>
+            </a>
+        </li>
+
+        <li class="scene-border-normal-one">
+            <a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM3OTM3Mg==&mid=202789123&idx=1&sn=5459b253c874d897c5533db5e3f2eb7e#rd">
+
+            <div class="scene-item">
+                <div class="scene-item-icon">
+<span class="am-icon-info am-icon-md">
+</span></div>
+                <div class="scene-item-text">关于我们</div>
+            </div>
+                </a>
+        </li>
+        <li class="scene-border-normal-two">
+            <a href="http://fm.scuinfo.com/post?content=%23%E5%BB%BA%E8%AE%AE%23">
+            <div class="scene-item">
+                <div class="scene-item-icon ">
+<span class="am-icon-comments-o am-icon-md">
+</span></div>
+                <div class="scene-item-text">建议</div>
+            </div>
+            </a>
+        </li>
+    </ul>
+
+
+</section>
+    <% }%>
+</div>
+<input type="hidden" id="userId" value="<%= userId?userId:0%>" />
+<input type="hidden" id="pageUserId" value="<%= page.userId?page.userId:userId%>">
+
+<% include footer%>
+<% include js%>
+<script src="/javascripts/profile.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,52 @@
+
+<header data-am-widget="header" class="am-header am-header-default am-header-fixed header">
+    <div class="am-header-left am-header-nav header-nav">
+        <a title="首页" href="/" class="">
+            <i class="am-icon-btn am-header-icon am-icon-home icon-btn"></i>
+        </a>
+        <a title="点击进入「神奇海螺」电台" href="/fm" class="">
+            <i class="am-icon-btn am-header-icon am-icon-music icon-btn"></i>
+        </a>
+    </div>
+    <h1 class="am-header-title" id="title"><%= barTitle %><span id="barTitleAjax"></span></h1>
+    <div class="am-header-right am-header-nav  header-nav">
+
+        <a title="点击发布一条新内容" href="<%= page.postContent?'/post?content='+page.postContent:'/post'%>" class="">
+            <i class="am-icon-btn am-header-icon am-icon-plus icon-btn"></i>
+        </a>
+
+        <% if(page.userStatus=='login'){%>
+        <a title="通知" href="/notice" class="">
+            <i class="am-icon-btn am-header-icon am-icon-bell icon-btn"></i>
+        </a>
+        <% }else{%>
+        <a title="使用微博登录" href="https://api.weibo.com/oauth2/authorize?client_id=1159008171&response_type=code&redirect_uri=http://fm.scuinfo.com/auth/weibo/&state=weibo,<%= page.url%>" class="">
+            <i class="am-icon-btn am-header-icon am-icon-weibo icon-btn"></i>
+        </a>
+        <%}%>
+
+        <% if(page.userStatus == 'login' && page.type == 'profile'){%>
+        <a title="退出当前账户" href="/signout?redirect=<%= page.url%>" class="">
+            <i class="am-icon-btn am-header-icon am-icon-sign-out icon-btn"></i>
+        </a>
+
+        <% }else if(page.userStatus == 'login'){%>
+        <a title="个人主页" href="/u/<%= userId%>" class="">
+            <div class="header-avatar">
+                <img id="avatar" src="<%= page.avatar%>"></div>
+        </a>
+
+        <%}else if(page.userStatus == 'wechatNotFans'){%>
+        <a title="点击使用微信登录" href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx64902e8505feae7f&redirect_uri=http%3a%2f%2ffm.scuinfo.com%2fauth%2fwechat&response_type=code&scope=snsapi_userinfo&state=wechat,<%= page.url%>#wechat_redirect" class="">
+            <i class="am-icon-btn am-header-icon am-icon-wechat icon-btn"></i>
+        </a>
+        <% }else{%>
+
+        <a title="使用微信网页版登录" href="https://open.weixin.qq.com/connect/qrconnect?appid=wx8f8d7578a5a3023b&redirect_uri=http%3a%2f%2ffm.scuinfo.com%2fauth%2fwechat&response_type=code&scope=snsapi_login&state=wechatWeb,<%= page.url%>#wechat_redirec" class="">
+            <i class="am-icon-btn am-header-icon am-icon-wechat icon-btn"></i>
+        </a>
+        <% }%>
+
+
+    </div>
+</header>

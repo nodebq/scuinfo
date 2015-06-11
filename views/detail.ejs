@@ -1,0 +1,44 @@
+<% include header %>
+<% include bar%>
+<div class="container detail">
+<section id="posts">
+</section>
+    <div id="loading"><span class="am-icon-lg am-icon-spinner am-icon-pulse"></span></div>
+    <div class="wechatInit">
+        <input type="hidden" id="timestamp" value="<%=timestamp %>" />
+        <input type="hidden" id="wechatAppId" value="<%= wechatJs.appId %>">
+        <input type="hidden" id="wechatTimestamp" value="<%= wechatJs.timestamp %>">
+        <input type="hidden" id="wechatNonceStr" value="<%= wechatJs.nonceStr %>">
+        <input type="hidden" id="wechatSignature" value="<%= wechatJs.signature %>">
+        <input type="hidden" id="weiboAppKey" value="<%= weibo.appKey%>">
+        <input type="hidden" id="weiboUid" value="<%= weibo.uid%>">
+        <input type="hidden" id="userId" value="<%= userId%>">
+        <input type="hidden" id="postId" value="<%= page.postId%>">
+
+        <input type="hidden" id="url" value="<%= page.url%>">
+        <input type="hidden" id="userStatus" value="<%= page.userStatus%>">
+    </div>
+<section id="comments">
+    <div class="comments">
+    </div>
+    <div id="loadMore" fromid=""><button type="button" id="loadMoreButton"  data-am-loading="{spinner: 'circle-o-notch', loadingText: '正在加载...', resetText: '加载更多'}"  class="am-btn am-btn-default am-btn-block loadMoreButton">加载更多</button></div>
+
+    <div id="noData"><span>^_^ 还没有人评论</span></div>
+    <div id="noMore"><span>^_^ 没有更多评论了</span></div>
+    <div id="myComments">
+    </div>
+</section>
+    <section id="comment-post">
+        <div class="am-form comment-post-textarea">
+        <textarea class="" placeholder="发布评论" required rows="1" id="comment-post-content"></textarea>
+            <span class="am-icon-send comment-post-send" id="comment-post-send"></span>
+            </div>
+    </section>
+</div>
+<% include footer%>
+<% include js%>
+<script src="/javascripts/detail.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,31 @@
+<% include header %>
+<% include bar%>
+<div class="container">
+    <section id="bind">
+    <form class="am-form">
+
+        <div class="am-form-group">
+            <label for="doc-ipt-email-1"><%= page.idName%></label>
+            <input type="<%= page.inputType%>" class="" id="studentId" value="<%= page.idValue?page.idValue:""%>" placeholder="<%= page.idPlaceholder%>">
+        </div>
+
+        <div class="am-form-group">
+            <label for="doc-ipt-pwd-1">密码</label>
+            <input type="password" class="" id="password" value="<%= page.passwordValue?page.passwordValue:""%>" placeholder="<%= page.passwordPlaceholder%>">
+        </div>
+
+        <button type="button" class="am-btn am-btn-primary am-btn-block" id="bindButton" data-am-loading="{spinner: 'circle-o-notch', loadingText: '绑定中...', resetText: '点此绑定'}" class="am-btn am-btn-default am-btn-lg submitButton ">点此绑定</button>
+
+    </form>
+    </section>
+
+    <input type="hidden" id="pageType" value="<%= page.type%>">
+
+</div>
+<% include footer%>
+<% include js%>
+<script src="/javascripts/bind.js"></script>
+</body>
+</html>
+
+

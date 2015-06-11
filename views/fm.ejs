@@ -1,0 +1,59 @@
+<% include header %>
+<% include bar%>
+<div class="container">
+    <section id="fm-intro">
+
+        <section id="profile" class="container">
+            <div class="fm-info">
+                <div class="avatar">
+                    <img src="/images/fmLogo.png">
+                </div>
+                <div class="profile-data">
+
+                    <div class="profile-post">
+                        <div class="profile-post-count"> 2</div>
+                        <div class="profile-post-name">节目</div>
+                    </div>
+                    <a href="/tag/%e6%b5%b7%e8%9e%ba">
+                    <div class="profile-post">
+                        <div class="profile-post-count" id="postsCountLoadIcon"><span class="am-icon-spin am-icon-refresh postsCountLoadIcon"></span></div>
+                        <div class="profile-post-name">讨论</div>
+                    </div>
+                    </a>
+
+                    <div class="profile-posts">
+                        <div class="profile-posts-name"></div>
+                        <div class="profile-posts-count"></div>
+                    </div>
+
+
+                </div>
+                <div class="profile-setting">
+                    <a href="#" class="am-btn am-btn-default" id="shareFm">
+                        <i class="am-icon-wechat"></i>
+                        分享
+                    </a>
+
+                </div>
+            </div>
+
+        </section>
+    </section>
+
+    <section id="fm">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" height=250 src="http://music.163.com/outchain/player?type=4&id=1136006&auto=0&height=430"></iframe>
+      </section>
+
+    <input type="hidden" id="wechatAppId" value="<%= wechatJs.appId %>">
+    <input type="hidden" id="wechatTimestamp" value="<%= wechatJs.timestamp %>">
+    <input type="hidden" id="wechatNonceStr" value="<%= wechatJs.nonceStr %>">
+    <input type="hidden" id="wechatSignature" value="<%= wechatJs.signature %>">
+</div>
+<% include footer%>
+<% include js%>
+<script src="/javascripts/amazeui.switch.min.js"></script>
+<script src="/javascripts/fm.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,30 @@
+<% include header %>
+<% include bar%>
+<div class="container">
+
+<h3 class="loginTips">你可以选择以下方式登录scuinfo</h3>
+    <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
+    <div class="loginWay">
+        <a href='<%= page.wechatUserAgent?"https:\/\/open.weixin.qq.com\/connect\/oauth2\/authorize?appid=wx64902e8505feae7f&redirect_uri=http%3a%2f%2ffm.scuinfo.com%2fauth%2fwechat&response_type=code&scope=snsapi_userinfo&state=wechat,"+page.redirect+"#wechat_redirect":"https:\/\/open.weixin.qq.com\/connect\/qrconnect?appid=wx8f8d7578a5a3023b&redirect_uri=http%3a%2f%2ffm.scuinfo.com%2fauth%2fwechat&response_type=code&scope=snsapi_login&state=wechatWeb,"+page.redirect+"#wechat_redirect" %>' class="am-btn am-btn-default">
+
+        <i class="am-icon-weixin"></i>
+        使用微信登录
+    </a>
+    </div>
+    <div class="loginWay">
+
+    <a href="https://api.weibo.com/oauth2/authorize?client_id=1159008171&response_type=code&redirect_uri=http://fm.scuinfo.com/auth/weibo/&state=weibo,<%= page.redirect%>" class="am-btn am-btn-default">
+        <i class="am-icon-weibo"></i>
+        使用微博登录
+    </a>
+    </div>
+</div>
+
+<% include footer%>
+<% include js%>
+<script src="/javascripts/amazeui.switch.min.js"></script>
+<script src="/javascripts/post.js"></script>
+</body>
+</html>
+
+

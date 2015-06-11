@@ -1,0 +1,41 @@
+<% include header %>
+<% include bar%>
+
+<div class="container shareContainer">
+
+    <div id="loading"><span class="am-icon-lg am-icon-spinner am-icon-pulse"></span></div>
+    <div class="shareHeader">
+        <div class="shareAvatar" id="shareAvatar">
+        </div>
+        <div class="shareDescription" id="shareDescription">
+        </div>
+
+
+    </div>
+    <div class="shareSection" id="shareSection">
+    </div>
+    <div class="shareTips" id="shareTips"></div>
+    <div class="findMyBook" id="findMyBook">
+    </div>
+    <div class="shareTheBookList" id="shareTheBookList" wechatTitle="" wechatImg="" wechatDesc="" wechatUrl=""></div>
+</div>
+
+<div class="wechatInit">
+    <input type="hidden" id="timestamp" value="<%=timestamp %>" />
+    <input type="hidden" id="wechatAppId" value="<%= wechatJs.appId %>">
+    <input type="hidden" id="wechatTimestamp" value="<%= wechatJs.timestamp %>">
+    <input type="hidden" id="wechatNonceStr" value="<%= wechatJs.nonceStr %>">
+    <input type="hidden" id="wechatSignature" value="<%= wechatJs.signature %>">
+    <input type="hidden" id="weiboAppKey" value="<%= weibo.appKey%>">
+    <input type="hidden" id="weiboUid" value="<%= weibo.uid%>">
+    <input type="hidden" id="userId" value="<%= page.userId%>">
+    <input type="hidden" id="url" value="<%= page.url%>">
+    <input type="hidden" id="userStatus" value="<%= page.userStatus%>">
+</div>
+<% include footer%>
+<% include js%>
+<script src="/javascripts/shareMajor.js"></script>
+</body>
+</html>
+
+

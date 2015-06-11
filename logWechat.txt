@@ -1,0 +1,1482 @@
+{ appid: 'wx65f95de25e8b320b',
+  appsecret: '5302afc82919e5e9583dcfddd9c572bf',
+  getToken: [Function],
+  saveToken: [Function],
+  prefix: 'https://api.weixin.qq.com/cgi-bin/',
+  mpPrefix: 'https://mp.weixin.qq.com/cgi-bin/',
+  fileServerPrefix: 'http://file.api.weixin.qq.com/cgi-bin/',
+  payPrefix: 'https://api.weixin.qq.com/pay/',
+  merchantPrefix: 'https://api.weixin.qq.com/merchant/',
+  defaults: {},
+  ticketStore: {},
+  getTicketToken: [Function],
+  saveTicketToken: [Function] }
+已监听8119端口
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+{ ToUserName: 'gh_aedac92e5ba6',
+  FromUserName: 'oL7Ast9flrFJUwqzRGYZXk2WrIYU',
+  CreateTime: '1432786263',
+  MsgType: 'event',
+  Event: 'CLICK',
+  EventKey: 'score' }
+click
+score
+14009
+select studentId,password from secret_account where userId = 14009
+[ { studentId: 2012141442029, password: '013991' } ]
+null { studentId: 2012141442029, password: '013991' }
+http://localhost:9231/api/v1/score?appId=10000&appSecret=scuinfo&debug=1&studentId=2012141442029&password=013991
+null '{"code":200,"message":"成功","data":{"count":75,"updateAt":1432211742,"version":5,"scores":[{"term":"2014-2015学年秋(两学期)","current":0,"courseId":304113020,"orderId":"04","property":"任选","credit":2,"score":82,"name":"计算机科学技术基础","EnglishName":"Fundamentals of Computer Science & Technology","reason":""},{"term":"2014-2015学年秋(两学期)","current":0,"courseId":998013000,"orderId":"28","property":"必修","credit":0,"score":86,"name":"形势与政策-5","EnglishName":"Situation and Policy-5","reason":""},{"term":"2014-2015学年秋(两学期)","current":0,"courseId":304065010,"orderId":"03","property":"必修","credit":1,"score":97,"name":"现代软件工程课程设计","EnglishName":"Practice in Advanced Software Engineering","reason":""},{"term":"2014-2015学年秋(两学期)","current":0,"courseId":304064030,"orderId":"03","property":"必修","credit":3,"score":67,"name":"现代软件工程（双语）","EnglishName":"Advanced Software Engineering","reason":""},{"term":"2014-2015学年秋(两学期)","current":0,"courseId":304048010,"orderId":"03","property":"必修","credit":1,"score":85,"name":"数据库系统原理课程设计","EnglishName":"Practice in Database System","reason":""},{"term":"2014-2015学年秋(两学期)","current":0,"courseId":304047030,"orderId":"03","property":"必修","credit":3,"score":76,"name":"数据库系统原理","EnglishName":"Principle of Database System","reason":""},{"term":"2014-2015学年秋(两学期)","current":0,"courseId":304042030,"orderId":"01","property":"选修","credit":3,"score":85,"name":"人工智能导论","EnglishName":"Introduction to Artificial Intelligence","reason":""},{"term":"2014-2015学年秋(两学期)","current":0,"courseId":304037010,"orderId":"03","property":"必修","credit":1,"score":95,"name":"计算机组成原理实验","EnglishName":"Experiment in Computer Organization Theory","reason":""},{"term":"2014-2015学年秋(两学期)","current":0,"courseId":304036030,"orderId":"07","property":"必修","credit":3,"score":80,"name":"计算机组成原理","EnglishName":"Principles of Computer Organization","reason":""},{"term":"2014-2015学年秋(两学期)","current":0,"courseId":304033010,"orderId":"03","property":"必修","credit":1,"score":86,"name":"计算机网络课程设计","EnglishName":"Practice in Computer Network","reason":""},{"term":"2014-2015学年秋(两学期)","current":0,"courseId":304032030,"orderId":"03","property":"必修","credit":3,"score":60,"name":"计算机网络（双语）","EnglishName":"Computer Network","reason":""},{"term":"2014-2015学年秋(两学期)","current":0,"courseId":304007030,"orderId":"04","property":"选修","credit":3,"score":86,"name":"JAVA程序设计","EnglishName":"Java Programming","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":907020010,"orderId":"07","property":"任选","credit":1,"score":85,"name":"模拟电子技术基础实验","EnglishName":"Experiments of Analog Electronic Technology","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":301149020,"orderId":"02","property":"任选","credit":2,"score":84,"name":"证券物理学","EnglishName":"The Application of Physics in the Stock","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":920012020,"orderId":"01","property":"任选","credit":2,"score":87,"name":"主机DB2数据库应用与编程","EnglishName":"DB2 Application & Programming","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":909011020,"orderId":"01","property":"任选","credit":2,"score":80,"name":"计算机平面设计Photoshop基础","EnglishName":"Photoshop Computer Graphic Design Basis","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":104215020,"orderId":"01","property":"任选","credit":2,"score":64,"name":"大众传播学","EnglishName":"Science of Mass Media","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":907028010,"orderId":"04","property":"任选","credit":1,"score":85,"name":"数字电子技术基础实验（Ⅱ）","EnglishName":"Experiment of Digital Electronic Technology(Ⅱ)","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":304149020,"orderId":"01","property":"任选","credit":2,"score":85,"name":"国际手机编程训练营","EnglishName":"International training camp for mobile phone programming","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":104084030,"orderId":"01","property":"任选","credit":3,"score":86,"name":"品牌营销","EnglishName":"Branding  Management","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":998012000,"orderId":"28","property":"必修","credit":0,"score":90,"name":"形势与政策-4","EnglishName":"Situation and Policy-4","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":902001020,"orderId":"06","property":"选修","credit":2,"score":85,"name":"信息检索与利用（理工类）","EnglishName":"Information Retrieval and Utilization (science and \\nengineering)","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":888007010,"orderId":"02","property":"必修","credit":1,"score":61,"name":"体育-4","EnglishName":"Physical Education-4","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":304070020,"orderId":"04","property":"必修","credit":2,"score":81,"name":"研究与开发实践","EnglishName":"Practice in Research and Development","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":304061010,"orderId":"02","property":"必修","credit":1,"score":95,"name":"微机系统与接口技术实验","EnglishName":"Experiment in Microcomputer System and Interface","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":304060030,"orderId":"02","property":"必修","credit":3,"score":60,"name":"微机系统与接口技术","EnglishName":"Microcomputer System & Interface Technology","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":304051030,"orderId":"03","property":"必修","credit":3,"score":80,"name":"数字逻辑","EnglishName":"Digital Logic","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":304024030,"orderId":"07","property":"必修","credit":3,"score":95,"name":"高级语言程序设计-Ⅱ","EnglishName":"Programming Language-Ⅱ","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":304019030,"orderId":"02","property":"必修","credit":3,"score":77,"name":"操作系统原理","EnglishName":"Operating System","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":304009010,"orderId":"02","property":"必修","credit":1,"score":86,"name":"操作系统课程设计","EnglishName":"Curriculum Design of Operating System","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":107022060,"orderId":"48","property":"必修","credit":6,"score":88,"name":"毛泽东思想和中国特色社会主义理论体系概论","EnglishName":"Mao Zedong Thought and Theoretical System of Socialism","reason":""},{"term":"2013-2014学年春(两学期)","current":0,"courseId":105371030,"orderId":"84","property":"必修","credit":3,"score":70,"name":"大学英语（创意阅读）-4","EnglishName":"College English (Creative Reading) -4","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":999007030,"orderId":"01","property":"必修","credit":3,"score":76,"name":"中华文化（哲学篇）","EnglishName":"Chinese Culture (Philosophy)","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":998011000,"orderId":"25","property":"必修","credit":0,"score":82,"name":"形势与政策-3","EnglishName":"Situation and Policy-3","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":900002010,"orderId":"16","property":"必修","credit":1,"score":80,"name":"军训","EnglishName":"Military Training","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":888006010,"orderId":"02","property":"必修","credit":1,"score":62,"name":"体育-3","EnglishName":"Physical Education-3","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":304046010,"orderId":"02","property":"必修","credit":1,"score":76,"name":"数据结构与算法分析课程设计","EnglishName":"Practice in Data Structure and Algorithm Analysis","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":304045030,"orderId":"02","property":"必修","credit":3,"score":65,"name":"数据结构与算法分析","EnglishName":"Data Structure and Algorithm Analysis","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":304039040,"orderId":"02","property":"必修","credit":4,"score":61,"name":"离散数学","EnglishName":"Discrete Mathematics","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":304027010,"orderId":"02","property":"必修","credit":1,"score":96,"name":"汇编语言程序设计课程设计","EnglishName":"Practice in Assembly Language","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":304026020,"orderId":"02","property":"必修","credit":2,"score":63,"name":"汇编语言程序设计","EnglishName":"Assembly Language","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":304023040,"orderId":"04","property":"必修","credit":4,"score":86,"name":"高级语言程序设计-Ⅰ","EnglishName":"Programming Language-Ⅰ","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":304022030,"orderId":"01","property":"选修","credit":3,"score":60,"name":"多媒体技术基础","EnglishName":"Fundamental of Multimedia Technology","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":304007030,"orderId":"02","property":"选修","credit":3,"score":47,"name":"JAVA程序设计","EnglishName":"Java Programming","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":304001010,"orderId":"02","property":"必修","credit":1,"score":80,"name":"离散数学应用实践","EnglishName":"Paratice in Discrete Mathematics","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":107021030,"orderId":"30","property":"必修","credit":3,"score":80,"name":"马克思主义基本原理概论","EnglishName":"The Basic Principles of Marxism","reason":""},{"term":"2013-2014学年秋(两学期)","current":0,"courseId":105370030,"orderId":"84","property":"必修","credit":3,"score":60,"name":"大学英语（创意阅读）-3","EnglishName":"College English (Creative Reading) -3","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":907004040,"orderId":"01","property":"任选","credit":4,"score":51,"name":"电工技术基础（双语）","EnglishName":"Basics of Electrical Technology","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":907007010,"orderId":"06","property":"任选","credit":1,"score":84,"name":"电路实验","EnglishName":"Circuit Theory Experiments","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":201022020,"orderId":"04","property":"任选","credit":2,"score":60,"name":"工程数学复函数与积分变换","EnglishName":"Complex functions & Integral calculus conversion","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":501061030,"orderId":"03","property":"任选","credit":3,"score":71,"name":"人体解剖学概要","EnglishName":"Essential Human Anatomy","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":308035030,"orderId":"05","property":"任选","credit":3,"score":70,"name":"工科大学化学（Ⅱ）","EnglishName":"College Chemistry(Ⅱ)","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":998010000,"orderId":"22","property":"必修","credit":0,"score":73,"name":"形势与政策-2","EnglishName":"Situation and Policy-2","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":902001020,"orderId":"15","property":"选修","credit":2,"score":47,"name":"信息检索与利用（理工类）","EnglishName":"Information Retrieval and Utilization (science and \\nengineering)","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":900001010,"orderId":"14","property":"必修","credit":1,"score":69,"name":"军事理论","EnglishName":"Military Theory","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":888005010,"orderId":"10","property":"必修","credit":1,"score":85,"name":"体育-2","EnglishName":"Physical Education-2","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":202042010,"orderId":"01","property":"必修","credit":1,"score":95,"name":"大学物理实验（理工）Ⅲ-2","EnglishName":"Physics Experiments (Ⅲ)-2","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":202028020,"orderId":"12","property":"必修","credit":2,"score":63,"name":"大学物理（理工）Ⅲ-2","EnglishName":"University Physics (Ⅲ)-2","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":201073050,"orderId":"19","property":"必修","credit":5,"score":62,"name":"微积分（Ⅰ）-2","EnglishName":"Calculus (Ⅰ)-2","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":201018030,"orderId":"19","property":"必修","credit":3,"score":62,"name":"概率统计（理工）","EnglishName":"Probability Statistics","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":107048020,"orderId":"39","property":"必修","credit":2,"score":81,"name":"中国近现代史纲要","EnglishName":"The Outline of Modern History of China","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":105369010,"orderId":"90","property":"必修","credit":1,"score":86,"name":"大学英语（口语）-2","EnglishName":"Oral English-2","reason":""},{"term":"2012-2013学年春(两学期)","current":0,"courseId":105368020,"orderId":"98","property":"必修","credit":2,"score":60,"name":"大学英语（阅读与翻译）-2","EnglishName":"College English (Reading and Translation) -2","reason":""},{"term":"2012-2013学年秋(两学期)","current":0,"courseId":303130010,"orderId":"01","property":"任选","credit":1,"score":87,"name":"医学信息工程专业概论","EnglishName":"Specialty Generality of Electric Information","reason":""},{"term":"2012-2013学年秋(两学期)","current":0,"courseId":303066030,"orderId":"09","property":"任选","credit":3,"score":76,"name":"计算机基础及C语言程序设计","EnglishName":"Base of Computer Theory","reason":""},{"term":"2012-2013学年秋(两学期)","current":0,"courseId":998009000,"orderId":"24","property":"必修","credit":0,"score":72,"name":"形势与政策-1","EnglishName":"Situation and Policy-1","reason":""},{"term":"2012-2013学年秋(两学期)","current":0,"courseId":912002010,"orderId":"32","property":"必修","credit":1,"score":85,"name":"大学生心理健康","EnglishName":"Mental Health Education","reason":""},{"term":"2012-2013学年秋(两学期)","current":0,"courseId":888004010,"orderId":"10","property":"必修","credit":1,"score":97,"name":"体育-1","EnglishName":"Physical Education-1","reason":""},{"term":"2012-2013学年秋(两学期)","current":0,"courseId":202041020,"orderId":"02","property":"必修","credit":2,"score":75,"name":"大学物理实验（理工）Ⅲ-1","EnglishName":"Physics Experiments (Ⅲ)-1","reason":""},{"term":"2012-2013学年秋(两学期)","current":0,"courseId":202027020,"orderId":"12","property":"必修","credit":2,"score":81,"name":"大学物理（理工）Ⅲ-1","EnglishName":"University Physics (Ⅲ)-1","reason":""},{"term":"2012-2013学年秋(两学期)","current":0,"courseId":201080030,"orderId":"20","property":"必修","credit":3,"score":65,"name":"线性代数（理工）","EnglishName":"Linear Algebra","reason":""},{"term":"2012-2013学年秋(两学期)","current":0,"courseId":201072040,"orderId":"20","property":"必修","credit":4,"score":64,"name":"微积分（Ⅰ）-1","EnglishName":"Calculus (Ⅰ)-1","reason":""},{"term":"2012-2013学年秋(两学期)","current":0,"courseId":107032030,"orderId":"41","property":"必修","credit":3,"score":82,"name":"思想道德修养与法律基础","EnglishName":"Ideological and Moral Cultivation and Legal Basis","reason":""},{"term":"2012-2013学年秋(两学期)","current":0,"courseId":105367010,"orderId":"90","property":"必修","credit":1,"score":89,"name":"大学英语（口语）-1","EnglishName":"Oral English-1","reason":""},{"term":"2012-2013学年秋(两学期)","current":0,"courseId":105366020,"orderId":"98","property":"必修","credit":2,"score":65,"name":"大学英语（综合）-1","EnglishName":"College English (Comprehensive)-1","reason":""}]}}'
+{ code: 200,
+  message: '成功',
+  data: 
+   { count: 75,
+     updateAt: 1432211742,
+     version: 5,
+     scores: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] } }
+200
+{ code: 200,
+  message: '成功',
+  data: 
+   { count: 75,
+     updateAt: 1432211742,
+     version: 5,
+     scores: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] } }
+[ { term: '2014-2015学年秋(两学期)',
+    current: 0,
+    courseId: 304113020,
+    orderId: '04',
+    property: '任选',
+    credit: 2,
+    score: 82,
+    name: '计算机科学技术基础',
+    EnglishName: 'Fundamentals of Computer Science & Technology',
+    reason: '' },
+  { term: '2014-2015学年秋(两学期)',
+    current: 0,
+    courseId: 998013000,
+    orderId: '28',
+    property: '必修',
+    credit: 0,
+    score: 86,
+    name: '形势与政策-5',
+    EnglishName: 'Situation and Policy-5',
+    reason: '' },
+  { term: '2014-2015学年秋(两学期)',
+    current: 0,
+    courseId: 304065010,
+    orderId: '03',
+    property: '必修',
+    credit: 1,
+    score: 97,
+    name: '现代软件工程课程设计',
+    EnglishName: 'Practice in Advanced Software Engineering',
+    reason: '' },
+  { term: '2014-2015学年秋(两学期)',
+    current: 0,
+    courseId: 304064030,
+    orderId: '03',
+    property: '必修',
+    credit: 3,
+    score: 67,
+    name: '现代软件工程（双语）',
+    EnglishName: 'Advanced Software Engineering',
+    reason: '' },
+  { term: '2014-2015学年秋(两学期)',
+    current: 0,
+    courseId: 304048010,
+    orderId: '03',
+    property: '必修',
+    credit: 1,
+    score: 85,
+    name: '数据库系统原理课程设计',
+    EnglishName: 'Practice in Database System',
+    reason: '' },
+  { term: '2014-2015学年秋(两学期)',
+    current: 0,
+    courseId: 304047030,
+    orderId: '03',
+    property: '必修',
+    credit: 3,
+    score: 76,
+    name: '数据库系统原理',
+    EnglishName: 'Principle of Database System',
+    reason: '' },
+  { term: '2014-2015学年秋(两学期)',
+    current: 0,
+    courseId: 304042030,
+    orderId: '01',
+    property: '选修',
+    credit: 3,
+    score: 85,
+    name: '人工智能导论',
+    EnglishName: 'Introduction to Artificial Intelligence',
+    reason: '' },
+  { term: '2014-2015学年秋(两学期)',
+    current: 0,
+    courseId: 304037010,
+    orderId: '03',
+    property: '必修',
+    credit: 1,
+    score: 95,
+    name: '计算机组成原理实验',
+    EnglishName: 'Experiment in Computer Organization Theory',
+    reason: '' },
+  { term: '2014-2015学年秋(两学期)',
+    current: 0,
+    courseId: 304036030,
+    orderId: '07',
+    property: '必修',
+    credit: 3,
+    score: 80,
+    name: '计算机组成原理',
+    EnglishName: 'Principles of Computer Organization',
+    reason: '' },
+  { term: '2014-2015学年秋(两学期)',
+    current: 0,
+    courseId: 304033010,
+    orderId: '03',
+    property: '必修',
+    credit: 1,
+    score: 86,
+    name: '计算机网络课程设计',
+    EnglishName: 'Practice in Computer Network',
+    reason: '' },
+  { term: '2014-2015学年秋(两学期)',
+    current: 0,
+    courseId: 304032030,
+    orderId: '03',
+    property: '必修',
+    credit: 3,
+    score: 60,
+    name: '计算机网络（双语）',
+    EnglishName: 'Computer Network',
+    reason: '' },
+  { term: '2014-2015学年秋(两学期)',
+    current: 0,
+    courseId: 304007030,
+    orderId: '04',
+    property: '选修',
+    credit: 3,
+    score: 86,
+    name: 'JAVA程序设计',
+    EnglishName: 'Java Programming',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 907020010,
+    orderId: '07',
+    property: '任选',
+    credit: 1,
+    score: 85,
+    name: '模拟电子技术基础实验',
+    EnglishName: 'Experiments of Analog Electronic Technology',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 301149020,
+    orderId: '02',
+    property: '任选',
+    credit: 2,
+    score: 84,
+    name: '证券物理学',
+    EnglishName: 'The Application of Physics in the Stock',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 920012020,
+    orderId: '01',
+    property: '任选',
+    credit: 2,
+    score: 87,
+    name: '主机DB2数据库应用与编程',
+    EnglishName: 'DB2 Application & Programming',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 909011020,
+    orderId: '01',
+    property: '任选',
+    credit: 2,
+    score: 80,
+    name: '计算机平面设计Photoshop基础',
+    EnglishName: 'Photoshop Computer Graphic Design Basis',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 104215020,
+    orderId: '01',
+    property: '任选',
+    credit: 2,
+    score: 64,
+    name: '大众传播学',
+    EnglishName: 'Science of Mass Media',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 907028010,
+    orderId: '04',
+    property: '任选',
+    credit: 1,
+    score: 85,
+    name: '数字电子技术基础实验（Ⅱ）',
+    EnglishName: 'Experiment of Digital Electronic Technology(Ⅱ)',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 304149020,
+    orderId: '01',
+    property: '任选',
+    credit: 2,
+    score: 85,
+    name: '国际手机编程训练营',
+    EnglishName: 'International training camp for mobile phone programming',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 104084030,
+    orderId: '01',
+    property: '任选',
+    credit: 3,
+    score: 86,
+    name: '品牌营销',
+    EnglishName: 'Branding  Management',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 998012000,
+    orderId: '28',
+    property: '必修',
+    credit: 0,
+    score: 90,
+    name: '形势与政策-4',
+    EnglishName: 'Situation and Policy-4',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 902001020,
+    orderId: '06',
+    property: '选修',
+    credit: 2,
+    score: 85,
+    name: '信息检索与利用（理工类）',
+    EnglishName: 'Information Retrieval and Utilization (science and \nengineering)',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 888007010,
+    orderId: '02',
+    property: '必修',
+    credit: 1,
+    score: 61,
+    name: '体育-4',
+    EnglishName: 'Physical Education-4',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 304070020,
+    orderId: '04',
+    property: '必修',
+    credit: 2,
+    score: 81,
+    name: '研究与开发实践',
+    EnglishName: 'Practice in Research and Development',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 304061010,
+    orderId: '02',
+    property: '必修',
+    credit: 1,
+    score: 95,
+    name: '微机系统与接口技术实验',
+    EnglishName: 'Experiment in Microcomputer System and Interface',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 304060030,
+    orderId: '02',
+    property: '必修',
+    credit: 3,
+    score: 60,
+    name: '微机系统与接口技术',
+    EnglishName: 'Microcomputer System & Interface Technology',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 304051030,
+    orderId: '03',
+    property: '必修',
+    credit: 3,
+    score: 80,
+    name: '数字逻辑',
+    EnglishName: 'Digital Logic',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 304024030,
+    orderId: '07',
+    property: '必修',
+    credit: 3,
+    score: 95,
+    name: '高级语言程序设计-Ⅱ',
+    EnglishName: 'Programming Language-Ⅱ',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 304019030,
+    orderId: '02',
+    property: '必修',
+    credit: 3,
+    score: 77,
+    name: '操作系统原理',
+    EnglishName: 'Operating System',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 304009010,
+    orderId: '02',
+    property: '必修',
+    credit: 1,
+    score: 86,
+    name: '操作系统课程设计',
+    EnglishName: 'Curriculum Design of Operating System',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 107022060,
+    orderId: '48',
+    property: '必修',
+    credit: 6,
+    score: 88,
+    name: '毛泽东思想和中国特色社会主义理论体系概论',
+    EnglishName: 'Mao Zedong Thought and Theoretical System of Socialism',
+    reason: '' },
+  { term: '2013-2014学年春(两学期)',
+    current: 0,
+    courseId: 105371030,
+    orderId: '84',
+    property: '必修',
+    credit: 3,
+    score: 70,
+    name: '大学英语（创意阅读）-4',
+    EnglishName: 'College English (Creative Reading) -4',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 999007030,
+    orderId: '01',
+    property: '必修',
+    credit: 3,
+    score: 76,
+    name: '中华文化（哲学篇）',
+    EnglishName: 'Chinese Culture (Philosophy)',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 998011000,
+    orderId: '25',
+    property: '必修',
+    credit: 0,
+    score: 82,
+    name: '形势与政策-3',
+    EnglishName: 'Situation and Policy-3',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 900002010,
+    orderId: '16',
+    property: '必修',
+    credit: 1,
+    score: 80,
+    name: '军训',
+    EnglishName: 'Military Training',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 888006010,
+    orderId: '02',
+    property: '必修',
+    credit: 1,
+    score: 62,
+    name: '体育-3',
+    EnglishName: 'Physical Education-3',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 304046010,
+    orderId: '02',
+    property: '必修',
+    credit: 1,
+    score: 76,
+    name: '数据结构与算法分析课程设计',
+    EnglishName: 'Practice in Data Structure and Algorithm Analysis',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 304045030,
+    orderId: '02',
+    property: '必修',
+    credit: 3,
+    score: 65,
+    name: '数据结构与算法分析',
+    EnglishName: 'Data Structure and Algorithm Analysis',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 304039040,
+    orderId: '02',
+    property: '必修',
+    credit: 4,
+    score: 61,
+    name: '离散数学',
+    EnglishName: 'Discrete Mathematics',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 304027010,
+    orderId: '02',
+    property: '必修',
+    credit: 1,
+    score: 96,
+    name: '汇编语言程序设计课程设计',
+    EnglishName: 'Practice in Assembly Language',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 304026020,
+    orderId: '02',
+    property: '必修',
+    credit: 2,
+    score: 63,
+    name: '汇编语言程序设计',
+    EnglishName: 'Assembly Language',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 304023040,
+    orderId: '04',
+    property: '必修',
+    credit: 4,
+    score: 86,
+    name: '高级语言程序设计-Ⅰ',
+    EnglishName: 'Programming Language-Ⅰ',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 304022030,
+    orderId: '01',
+    property: '选修',
+    credit: 3,
+    score: 60,
+    name: '多媒体技术基础',
+    EnglishName: 'Fundamental of Multimedia Technology',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 304007030,
+    orderId: '02',
+    property: '选修',
+    credit: 3,
+    score: 47,
+    name: 'JAVA程序设计',
+    EnglishName: 'Java Programming',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 304001010,
+    orderId: '02',
+    property: '必修',
+    credit: 1,
+    score: 80,
+    name: '离散数学应用实践',
+    EnglishName: 'Paratice in Discrete Mathematics',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 107021030,
+    orderId: '30',
+    property: '必修',
+    credit: 3,
+    score: 80,
+    name: '马克思主义基本原理概论',
+    EnglishName: 'The Basic Principles of Marxism',
+    reason: '' },
+  { term: '2013-2014学年秋(两学期)',
+    current: 0,
+    courseId: 105370030,
+    orderId: '84',
+    property: '必修',
+    credit: 3,
+    score: 60,
+    name: '大学英语（创意阅读）-3',
+    EnglishName: 'College English (Creative Reading) -3',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 907004040,
+    orderId: '01',
+    property: '任选',
+    credit: 4,
+    score: 51,
+    name: '电工技术基础（双语）',
+    EnglishName: 'Basics of Electrical Technology',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 907007010,
+    orderId: '06',
+    property: '任选',
+    credit: 1,
+    score: 84,
+    name: '电路实验',
+    EnglishName: 'Circuit Theory Experiments',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 201022020,
+    orderId: '04',
+    property: '任选',
+    credit: 2,
+    score: 60,
+    name: '工程数学复函数与积分变换',
+    EnglishName: 'Complex functions & Integral calculus conversion',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 501061030,
+    orderId: '03',
+    property: '任选',
+    credit: 3,
+    score: 71,
+    name: '人体解剖学概要',
+    EnglishName: 'Essential Human Anatomy',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 308035030,
+    orderId: '05',
+    property: '任选',
+    credit: 3,
+    score: 70,
+    name: '工科大学化学（Ⅱ）',
+    EnglishName: 'College Chemistry(Ⅱ)',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 998010000,
+    orderId: '22',
+    property: '必修',
+    credit: 0,
+    score: 73,
+    name: '形势与政策-2',
+    EnglishName: 'Situation and Policy-2',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 902001020,
+    orderId: '15',
+    property: '选修',
+    credit: 2,
+    score: 47,
+    name: '信息检索与利用（理工类）',
+    EnglishName: 'Information Retrieval and Utilization (science and \nengineering)',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 900001010,
+    orderId: '14',
+    property: '必修',
+    credit: 1,
+    score: 69,
+    name: '军事理论',
+    EnglishName: 'Military Theory',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 888005010,
+    orderId: '10',
+    property: '必修',
+    credit: 1,
+    score: 85,
+    name: '体育-2',
+    EnglishName: 'Physical Education-2',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 202042010,
+    orderId: '01',
+    property: '必修',
+    credit: 1,
+    score: 95,
+    name: '大学物理实验（理工）Ⅲ-2',
+    EnglishName: 'Physics Experiments (Ⅲ)-2',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 202028020,
+    orderId: '12',
+    property: '必修',
+    credit: 2,
+    score: 63,
+    name: '大学物理（理工）Ⅲ-2',
+    EnglishName: 'University Physics (Ⅲ)-2',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 201073050,
+    orderId: '19',
+    property: '必修',
+    credit: 5,
+    score: 62,
+    name: '微积分（Ⅰ）-2',
+    EnglishName: 'Calculus (Ⅰ)-2',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 201018030,
+    orderId: '19',
+    property: '必修',
+    credit: 3,
+    score: 62,
+    name: '概率统计（理工）',
+    EnglishName: 'Probability Statistics',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 107048020,
+    orderId: '39',
+    property: '必修',
+    credit: 2,
+    score: 81,
+    name: '中国近现代史纲要',
+    EnglishName: 'The Outline of Modern History of China',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 105369010,
+    orderId: '90',
+    property: '必修',
+    credit: 1,
+    score: 86,
+    name: '大学英语（口语）-2',
+    EnglishName: 'Oral English-2',
+    reason: '' },
+  { term: '2012-2013学年春(两学期)',
+    current: 0,
+    courseId: 105368020,
+    orderId: '98',
+    property: '必修',
+    credit: 2,
+    score: 60,
+    name: '大学英语（阅读与翻译）-2',
+    EnglishName: 'College English (Reading and Translation) -2',
+    reason: '' },
+  { term: '2012-2013学年秋(两学期)',
+    current: 0,
+    courseId: 303130010,
+    orderId: '01',
+    property: '任选',
+    credit: 1,
+    score: 87,
+    name: '医学信息工程专业概论',
+    EnglishName: 'Specialty Generality of Electric Information',
+    reason: '' },
+  { term: '2012-2013学年秋(两学期)',
+    current: 0,
+    courseId: 303066030,
+    orderId: '09',
+    property: '任选',
+    credit: 3,
+    score: 76,
+    name: '计算机基础及C语言程序设计',
+    EnglishName: 'Base of Computer Theory',
+    reason: '' },
+  { term: '2012-2013学年秋(两学期)',
+    current: 0,
+    courseId: 998009000,
+    orderId: '24',
+    property: '必修',
+    credit: 0,
+    score: 72,
+    name: '形势与政策-1',
+    EnglishName: 'Situation and Policy-1',
+    reason: '' },
+  { term: '2012-2013学年秋(两学期)',
+    current: 0,
+    courseId: 912002010,
+    orderId: '32',
+    property: '必修',
+    credit: 1,
+    score: 85,
+    name: '大学生心理健康',
+    EnglishName: 'Mental Health Education',
+    reason: '' },
+  { term: '2012-2013学年秋(两学期)',
+    current: 0,
+    courseId: 888004010,
+    orderId: '10',
+    property: '必修',
+    credit: 1,
+    score: 97,
+    name: '体育-1',
+    EnglishName: 'Physical Education-1',
+    reason: '' },
+  { term: '2012-2013学年秋(两学期)',
+    current: 0,
+    courseId: 202041020,
+    orderId: '02',
+    property: '必修',
+    credit: 2,
+    score: 75,
+    name: '大学物理实验（理工）Ⅲ-1',
+    EnglishName: 'Physics Experiments (Ⅲ)-1',
+    reason: '' },
+  { term: '2012-2013学年秋(两学期)',
+    current: 0,
+    courseId: 202027020,
+    orderId: '12',
+    property: '必修',
+    credit: 2,
+    score: 81,
+    name: '大学物理（理工）Ⅲ-1',
+    EnglishName: 'University Physics (Ⅲ)-1',
+    reason: '' },
+  { term: '2012-2013学年秋(两学期)',
+    current: 0,
+    courseId: 201080030,
+    orderId: '20',
+    property: '必修',
+    credit: 3,
+    score: 65,
+    name: '线性代数（理工）',
+    EnglishName: 'Linear Algebra',
+    reason: '' },
+  { term: '2012-2013学年秋(两学期)',
+    current: 0,
+    courseId: 201072040,
+    orderId: '20',
+    property: '必修',
+    credit: 4,
+    score: 64,
+    name: '微积分（Ⅰ）-1',
+    EnglishName: 'Calculus (Ⅰ)-1',
+    reason: '' },
+  { term: '2012-2013学年秋(两学期)',
+    current: 0,
+    courseId: 107032030,
+    orderId: '41',
+    property: '必修',
+    credit: 3,
+    score: 82,
+    name: '思想道德修养与法律基础',
+    EnglishName: 'Ideological and Moral Cultivation and Legal Basis',
+    reason: '' },
+  { term: '2012-2013学年秋(两学期)',
+    current: 0,
+    courseId: 105367010,
+    orderId: '90',
+    property: '必修',
+    credit: 1,
+    score: 89,
+    name: '大学英语（口语）-1',
+    EnglishName: 'Oral English-1',
+    reason: '' },
+  { term: '2012-2013学年秋(两学期)',
+    current: 0,
+    courseId: 105366020,
+    orderId: '98',
+    property: '必修',
+    credit: 2,
+    score: 65,
+    name: '大学英语（综合）-1',
+    EnglishName: 'College English (Comprehensive)-1',
+    reason: '' } ]
+[0mPOST /wechat?signature=376b3a4ac33b0a37da592333d14f3ceaecc6a4e3&timestamp=1432786263&nonce=379163138 [32m200 [0m885.613 ms - -[0m
+{ ToUserName: 'gh_aedac92e5ba6',
+  FromUserName: 'oL7Ast9flrFJUwqzRGYZXk2WrIYU',
+  CreateTime: '1432786267',
+  MsgType: 'event',
+  Event: 'CLICK',
+  EventKey: 'book' }
+click
+14009
+select studentId,password from secret_library where userId = 14009
+[ { studentId: '2012141442029', password: '013991' } ]
+null { studentId: '2012141442029', password: '013991' }
+http://localhost:9231/api/v1/book?appId=10000&appSecret=scuinfo&debug=1&studentId=2012141442029&password=013991
+null '{"code":200,"message":"成功","data":{"count":7,"updateAt":1431582570,"version":19,"books":[{"name":"Node即学即用","deadline":1425830400,"author":"休斯-克劳奇","location":"江安馆","index":"TP312JA/2444","xc":6,"barcode":"90491139","borId":"U12005391"},{"name":"Node应用程序构建 : 使用MongoDB和Backbone","deadline":1425830400,"author":"威尔逊","location":"江安馆","index":"TP312JA/5323-1","xc":6,"barcode":"90550190","borId":"U12005391"},{"name":"计算机组成原理考点精要与解题指导","deadline":1425830400,"author":"徐爱萍","location":"江安馆","index":"TP303/X561/2002","xc":6,"barcode":"90034914","borId":"U12005391"},{"name":"Node.js实战","deadline":1425830400,"author":"赵坤","location":"江安馆","index":"TP312JA/4445-1","xc":6,"barcode":"90557498","borId":"U12005391"},{"name":"Node.js开发实战详解","deadline":1425830400,"author":"黄丹华","location":"江安馆","index":"TP312JA/4472-2","xc":6,"barcode":"90554400","borId":"U12005391"},{"name":"Node.js实战","deadline":1425830400,"author":"坎特伦","location":"江安馆","index":"TP312JA/4722","xc":6,"barcode":"90557995","borId":"U12005391"},{"name":"深入浅出Node.js","deadline":1425830400,"author":"朴灵","location":"江安馆","index":"TP312JA/4317","xc":6,"barcode":"90537396","borId":"U12005391"}]}}'
+{ code: 200,
+  message: '成功',
+  data: 
+   { count: 7,
+     updateAt: 1431582570,
+     version: 19,
+     books: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] } }
+200
+{ code: 200,
+  message: '成功',
+  data: 
+   { count: 7,
+     updateAt: 1431582570,
+     version: 19,
+     books: 
+      [ [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object],
+        [Object] ] } }
+[ { name: 'Node即学即用',
+    deadline: 1425830400,
+    author: '休斯-克劳奇',
+    location: '江安馆',
+    index: 'TP312JA/2444',
+    xc: 6,
+    barcode: '90491139',
+    borId: 'U12005391' },
+  { name: 'Node应用程序构建 : 使用MongoDB和Backbone',
+    deadline: 1425830400,
+    author: '威尔逊',
+    location: '江安馆',
+    index: 'TP312JA/5323-1',
+    xc: 6,
+    barcode: '90550190',
+    borId: 'U12005391' },
+  { name: '计算机组成原理考点精要与解题指导',
+    deadline: 1425830400,
+    author: '徐爱萍',
+    location: '江安馆',
+    index: 'TP303/X561/2002',
+    xc: 6,
+    barcode: '90034914',
+    borId: 'U12005391' },
+  { name: 'Node.js实战',
+    deadline: 1425830400,
+    author: '赵坤',
+    location: '江安馆',
+    index: 'TP312JA/4445-1',
+    xc: 6,
+    barcode: '90557498',
+    borId: 'U12005391' },
+  { name: 'Node.js开发实战详解',
+    deadline: 1425830400,
+    author: '黄丹华',
+    location: '江安馆',
+    index: 'TP312JA/4472-2',
+    xc: 6,
+    barcode: '90554400',
+    borId: 'U12005391' },
+  { name: 'Node.js实战',
+    deadline: 1425830400,
+    author: '坎特伦',
+    location: '江安馆',
+    index: 'TP312JA/4722',
+    xc: 6,
+    barcode: '90557995',
+    borId: 'U12005391' },
+  { name: '深入浅出Node.js',
+    deadline: 1425830400,
+    author: '朴灵',
+    location: '江安馆',
+    index: 'TP312JA/4317',
+    xc: 6,
+    barcode: '90537396',
+    borId: 'U12005391' } ]
+[0mPOST /wechat?signature=dc245b5812b9df5565db0663358b24afb4807606&timestamp=1432786267&nonce=1798500375 [32m200 [0m3605.918 ms - -[0m
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+mysql error { [QueryTimeout: Mysql query timeout after 1000 ms (dsgygb_secret@127.0.0.1:3306)] name: 'QueryTimeout', fatal: true }
+test
+test
+test
+test
+test
+test
+test
+test
+test
+mysql error { [QueryTimeout: Mysql query timeout after 1000 ms (dsgygb_secret@127.0.0.1:3306)] name: 'QueryTimeout', fatal: true }
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+mysql error { [QueryTimeout: Mysql query timeout after 1000 ms (dsgygb_secret@127.0.0.1:3306)] name: 'QueryTimeout', fatal: true }
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+mysql error { [QueryTimeout: Mysql query timeout after 1000 ms (dsgygb_secret@127.0.0.1:3306)] name: 'QueryTimeout', fatal: true }
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+mysql error { [QueryTimeout: Mysql query timeout after 1000 ms (dsgygb_secret@127.0.0.1:3306)] name: 'QueryTimeout', fatal: true }
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+mysql error { [QueryTimeout: Mysql query timeout after 1000 ms (dsgygb_secret@127.0.0.1:3306)] name: 'QueryTimeout', fatal: true }
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+[0mGET / [31m500 [0m26874.979 ms - 1181[0m
+test
+[0mGET / [31m500 [0m100.062 ms - 1181[0m
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test
+test

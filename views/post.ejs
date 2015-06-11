@@ -1,0 +1,22 @@
+<% include header %>
+<% include bar%>
+
+<section id="post" class="container">
+    <form class="am-form boy-form">
+    <div class="am-form-group ">
+        <textarea class="post" required rows="7" id="content" placeholder="写下你想说的话..."><%= page.content %></textarea>
+    </div>
+        <div class="am-form-group secretDiv">
+        <input id="secret" type="checkbox" checked  data-am-switch  data-switch-value="lg" data-on-text="匿名" data-off-text="实名" data-on-color="success">
+   </div>
+        <button type="button" id="submitButton" data-am-loading="{spinner: 'circle-o-notch', loadingText: '发布中...', resetText: '发布'}" class="am-btn am-btn-default am-btn-lg submitButton ">发布</button>
+    </form>
+</section>
+<% include footer%>
+<% include js%>
+<script src="/javascripts/amazeui.switch.min.js"></script>
+<script src="/javascripts/post.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,63 @@
+<% include header %>
+<% include bar%>
+
+<div class="container">
+
+        <div class="meta-datas">
+
+            <div class="meta-left">
+                        <div class="meta-data">
+                            <div class="meta-count" id="credit"><span class="am-icon-spin am-icon-refresh postsCountLoadIcon"></span></div>
+                            <div class="meta-name">学分</div>
+                        </div>
+
+
+                <div class="meta-data">
+                    <div class="meta-count" id="courseCount"><span class="am-icon-spin am-icon-refresh postsCountLoadIcon"></span></div>
+                    <div class="meta-name">门课</div>
+                </div>
+
+
+
+                    </div>
+
+            <div class="meta-right">
+                <div class="radius-button inline refresh"><i class="am-icon-refresh"></i></div>
+
+
+            </div>
+
+            </div>
+    <div id="loading"><span class="am-icon-lg am-icon-spinner am-icon-pulse"></span></div>
+
+    <script type="text/x-handlebars-template" id="score">
+        {{>accordion accordionData}}
+    </script>
+
+    </div>
+
+
+
+</div>
+
+<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="modalTips">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">更新操作提交成功</div>
+        <div class="am-modal-bd">
+            <span class="">结果将在稍后用微信scuinfo通知你</span>
+        </div>
+    </div>
+</div>
+
+<% include footer%>
+<% include js%>
+<script src="/javascripts/handlebars.min.js"></script>
+<script src="/javascripts/amazeui.widgets.helper.min.js"></script>
+<script src="/javascripts/score.js"></script>
+<script>
+
+</script>
+</body>
+</html>
+
+

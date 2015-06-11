@@ -1,0 +1,86 @@
+<% include header %>
+<% include bar%>
+
+<div class="container">
+
+
+    <div class="meta-datas">
+        <div class="avatar" style="display: none;" id="userAvatar"></div>
+        <div style="display: none;" id="nickname">-</div>
+        <div class="meta-left">
+            <div class="meta-data">
+                <div class="meta-count" id="profile-credit-count"><span class="am-icon-spin am-icon-refresh postsCountLoadIcon"></span></div>
+                <div class="meta-name">学分</div>
+            </div>
+
+
+            <div class="meta-data">
+                <div class="meta-count" id="profile-post-count"><span class="am-icon-spin am-icon-refresh postsCountLoadIcon"></span></div>
+                <div class="meta-name">门课</div>
+            </div>
+
+
+
+        </div>
+
+        <div class="meta-right">
+            <div class="radius-button inline refresh"><i class="am-icon-refresh"></i></div>
+            <div wechatTitle="" wechatImg="" wechatDesc="" wechatUrl="" id="shareMajor" class="radius-button inline margin-right"><i class="am-icon-external-link"></i></div>
+
+        </div>
+
+    </div>
+
+    <!--<div id="loading"><span class="am-icon-lg am-icon-spinner am-icon-pulse"></span></div>-->
+
+    <div class="major" id="major">
+                <div class="am-scrollable-horizontal">
+                <table class="am-table am-table-bordered am-table-radius ">
+                    <thead class="am-text-nowrap"><tr><th></th><th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th><th>周六</th><th>周日</th></tr>
+                    </thead>
+                    <tbody id="majorData">
+
+                    </tbody>
+                </table>
+
+        </div>
+    </div>
+    <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="modalTips">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">更新操作提交成功</div>
+            <div class="am-modal-bd">
+                <span class="">结果将在稍后用微信scuinfo通知</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wechatInit">
+    <input type="hidden" id="timestamp" value="<%=timestamp %>" />
+    <input type="hidden" id="wechatAppId" value="<%= wechatJs.appId %>">
+    <input type="hidden" id="wechatTimestamp" value="<%= wechatJs.timestamp %>">
+    <input type="hidden" id="wechatNonceStr" value="<%= wechatJs.nonceStr %>">
+    <input type="hidden" id="wechatSignature" value="<%= wechatJs.signature %>">
+    <input type="hidden" id="weiboAppKey" value="<%= weibo.appKey%>">
+    <input type="hidden" id="weiboUid" value="<%= weibo.uid%>">
+    <input type="hidden" id="userId" value="<%= page.userId%>">
+    <input type="hidden" id="url" value="<%= page.url%>">
+    <input type="hidden" id="userStatus" value="<%= page.userStatus%>">
+</div>
+
+<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="modalTips">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">更新操作提交成功</div>
+        <div class="am-modal-bd">
+            <span class="">结果将在稍后用微信scuinfo通知你</span>
+        </div>
+    </div>
+</div>
+<% include footer%>
+<% include js%>
+
+<script src="/javascripts/major.js"></script>
+</body>
+</html>
+
+

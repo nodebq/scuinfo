@@ -1,0 +1,62 @@
+<% include head %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/default.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/component.css" />
+
+<link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.3.0/css/amazeui.min.css">
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<link rel="stylesheet" href="/stylesheets/amazeui.switch.css" />
+<% include top%>
+<% include bar%>
+<!--<div class="container shareContainer">-->
+
+
+    <!--<div class="shareTheBookList" id="shareTheBookList" wechatTitle="" wechatImg="" wechatDesc="" wechatUrl="">-->
+        <div class="main" >
+            <ul class="cbp_tmtimeline" id="shareSection">
+                <div id="loading"><span class="am-icon-lg am-icon-spinner am-icon-pulse"></span></div>
+            </ul>
+        </div>
+
+
+
+    <!--</div>-->
+
+    <div class="shareTips" id="shareTips"></div>
+    <div class="findMyBook" id="findMyBook">
+    </div>
+<!--</div>-->
+
+<div class="wechatInit">
+    <input type="hidden" id="timestamp" value="<%=timestamp %>" />
+    <input type="hidden" id="wechatAppId" value="<%= wechatJs.appId %>">
+    <input type="hidden" id="wechatTimestamp" value="<%= wechatJs.timestamp %>">
+    <input type="hidden" id="wechatNonceStr" value="<%= wechatJs.nonceStr %>">
+    <input type="hidden" id="wechatSignature" value="<%= wechatJs.signature %>">
+    <input type="hidden" id="weiboAppKey" value="<%= weibo.appKey%>">
+    <input type="hidden" id="weiboUid" value="<%= weibo.uid%>">
+    <input type="hidden" id="userId" value="<%= page.userId%>">
+    <input type="hidden" id="url" value="<%= page.url%>">
+    <input type="hidden" id="userStatus" value="<%= page.userStatus%>">
+    <input type="hidden" id="nickname" value="<%= page.nickname%>">
+    <input type="hidden" id="avatar" value="<%= page.avatar%>">
+    <input type="hidden" id="gender" value="<%= page.gender%>">
+
+
+</div>
+
+<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="modalTips">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">更新操作提交成功</div>
+        <div class="am-modal-bd">
+            <span class="">结果将在稍后用微信scuinfo通知你</span>
+        </div>
+    </div>
+</div>
+<% include footer%>
+<% include js%>
+<script src="/javascripts/modernizr.custom.js"></script>
+<script src="/javascripts/exam.js"></script>
+</body>
+</html>
+
+

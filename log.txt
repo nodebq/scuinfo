@@ -1,0 +1,447 @@
+{ appid: 'wx65f95de25e8b320b',
+  appsecret: '5302afc82919e5e9583dcfddd9c572bf',
+  getToken: [Function],
+  saveToken: [Function],
+  prefix: 'https://api.weixin.qq.com/cgi-bin/',
+  mpPrefix: 'https://mp.weixin.qq.com/cgi-bin/',
+  fileServerPrefix: 'http://file.api.weixin.qq.com/cgi-bin/',
+  payPrefix: 'https://api.weixin.qq.com/pay/',
+  merchantPrefix: 'https://api.weixin.qq.com/merchant/',
+  defaults: {},
+  ticketStore: {},
+  getTicketToken: [Function],
+  saveTicketToken: [Function] }
+已监听4150端口,go!go!go!
+mysql error { [QueryTimeout: Mysql query timeout after 1000 ms (dsgygb_secret@127.0.0.1:3306)] name: 'QueryTimeout', fatal: true }
+tag载入完成
+{ '661': 5,
+  '创业就业沙龙': 8,
+  '川大心愿': 10,
+  '川大树洞': 4,
+  '川大表白': 1,
+  '把爱情当作生活的唯一重心本来就是人生的失败醒醒吧少年们': 3,
+  '昂帕帕斯': 6,
+  '有没有可以安逸的去编程的咖啡店推荐/:@>/:@>这里是飞扬研发': 9,
+  '歌词控': 13,
+  '测试': 11,
+  '海螺': 12,
+  '类似爱情': 2,
+  '说说你们期待的异性伴侣是什么样子？': 7 }
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaIiee-Mr5peXqAGdcSTAabup1gNwwRKp-IiO0h2OaZGvQ","expireTime":1432810958040}
+read
+jsapi { ticket: 'bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ',
+  expireTime: 1432874990195 }
+write
+[0mGET / [32m200 [0m560.925 ms - 4621[0m
+[0mGET /stylesheets/style.css [36m304 [0m14.628 ms - -[0m
+[0mGET /javascripts/index.js [36m304 [0m9.514 ms - -[0m
+[0mGET /javascripts/common.js [36m304 [0m4.386 ms - -[0m
+[0mGET /stylesheets/amazeui.switch.css [36m304 [0m8.505 ms - -[0m
+[0mGET /images/wechatShare.png [36m304 [0m4.541 ms - -[0m
+[0mGET /api/posts?pageSize=15 [32m200 [0m4046.763 ms - -[0m
+[0mGET /api/posts?pageSize=15&fromId=5542 [32m200 [0m1199.040 ms - -[0m
+[0mGET /auth/weibo/?state=weibo%2Chttp%3A%2F%2Ffm.scuinfo.com%2F&code=0f19aa2a5c87f0efe8169ad672c55873 [36m302 [0m4037.924 ms - 100[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m5.989 ms - 4276[0m
+{ fieldCount: 0,
+  affectedRows: 1,
+  insertId: 0,
+  serverStatus: 2,
+  warningCount: 0,
+  message: '(Rows matched: 1  Changed: 0  Warnings: 0' }
+[0mGET /stylesheets/amazeui.switch.css [36m304 [0m1.653 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m0.927 ms - -[0m
+[0mGET /javascripts/common.js [36m304 [0m0.000 ms - -[0m
+[0mGET /images/wechatShare.png [36m304 [0m0.000 ms - -[0m
+[0mGET /javascripts/index.js [36m304 [0m0.000 ms - -[0m
+[0mGET /api/posts?pageSize=15 [32m200 [0m288.471 ms - -[0m
+[0mGET /api/posts?pageSize=15&fromId=5542 [32m200 [0m37.013 ms - -[0m
+[0mGET /api/posts?pageSize=15&fromId=5524 [32m200 [0m48.289 ms - -[0m
+[0mGET /api/posts?pageSize=15&fromId=5506 [32m200 [0m35.920 ms - -[0m
+有session
+jsapi
+有session
+有session
+jsapi
+[0mGET / [36m302 [0m57.724 ms - 566[0m
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m96.962 ms - 4621[0m
+[0mGET / [32m200 [0m73.202 ms - 4621[0m
+{"accessToken":"21_H5iT2f6QQUatQC41jqkwfYI7x2WV11_q5fTlktAWysIX495KQ49rfqXDBn7zyBF0boTk2_jZvG8n-s3lY7Tt0IcshtdbinsXg_rAhFJY","expireTime":1432874990029}
+[0mGET /auth/wechatUserAgent?code=001cbc9cb8a6f2bdae3fd731a60ccddZ&state=wechat%2Chttp%3A%2F%2Ffm.scuinfo.com%2F [36m302 [0m811.180 ms - 100[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m3.375 ms - 4368[0m
+[0mGET /stylesheets/amazeui.switch.css [32m200 [0m17.915 ms - 4167[0m
+[0mGET /stylesheets/style.css [32m200 [0m14.216 ms - 18086[0m
+[0mGET /javascripts/common.js [32m200 [0m17.563 ms - 20986[0m
+[0mGET /javascripts/index.js [32m200 [0m10.122 ms - 10940[0m
+[0mGET /images/wechatShare.png [32m200 [0m15.830 ms - 24334[0m
+[0mGET /api/posts?pageSize=15 [32m200 [0m107.855 ms - -[0m
+mysql error { [QueryTimeout: Mysql query timeout after 1000 ms (dsgygb_secret@127.0.0.1:3306)] name: 'QueryTimeout', fatal: true }
+有session
+[0mGET / [36m302 [0m61.435 ms - 566[0m
+{"accessToken":"21_H5iT2f6QQUatQC41jqkwfYI7x2WV11_q5fTlktAWysIX495KQ49rfqXDBn7zyBF0boTk2_jZvG8n-s3lY7Tt0IcshtdbinsXg_rAhFJY","expireTime":1432874990029}
+[0mGET /auth/wechatUserAgent?code=011df0639d3bb75b4225a35f7b1c2f54&state=wechat%2Chttp%3A%2F%2Ffm.scuinfo.com%2F [36m302 [0m1234.153 ms - 100[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m57.588 ms - 4370[0m
+[0mGET /stylesheets/style.css [32m200 [0m24.242 ms - 18086[0m
+[0mGET /stylesheets/amazeui.switch.css [32m200 [0m9.300 ms - 4167[0m
+[0mGET /images/wechatShare.png [32m200 [0m15.363 ms - 24334[0m
+[0mGET /javascripts/index.js [32m200 [0m16.554 ms - 10940[0m
+[0mGET /javascripts/common.js [32m200 [0m9.047 ms - 20986[0m
+[0mGET /api/posts?pageSize=15 [32m200 [0m231.050 ms - -[0m
+有session
+[0mGET /post [32m200 [0m52.564 ms - 3734[0m
+[0mGET /stylesheets/style.css [36m304 [0m9.736 ms - -[0m
+[0mGET /images/wechatShare.png [36m304 [0m19.917 ms - -[0m
+[0mGET /stylesheets/amazeui.switch.css [36m304 [0m28.147 ms - -[0m
+[0mGET /javascripts/common.js [36m304 [0m18.928 ms - -[0m
+[0mGET /javascripts/amazeui.switch.min.js [32m200 [0m11.584 ms - 13981[0m
+[0mGET /javascripts/post.js [32m200 [0m3.482 ms - 1870[0m
+[0mPOST /api/post [32m200 [0m626.083 ms - -[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m3.739 ms - 4370[0m
+[0mGET /stylesheets/style.css [36m304 [0m1.029 ms - -[0m
+[0mGET /stylesheets/amazeui.switch.css [36m304 [0m1.344 ms - -[0m
+[0mGET /images/wechatShare.png [36m304 [0m1.047 ms - -[0m
+[0mGET /javascripts/index.js [36m304 [0m5.956 ms - -[0m
+[0mGET /javascripts/common.js [36m304 [0m5.470 ms - -[0m
+[0mGET /api/posts?pageSize=15 [32m200 [0m132.608 ms - -[0m
+有session
+jsapi
+[0mGET / [32m- [0m- ms - -[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m3513.620 ms - 4276[0m
+[0mGET /stylesheets/style.css [36m304 [0m1065.116 ms - -[0m
+[0mGET /stylesheets/amazeui.switch.css [36m304 [0m882.440 ms - -[0m
+[0mGET /images/wechatShare.png [36m304 [0m829.509 ms - -[0m
+[0mGET /javascripts/common.js [36m304 [0m638.715 ms - -[0m
+[0mGET /javascripts/index.js [36m304 [0m601.174 ms - -[0m
+[0mGET /api/posts?pageSize=15 [32m200 [0m2328.708 ms - -[0m
+有session
+[0mGET / [36m302 [0m1023.887 ms - 566[0m
+{ appid: 'wx64902e8505feae7f',
+  appsecret: '929d3f4fa7f4efc793968e1717727608',
+  getToken: [Function],
+  saveToken: [Function],
+  prefix: 'https://api.weixin.qq.com/cgi-bin/',
+  mpPrefix: 'https://mp.weixin.qq.com/cgi-bin/',
+  fileServerPrefix: 'http://file.api.weixin.qq.com/cgi-bin/',
+  payPrefix: 'https://api.weixin.qq.com/pay/',
+  merchantPrefix: 'https://api.weixin.qq.com/merchant/',
+  defaults: {},
+  ticketStore: {},
+  getTicketToken: [Function],
+  saveTicketToken: [Function],
+  token: 
+   { accessToken: '21_H5iT2f6QQUatQC41jqkwfYI7x2WV11_q5fTlktAWysIX495KQ49rfqXDBn7zyBF0boTk2_jZvG8n-s3lY7Tt0IcshtdbinsXg_rAhFJY',
+     expireTime: 1432874990029 } } 'orJ8DjxD8cn05P3LTkKk_GEVv5rY'
+[0mGET /auth/wechatUserAgent?code=001ca35fb5b78068db13aebb15d6011P&state=wechat%2Chttp%3A%2F%2Ffm.scuinfo.com%2F [36m302 [0m1692.501 ms - 100[0m
+{"errcode":40001,"errmsg":"invalid credential, access_token is invalid or not latest"}
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m397.466 ms - 4367[0m
+[0mGET /stylesheets/amazeui.switch.css [32m200 [0m350.852 ms - 4167[0m
+[0mGET /stylesheets/style.css [32m200 [0m329.287 ms - 18086[0m
+[0mGET /javascripts/common.js [32m200 [0m313.452 ms - 20986[0m
+[0mGET /javascripts/index.js [32m200 [0m95.122 ms - 10940[0m
+[0mGET /images/wechatShare.png [32m200 [0m73.510 ms - 24334[0m
+[0mGET /api/posts?pageSize=15 [32m200 [0m1165.189 ms - -[0m
+{ id: '5556' }
+[0mPOST /api/like/post [32m200 [0m233.788 ms - -[0m
+{ [MysqlError: ER_NO_SUCH_TABLE: Table 'secret.secret_notice' doesn't exist (dsgygb_secret@127.0.0.1:3306)] code: 'ER_NO_SUCH_TABLE', index: 0, name: 'MysqlError' }
+未能成功建立通知
+{ id: '5550' }
+[0mPOST /api/like/post [32m200 [0m60.039 ms - -[0m
+{ [MysqlError: ER_NO_SUCH_TABLE: Table 'secret.secret_notice' doesn't exist (dsgygb_secret@127.0.0.1:3306)] code: 'ER_NO_SUCH_TABLE', index: 0, name: 'MysqlError' }
+未能成功建立通知
+{ id: '5545' }
+[0mPOST /api/like/post [32m200 [0m47.631 ms - -[0m
+{ [MysqlError: ER_NO_SUCH_TABLE: Table 'secret.secret_notice' doesn't exist (dsgygb_secret@127.0.0.1:3306)] code: 'ER_NO_SUCH_TABLE', index: 0, name: 'MysqlError' }
+未能成功建立通知
+[0mGET /api/posts?pageSize=15&fromId=5544 [32m200 [0m272.496 ms - -[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET /p/5540 [32m200 [0m217.127 ms - 4768[0m
+[0mGET /stylesheets/amazeui.switch.css [32m200 [0m251.644 ms - 4167[0m
+[0mGET /stylesheets/style.css [32m200 [0m96.383 ms - 18086[0m
+[0mGET /images/wechatShare.png [32m200 [0m102.259 ms - 24334[0m
+[0mGET /javascripts/common.js [32m200 [0m41.521 ms - 20986[0m
+[0mGET /javascripts/detail.js [32m200 [0m48.613 ms - 17694[0m
+[0mGET /api/comments?postId=5540&pageSize=15 [32m200 [0m104.000 ms - -[0m
+[0mGET /api/post?id=5540 [32m200 [0m137.680 ms - -[0m
+[0mPOST /api/comment [32m200 [0m202.479 ms - -[0m
+null
+没有此评论/帖子
+[0mGET /api/posts?pageSize=15&fromId=5544 [32m200 [0m5035.306 ms - -[0m
+{ id: '5536' }
+[0mPOST /api/like/post [32m200 [0m43.263 ms - -[0m
+{ [MysqlError: ER_NO_SUCH_TABLE: Table 'secret.secret_notice' doesn't exist (dsgygb_secret@127.0.0.1:3306)] code: 'ER_NO_SUCH_TABLE', index: 0, name: 'MysqlError' }
+未能成功建立通知
+[0mGET /api/posts?pageSize=15&fromId=5525 [32m200 [0m2088.115 ms - -[0m
+[0mGET /api/posts?pageSize=15&fromId=5507 [32m200 [0m2013.513 ms - -[0m
+[0mGET /api/posts?pageSize=15&fromId=5491 [32m200 [0m1552.846 ms - -[0m
+{ id: '5489' }
+[0mPOST /api/like/post [32m200 [0m31.069 ms - -[0m
+{ [MysqlError: ER_NO_SUCH_TABLE: Table 'secret.secret_notice' doesn't exist (dsgygb_secret@127.0.0.1:3306)] code: 'ER_NO_SUCH_TABLE', index: 0, name: 'MysqlError' }
+未能成功建立通知
+[0mGET /api/posts?pageSize=15&fromId=5476 [32m200 [0m7775.029 ms - -[0m
+{ id: '5472' }
+[0mPOST /api/like/post [32m200 [0m35.659 ms - -[0m
+{ [MysqlError: ER_NO_SUCH_TABLE: Table 'secret.secret_notice' doesn't exist (dsgygb_secret@127.0.0.1:3306)] code: 'ER_NO_SUCH_TABLE', index: 0, name: 'MysqlError' }
+未能成功建立通知
+[0mGET /api/posts?pageSize=15&fromId=5461 [32m200 [0m685.642 ms - -[0m
+有session
+[0mGET / [36m302 [0m162.617 ms - 566[0m
+[0mGET /auth/wechatUserAgent [32m200 [0m11.587 ms - -[0m
+{ appid: 'wx64902e8505feae7f',
+  appsecret: '929d3f4fa7f4efc793968e1717727608',
+  getToken: [Function],
+  saveToken: [Function],
+  prefix: 'https://api.weixin.qq.com/cgi-bin/',
+  mpPrefix: 'https://mp.weixin.qq.com/cgi-bin/',
+  fileServerPrefix: 'http://file.api.weixin.qq.com/cgi-bin/',
+  payPrefix: 'https://api.weixin.qq.com/pay/',
+  merchantPrefix: 'https://api.weixin.qq.com/merchant/',
+  defaults: {},
+  ticketStore: {},
+  getTicketToken: [Function],
+  saveTicketToken: [Function],
+  token: 
+   { accessToken: '21_H5iT2f6QQUatQC41jqkwfYI7x2WV11_q5fTlktAWysIX495KQ49rfqXDBn7zyBF0boTk2_jZvG8n-s3lY7Tt0IcshtdbinsXg_rAhFJY',
+     expireTime: 1432874990029 } } 'orJ8Dj9tk5IA9FEN_0-9iiMU1uuc'
+[0mGET /auth/wechatUserAgent?code=041fc7087e0ca6f9285a116ecc68fc35&state=wechat%2Chttp%3A%2F%2Ffm.scuinfo.com%2F [36m302 [0m703.196 ms - 100[0m
+{"errcode":40001,"errmsg":"invalid credential, access_token is invalid or not latest"}
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m137.664 ms - 4278[0m
+[0mGET /stylesheets/style.css [32m200 [0m22.331 ms - 18086[0m
+[0mGET /stylesheets/amazeui.switch.css [32m200 [0m4.322 ms - 4167[0m
+[0mGET /images/wechatShare.png [32m200 [0m24.733 ms - 24334[0m
+[0mGET /javascripts/common.js [32m200 [0m60.892 ms - 20986[0m
+[0mGET /javascripts/index.js [32m200 [0m36.005 ms - 10940[0m
+[0mGET /api/posts?pageSize=15 [32m200 [0m1611.494 ms - -[0m
+[0mGET /api/posts?pageSize=15&fromId=5544 [32m200 [0m491.660 ms - -[0m
+[0mGET /api/posts?pageSize=15&fromId=5525 [32m200 [0m121.526 ms - -[0m
+[0mGET /api/posts?pageSize=15 [32m200 [0m131.933 ms - -[0m
+[0mGET /api/posts?pageSize%3D15 [32m200 [0m331.936 ms - -[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m468.208 ms - 4621[0m
+[0mGET /auth/wechatUserAgent [32m200 [0m155.909 ms - -[0m
+有session
+[0mGET / [36m302 [0m256.073 ms - 566[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m469.743 ms - 4621[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m322.669 ms - 4621[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m833.120 ms - 4620[0m
+{ appid: 'wx64902e8505feae7f',
+  appsecret: '929d3f4fa7f4efc793968e1717727608',
+  getToken: [Function],
+  saveToken: [Function],
+  prefix: 'https://api.weixin.qq.com/cgi-bin/',
+  mpPrefix: 'https://mp.weixin.qq.com/cgi-bin/',
+  fileServerPrefix: 'http://file.api.weixin.qq.com/cgi-bin/',
+  payPrefix: 'https://api.weixin.qq.com/pay/',
+  merchantPrefix: 'https://api.weixin.qq.com/merchant/',
+  defaults: {},
+  ticketStore: {},
+  getTicketToken: [Function],
+  saveTicketToken: [Function],
+  token: 
+   { accessToken: '21_H5iT2f6QQUatQC41jqkwfYI7x2WV11_q5fTlktAWysIX495KQ49rfqXDBn7zyBF0boTk2_jZvG8n-s3lY7Tt0IcshtdbinsXg_rAhFJY',
+     expireTime: 1432874990029 } } 'orJ8Dj6kK_mxoi_Cysb0Hunlrdyw'
+有session
+jsapi
+[0mGET /auth/wechatUserAgent?code=03169b8654fe773b7728970a89fda114&state=wechat%2Chttp%3A%2F%2Ffm.scuinfo.com%2F [36m302 [0m3948.985 ms - 100[0m
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m2300.622 ms - 4621[0m
+{"errcode":40001,"errmsg":"invalid credential, access_token is invalid or not latest"}
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m135.859 ms - 4284[0m
+有session
+jsapi
+有session
+jsapi
+有session
+jsapi
+有session
+jsapi
+有session
+jsapi
+有session
+jsapi
+有session
+jsapi
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+有session
+jsapi
+有session
+jsapi
+有session
+jsapi
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET /stylesheets/amazeui.switch.css [32m200 [0m712.880 ms - 4167[0m
+[0mGET /stylesheets/style.css [32m200 [0m790.539 ms - 18086[0m
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m1158.179 ms - 4621[0m
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m1015.028 ms - 4621[0m
+[0mGET /javascripts/index.js [32m200 [0m955.197 ms - 10940[0m
+[0mGET /javascripts/common.js [32m200 [0m1194.610 ms - 20986[0m
+[0mGET / [32m200 [0m1337.510 ms - 4621[0m
+[0mGET / [32m200 [0m1677.225 ms - 4621[0m
+[0mGET / [32m200 [0m1629.870 ms - 4621[0m
+[0mGET / [32m200 [0m1614.257 ms - 4621[0m
+[0mGET / [32m200 [0m1601.965 ms - 4621[0m
+[0mGET / [32m200 [0m1595.706 ms - 4621[0m
+[0mGET /images/wechatShare.png [32m200 [0m1194.039 ms - 24334[0m
+[0mGET / [32m200 [0m1386.698 ms - 4621[0m
+[0mGET / [32m200 [0m1368.565 ms - 4621[0m
+[0mGET / [32m200 [0m1363.875 ms - 4621[0m
+[0mGET / [32m200 [0m1120.571 ms - 4621[0m
+[0mGET /api/posts?pageSize=15 [32m200 [0m7311.322 ms - -[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m213.108 ms - 4284[0m
+[0mGET /stylesheets/amazeui.switch.css [36m304 [0m102.352 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m218.941 ms - -[0m
+[0mGET /images/wechatShare.png [36m304 [0m197.375 ms - -[0m
+[0mGET /javascripts/index.js [36m304 [0m188.446 ms - -[0m
+[0mGET /javascripts/common.js [36m304 [0m164.419 ms - -[0m
+有session
+jsapi
+[0mGET /api/posts?pageSize=15 [32m200 [0m1780.852 ms - -[0m
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m2070.316 ms - 4621[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET /fm [32m200 [0m333.451 ms - 4947[0m
+[0mGET /javascripts/common.js [36m304 [0m106.870 ms - -[0m
+[0mGET /javascripts/amazeui.switch.min.js [32m200 [0m211.347 ms - 13981[0m
+[0mGET /javascripts/fm.js [32m200 [0m188.096 ms - 2888[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET /images/magicalConchLogo.png [32m200 [0m165.873 ms - 41265[0m
+[0mGET / [32m200 [0m355.768 ms - 4621[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m624.147 ms - 4621[0m
+[0mGET /api/tag/count?name=%E6%B5%B7%E8%9E%BA [32m200 [0m824.053 ms - -[0m
+[0mGET /javascripts/index.js [36m304 [0m88.142 ms - -[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET / [32m200 [0m521.170 ms - 4284[0m
+[0mGET /stylesheets/amazeui.switch.css [36m304 [0m54.078 ms - -[0m
+[0mGET /javascripts/common.js [36m304 [0m117.886 ms - -[0m
+[0mGET /javascripts/index.js [36m304 [0m110.468 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m80.373 ms - -[0m
+[0mGET /images/wechatShare.png [36m304 [0m30.606 ms - -[0m
+[0mGET /api/posts?pageSize=15 [32m200 [0m715.672 ms - -[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET /fm [32m200 [0m798.717 ms - 4947[0m
+[0mGET /javascripts/common.js [36m304 [0m5.819 ms - -[0m
+[0mGET /javascripts/amazeui.switch.min.js [36m304 [0m5.432 ms - -[0m
+[0mGET /javascripts/fm.js [36m304 [0m5.351 ms - -[0m
+[0mGET /images/magicalConchLogo.png [36m304 [0m1.159 ms - -[0m
+[0mGET /api/tag/count?name=%E6%B5%B7%E8%9E%BA [32m200 [0m3.303 ms - -[0m
+有session
+jsapi
+{"ticket":"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaLlC5GXGdZUndh7mIH3q-Q_m5a01asDHN_DYbGpfJTaGQ","expireTime":1432874990195}
+read
+[0mGET /fm [32m200 [0m9.353 ms - 4947[0m
+[0mGET /api/tag/count?name=%E6%B5%B7%E8%9E%BA [32m200 [0m2.752 ms - -[0m
+[0mGET /javascripts/index.js [36m304 [0m8.808 ms - -[0m
+[0mGET /auth/weibo/?state%3Dweibo%252Chttp%253A%252F%252Ffm.scuinfo.com%252F%26code%3D0f19aa2a5c87f0efe8169ad672c55873 [32m200 [0m81.945 ms - -[0m
+[0mGET /&code=0f19aa2a5c87f0efe8169ad672c55873 [33m404 [0m1287.792 ms - 966[0m
+{ error: 'invalid_grant',
+  error_code: 21325,
+  request: '/oauth2/access_token',
+  error_uri: '/oauth2/access_token',
+  error_description: 'invalid authorization code:0f19aa2a5c87f0efe8169ad672c55873' }
+[0mGET /auth/weibo/?state=weibo%2Chttp%3A%2F%2Ffm.scuinfo.com%2F&code=0f19aa2a5c87f0efe8169ad672c55873 [32m200 [0m1434.535 ms - -[0m
+[0mGET /api/post [32m200 [0m46.650 ms - -[0m
+[0mGET /api/post [32m200 [0m25.536 ms - -[0m

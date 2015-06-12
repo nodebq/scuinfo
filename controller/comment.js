@@ -52,7 +52,7 @@ comment.commentPost = function (req, res) {
                                     //console.log(rows.insertId);
                                     console.log(req.body);
                                     res.end(common.format(200, "success", {id: rows.insertId,commentCount:r1[0]['count("postId")'],avatar:req.session.avatar,nickname:req.session.nickname}));
-                                    if(!req.body.parentId){
+                                    if(req.body.parentId){
                                         var pattern = 4;
                                         var sql = 'select * from secret_comment where id='+req.body.parentId
                                     }else{

@@ -122,13 +122,26 @@ service.text = function(msg,req,res,next){
 
     service.validSession(msg,function(e,r){
 
-        if(e){
+        if(e) {
             //没有微信会话
-            if(e.code==2041){
-                service.noSessionText(msg,req,res,next);
+            if (e.code == 2041) {
+                service.noSessionText(msg, req, res, next);
                 return;
 
             }
+            dbs.getWechatText({
+                name:"default"
+            },function(eee,rrrr){
+                if(eee){
+                    res.reply(JSON.stringify(eee));
+                    return;
+                }
+                //console.log(rrrr);
+                res.reply(rrrr);
+
+            });
+           return;
+        }
 
             switch(r.type){
 
@@ -186,7 +199,7 @@ service.text = function(msg,req,res,next){
 
 
             return;
-        }
+
 
 
     });

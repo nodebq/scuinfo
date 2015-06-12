@@ -181,7 +181,7 @@ var menu1 ={
                 */
                 {
                     "type":"click",
-                    "name":" 成绩查询 ",
+                    "name":"成绩查询 ",
                     "key":"score"
                 },
                 {
@@ -191,12 +191,12 @@ var menu1 ={
                 },
                 {
                     "type":"click",
-                    "name":" 图书借阅 ",
+                    "name":"图书借阅 ",
                     "key":"book"
                 },
                 {
                     "type":"click",
-                    "name":" 课表查询 ",
+                    "name":"课表查询 ",
                     "key":"major"
                 },
                 {

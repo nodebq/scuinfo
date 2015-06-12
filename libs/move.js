@@ -193,12 +193,6 @@ move.user  =  function(o){
     
     
 };
-/*
-move.user({
-    start:0
-});
-
-*/
 
 move.love = function(o){
 
@@ -242,7 +236,7 @@ move.love = function(o){
                                 if (rr.length > 0) {
                                     request.post(
                                         {
-                                            url: "http://localhost:4150/api/postMove",
+                                            url: config.localhostUrl+"/api/postMove",
                                             form: {
                                                 content: '#川大表白#' + content,
                                                 userId: r[0].user_id,
@@ -284,12 +278,6 @@ move.love = function(o){
         });
 
 };
-/*
-move.love({
-    start:0
-});
-
-*/
 
 move.hole = function(o){
 console.log(o);
@@ -333,7 +321,7 @@ console.log(o);
                                 if (rr.length > 0) {
                                     request.post(
                                         {
-                                            url: "http://localhost:4150/api/postMove",
+                                            url: config.localhostUrl+"/api/postMove",
                                             form: {
                                                 content: '#川大树洞#' + content,
                                                 userId: r[0].user_id,
@@ -375,11 +363,7 @@ console.log(o);
         });
 
 };
-/*
-move.hole(
-    {start:0}
-);
-*/
+
 
 move.wish = function(o){
 
@@ -424,7 +408,7 @@ move.wish = function(o){
                                 if (rr.length > 0) {
                                     request.post(
                                         {
-                                            url: "http://localhost:4150/api/postMove",
+                                            url: config.localhostUrl+"/api/postMove",
                                             form: {
                                                 content: '#川大心愿#' + content,
                                                 userId: r[0].user_id,
@@ -466,10 +450,33 @@ move.wish = function(o){
         });
 
 };
+
+/*
+ move.user({
+ start:0
+ });
+
+ */
+
+
 /*
  move.wish(
  {start:0}
  );
 &*/
+
+
+/*
+ move.love({
+ start:0
+ });
+
+ */
+
+/*
+ move.hole(
+ {start:0}
+ );
+ */
 
 module.exports = move;

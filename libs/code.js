@@ -183,6 +183,10 @@ var code = {
     'unknownError':{
         code:2039,
         message:"未知错误"
+    },
+    'userHasLike':{
+        code:2040,
+        message:"你已经赞过了"
     }
 };
 

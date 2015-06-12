@@ -59,6 +59,8 @@ check.autoWechat = function(req,res,next){
 
 //api验证是否登录
 check.isLoginApi = function(req,res,next){
+    
+
     if(req.session.userStatus=='login'){
         next();
     }else{

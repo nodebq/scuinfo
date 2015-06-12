@@ -510,8 +510,6 @@ post.createMove = function(req,res){
             });
     });
 
-
-
 };
 post.create = function(req,res){
 //console.log(req.body);
@@ -735,7 +733,7 @@ post.postsDetail = function (req, res) {
                             {
                                 sql: 'select count("postId") from `secret_post_like` where postId = "' + req.query.id + '"'
                             }, function (e3, r3) {
-                                if (e1) {
+                                if (e3) {
                                     console.log(e3);
                                     res.end(JSON.stringify(code.mysqlError));
                                     return;

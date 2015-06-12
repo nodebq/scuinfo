@@ -111,6 +111,9 @@ $.get('/api/book',function(r){
 });
 
 
+    $(".container").on('click','.setLibrary',function(){
+        location.href = "/bind/library";
+    });
     $("#book").on('click','.renew',function(){
        var renewButton=$(this);
         $(this).html('<i class="am-icon-refresh am-icon-spin"></i>');

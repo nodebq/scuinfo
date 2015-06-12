@@ -543,4 +543,156 @@ user.major = function(msg,req,res,next){
 
 };
 
+
+
+user.exam = function(msg,req,res,next){
+    user.valid(msg,req,res,function(e,r){
+        console.log(e,r);
+        if(e){
+
+
+            if(e.code == 2020){
+
+                bind.register(msg.FromUserName,function(ee,rr){
+
+                    if(ee){
+                        res.reply(JSON.stringify(ee));
+                        return;
+                    }
+                    dbs.getWechatNews({
+                        name:"notBindDean"
+                    },function(eee,rrrr){
+                        if(eee){
+                            res.reply(JSON.stringify(eee));
+                            return;
+                        }
+                        console.log(rrrr);
+                        res.reply(rrrr);
+
+                    });
+                    return;
+
+                });
+
+                return;
+            }
+
+
+            if(e.code == 2021){
+                dbs.getWechatNews({
+                    name:"notBindDean"
+                },function(eee,rrrr){
+                    if(eee){
+                        res.reply(JSON.stringify(eee));
+                        return;
+                    }
+                    console.log(rrrr);
+                    res.reply(rrrr);
+
+                });
+
+                return;
+            }
+
+
+
+            res.reply(e.message);
+            return;
+        }
+        console.log(config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password);
+        request.get(
+            {
+                url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password
+            },function(eeeee,rrrrr,body){
+
+                console.log(eeeee,body);
+                if(eeeee){
+                    res.reply(code.requestError.message);
+                    return;
+                }
+
+                try{
+                    var exams = JSON.parse(body);
+                }catch(e){
+                    var exams= {};
+                }
+                console.log(exams);
+                console.log(exams.code);
+                if(exams.code==200){
+                    console.log(exams);
+                    var examsData=exams.data.exams;
+                    console.log(examsData);
+                    if(examsData.length>0){
+
+                        for(var i=0;i<examsData.length;i++){
+                            if(examsData[i].examName=='期末考试') {
+                                text += "\n\n"+examsData[i].name + "\n" + common.dateChina(data[i].start*1000)+'~'+common.hour(data[i].end*1000) + "";
+                            }
+                        }
+
+                        text+='\n\n <a href="'+config.site.url+'/exam">点击查看全部成绩详情</a>' +
+                            '\n\n最后更新时间:'+common.dateChina(exams.data.updateAt*1000) ;
+                        res.reply(text);
+                        return;
+
+                    }else{
+                        dbs.getWechatText({
+                            name:"noExams"
+                        },function(eee,rrrr){
+                            if(eee){
+                                res.reply(JSON.stringify(eee));
+                                return;
+                            }
+                            console.log(rrrr);
+                            res.reply(rrrr);
+                            return;
+                        });
+                    }
+                    return;
+
+
+                }else if(exams.code==2012){
+
+                    dbs.getWechatNews({
+                        name:"deanPasswordError"
+                    },function(eee,rrrr){
+                        if(eee){
+                            res.reply(JSON.stringify(eee));
+                            return;
+                        }
+                        console.log(rrrr);
+                        res.reply(rrrr);
+
+                    });
+
+                    return;
+
+                }else if(exams.code==2010 || exams.code==2011){
+                    dbs.getWechatText({
+                        name:"getExamLater"
+                    },function(eee,rrrr){
+                        if(eee){
+                            res.reply(JSON.stringify(eee));
+                            return;
+                        }
+                        console.log(rrrr);
+                        res.reply(rrrr);
+                        return;
+
+                    });
+
+                    return;
+
+                }
+                res.reply(exams.code+":"+exams.message);
+                return;
+
+
+
+            });
+
+    });
+
+};
+
 module.exports = user;

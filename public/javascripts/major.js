@@ -157,6 +157,10 @@ $.get('/api/major',function(r){
     }
 });
 
+    $(".container").on('click','.setDean',function(){
+        location.href = "/bind/dean";
+    });
+
     $(".container").on('click','.refresh',function() {
 
         $(this).children().addClass('am-icon-spin');

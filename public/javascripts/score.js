@@ -19,10 +19,10 @@ $.get('/api/score',function(r){
 
         var score = r.data.scores;
         var credit = 0;
+        console.log(score.length);
         for(var i=0;i<score.length;i++){
-
-
-            credit+=score[i].credit;
+console.log(score[i].credit);
+            credit=credit+parseFloat(score[i].credit);
             content[i]={
                 title: score[i].name+ "["+score[i].score+"分]",
                 content: '学期:'+score[i].term+"" +
@@ -34,6 +34,7 @@ $.get('/api/score',function(r){
 
             }
         }
+        console.log(credit);
         $("#credit").text(credit);
         $("#courseCount").text(r.data.count);
         var $tpl = $('#score'),
@@ -72,7 +73,9 @@ alert(r.message);
     }
 });
 
-
+$(".container").on('click','.setDean',function(){
+        location.href = "/bind/dean";
+    });
 
     $(".container").on('click','.refresh',function() {
 
@@ -92,6 +95,7 @@ alert(r.message);
                 },2000);
 
             }else if(data.code==2021 || data.code==2012 || data.code ==2031){
+                alert(data.message);
                 location.href="/bind/dean";
 
             }else{

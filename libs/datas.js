@@ -10,7 +10,7 @@ datas.tag ={};
 datas.tagById = {};
 
 datas.wechat = {
-    accessToken:"R4Bq3aO-INs27W_z3kdGAtthgS8f2OrehQTziNuwWYtIZkwjImkLuPsoE6QJB9oFvsN_8Aw_Q9cMvBAUIoNxaUDIQNmI-usOSlK6aDbyP-4",
+    accessToken:"31_xP_AynU8FZlH_HwvHIQtANP2eUqoYPzYgukzU8A1mnHU1YtP139CufRVV-Gt152D0fYnH7ht5Ha0LCW21TOsxPZ0JpbT3RIiNCR_ekoQ",
     tokenExpire:1430562806,
     jsApiTicket:"bxLdikRXVbTPdHSM05e5uwhOuGlZ_VPDVTIqk9gYjaIjpomRjAiL5mocHScqNxwGZqMnBxxxgqCcmPl9DDxgRw",
     ticketExpire:1430562808
@@ -39,7 +39,7 @@ conn.query(
 )
 };
 
-/*
+
 
 datas.updateWechatToken = function(cb){
 
@@ -69,27 +69,6 @@ datas.updateWechatToken = function(cb){
             return;
         }
 
-        request.post(
-            {
-                url:" https://api.weixin.qq.com/cgi-bin/menu/create?access_token="+result.access_token,
-                body:{
-                    "button":[
-                        {
-                            "type":"view",
-                            "name":"神奇海螺",
-                            "url":"http://music.163.com/program/9678019/60153606/"
-                        },
-                        {
-                            "type":"view",
-                            "name":"scuinfo",
-                            "url":"http://fm.scuinfo.com"
-                        }]
-                },
-                json:true
-            },function(e,r,b){
-                console.log(e,b);
-            }
-        )
 
         datas.wechat.accessToken = result.access_token;
         datas.wechat.tokenExpire = parseInt(result.expires_in)+common.time();
@@ -158,24 +137,24 @@ datas.updateWechatToken(function(e,r){
     }, expire)
 });
 
+//
+//setTimeout(function(){
+//datas.updateWechatJsApiTicket(function(e,r){
+//    if(e){
+//        return;
+//    }
+//    var expire = (parseInt(r.expires_in)-180)*1000;
+//    setTimeout(function(){
+//        datas.updateWechatJsApiTicket(function(e,r){
+//            if(e){
+//                return;
+//            }
+//            expire = (parseInt(r.expires_in)-180)*1000;
+//        });
+//    }, expire)
+//});
+//},2000);
 
-setTimeout(function(){
-datas.updateWechatJsApiTicket(function(e,r){
-    if(e){
-        return;
-    }
-    var expire = (parseInt(r.expires_in)-180)*1000;
-    setTimeout(function(){
-        datas.updateWechatJsApiTicket(function(e,r){
-            if(e){
-                return;
-            }
-            expire = (parseInt(r.expires_in)-180)*1000;
-        });
-    }, expire)
-});
-},2000);
-*/
 
 datas.updateTag(function(e){
 

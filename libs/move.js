@@ -1,6 +1,8 @@
 var conn  = require('./mysql.js');
 var request = require('request');
 var datas = require('./datas.js');
+var common = require('./common.js');
+var config= require('../config.js');
 var move  = {
     name:"迁移"
 };
@@ -25,7 +27,24 @@ move.user  =  function(o){
                 if(r.length>0){
 //console.log(r);
                     if(r[0].sina_openid){
+
                         //是的话，写入 secret_open   openId,unionId,userId,写入 user_extend(是否已有): nickname,avatar,gender,userId,date,写入user(是否已有）,id,tel
+                        
+                        conn.query(
+                            
+                            {
+                                sql:"select id from secret_open where openId='"+r[0].sina_openid+"'"
+                            },function(e9,r9){
+                                if(e9){
+                                    move.user({
+                                        start: o.start+1
+                                    });
+                                    console.log(e9);
+                                    return;
+                                }
+
+                                if(r9.length==0){
+
 
                         conn.query(
                             {
@@ -45,7 +64,7 @@ move.user  =  function(o){
                                     //console.log(r1);
                                     conn.query(
                                         {
-                                            sql: "insert into secret_open (openId,unionId,userId,source) values (:openId,:unionId,:userId,'weiboImport')",
+                                            sql: "insert into secret_open (openId,unionId,userId,source) values (:openId,:unionId,:userId,'weibo')",
                                             params: {
                                                 openId: r[0].sina_openid,
                                                 unionId: r[0].sina_openid,
@@ -85,79 +104,131 @@ move.user  =  function(o){
                                                             //console.log(e4);
                                                             return;
                                                         }else{
-                                                if(r[0].weixin_key){
-                                                    request('https://api.weixin.qq.com/cgi-bin/user/info?access_token=' + datas.wechat.accessToken + '&openid=' +r[0].weixin_key + '&lang=zh_CN', function (e7, r7) {
+                                                            //console.log('weibo导入');
 
-                                                        if (e7) {
-                                                            move.user({
-                                                                start: o.start + 1
-                                                            });
-                                                            console.log(e7);
-                                                            return;
-                                                        }
-                                                        
-                                                        //console.log(r7.body);return;
-                                                        try {
-                                                            var user = JSON.parse(r7.body);
-                                                        } catch (e) {
-                                                            var user = {
-                                                                errcode: 20000
+                                                            if(r[0].student_id && r[0].student_password) {
+
+                                                                conn.query(
+                                                                    {
+                                                                        sql:"insert into secret_account (userId,password,studentId,date) values ("+r[0].user_id+",'"+r[0].student_password+"',"+r[0].student_id+","+common.time()+")"
+                                                                    },function(e,r){
+                                                                        console.log(e,'教务处添加成功');
+                                                                    }
+                                                                )
+
                                                             }
-                                                        }
-
-
-                                                        //console.log('下面一条输出是userinfo');
-                                                        if (user.errcode) {
-                                                            //没有拿到用户资料
-                                                            move.user({
-                                                                start: o.start + 1
-                                                            });
-                                                            return;
-
-                                                        } else {
-
-                                                            if (!user.subscribe) {
-                                                                console.log('取消订阅了');
-                                                                move.user({
-                                                                    start: o.start + 1
-                                                                });
-                                                                return;
-
-                                                            } else {
-                                                                
-                                                                //console.log(user);
+                                                            if(r[0].library_id && r[0].library_password) {
 
 
                                                                 conn.query(
                                                                     {
-                                                                        sql: "insert into secret_open (openId,unionId,userId,source) values (:openId,:unionId,:userId,'wechatImport')",
-                                                                        params: {
-                                                                            openId: user.openid,
-                                                                            unionId: user.unionid,
-                                                                            userId: r[0].user_id
-                                                                        }
-                                                                    }, function (e10, r10) {
+                                                                        sql:"insert into secret_library (userId,password,studentId,date) values ("+r[0].user_id+",'"+r[0].library_password+"','"+r[0].library_id+"',"+common.time()+")"
+                                                                    },function(e,r){
+                                                                        console.log(e,'图书馆添加成功');
+                                                                    }
+                                                                )
+                                                            }
 
-                                                                        if (e10) {
+
+                                                if(r[0].weixin_key){
+                                                    conn.query(
+                                                        {
+                                                            sql:"select id from secret_open where openId='"+r[0].weixin_key+"'"
+                                                        },function(e10,r10) {
+                                                            if (e10) {
+                                                                move.user({
+                                                                    start: o.start + 1
+                                                                });
+                                                                console.log(e10);
+                                                                return;
+                                                            }
+
+                                                            if (r10.length == 0) {
+                                                                //console.log('2');
+                                                                request('https://api.weixin.qq.com/cgi-bin/user/info?access_token=' + datas.wechat.accessToken + '&openid=' + r[0].weixin_key + '&lang=zh_CN', function (e7, r7) {
+
+                                                                    if (e7) {
+                                                                        move.user({
+                                                                            start: o.start + 1
+                                                                        });
+                                                                        console.log(e7);
+                                                                        return;
+                                                                    }
+
+                                                                    //console.log(r7.body);return;
+                                                                    try {
+                                                                        var user = JSON.parse(r7.body);
+                                                                    } catch (e) {
+                                                                        var user = {
+                                                                            errcode: 20000
+                                                                        }
+                                                                    }
+
+
+                                                                    //console.log('下面一条输出是userinfo');
+                                                                    if (user.errcode) {
+                                                                        console.log(user);
+                                                                        //没有拿到用户资料
+                                                                        move.user({
+                                                                            start: o.start + 1
+                                                                        });
+                                                                        return;
+
+                                                                    } else {
+
+                                                                        if (!user.subscribe) {
+                                                                            console.log('取消订阅了');
                                                                             move.user({
                                                                                 start: o.start + 1
                                                                             });
-                                                                            console.log(e10);
                                                                             return;
+
                                                                         } else {
 
-                                                                            move.user({
-                                                                                start: o.start + 1
-                                                                            });
-                                                                            return;
+                                                                            //console.log(user);
+
+
+                                                                            conn.query(
+                                                                                {
+                                                                                    sql: "insert into secret_open (openId,unionId,userId,source) values (:openId,:unionId,:userId,'wechat')",
+                                                                                    params: {
+                                                                                        openId: user.openid,
+                                                                                        unionId: user.unionid,
+                                                                                        userId: r[0].user_id
+                                                                                    }
+                                                                                }, function (e10, r10) {
+
+                                                                                    if (e10) {
+                                                                                        move.user({
+                                                                                            start: o.start + 1
+                                                                                        });
+                                                                                        console.log(e10);
+                                                                                        return;
+                                                                                    } else {
+                                                                                        //console.log('微信导入');
+
+
+                                                                                        move.user({
+                                                                                            start: o.start + 1
+                                                                                        });
+                                                                                        return;
+                                                                                    }
+
+
+                                                                                });
                                                                         }
+                                                                    }
+                                                                });
+                                                                return;
 
-
-                                                                    });
+                                                            } else {
+                                                                move.user(
+                                                                    {
+                                                                        start: o.start + 1
+                                                                    }
+                                                                )
                                                             }
-                                                        }
-                                                    });
-                                                    return;
+                                                        });
                                                 }else{
                                                     //next
                                                     move.user({
@@ -173,6 +244,17 @@ move.user  =  function(o){
 
                                 }
                             });
+
+                                }else{
+                                    
+                                    //console.log('已存在');
+                                    move.user({
+                                        start: o.start+1
+                                    });
+                                    return;
+                                }
+                            }
+                        );
                     }else{
                         //next
                         move.user({
@@ -200,8 +282,6 @@ move.love = function(o){
     conn.query(
 
         {
-
-
             sql:"select * from si_love limit "+ o.start+",1"
         },function(e,r) {
             if (e) {
@@ -451,32 +531,81 @@ move.wish = function(o){
 
 };
 
-/*
- move.user({
- start:0
- });
 
+
+/**
+ * 更改来源
  */
+move.updateSourse = function(o){
+console.log(o);
+    
+    conn.query(
+        {
+            sql:"select id from secret_open where source='weiboImport' limit "+o.start+",1"
+        },function(e,r) {
+            if (e) {
+                console.log(e);
+                move.updateSourse({
+                    start: o.start + 1
+                });
+                return;
+            }
+
+            if (r.length > 0) {
+
+                conn.query(
+                    {
+                        sql: "update secret_open set source='weibo' where id=" + r[0].id
+                    }, function (ee, rr) {
+                        if (ee) {
+                            move.updateSourse({
+                                start: o.start + 1
+                            });
+                            console.log(ee);
+                            return;
+                        }
+                        console.log('成功');
+                        move.updateSourse({
+                            start: o.start + 1
+                        });
+                    }
+                )
+            }
+            else {
+                console.log('没有了');
+            }
+        }
+    )
+
+};
+//
+//move.user(
+//    {
+//        start:0
+//    }
+//)
+//move.updateSourse({
+//    start:0
+//});
 
 
-/*
- move.wish(
- {start:0}
- );
-&*/
+ //
+ //move.wish(
+ //{start:0}
+ //);
 
 
-/*
- move.love({
- start:0
- });
 
- */
+ //
+ //move.love({
+ //start:0
+ //});
 
-/*
- move.hole(
- {start:0}
- );
- */
 
-module.exports = move;
+
+ //
+ //move.hole(
+ //{start:0}
+ //);
+
+

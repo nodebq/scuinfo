@@ -128,6 +128,23 @@ var menu1 ={
                 "url":"http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MjM5NDM4NDU2MA==#wechat_webview_type=1&wechat_redirect"
 
             },
+            {   type:"view",
+                "name":"神奇海螺",
+                "url":"http://music.163.com/radio?id=1136006"
+
+            },
+            {
+                type:"view",
+                "name":"跳蚤市场",
+                "url":"http://xiaoqu.qq.com/mobile/barindex.html?_bid=128&_wv=1027&bid=130899"
+            },
+            {
+                type:"click",
+                "name":"合作建议",
+                "key":"advise"
+            }
+
+            /*
         {
             "type":"click",
             "name":"川大新闻",
@@ -144,25 +161,33 @@ var menu1 ={
                 "name":"川大就业",
                 "key":"jobs"
             }
+            */
         ]
         },
         {
             "type":"view",
             "name":"scuinfo",
-            "url":"http://fm.scuinfo.com"
+            "url":"http://scuinfo.com"
         },
         {
             "name":"我的",
             "sub_button":[
+                /*
                 {
                     "type":"click",
                     "name":" 消息中心 ",
                     "key":"notice"
                 },
+                */
                 {
                     "type":"click",
                     "name":" 成绩查询 ",
                     "key":"score"
+                },
+                {
+                    "type":"click",
+                    "name":"考表查询",
+                    "key":"exam"
                 },
                 {
                     "type":"click",
@@ -175,9 +200,9 @@ var menu1 ={
                     "key":"major"
                 },
                 {
-                    "type":"click",
-                    "name":" 会员中心 ",
-                    "key":"vip"
+                    "type":"view",
+                    "name":"我的主页 ",
+                    "url":"http://scuinfo.com/u"
                 }
 
             ]
@@ -202,7 +227,7 @@ var menu1 ={
 
 
 console.log('start');
-api.createMenu(menu,function(e,r){
+api.createMenu(menu1,function(e,r){
 console.log(e,r);
 
 });

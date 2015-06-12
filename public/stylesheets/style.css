@@ -625,7 +625,7 @@ color:rgba(0,0,0,1.0);
 .fm-info .avatar{
   position:absolute;
   left:5px;
-  top:10px;
+  top:0px;
 }
 .avatar{
  position:absolute;
@@ -647,7 +647,7 @@ color:rgba(0,0,0,1.0);
 }
 
 .profile-data{
-  margin-left:60px;
+  margin-left:70px;
   padding: 3px 0 0 8px;
 }
 
@@ -776,6 +776,10 @@ position: absolute;
   position: relative;
 
 
+}
+
+#scene a{
+  color:rgba(0,0,0,0.7)
 }
 .scene-border-normal-two{
   border-right: thin solid rgba(236, 240, 241,1.0);

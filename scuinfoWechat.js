@@ -48,6 +48,9 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
         case '课表':
             user.major(message,req,res,next);
             break;
+        case '考表':
+            user.exam(message,req,res,next);
+            break;
     }
 }).image(function (message, req, res, next) {
     // message为图片内容
@@ -126,11 +129,14 @@ console.log('click');
                 case 'major':
                     user.major(message,req,res,next);
                     break;
+
+                case 'exam':
+                    user.exam(message,req,res,next);
+                    break;
             }
 
             break;
         case 'view' :
-
 
             break;
 

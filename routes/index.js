@@ -56,12 +56,12 @@ router.post('/api/post',check.isLoginApi,function(req,res){//添加文章
 
     post.create(req,res);
 });
-/*
+
 router.post('/api/postMove',function(req,res){//添加文章
 
     post.createMove(req,res);
 });
-*/
+
 
 router.post('/api/postWechat',function(req,res){//添加文章
 console.log(req.body);

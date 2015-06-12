@@ -5,7 +5,7 @@ var code =require('../libs/code.js');
 var common = require('../libs/common.js');
 var request = require('request');
 var conn= require('../libs/mysql.js');
-
+var config= require('../config.js');
 var dbs = require('../libs/db');
 
 

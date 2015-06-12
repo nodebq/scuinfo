@@ -282,9 +282,9 @@ post.createArticle = function(req,res,data){
                     return;
                 }
 
-                //console.log(datas.tag);
+                console.log(datas.tag);
                 if (r.tags.length > 0) {
-                    //console.log(r.tags);
+                    console.log(r.tags);
                     var newTags = [];
                     for (var i = 0; i < r.tags.length; i++) {
                         //console.log(r);return;
@@ -292,7 +292,7 @@ post.createArticle = function(req,res,data){
                             newTags.push(r.tags[i]);
                         }
                     }
-                    //console.log(newTags);
+                    console.log(newTags);
 
                     if (newTags.length > 0) {
 

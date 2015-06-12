@@ -290,7 +290,7 @@ service.text = function(msg,req,res,next){
                                 console.log(e9);
                                 return;
                             }
-
+console.log(b9);
                             try{
                                 var result = JSON.parse(b9);
                             }catch(e){
@@ -320,7 +320,7 @@ service.text = function(msg,req,res,next){
                     break;
             }
         service.logout(msg.FromUserName,function(e,r){
-console.log(e,r);
+//console.log(e,r);
         });
 
 
@@ -535,7 +535,7 @@ service.logout = function(openId,cb){
         {
             sql:"delete from wechat_session where openId='"+openId+"'"
         },function(e,r){
-console.log(e,r);
+//console.log(e,r);
         }
     )
 

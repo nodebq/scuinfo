@@ -80,6 +80,58 @@ var sql;
 
 };
 
+db.getWechatContainsText = function(o,cb){
+    console.log("select * from wechat_text where name like '%"+ o.name+"%'");
+    var sql="select * from wechat_text where name like '%"+ o.name+"%'";
+
+    conn.query(
+        {
+            sql:sql
+        },function(e,r){
+            if(e){
+                cb(code.mysqlError);
+                console.log(e);
+                return;
+            }
+            console.log(r);
+            if(r.length>0){
+
+                cb(null,r);
+                return;
+            }
+            cb(code.noData);
+            return;
+
+        })
+
+};
+
+db.getWechatContainsNews = function(o,cb){
+    console.log("select * from wechat_news where name like '%"+ o.name+"%'");
+    var sql="select * from wechat_news where name like '%"+ o.name+"%'";
+
+    conn.query(
+        {
+            sql:sql
+        },function(e,r){
+            if(e){
+                cb(code.mysqlError);
+                console.log(e);
+                return;
+            }
+            console.log(r);
+            if(r.length>0){
+
+                cb(null,r);
+                return;
+            }
+            cb(code.noData);
+            return;
+
+        })
+
+};
+
 
 db.getWechatText = function(o,cb){
 console.log("select * from wechat_text where name='"+ o.name+"'");

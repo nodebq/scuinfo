@@ -123,11 +123,11 @@ var menu1 ={
         {
         "name":"服务",
         "sub_button":[
-            {   type:"view",
-                "name":"历史消息",
-                "url":"http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MjM5OTM3OTM3Mg==#wechat_webview_type=1&wechat_redirect"
-
-            },
+            //{   type:"view",
+            //    "name":"历史消息",
+            //    "url":"http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MjM5OTM3OTM3Mg==#wechat_webview_type=1&wechat_redirect"
+            //
+            //},
             {   type:"view",
                 "name":"神奇海螺",
                 "url":"http://music.163.com/radio?id=1136006"

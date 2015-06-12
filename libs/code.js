@@ -187,6 +187,10 @@ var code = {
     'userHasLike':{
         code:2040,
         message:"你已经赞过了"
+    },
+    'noWechatSession':{
+        code:2041,
+        message:"没有微信会话"
     }
 };
 

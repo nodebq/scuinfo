@@ -52,6 +52,17 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
         case '考表':
             user.exam(message,req,res,next);
             break;
+
+        case '退出':
+        case 'tc':
+            service.logout(message,req,res,next);
+            break;
+
+        default:
+
+            service.text(message,req,res,next);
+
+            break;
     }
 }).image(function (message, req, res, next) {
     // message为图片内容

@@ -1,5 +1,5 @@
 var conn= require('./libs/mysql.js');
-
+var common= require('./libs/common.js');
 /**
  * 消费者
  * @type {{}}
@@ -37,9 +37,32 @@ consumer.weibo = function(){
 
 };
 
+
+/**
+ * 微信会话销毁
+ */
+
+consumer.wechatSession=function(){
+console.log("delete from wechat_session where createAt<"+(common.time()-10*1000*60));
+    conn.query(
+        {
+            sql:"delete from wechat_session where createAt<"+(common.time()-10*1000*60)
+        },function(e,r){
+            console.log(e,r);
+        }
+    )
+
+};
+
+consumer.wechatSession();
+setInterval(function(){
+    consumer.wechatSession();
+},1*10*1000);
+
+
 consumer.weibo();
 
 setInterval(function(){
     consumer.weibo();
-},1*1*1000);
+},5*60*1000);
 

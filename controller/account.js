@@ -925,11 +925,6 @@ account.weiboAdmin = function(req,res){
         return;
     }
 
-
-    var state = [];
-    state = req.query.state.split(',');
-
-
     //get code
 
     var appId,appSecret;

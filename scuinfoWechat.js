@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var wechat = require('wechat');
 var user = require('./wechat/user.js');
 var config = require('./config.js');
+var service = require('./wechat/service.js');
 var app = express();
 
 // view engine setup
@@ -132,6 +133,9 @@ console.log('click');
 
                 case 'exam':
                     user.exam(message,req,res,next);
+                    break;
+                case 'advise':
+                    service.advise(message,req,res,next);
                     break;
             }
 

@@ -84,6 +84,7 @@ like.post = function(req,res){
                           return;
                       }
                       console.log(r6);
+                      console.log(config);
                       console.log(config.postWeibo);
               if (r6[0]['count("postId")'] >= config.postWeibo.count) {
 

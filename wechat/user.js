@@ -468,11 +468,17 @@ user.major = function(msg,req,res,next){
                             currentDay=common.getWeek();
                         }
 
-                        var text='本周是教学周第'+majors.data.currentWeek+'周,'+config.week[currentDay]+'，你今天的课表如下:';
+                        var text='今天是教学周第'+majors.data.currentWeek+'周,'+config.week[currentDay]+'，你今天的课表如下:';
+                        var lessonCount=0;
                         for(var i=0;i<majorsData.length;i++){
                             if(majorsData[i].week==currentDay) {
+                                lessonCount++;
                                 var isCurrentWeek = majorsData[i].weekHasLesson.split(',').indexOf(""+majors.data.currentWeek);
                                 text += '\n\n第'+majorsData[i].lesson+'小节\n'+majorsData[i].name+"["+majorsData[i].teacherName+"]" + "\n" + majorsData[i].building+majorsData[i].classroom +"\n"+((isCurrentWeek==-1)?"本周不上":"本周要上");
+                            }
+
+                            if(lessonCount==0){
+                                text+="\n\n咦，今天没课^_^"
                             }
                         }
 

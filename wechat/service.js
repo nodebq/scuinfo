@@ -533,7 +533,7 @@ service.logout = function(openId,cb){
 
     conn.query(
         {
-            sql:"delete from wechat_session where openId="+openId
+            sql:"delete from wechat_session where openId='"+openId+"'"
         },function(e,r){
 console.log(e,r);
         }

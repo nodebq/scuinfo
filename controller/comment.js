@@ -58,6 +58,7 @@ comment.commentPost = function (req, res) {
                                         var pattern = 2;
                                         var sql = 'select * from secret_post where id='+req.body.postId
                                     }
+                                    console.log(sql);
                                     conn.query(
                                         {
                                             sql:sql

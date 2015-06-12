@@ -468,9 +468,7 @@ user.major = function(msg,req,res,next){
                             currentDay=common.getWeek();
                         }
 
-                        currentDay=2;
-
-                        var text='本周是教学周第'+majors.data.currentWeek+'周，你的课表如下:';
+                        var text='本周是教学周第'+majors.data.currentWeek+'周,'+config.week[currentDay]+'，你今天的课表如下:';
                         for(var i=0;i<majorsData.length;i++){
                             if(majorsData[i].week==currentDay) {
                                 var isCurrentWeek = majorsData[i].weekHasLesson.split(',').indexOf(""+majors.data.currentWeek);

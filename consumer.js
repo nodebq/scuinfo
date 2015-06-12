@@ -43,10 +43,10 @@ consumer.weibo = function(){
  */
 
 consumer.wechatSession=function(){
-console.log("delete from wechat_session where createAt<"+(common.time()-10*1000*60));
+console.log("delete from wechat_session where createAt<"+(common.time()-10));
     conn.query(
         {
-            sql:"delete from wechat_session where createAt<"+(common.time()-10*1000*60)
+            sql:"delete from wechat_session where createAt<"+(common.time()-10)
         },function(e,r){
             console.log(e,r);
         }

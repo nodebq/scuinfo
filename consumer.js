@@ -26,6 +26,13 @@ consumer.weibo = function(){
 
 
                 //todo 发布到微博,改状态
+
+
+
+
+
+
+
                 
                 console.log('发布');
                 

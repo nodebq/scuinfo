@@ -916,7 +916,75 @@ account.weiboLogin = function (req, res) {
 };
 
 
-account.bindDean = function(req,res){
+account.weiboAdmin = function(req,res){
+    if(!req.query.code) {
+        //用户不同意授权
+        //res.end(JSON.stringify(code.lackParamsCode));
 
-};
+        res.render('weiboAdmin');
+        return;
+    }
+
+
+    var state = [];
+    state = req.query.state.split(',');
+
+
+    //get code
+
+    var appId,appSecret;
+    appId= config.weibo.appkey;
+    appSecret = config.weibo.appSecret;
+    request({url:'https://api.weibo.com/oauth2/access_token',
+        method:'post',
+        form:{
+            client_id:appId,
+            client_secret:appSecret,
+            grant_type:'authorization_code',
+            code:req.query.code,
+            redirect_uri:'http://fm.scuinfo.com/auth/weibo'
+        }
+    },function (e,r) {
+        if (e) {
+            res.end(JSON.stringify(code.requestError));
+            return;
+        } else {
+
+            try {
+                var codeResult = JSON.parse(r.body);
+            } catch (e) {
+                var codeResult = {error_code: 23333};
+            }
+
+            //console.log(codeResult);
+
+
+            if (codeResult.error_code) {
+                //err
+                console.log(codeResult);
+                res.end(JSON.stringify(code.weiboLoginCodeToAccessTokenError));
+                return;
+            }
+
+            if(codeResult.uid==3656973697){
+
+                fs.writeFile('./token/weibo_token.txt', r.body, function(e,r){
+                    if(e){
+                        console.log(e);
+                        res.end(e.toString());
+                        return;
+                    }
+                    res.end("更新scuinfo的token成功，下次过期时间是:"+(common.date((common.time()+codeResult.expires_in)*1000)))
+                });
+
+
+            }else{
+                res.end("你是什么鬼？");
+            }
+
+        }
+    });
+}
+
+
 module.exports = account;

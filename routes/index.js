@@ -238,6 +238,11 @@ router.get('/auth/weibo',check.isNotLogin,function(req,res){
 });
 
 
+router.get('/auth/weiboAdmin',check.isNotLogin,function(req,res){
+    account.weiboAdmin(req,res);
+});
+
+
 router.get('/auth/wechatUserAgent',check.isNotLogin,function(req,res){
     account.wechatGetUserInfo(req,res);
 });

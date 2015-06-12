@@ -5,7 +5,7 @@
 
             case 'tag':
                 $.get('/api/tag/count?name='+$("#pageTag").val(),function(r){
-                    console.log(r);
+                    //console.log(r);
                     if(r.code == 200){
                         var count=r.data.postsCount;
                         if(count>999){
@@ -141,19 +141,9 @@
                             $("#loadMore").css('display','block');
 
                         //}
-                        console.log('1');
-                        
-                        console.log(data);
-                        
-                       var fromId = data.data.pop().id;
-                        console.log('2');
-                        
-                        console.log(data);
-                        
-                        console.log(fromId);
 
-                        console.log('333');
-                        
+
+                       var fromId = data.data.pop().id;
 
                         $("#loadMore").attr('fromid',fromId).clone(true);
                         $("#loadMoreButton").button('reset');

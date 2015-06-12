@@ -535,7 +535,7 @@ service.logout = function(openId,cb){
         {
             sql:"delete from wechat_session where openId="+openId
         },function(e,r){
-
+console.log(e,r);
         }
     )
 

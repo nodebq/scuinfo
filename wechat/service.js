@@ -325,7 +325,7 @@ console.log(b9);
                         {
                             url:config.site.url+"/api/postWechat",
                             form:{
-                                content:"#川大表白#"+msg.Contents,
+                                content:"#川大表白#"+msg.Content,
                                 secret:1,
                                 openId:msg.FromUserName
                             }

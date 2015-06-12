@@ -1,6 +1,7 @@
 var conn= require('./libs/mysql.js');
 var common= require('./libs/common.js');
 var request = require('request');
+var fs= require('fs');
 /**
  * 消费者
  * @type {{}}
@@ -16,6 +17,7 @@ var weiboToken = {
 fs.readFile('./token/weibo_token.txt', 'utf8', function (err, txt) {
     //console.log(err,txt);//return;
     if (err) {
+        console.log(err);
         console.log('微博初始化失败');
         return;
     }

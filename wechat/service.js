@@ -5,7 +5,7 @@ var service = {
 var dbs = require('../libs/db');
 
 service.advise = function(msg,req,res,next){
-    dbs.getWechatNews({
+    dbs.getWechatText({
         name:"advise"
     },function(eee,rrrr){
         if(eee){
@@ -20,5 +20,21 @@ service.advise = function(msg,req,res,next){
 
 };
 
+
+service.subscribe = function(msg,req,res,next){
+    dbs.getWechatText({
+        name:"subscribe"
+    },function(eee,rrrr){
+        if(eee){
+            res.reply(JSON.stringify(eee));
+            return;
+        }
+        //console.log(rrrr);
+        res.reply(rrrr);
+
+    });
+    return;
+
+};
 
 module.exports = service;

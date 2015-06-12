@@ -57,7 +57,7 @@
                 url+="";
             }
             $.get(url,function(data){
-console.log(data);
+//console.log(data);
 
 
                     if(o.action == 'init'){
@@ -89,7 +89,7 @@ console.log(data);
                         };
                         //console.log(data);
                         for (var i = 0; i < data.data.length;i++) {
-                            console.log(data.data[i].level);
+                            //console.log(data.data[i].level);
                             posts = posts+'<article class="posts '+gender[data.data[i].gender]+'" id="'+data.data[i].id+'" href="'+
                                 getPostHref({id:data.data[i].id})+'" userId="'+data.data[i].userId+'" img="'+data.data[i].avatar+'" wechatTitle="'+getWechatTitle({title:data.data[i].title})+'" level="'+data.data[i].level+'" weiboTitle="'+getWeiboTitle({title:data.data[i].title})+'" author="'+data.data[i].author+'">'+
                                 '<header class="posts-header">' +
@@ -141,17 +141,18 @@ console.log(data);
                             $("#loadMore").css('display','block');
 
                         //}
-                        
-                        console.log(data.data);
-                        
-                        
-                        
-                       var fromId = data.data.pop().id;
-                        
+                        console.log('1');
                         
                         console.log(data);
                         
-                        console.log(fromId);console.log('333');
+                       var fromId = data.data.pop().id;
+                        console.log('2');
+                        
+                        console.log(data);
+                        
+                        console.log(fromId);
+
+                        console.log('333');
                         
 
                         $("#loadMore").attr('fromid',fromId).clone(true);

@@ -78,7 +78,7 @@ tag.list= function (req, res) {
                 if (!req.query.fromId) {
                     sql='select postId from secret_tag_relation where tagId = '+post_id+' order by date desc limit 0,' + req.query.pageSize;
                 }else{
-                    sql='select postId from secret_tag_relation where tagId = '+post_id+' and id<' + req.query.fromId+' order by date desc limit 0,' + req.query.pageSize;
+                    sql='select postId from secret_tag_relation where tagId = '+post_id+' and postId<' + req.query.fromId+' order by date desc limit 0,' + req.query.pageSize;
                     //console.log(sql);return
                 }
                 conn.query(

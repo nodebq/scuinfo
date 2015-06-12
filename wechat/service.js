@@ -205,6 +205,8 @@ service.text = function(msg,req,res,next){
                     break;
                 case 1:
 
+                    //处理留言
+
                     user.getUserId(msg.FromUserName,function(e,r) {
                         console.log(e, r);
                         if (e) {
@@ -270,6 +272,52 @@ service.text = function(msg,req,res,next){
 
 
                     break;
+
+                case 2:
+
+                    request.post(
+                        {
+                            url:config.site.url+"/api/postWechat",
+                            form:{
+                                content:"#海螺#"+((msg.Content.substr(3,1)=="+")?msg.Content.substr(3):msg.Content.substr(2)),
+                                secret:1,
+                                openId:msg.FromUserName
+                            }
+                        },function(e9,r9,b9){
+
+                            if(e9){
+                                res.reply("服务器好像出了点问题，请重试。");
+                                console.log(e9);
+                                return;
+                            }
+
+                            try{
+                                var result = JSON.parse(b9);
+                            }catch(e){
+                                var result=code.jsonParseError;
+
+                            }
+
+                            if(result.code==200){
+                                var news=[];
+                                news[0]={
+                                    title:'神奇海螺已经收到你的留言了',
+                                    description:'点击查看你发布的内容，超过10个赞会自动发布在微博@scuinfo',
+                                    pic:'',
+                                    url:config.site.url+'/p/'+result.data.insertId
+                                };
+                                res.reply(news);
+                                return;
+
+
+                            }else{
+                                res.reply(result.message);
+                            }
+
+                        }
+                    );
+
+                    break;
             }
 
 
@@ -295,6 +343,25 @@ service.noSessionText = function(msg,req,res,next){
 
 
     if(msg.Content.substr(0,2)=='海螺'){
+
+        if(msg.Content.length==2){
+
+            //content,secret,openId
+            conn.query(
+                {
+                    sql:"insert into wechat_session (openId,createAt,type) values ('"+msg.FromUserName+"',"+common.time()+",0)"
+                },function(e,r) {
+                    if (e) {
+                        console.log(e);
+                        res.reply(code.mysqlError.message);
+                        return;
+                    }
+                    //todo 严谨起见还是判断下id好
+                    res.reply('接下来请直接写下你要与海螺分享的话（我会帮你加上#海螺#的话题，10分钟内有效）：');
+                    return;
+                });
+        }
+
         request.post(
             {
                 url:config.site.url+"/api/postWechat",
@@ -453,8 +520,22 @@ service.log = function(msg){
  * @param res
  * @param next
  */
-service.logout = function(msg,req,res,next){
+service.logout = function(openId,cb){
 
+    if(!openId){
+        cb(code.lackParamsOpenId);
+        return;
+    }
+
+    cb(null);
+
+    conn.query(
+        {
+            sql:"delete from wechat_session where openId="+openId
+        },function(e,r){
+
+        }
+    )
 
 };
 

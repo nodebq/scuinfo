@@ -362,6 +362,8 @@ service.noSessionText = function(msg,req,res,next){
                     res.reply('接下来请直接写下你要与海螺分享的话（我会帮你加上#海螺#的话题，10分钟内有效）：');
                     return;
                 });
+
+            return;
         }
 
         request.post(

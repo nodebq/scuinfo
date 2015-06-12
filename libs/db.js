@@ -97,7 +97,7 @@ console.log("select * from wechat_text where name='"+ o.name+"'");
             console.log(r);
             if(r.length>0){
 
-                cb(r[0].content);
+                cb(null,r[0].content);
                 return;
             }
             cb(code.noData);

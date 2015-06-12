@@ -10,8 +10,8 @@ var bind = {
 
 
 bind.accounts = function(req,res){
-    console.log(req.body);
-    console.log(req.session);
+    //console.log(req.body);
+    //console.log(req.session);
 var sql ={
     library:"secret_library",
     dean:"secret_account"
@@ -28,7 +28,7 @@ var sql ={
                 res.end(JSON.stringify(e));
                 return;
             }
-            console.log(r);
+            //console.log(r);
 
             res.end(JSON.stringify(code.ok));
         }

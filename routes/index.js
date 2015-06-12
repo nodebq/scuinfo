@@ -64,7 +64,7 @@ router.post('/api/postMove',function(req,res){//添加文章
 
 
 router.post('/api/postWechat',function(req,res){//添加文章
-console.log(req.body);
+//console.log(req.body);
     post.createWechat(req,res);
 });
 

@@ -46,12 +46,12 @@ var api = new API(config.wechat.appId,config.wechat.appSecret, function (callbac
     // 传入一个获取全局token的方法
     fs.readFile('./token/access_token.txt', 'utf8', function (err, txt) {
         //console.log(err,txt);//return;
-        console.log(txt);
+        //console.log(txt);
         if (err) {return callback(err);}
         callback(null, JSON.parse(txt));
     });
 }, function (token, callback) {
-    console.log('123');
+    //console.log('123');
     // 请将token存储到全局，跨进程、跨机器级别的全局，比如写到数据库、redis等
     // 这样才能在cluster模式及多机情况下使用，以下为写入到文件的示例
     fs.writeFile('./token/access_token.txt', JSON.stringify(token), callback);
@@ -98,7 +98,7 @@ account.updateWeiboUserInfo = function(accessToken,openId,userId){
                 if(e){
                     console.log(e);
                 }else {
-                    console.log( r);
+                    //console.log( r);
                 }
             }
         );
@@ -108,7 +108,7 @@ account.updateWeiboUserInfo = function(accessToken,openId,userId){
 };
 
 account.updateUserInfo = function(accessToken,openId,userId,cb){
-    console.log(accessToken,openId);
+    //console.log(accessToken,openId);
 
     //oauth.getUser(_openId,function(e,r){
     //    if(e){
@@ -139,17 +139,17 @@ account.updateUserInfo = function(accessToken,openId,userId,cb){
             return;
         }
         var userInfo=body;
-        console.log(userInfo);
+        //console.log(userInfo);
 
         if(userInfo){
-console.log("update secret_user_extend set gender="+ userInfo.sex+",avatar='"+userInfo.headimgurl+"',nickname='"+userInfo.nickname+"' where userId="+userId);
+//console.log("update secret_user_extend set gender="+ userInfo.sex+",avatar='"+userInfo.headimgurl+"',nickname='"+userInfo.nickname+"' where userId="+userId);
                 conn.query(
                     {sql:"update secret_user_extend set gender="+ userInfo.sex+",avatar='"+userInfo.headimgurl+"',nickname='"+userInfo.nickname+"' where userId="+userId
                     },function(e,r){
                         if(e){
                             console.log(e);
                         }else {
-                            console.log( r);
+                            //console.log( r);
                         }
                     }
                 )
@@ -157,7 +157,7 @@ console.log("update secret_user_extend set gender="+ userInfo.sex+",avatar='"+us
 
 
             }else{
-            console.log('解析urserInfo出错');
+            //console.log('解析urserInfo出错');
         }
     });
 
@@ -459,7 +459,6 @@ account.wechatLogin = function (req, res) {
                         return;
                     }
                     var codeResult = result.data;
-                console.log('select unionId,userId from secret_open where openId = "'+codeResult.openid+'"');
                     conn.query(
                         {
                             sql:'select unionId,userId from secret_open where openId = "'+codeResult.openid+'"'
@@ -504,7 +503,7 @@ account.wechatLogin = function (req, res) {
 
                                     }
                                 );
-                                console.log(codeResult);
+                                //console.log(codeResult);
                                 account.updateUserInfo(codeResult.access_token,codeResult.openid,r1[0].userId);
 
                                 //toto 后台去更新用户资料

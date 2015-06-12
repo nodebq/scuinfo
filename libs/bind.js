@@ -21,10 +21,10 @@ var api = new API(config.wechat.appId,config.wechat.appSecret, function (callbac
     // 这样才能在cluster模式及多机情况下使用，以下为写入到文件的示例
     fs.writeFile('./token/test_access_token.txt', JSON.stringify(token), callback);
 });
-console.log(api);
+//console.log(api);
 bind.register = function(openId,cb){
 
-console.log(openId);
+//console.log(openId);
  api.getUser(openId,function(e,user){
 
      if(e){

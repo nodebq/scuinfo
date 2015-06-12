@@ -41,7 +41,6 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
     switch(message.Content){
         case '成绩':
         case 'cj':
-            console.log('text cj');
             user.score(message,req,res,next);
             break;
         case '图书':
@@ -129,12 +128,9 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
     switch(message.Event){
 
         case 'CLICK' :
-
-console.log('click');
             switch(message.EventKey){
 
                 case 'score':
-                    console.log('score');
                     user.score(message,req,res,next);
                     break;
                 case 'book':
@@ -214,8 +210,5 @@ app.listen(8119,function(){
     console.log('已监听8119端口');
 });
 
-setInterval(function(){
-    console.log('test');
-},15*1000);
 
 module.exports = app;

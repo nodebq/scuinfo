@@ -21,7 +21,7 @@ check.autoWechat = function(req,res,next){
 
     if(req.session) {
         
-        console.log('有session');
+        //console.log('有session');
         
 
         if(req.session.userStatus == 'login' || req.session.userStatus =='other' || req.session.userStatus == 'wechatNotFans'){
@@ -43,7 +43,7 @@ check.autoWechat = function(req,res,next){
 
         if (check.isWeixin(req.headers['user-agent'])) {
             
-            console.log('没有session的微信');
+            //console.log('没有session的微信');
             var redirect = encodeURIComponent(req.protocol + "://" + config.host.url + req.originalUrl);
             res.redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + config.wechat.appId + '&redirect_uri='+config.site.urlEncode+'%2fauth%2fwechatUserAgent&response_type=code&scope=snsapi_base&state=wechat,' + redirect + '#wechat_redirect')
 

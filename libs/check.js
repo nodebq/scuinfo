@@ -28,7 +28,7 @@ check.autoWechat = function(req,res,next){
             next();
         }else if (check.isWeixin(req.headers['user-agent'])) {
                 var redirect = encodeURIComponent(req.protocol + "://" + config.host.url + req.originalUrl);
-                res.redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + config.wechat.appId + '&redirect_uri=http%3a%2f%2ffm.scuinfo.com%2fauth%2fwechatUserAgent&response_type=code&scope=snsapi_base&state=wechat,' + redirect + '#wechat_redirect')
+                res.redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + config.wechat.appId + '&redirect_uri='+config.site.urlEncode+'%2fauth%2fwechatUserAgent&response_type=code&scope=snsapi_base&state=wechat,' + redirect + '#wechat_redirect')
 
             } else {
 
@@ -45,7 +45,7 @@ check.autoWechat = function(req,res,next){
             
             console.log('没有session的微信');
             var redirect = encodeURIComponent(req.protocol + "://" + config.host.url + req.originalUrl);
-            res.redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + config.wechat.appId + '&redirect_uri=http%3a%2f%2ffm.scuinfo.com%2fauth%2fwechatUserAgent&response_type=code&scope=snsapi_base&state=wechat,' + redirect + '#wechat_redirect')
+            res.redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + config.wechat.appId + '&redirect_uri='+config.site.urlEncode+'%2fauth%2fwechatUserAgent&response_type=code&scope=snsapi_base&state=wechat,' + redirect + '#wechat_redirect')
 
         } else {
             next();

@@ -398,8 +398,6 @@ router.get('/notice',check.autoWechat,check.isLogin,function(req,res){
 });
 
 router.get('/fm',check.autoWechat,function(req,res){
-
-
     pages.fm(req,res);
 });
 

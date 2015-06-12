@@ -23,9 +23,9 @@
     wx.ready(function(){
 
 
-    var wechatTitle = '「神奇海螺」Vo.1  from 川大';
+    var wechatTitle = '「神奇海螺」电台  from 川大';
     var wechatDesc = '为什么不去问问神奇的海螺呢？';
-    var wechatLink = 'http://music.163.com/#/dj?id=9628137';
+    var wechatLink = 'http://music.163.com/radio?id=1136006';
     var wechatImg = 'http://p4.music.126.net/80JdXF2ROe-WNLsaFCY53w==/2904909721756247.jpg?param=140y140';
     //console.log(wechatLink);
     wx.onMenuShareTimeline({

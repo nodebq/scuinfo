@@ -36,7 +36,16 @@ $.get('/api/major',function(r){
                 lessonCount += lesson.length;
             }
         }
-        $("#shareMajor").attr('wechatTitle', "我下学期的共要上"+(lessonCount*17)+"小时的课").clone();
+
+        var word="";
+
+        var percent=(lessonCount/60*100);
+
+        if(percent>50){
+            word="，你们别来找我玩了"
+        }
+
+        $("#shareMajor").attr('wechatTitle', "我下学期的满课率是"+percent+"%"+word).clone();
         $("#shareMajor").attr('wechatDesc','点击查看').clone();
         $("#shareMajor").attr('wechatImg', r.data.avatar).clone();
         $("#shareMajor").attr('wechatUrl',getMajorHref({id: r.data.userId})).clone();

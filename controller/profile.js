@@ -836,8 +836,6 @@ profile.share = function(req,res){
     };
 
 profile.updateCallback = function(req,res){
-console.log(req.body);
-    
     
     if(req.body.type){
         var first="";
@@ -851,21 +849,22 @@ console.log(req.body);
         switch (req.body.type){
 
             case 'exam':
-                first="你刚刚提交的考表查询已成功执行";
+                first="你的考表有新动态";
                 keyword2='考表';
                 url=config.site.url+"/exam";
                 break;
 
             case 'book':
-                first="你刚刚提交的借书查询已成功执行";
+                first="你借的图书有新动态";
                 table="secret_library";
                 noBind="noBindLibrary";
                 keyword2='我的图书';
                 url=config.site.url+"/book";
+                return;
 
                 break;
             case 'renew':
-                first="你刚刚提交的续借已成功执行";
+                first="你的续借操作有新动态";
                 table="secret_library";
                 noBind="noBindLibrary";
                 keyword2='续借';
@@ -873,13 +872,13 @@ console.log(req.body);
 
                 break;
             case 'score':
-                first="你刚刚提交的成绩查询已成功执行";
+                first="你的成绩有新动态";
                 keyword2='成绩';
                 url=config.site.url+"/score";
 
                 break;
             case 'major':
-                first="你刚刚提交的课表查询已成功执行";
+                first="你的课表有新动态";
                 url=config.site.url+"/major";
 
                 keyword2='课表';
@@ -928,7 +927,7 @@ console.log(req.body);
                                     keyword1:keyword1,
                                     keyword2:keyword2,
                                     keyword3:keyword3,
-                                    keyword4:(req.body.code==200)?"":req.body.message,
+                                    keyword4:(req.body.code==200)?"成功更新":req.body.message,
                                     openId:rr[0].openId
                                 }
                             },function(eee,rrr,bbb){

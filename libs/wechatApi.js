@@ -34,11 +34,11 @@ wechatApi.sendTemplate = function(req,res,next){
 
     var template={
         'test':"KLL80FIDc-_dBn8LWfEPcGKZ_cSD61XD_r609NgSibo",
-        'fail':"h6_3AlkcPkGiHE6p53lxxoOi1FE2aRJEwhYUJElCzLM",
-        'ok':"E1TnaxC7jfkt6QJ_ou49xVJZAccLUqCkLb_Ev5Yyn98"
+        'fail':"PcIpvvuG3BaF8rjITDsCC6j62MgLN-UjX3w_zD8A-EQ",
+        'ok':"PcIpvvuG3BaF8rjITDsCC6j62MgLN-UjX3w_zD8A-EQ"
     };
 
-    var templateId=req.body.template?template[req.body.template]:'KLL80FIDc-_dBn8LWfEPcGKZ_cSD61XD_r609NgSibo';
+    var templateId=req.body.template?template[req.body.template]:'PcIpvvuG3BaF8rjITDsCC6j62MgLN-UjX3w_zD8A-EQ';
 // URL置空，则在发送后,点击模板消息会进入一个空白页面（ios）, 或无法点击（android）
     var url= req.body.url?req.body.url:(config.site.url+'/u');
     var topColor = req.body.color?req.body.color:'#FF0000'; // 顶部颜色
@@ -66,6 +66,10 @@ wechatApi.sendTemplate = function(req,res,next){
             };
             data.keyword3={
                 "value":req.body.keyword3,
+                "color":"#173177"
+            };
+            data.keyword4={
+                "value":req.body.keyword4,
                 "color":"#173177"
             };
             break;
@@ -128,9 +132,9 @@ var menu1 ={
             //    "url":"http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MjM5OTM3OTM3Mg==#wechat_webview_type=1&wechat_redirect"
             //
             //},
-            {   type:"view",
+            {   type:"click",
                 "name":"神奇海螺",
-                "url":"http://music.163.com/radio?id=1136006"
+                "key":"fm"
 
             },
             {
@@ -230,7 +234,7 @@ var menu1 ={
             {
                 "type":"view",
                 "name":"scuinfo",
-                "url":"http://fm.scuinfo.com"
+                "url":"http://scuinfo.com"
             }
             ]
     }

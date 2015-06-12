@@ -1,4 +1,7 @@
 (function(bom,dom,$){
+
+    var baseUrl="http://scuinfo.com";
+
     /**
      * 输出格式化的时间
      * @param time
@@ -290,22 +293,22 @@ bom.getDateDiff = function(dateTimeStamp) {
 //mark
     bom.getPostHref = function(o){
 
-        return 'http://fm.scuinfo.com/p/'+ o.id;
+        return baseUrl+'/p/'+ o.id;
     };
 
 //mark
     bom.getBookHref = function(o){
 
-        return 'http://fm.scuinfo.com/share/book/?userId='+ o.id;
+        return baseUrl+'/share/book/?userId='+ o.id;
     };
 //mark
     bom.getExamHref = function(o){
 
-        return 'http://fm.scuinfo.com/share/exam/?userId='+ o.id;
+        return baseUrl+'/share/exam/?userId='+ o.id;
     };
     bom.getMajorHref = function(o){
 
-        return 'http://fm.scuinfo.com/share/major?userId='+ o.id;
+        return baseUrl+'/share/major?userId='+ o.id;
     };
 
     /**
@@ -447,7 +450,7 @@ bom.getDateDiff = function(dateTimeStamp) {
                     alert(r.message);
 
                     if(r.code == 2015) {
-                        location.href = 'http://fm.scuinfo.com/signin?redirect=' +$("#url").val()
+                        location.href = baseUrl+'/signin?redirect=' +$("#url").val()
                     }
 
                     return;

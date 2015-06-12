@@ -7,7 +7,7 @@ t1.wechatArticle = function(
 ){
     request.post(
         {
-            url:"http://fm.scuinfo.com/api/postWechat",
+            url:"http://scuinfo.com/api/postWechat",
             form:{
                 content:"#测试#wechat8",
                 secret:1,

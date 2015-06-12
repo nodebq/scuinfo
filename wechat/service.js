@@ -463,22 +463,7 @@ service.noSessionText = function(msg,req,res,next){
 
         if(msg.Content.length==2){
 
-            //content,secret,openId
-            conn.query(
-                {
-                    sql:"insert into wechat_session (openId,createAt,type) values ('"+msg.FromUserName+"',"+common.time()+",2)"
-                },function(e,r) {
-                    if (e) {
-                        console.log(e);
-                        res.reply(code.mysqlError.message);
-                        return;
-                    }
-                    //todo 严谨起见还是判断下id好
-                    res.reply('接下来请直接写下你要与海螺分享的话（我会帮你加上#海螺#的话题，10分钟内有效）：');
-                    return;
-                });
-
-            return;
+         service.fm(msg,req,res,next);
         }
 
         request.post(
@@ -613,6 +598,29 @@ var texts=[];
     });
 
 };
+
+service.fm = function(msg,req,res,next){
+
+    //http://music.163.com/radio?id=1136006
+
+    //content,secret,openId
+    conn.query(
+        {
+            sql:"insert into wechat_session (openId,createAt,type) values ('"+msg.FromUserName+"',"+common.time()+",2)"
+        },function(e,r) {
+            if (e) {
+                console.log(e);
+                res.reply(code.mysqlError.message);
+                return;
+            }
+            //todo 严谨起见还是判断下id好
+            res.reply('接下来请直接写下你要与海螺分享的话（我会帮你加上#海螺#的话题，10分钟内有效）：\n\n神奇海螺电台在线收听：http://music.163.com/radio?id=1136006 \n\n你也可以在苹果播客podcast搜索「神奇海螺」来订阅它。\n\n接下来，请切换到输入模式，写下你要说给海螺听的话：');
+            return;
+        });
+
+    return;
+
+}
 
 /**
  * 记录日志到数据库

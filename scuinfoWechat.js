@@ -151,6 +151,11 @@ console.log('click');
                     break;
                 case 'post':
                     service.post(message,req,res,next);
+                    break;
+                case 'fm':
+                    service.fm(message,req,res,next);
+
+                    break;
             }
 
             break;

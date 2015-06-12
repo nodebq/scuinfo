@@ -1,7 +1,6 @@
 var check = require('../libs/check.js');
 var common = require('../libs/common.js');
 var code = require('../libs/code.js');
-var async = require('async');
 var conn = require('../libs/mysql.js');
 var datas = require('../libs/datas.js');
 var request = require('request');
@@ -791,7 +790,7 @@ account.weiboLogin = function (req, res) {
             client_secret:appSecret,
             grant_type:'authorization_code',
             code:req.query.code,
-            redirect_uri:'http://fm.scuinfo.com/auth/weibo'
+            redirect_uri:config.site.url+'/auth/weibo'
         }
         },function (e,r) {
             if (e) {
@@ -937,7 +936,7 @@ account.weiboAdmin = function(req,res){
             client_secret:appSecret,
             grant_type:'authorization_code',
             code:req.query.code,
-            redirect_uri:'http://fm.scuinfo.com/auth/weibo'
+            redirect_uri:config.site.url+'/auth/weibo'
         }
     },function (e,r) {
         if (e) {

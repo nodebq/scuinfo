@@ -5,8 +5,6 @@ var code = require('../libs/code.js');
 var async = require('async');
 var conn = require('../libs/mysql.js');
 var datas = require('../libs/datas.js');
-var connfig = require('../config.js');
-//var tokenName = 1;
 var comment = {
 
     name:"评论处理页"
@@ -74,7 +72,7 @@ comment.commentPost = function (req, res) {
                                                 {
                                                     sql:'insert into `secret_notice` (`userId`,`parentCommentId`,`date`,`status`,`pattern`,`nickname`,`content`,`originContent`,`postId`,`authorId`,`commentId`)' +
                                                         'values '+
-                                                        '("'+req.session.userId+'","'+req.body.parentId+'","' + common.time() + '","1","'+pattern+'","'+req.session.nickname+'","'+req.body.content.substr(0,128)+'","'+r2[0].content.substr(0,128)+'","'+req.body.postId+'","'+req.session.userId+'","'+rows.insertId+'")'
+                                                        '("'+req.session.userId+'","'+req.body.parentId+'","' + common.time() + '","1","'+pattern+'","'+req.session.nickname+'","'+req.body.content.substr(0,128)+'","'+r2[0].content.substr(0,128)+'","'+req.body.postId+'","'+r2[0].userId+'","'+rows.insertId+'")'
                                                 }, function (e2, r2) {
                                                     if(e2){
                                                         console.log(e2);
@@ -274,6 +272,8 @@ comment.commentDel = function (req, res) {
         return;
     }
 };
+
+//todo 删除的时候通知的处理?
 comment.change = function(req,res){
 
     conn.query(

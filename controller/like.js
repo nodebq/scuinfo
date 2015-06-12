@@ -58,7 +58,7 @@ like.post = function(req,res){
                           {
                               sql: 'insert into `secret_notice` (`userId`,`parentCommentId`,`date`,`status`,`pattern`,`nickname`,`content`,`originContent`,`postId`,`authorId`,`commentId`)' +
                               'values ' +
-                              '("' + req.session.userId + '","0","' + common.time() + '","1","1","' + req.session.nickname + '","","' + r2[0].content.substr(0, 128) + '","' + req.body.id + '","' + req.session.userId + '","0")'
+                              '("' + req.session.userId + '","0","' + common.time() + '","1","1","' + req.session.nickname + '","","' + r2[0].content.substr(0, 128) + '","' + req.body.id + '","' + r2[0].userId + '","0")'
                           }, function (e2, r2) {
                               if (e2) {
                                   console.log(e2);
@@ -153,11 +153,13 @@ like.comment = function(req,res){
                         console.log(e2);
                         console.log('没有这个评论');
                         return;
-                    }conn.query(
+                    }
+
+                    conn.query(
                         {
                             sql:'insert into `secret_notice` (`userId`,`parentCommentId`,`date`,`status`,`pattern`,`nickname`,`content`,`originContent`,`postId`,`authorId`,`commentId`)' +
                                 'values '+
-                                '("'+req.session.userId+'","'+r2[0].parentId+'","' + common.time() + '","1","3","'+req.session.nickname+'","","'+r2[0].content.substr(0,128)+'","'+r2[0].postId+'","'+req.session.userId+'","'+req.body.id+'")'
+                                '("'+req.session.userId+'","'+r2[0].parentId+'","' + common.time() + '","1","3","'+req.session.nickname+'","","'+r2[0].content.substr(0,128)+'","'+r2[0].postId+'","'+r2[0].userId+'","'+req.body.id+'")'
                         }, function (e2, r2) {
                             if(e2){
                                 console.log(e2);

@@ -294,6 +294,54 @@ service.text = function(msg,req,res,next){
 service.noSessionText = function(msg,req,res,next){
 
 
+    if(msg.Content.substr(0,2)=='海螺'){
+        request.post(
+            {
+                url:config.site.url+"/api/postWechat",
+                form:{
+                    content:"#海螺#"+((msg.Content.substr(3,1)=="+")?msg.Content.substr(3):msg.Content.substr(2)),
+                    secret:1,
+                    openId:msg.FromUserName
+                }
+            },function(e9,r9,b9){
+
+                if(e9){
+                    res.reply("服务器好像出了点问题，请重试。");
+                    console.log(e9);
+                    return;
+                }
+
+                try{
+                    var result = JSON.parse(b9);
+                }catch(e){
+                    var result=code.jsonParseError;
+
+                }
+
+                if(result.code==200){
+                    var news=[];
+                    news[0]={
+                        title:'我已经帮你发布在scuinfo.com了',
+                        description:'点击查看你刚刚发布的内容',
+                        pic:'',
+                        url:config.site.url+'/p/'+result.data.insertId
+                    };
+                    res.reply(news);
+                    return;
+
+
+                }else{
+                    res.reply(result.message);
+                }
+
+            }
+        );
+
+        return;
+    }
+
+
+
     dbs.getWechatContainsText({
         name:msg.Content
     },function(eee,rrrr){

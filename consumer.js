@@ -43,12 +43,11 @@ consumer.weibo = function(){
  */
 
 consumer.wechatSession=function(){
-console.log("delete from wechat_session where createAt<"+(common.time()-10));
     conn.query(
         {
-            sql:"delete from wechat_session where createAt<"+(common.time()-10)
+            sql:"delete from wechat_session where createAt<"+(common.time()-10*60)
         },function(e,r){
-            console.log(e,r);
+            //console.log(e,r);
         }
     )
 
@@ -57,7 +56,7 @@ console.log("delete from wechat_session where createAt<"+(common.time()-10));
 consumer.wechatSession();
 setInterval(function(){
     consumer.wechatSession();
-},1*10*1000);
+},1*60*1000);
 
 
 consumer.weibo();

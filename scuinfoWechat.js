@@ -121,10 +121,6 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
 console.log('click');
             switch(message.EventKey){
 
-                case 'subscribe':
-                    service.subscribe(message,req,res,next);
-                    break;
-
                 case 'score':
                     console.log('score');
                     user.score(message,req,res,next);
@@ -147,6 +143,10 @@ console.log('click');
             break;
         case 'view' :
 
+            break;
+
+        case 'subscribe':
+            service.subscribe(message,req,res,next);
             break;
 
 

@@ -125,7 +125,7 @@ var menu1 ={
         "sub_button":[
             {type:"view",
                 "name":"历史消息",
-                "url":"http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MjM5NDM4NDU2MA==#wechat_webview_type=1&wechat_redirect"
+                "url":"http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MjM5OTM3OTM3Mg==#wechat_webview_type=1&wechat_redirect"
 
             },
             {   type:"view",

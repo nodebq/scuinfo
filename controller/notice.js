@@ -13,37 +13,37 @@ var notice = {
 notice.count = function (req,res) {
     //console.log('xxx');
     if(req.session.userId){
-    if(!req.query.type){
-        req.query.type = 'all';
-    }
-    var data={};
-    //console.log(sql, fff);return;
-    conn.query(
-        {
-            sql:'select count("id") from `secret_notice` where status=1 and pattern in (1,3) and userId ='+req.session.userId
-        },function(e,r){
-            if(e){
-                console.log(e);
-                res.end(JSON.stringify(code.mysqlError));
-                return;
-            }conn.query(
-                {
-                    sql:'select count("id") from `secret_notice` where status=1 and pattern in(2,4) and userId ='+req.session.userId
-                },function(ee,rr){
-                    if(e){
-                        console.log(e);
-                        res.end(JSON.stringify(code.mysqlError));
-                        return;
-                    }
-                    data.likeCount = r[0]['count("id")'];
-                    data.replyCount = rr[0]['count("id")'];
-                    data.count = r[0]['count("id")'] + rr[0]['count("id")'];
-                    res.end(common.format(200,"success",data));
-                }
-            );
-
+        if(!req.query.type){
+            req.query.type = 'all';
         }
-    )}else{
+        var data={};
+        //console.log(sql, fff);return;
+        conn.query(
+            {
+                sql:'select count("id") from `secret_notice` where status=1 and pattern in (1,3) and userId ='+req.session.userId
+            },function(e,r){
+                if(e){
+                    console.log(e);
+                    res.end(JSON.stringify(code.mysqlError));
+                    return;
+                }conn.query(
+                    {
+                        sql:'select count("id") from `secret_notice` where status=1 and pattern in(2,4) and userId ='+req.session.userId
+                    },function(ee,rr){
+                        if(e){
+                            console.log(e);
+                            res.end(JSON.stringify(code.mysqlError));
+                            return;
+                        }
+                        data.likeCount = r[0]['count("id")'];
+                        data.replyCount = rr[0]['count("id")'];
+                        data.count = r[0]['count("id")'] + rr[0]['count("id")'];
+                        res.end(common.format(200,"success",data));
+                    }
+                );
+
+            }
+        )}else{
         console.log('你没有登陆');
         return;
     }
@@ -110,12 +110,57 @@ notice.list = function (req, res) {
                     datas.push(data);
                     //console.log('xxx');
                 }
-                    res.end(common.format(200,'success',datas));
+                res.end(common.format(200,'success',datas));
 
             }
         )
     }else{
         console.log('你没有登录');
+        res.end(JSON.stringify(code.loginError));
+        return;
+    }
+};
+
+notice.change = function (req, res) {
+    if(req.session.userId){
+        if(req.query.action=='0'||req.query.action=='1'){
+            if(!req.query.type){
+                req.query.type='single';
+            }
+            var sql='';
+            switch(req.query.type){
+                case 'single':
+                    sql='update secret_notice set status='+req.query.action+' where id='+req.query.id;
+                    break;
+                case 'multiply':
+                    var a = req.query.id.join();
+                    sql='update secret_notice set status='+req.query.action+' where id in('+a+')';
+                    break;
+                case 'all':
+                    sql='update secret_notice set status='+req.query.action+' where userId='+req.session.id;
+                    break;
+            }
+            conn.query(
+                {
+                    sql:sql
+                }, function (err,rows) {
+                    if(err){
+                        console.log(err);
+                        res.end(JSON.stringify(code.mysqlError))
+                        return;
+                    }else{
+                        res.end(common.format(200,'success',''))
+                    }
+                }
+            )
+        }else{
+            console.log('参数错误');
+            res.end(JSON.stringify(code.paramError));
+            return;
+        }
+    }else{
+        console.log('你没有登陆');
+        res.end(JSON.stringify(code.loginError));
         return;
     }
 };

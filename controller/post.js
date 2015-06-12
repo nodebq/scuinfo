@@ -281,13 +281,19 @@ post.createArticle = function(req,res,data){
                     res.end(JSON.stringify(code.mysqlError));
                     return;
                 }
-
+console.log('1');
                 console.log(datas.tag);
+                
+                console.log('2');
+                
                 if (r.tags.length > 0) {
-                    //console.log(r.tags);
+                    console.log(r.tags);
                     var newTags = [];
                     for (var i = 0; i < r.tags.length; i++) {
-                        //console.log(r);return;
+                        console.log(r[i]);
+                        
+                        console.log('3');
+                        console.log(datas.tag);
                         if (!datas.tag[r.tags[i]]) {
                             newTags.push(r.tags[i]);
                         }

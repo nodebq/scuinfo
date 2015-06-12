@@ -21,7 +21,7 @@ fs.readFile('./token/weibo_token.txt', 'utf8', function (err, txt) {
         console.log('微博初始化失败');
         return;
     }
-
+console.log(txt);
     try{
         weiboToken=JSON.parse(txt);
         console.log('初始化微博分享');
@@ -61,7 +61,13 @@ consumer.weibo = function(){
                         }
                         
                         if(rr.length>0){
-
+console.log({
+    status:encodeURIComponent(rr[0].content.substr(0,138)),
+    annotations:JSON.stringify({
+        secret: rr[0].secret,
+        userId:rr[0].userId
+    })
+});
                             request.post(
                                 {
                                     url:"https://api.weibo.com/2/statuses/update.json",

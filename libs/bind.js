@@ -74,7 +74,9 @@ console.log(openId);
                                      cb(code.mysqlError);
                                      return;
                                  }
-                                 cb(null);
+                                 cb(null,{
+                                     nickname:user.nickname
+                                 });
                              }
                          );
 

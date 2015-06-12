@@ -7,8 +7,8 @@ var request = require('request');
 var conn= require('../libs/mysql.js');
 var config= require('../config.js');
 var dbs = require('../libs/db');
-
-
+var user= require('./user.js');
+var bind= require('../libs/bind.js');
 service.validSession = function(msg,cb){
 
     if(msg.debug==0 || msg.debug){
@@ -189,10 +189,75 @@ service.text = function(msg,req,res,next){
                             }
 
                         }
-                    )
+                    );
 
                     break;
                 case 1:
+
+                    user.getUserId(msg.FromUserName,function(e,r) {
+                        console.log(e, r);
+                        if (e) {
+                            if (e.code == 2020) {
+
+                                bind.register(msg.FromUserName, function (ee, rr) {
+
+                                    if (ee) {
+                                        res.reply(JSON.stringify(ee));
+                                        return;
+                                    }
+
+                                    conn.query(
+                                        {
+                                            sql:"insert into wechat_message (content,createAt,openId,nickname) values ('"+msg.Content+"',"+common.time()+",'"+msg.FromUserName+"','"+rr.nickname+"')"
+                                        },function(e3){
+                                            if(e3){
+                                                res.reply(e3.message);
+                                                return;
+                                            }
+                                            res.reply('已收到你的留言，稍后将人工回复你');
+                                        }
+                                    );
+
+                                    return;
+
+                                });
+
+                                return;
+                            }
+                            return;
+                        }
+
+                        conn.query(
+                            {
+                                sql:"select nickname from secret_user_extend where userId="+r
+                            },function(e4,r4){
+
+                                if(e4){
+                                    res.reply(code.mysqlError);
+                                    return;
+                                }
+
+
+                                conn.query(
+                                    {
+                                        sql:"insert into wechat_message (content,createAt,openId,nickname) values ('"+msg.Content+"',"+common.time()+",'"+msg.FromUserName+"','"+(r4[0]?r4[0].nickname:'secret')+"')"
+                                    },function(e3){
+                                        if(e3){
+                                            res.reply(e3.message);
+                                            return;
+                                        }
+                                        res.reply('已收到你的留言，稍后将人工回复你。');
+                                    }
+                                );
+
+
+
+                            }
+                        )
+
+                    });
+
+
                     break;
             }
 

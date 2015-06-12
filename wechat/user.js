@@ -357,7 +357,7 @@ user.book = function(msg,req,res,next){
 
                 }else if(books.code==2010 || books.code==2011){
                     dbs.getWechatText({
-                        name:"getScoresLater"
+                        name:"getScoreLater"
                     },function(eee,rrrr){
                         if(eee){
                             res.reply(JSON.stringify(eee));
@@ -478,6 +478,7 @@ user.major = function(msg,req,res,next){
                             }
 
                             if(lessonCount==0){
+
                                 text+="\n\n咦，今天没课^_^"
                             }
                         }
@@ -521,7 +522,7 @@ user.major = function(msg,req,res,next){
 
                 }else if(majors.code==2010 || majors.code==2011){
                     dbs.getWechatText({
-                        name:"getScoresLater"
+                        name:"getMajorLater"
                     },function(eee,rrrr){
                         if(eee){
                             res.reply(JSON.stringify(eee));

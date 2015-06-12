@@ -319,7 +319,9 @@ service.text = function(msg,req,res,next){
 
                     break;
             }
+        service.logout(msg.FromUserName,function(e,r){
 
+        });
 
 
             return;
@@ -349,7 +351,7 @@ service.noSessionText = function(msg,req,res,next){
             //content,secret,openId
             conn.query(
                 {
-                    sql:"insert into wechat_session (openId,createAt,type) values ('"+msg.FromUserName+"',"+common.time()+",0)"
+                    sql:"insert into wechat_session (openId,createAt,type) values ('"+msg.FromUserName+"',"+common.time()+",2)"
                 },function(e,r) {
                     if (e) {
                         console.log(e);

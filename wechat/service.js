@@ -320,7 +320,7 @@ service.text = function(msg,req,res,next){
                     break;
             }
         service.logout(msg.FromUserName,function(e,r){
-
+console.log(e,r);
         });
 
 

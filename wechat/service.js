@@ -43,18 +43,29 @@ conn.query(
 };
 
 service.advise = function(msg,req,res,next){
-    dbs.getWechatText({
-        name:"advise"
-    },function(eee,rrrr){
-        if(eee){
-            res.reply(JSON.stringify(eee));
-            return;
-        }
-        //console.log(rrrr);
-        res.reply(rrrr);
 
-    });
-    return;
+    conn.query(
+        {
+            sql:"insert into wechat_session (openId,createAt,type) values ('"+msg.FromUserName+"',"+common.time()+",1)"
+        },function(e,r) {
+            if (e) {
+                console.log(e);
+                res.reply(code.mysqlError.message);
+                return;
+            }
+            dbs.getWechatText({
+                name: "advise"
+            }, function (eee, rrrr) {
+                if (eee) {
+                    res.reply(JSON.stringify(eee));
+                    return;
+                }
+                //console.log(rrrr);
+                res.reply(rrrr);
+
+            });
+            return;
+        });
 
 };
 

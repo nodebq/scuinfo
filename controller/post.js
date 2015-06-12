@@ -561,7 +561,14 @@ console.log('1');
                         //console.log(r);return;
                         console.log(r.tags[i]);
 console.log('3');
+                        
+                        console.log("是否有:"+datas.tag[r.tags[i]]);
+
+
                         if (!datas.tag[r.tags[i]]) {
+
+                            console.log(newTags);
+
                             newTags.push(r.tags[i]);
                         }
                     }
@@ -709,7 +716,7 @@ post.postsDel = function (req, res) {
 post.postsDetail = function (req, res) {
     //console.log(req.query);return;
     //req.query.id = 3;
-    datas = {};
+    var data = {};
 
     if(!req.query.id){
         res.end(JSON.stringify(code.lackParamsPostId));
@@ -760,46 +767,46 @@ post.postsDetail = function (req, res) {
                                         }
                                         //console.log(r4);return;
                                         if (r4.length>0) {
-                                            datas.like = 1;
+                                            data.like = 1;
                                         } else {
-                                            datas.like = 0;
+                                            data.like = 0;
                                         }
-                                        datas.id = r1[0].id;
-                                        datas.title = r1[0].title;
-                                        datas.content = r1[0].content;
-                                        datas.gender = r1[0].gender;
-                                        datas.secret = r1[0].secret;
-                                        datas.avatar = r1[0].avatar;
-                                        datas.title = r1[0].title;
-                                        datas.nickname = r1[0].nickname;
-                                        datas.author = (r1.length>0&&r1[0].userId == req.session.userId) ? 1 : 0;
-                                        datas.userId = datas.secret ? 0 : r1[0].userId;
-                                        datas.commentCount = r2[0]['count("postId")'];
-                                        datas.likeCount = r3[0]['count("postId")'];
-                                        datas.date = r1[0].date;
-                                        datas.level = req.session.level;
+                                        data.id = r1[0].id;
+                                        data.title = r1[0].title;
+                                        data.content = r1[0].content;
+                                        data.gender = r1[0].gender;
+                                        data.secret = r1[0].secret;
+                                        data.avatar = r1[0].avatar;
+                                        data.title = r1[0].title;
+                                        data.nickname = r1[0].nickname;
+                                        data.author = (r1.length>0&&r1[0].userId == req.session.userId) ? 1 : 0;
+                                        data.userId = data.secret ? 0 : r1[0].userId;
+                                        data.commentCount = r2[0]['count("postId")'];
+                                        data.likeCount = r3[0]['count("postId")'];
+                                        data.date = r1[0].date;
+                                        data.level = req.session.level;
 
-                                        //console.log(datas);
-                                        res.end(common.format(200, "success", datas));
+                                        //console.log(data);
+                                        res.end(common.format(200, "success", data));
                                     }
                                 )}else{
-                                    datas.like = 0;
-                                    datas.id = r1[0].id;
-                                    datas.title = r1[0].title;
-                                    datas.content = r1[0].content;
-                                    datas.gender = r1[0].gender;
-                                    datas.secret = r1[0].secret;
-                                    datas.avatar = r1[0].avatar;
-                                    datas.title = r1[0].title;
-                                    datas.nickname = r1[0].nickname;
-                                    datas.author = (r1.length>0&&r1[0].userId == req.session.userId) ? 1 : 0;
-                                    datas.userId = datas.secret ? 0 : r1[0].userId;
-                                    datas.commentCount = r2[0]['count("postId")'];
-                                    datas.likeCount = r3[0]['count("postId")'];
-                                    datas.date = r1[0].date;
+                                    data.like = 0;
+                                    data.id = r1[0].id;
+                                    data.title = r1[0].title;
+                                    data.content = r1[0].content;
+                                    data.gender = r1[0].gender;
+                                    data.secret = r1[0].secret;
+                                    data.avatar = r1[0].avatar;
+                                    data.title = r1[0].title;
+                                    data.nickname = r1[0].nickname;
+                                    data.author = (r1.length>0&&r1[0].userId == req.session.userId) ? 1 : 0;
+                                    data.userId = data.secret ? 0 : r1[0].userId;
+                                    data.commentCount = r2[0]['count("postId")'];
+                                    data.likeCount = r3[0]['count("postId")'];
+                                    data.date = r1[0].date;
 
-                                    //console.log(datas);
-                                    res.end(common.format(200, "success", datas));
+                                    //console.log(data);
+                                    res.end(common.format(200, "success", data));
                                 }
                             }
                         )

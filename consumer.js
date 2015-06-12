@@ -72,7 +72,7 @@ console.log({
                                 {
                                     url:"https://api.weibo.com/2/statuses/update.json",
                                     form:{
-                                        status:encodeURIComponent(rr[0].content.substr(0,138)),
+                                        access_token:weiboToken.access_token,
                                         annotations:JSON.stringify({
                                             secret: rr[0].secret,
                                             userId:rr[0].userId

@@ -83,7 +83,9 @@ like.post = function(req,res){
                           res.end(JSON.stringify(code.mysqlError));
                           return;
                       }
-              if (r6['count("postId")'] >= config.postWeibo.count) {
+                      console.log(r6);
+                      console.log(config.postWeibo);
+              if (r6[0]['count("postId")'] >= config.postWeibo.count) {
 
                   conn.query(
                       {

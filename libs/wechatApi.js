@@ -186,7 +186,7 @@ var menu1 ={
                 },
                 {
                     "type":"click",
-                    "name":"考表查询",
+                    "name":"考试查询",
                     "key":"exam"
                 },
                 {
@@ -237,7 +237,7 @@ console.log(e,r);
 /**
  * 创建菜单
  */
-//wechatApi.createMenu();
+wechatApi.createMenu();
 
 /**
  * 获取菜单

@@ -609,7 +609,6 @@ user.exam = function(msg,req,res,next){
                 url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password
             },function(eeeee,rrrrr,body){
 
-                console.log(eeeee,body);
                 if(eeeee){
                     res.reply(code.requestError.message);
                     return;
@@ -623,9 +622,7 @@ user.exam = function(msg,req,res,next){
                 console.log(exams);
                 console.log(exams.code);
                 if(exams.code==200){
-                    console.log(exams);
                     var examsData=exams.data.exams;
-                    console.log(examsData);
                     if(examsData.length>0){
 
                         for(var i=0;i<examsData.length;i++){

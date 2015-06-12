@@ -57,7 +57,7 @@
                 url+="";
             }
             $.get(url,function(data){
-//console.log(data);
+console.log(data);
 
 
                     if(o.action == 'init'){

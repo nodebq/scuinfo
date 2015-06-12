@@ -515,7 +515,14 @@ service.log = function(msg){
 
 };
 
+service.signout = function(msg,req,res,next){
 
+    res.reply('退出当前会话成功');
+
+    service.logout(msg.FromUserName,function(e,r){
+//console.log(e,r);
+    });
+};
 
 /**
  * 退出

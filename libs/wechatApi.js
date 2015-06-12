@@ -262,19 +262,6 @@ console.log(e,r);
 //console.log(e,r);
 //});
 
-/**
- * 发送模板消息
- */
-//wechatApi.sendTemplate({
-//    body:{
-//     template:"ok",
-//        first:"你刚刚提交的成绩查询已成功",
-//        keyword1:'2012141442029',
-//        keyword2:'成绩',
-//        keyword3:"2012年3月5号",
-//        remark:"点击查看详情"
-//    }
-//});
 
 
 module.exports = wechatApi;

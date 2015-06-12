@@ -58,13 +58,13 @@ notice.list = function (req, res) {
         var sql='';
         switch(req.query.type){
             case 'all':
-                sql='select * from secret_notice where userId = '+req.session.userId;
+                sql='select * from secret_notice where authorId = '+req.session.userId;
                 break;
             case 'like':
-                sql='select * from secret_notice where pattern in (2,4) and userId = '+req.session.userId;
+                sql='select * from secret_notice where pattern in (2,4) and authorId = '+req.session.userId;
                 break;
             case 'reply':
-                sql='select * from secret_notice where pattern in (1,3) and userId = '+req.session.userId;
+                sql='select * from secret_notice where pattern in (1,3) and authorId = '+req.session.userId;
                 break;
         }
         //console.log(sql);return;

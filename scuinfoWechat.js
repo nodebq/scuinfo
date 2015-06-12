@@ -23,8 +23,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 var config = {
-    token: config.testWechat.token,
-    appid: config.testWechat.appId,
+    token: config.wechat.token,
+    appid: config.wechat.appId,
     encodingAESKey: ""
 };
 

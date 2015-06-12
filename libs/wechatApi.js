@@ -6,7 +6,7 @@ var wechatApi = {
 
 };
 
-var api = new API(config.testWechat.appId,config.testWechat.appSecret, function (callback) {
+var api = new API(config.wechat.appId,config.wechat.appSecret, function (callback) {
     // 传入一个获取全局token的方法
     fs.readFile('./token/access_token.txt', 'utf8', function (err, txt) {
         //console.log(err,txt);//return;

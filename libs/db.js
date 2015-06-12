@@ -82,7 +82,7 @@ var sql;
 
 
 db.getWechatText = function(o,cb){
-
+console.log("select * from wechat_text where name='"+ o.name+"'");
        var sql="select * from wechat_text where name='"+ o.name+"'";
 
     conn.query(

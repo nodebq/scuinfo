@@ -391,7 +391,7 @@ service.noSessionText = function(msg,req,res,next){
 
 
 
-    if(msg.Content.substr(0,4)=='川大表白'){
+    if(msg.Content.substr(0,4)=='我要表白'){
 
         if(msg.Content.length==4){
 

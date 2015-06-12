@@ -142,10 +142,17 @@ console.log(data);
 
                         //}
                         
+                        console.log(data.data);
+                        
+                        
                         
                        var fromId = data.data.pop().id;
                         
+                        
+                        console.log(data);
+                        
                         console.log(fromId);console.log('333');
+                        
 
                         $("#loadMore").attr('fromid',fromId).clone(true);
                         $("#loadMoreButton").button('reset');

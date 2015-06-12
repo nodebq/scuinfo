@@ -645,8 +645,7 @@ user.exam = function(msg,req,res,next){
                                 return;
                             }
                             console.log(rrrr);
-                            console.log('2');
-                            res.reply(rrrr);
+                            res.reply(rrrr.replace("\n","\n"));
                             return;
                         });
                     }

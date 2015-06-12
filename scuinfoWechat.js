@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var config = {
     token: config.wechat.token,
     appid: config.wechat.appId,
-    encodingAESKey: ""
+    encodingAESKey: "TYt123ywezOYOAQqlKPOPsx29GJ6RuwYB6GTjSjJ1ZP"
 };
 
 app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next) {

@@ -836,7 +836,7 @@ profile.share = function(req,res){
     };
 
 profile.updateCallback = function(req,res){
-    
+    console.log(req.body.type);
     if(req.body.type){
         var first="";
         var keyword1=req.body.studentId;

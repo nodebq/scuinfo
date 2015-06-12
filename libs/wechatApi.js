@@ -123,7 +123,7 @@ var menu1 ={
         {
         "name":"服务",
         "sub_button":[
-            {type:"view",
+            {   type:"view",
                 "name":"历史消息",
                 "url":"http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MjM5OTM3OTM3Mg==#wechat_webview_type=1&wechat_redirect"
 
@@ -132,6 +132,16 @@ var menu1 ={
                 "name":"神奇海螺",
                 "url":"http://music.163.com/radio?id=1136006"
 
+            },
+            {
+                 type:"click",
+                "name":"匿名发帖",
+                "key":"post"
+            },
+            {
+              type:"view",
+                "name":"我的微博",
+                "url":"http://weibo.com/scuinfo"
             },
             {
                 type:"view",

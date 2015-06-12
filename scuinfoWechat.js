@@ -138,6 +138,8 @@ console.log('click');
                 case 'advise':
                     service.advise(message,req,res,next);
                     break;
+                case 'post':
+                    service.post(message,req,res,next);
             }
 
             break;

@@ -655,7 +655,7 @@ service.love = function(msg,req,res,next){
                 return;
             }
             //todo 严谨起见还是判断下id好
-            res.reply('接下来请直接写下你的表白（我会帮你加上#川大表白#的话题，10分钟内有效，表白发布后超过'+config.postWeibo.count+'个人点赞，就会自动发布到@scuinfo的新浪微博）：');
+            res.reply('接下来请直接写下你的表白（我会帮你加上#川大表白#的话题，10分钟内有效，表白发布后超过'+config.postWeibo.count+'个人点赞，就会自动发布到@scuinfo 的新浪微博）：');
             return;
         });
 

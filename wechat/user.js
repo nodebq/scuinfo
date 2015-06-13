@@ -173,6 +173,21 @@ user.score = function(msg,req,res,next){
                         return;
 
                     }else{
+
+                        if(msg.source=='weibo'){
+                            dbs.getWechatText({
+                                name:"noScoresWeibo"
+                            },function(eee,rrrr){
+                                if(eee){
+                                    res.reply(JSON.stringify(eee));
+                                    return;
+                                }
+                                //console.log(rrrr);
+                                res.reply(rrrr);
+                                return;
+                            });
+                        }
+
                         dbs.getWechatText({
                             name:"noScores"
                         },function(eee,rrrr){
@@ -205,6 +220,23 @@ user.score = function(msg,req,res,next){
                     return;
 
                 }else if(scores.code==2010 || scores.code==2011){
+
+
+
+                    if(msg.source=='weibo'){
+                        dbs.getWechatText({
+                            name:"getScoresLaterWeibo"
+                        },function(eee,rrrr){
+                            if(eee){
+                                res.reply(JSON.stringify(eee));
+                                return;
+                            }
+                            //console.log(rrrr);
+                            res.reply(rrrr);
+                            return;
+                        });
+                    }
+
                     dbs.getWechatText({
                         name:"getScoresLater"
                     },function(eee,rrrr){
@@ -324,6 +356,20 @@ user.book = function(msg,req,res,next){
                         return;
 
                     }else{
+
+                        if(msg.source=='weibo'){
+                            dbs.getWechatText({
+                                name:"noBooksWeibo"
+                            },function(eee,rrrr){
+                                if(eee){
+                                    res.reply(JSON.stringify(eee));
+                                    return;
+                                }
+                                //console.log(rrrr);
+                                res.reply(rrrr);
+                                return;
+                            });
+                        }
                         dbs.getWechatText({
                             name:"noBooks"
                         },function(eee,rrrr){
@@ -356,6 +402,22 @@ user.book = function(msg,req,res,next){
                     return;
 
                 }else if(books.code==2010 || books.code==2011 ||books.code==2029){
+
+
+                    if(msg.source=='weibo'){
+                        dbs.getWechatText({
+                            name:"getBookLaterWeibo"
+                        },function(eee,rrrr){
+                            if(eee){
+                                res.reply(JSON.stringify(eee));
+                                return;
+                            }
+                            //console.log(rrrr);
+                            res.reply(rrrr);
+                            return;
+                        });
+                    }
+
                     dbs.getWechatText({
                         name:"getBookLater"
                     },function(eee,rrrr){
@@ -491,6 +553,20 @@ user.major = function(msg,req,res,next){
                         return;
 
                     }else{
+
+                        if(msg.source=='weibo'){
+                            dbs.getWechatText({
+                                name:"noMajorsWeibo"
+                            },function(eee,rrrr){
+                                if(eee){
+                                    res.reply(JSON.stringify(eee));
+                                    return;
+                                }
+                                //console.log(rrrr);
+                                res.reply(rrrr);
+                                return;
+                            });
+                        }
                         dbs.getWechatText({
                             name:"noMajors"
                         },function(eee,rrrr){
@@ -523,6 +599,22 @@ user.major = function(msg,req,res,next){
                     return;
 
                 }else if(majors.code==2010 || majors.code==2011){
+
+
+                    if(msg.source=='weibo'){
+                        dbs.getWechatText({
+                            name:"getMajorLaterWeibo"
+                        },function(eee,rrrr){
+                            if(eee){
+                                res.reply(JSON.stringify(eee));
+                                return;
+                            }
+                            //console.log(rrrr);
+                            res.reply(rrrr);
+                            return;
+                        });
+                    }
+
                     dbs.getWechatText({
                         name:"getMajorLater"
                     },function(eee,rrrr){
@@ -650,6 +742,20 @@ user.exam = function(msg,req,res,next){
                         return;
 
                     }else{
+
+                        if(msg.source=='weibo'){
+                            dbs.getWechatText({
+                                name:"noExamsWeibo"
+                            },function(eee,rrrr){
+                                if(eee){
+                                    res.reply(JSON.stringify(eee));
+                                    return;
+                                }
+                                //console.log(rrrr);
+                                res.reply(rrrr);
+                                return;
+                            });
+                        }
                         dbs.getWechatText({
                             name:"noExams"
                         },function(eee,rrrr){
@@ -682,6 +788,22 @@ user.exam = function(msg,req,res,next){
                     return;
 
                 }else if(exams.code==2010 || exams.code==2011){
+
+
+                    if(msg.source=='weibo'){
+                        dbs.getWechatText({
+                            name:"getExamLaterWeibo"
+                        },function(eee,rrrr){
+                            if(eee){
+                                res.reply(JSON.stringify(eee));
+                                return;
+                            }
+                            //console.log(rrrr);
+                            res.reply(rrrr);
+                            return;
+                        });
+                    }
+
                     dbs.getWechatText({
                         name:"getExamLater"
                     },function(eee,rrrr){

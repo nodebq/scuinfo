@@ -622,12 +622,21 @@ user.exam = function(msg,req,res,next){
                 }catch(e){
                     var exams= {};
                 }
-                console.log(exams);
-                console.log(exams.code);
+
                 if(exams.code==200){
                     var examsData=exams.data.exams;
                     if(examsData.length>0){
-                        var text="";
+                        function sortByTime(a,b){
+                            if(parseInt(a.start)> parseInt(b.start)){
+                                return 1;
+                            }else{
+                                return -1;
+                            }
+
+                        }
+
+                        examsData.sort(sortByTime);
+                        var text="你的本次考试时间地点如下：";
 
                         for(var i=0;i<examsData.length;i++){
                             if(examsData[i].examName=='期末考试') {
@@ -635,7 +644,7 @@ user.exam = function(msg,req,res,next){
                             }
                         }
 
-                        text+='\n\n <a href="'+config.site.url+'/exam">点击查看全部成绩详情</a>' +
+                        text+='\n\n <a href="'+config.site.url+'/exam">点击生成你的专属考试页面或更新</a>' +
                             '\n\n最后更新时间:'+common.dateChina(exams.data.updateAt*1000) ;
                         res.reply(text);
                         return;

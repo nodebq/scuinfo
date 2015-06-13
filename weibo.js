@@ -43,6 +43,7 @@ router.get('/weibo',function(req,res,next){
 });
 
 router.post('/weibo',function(req,res,next){
+    console.log(req.body);
     if(!checkSignature(req.body,config.weibo.appSecret)){
         console.log('not weibo ');
         res.end('not weibo')

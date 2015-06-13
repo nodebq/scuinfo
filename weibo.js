@@ -78,7 +78,7 @@ router.post('/weibo',function(req,res,next){
 
         var data={};
         if (Array.isArray(content)) {
-            type = 'news';
+            type = 'articles';
 
             data.articles=[];
             for(var i=0;i<content.length;i++){

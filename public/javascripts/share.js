@@ -47,7 +47,7 @@
 
             }
 
-            $("#findMyBook").html('<a href="/major" type="button" class="am-btn am-btn-default am-radius am-btn-block hrefNone"><i class="am-icon-book"></i> 查看我的书单</a>').clone();
+            $("#findMyBook").html('<a href="/book" type="button" class="am-btn am-btn-default am-radius am-btn-block hrefNone"><i class="am-icon-book"></i> 查看我的书单</a>').clone();
             $("#shareTheBookList").html('<a  class="am-btn am-btn-default am-btn-block hrefNone" id="shareBook"><i class="am-icon-wechat"></i>分享此书单</a>').clone();
 
             return;

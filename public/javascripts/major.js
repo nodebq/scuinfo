@@ -39,7 +39,7 @@ $.get('/api/major',function(r){
 
         var word="";
 
-        var percent=(lessonCount/60*100);
+        var percent=parseInt(lessonCount/60*100);
 
         if(percent>50){
             word="，你们别来找我玩了"

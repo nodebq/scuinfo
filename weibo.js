@@ -11,8 +11,9 @@ var config=require('./config.js');
  * 检查签名
  */
 var checkSignature = function (query, token) {
-
+console.log(query);
     if(!query.signature || !query.timestamp ||!query.nonce ||!token){
+        console.log('1');
         return false;
     }
 
@@ -23,7 +24,7 @@ var checkSignature = function (query, token) {
     var shasum = crypto.createHash('sha1');
     var arr = [token, timestamp, nonce].sort();
     shasum.update(arr.join(''));
-
+console.log(shasum.digest('hex'));
     return shasum.digest('hex') === signature;
 };
 

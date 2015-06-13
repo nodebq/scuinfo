@@ -26,17 +26,17 @@ console.log(query);
     
     console.log(arr.join(''));
     shasum.update(arr.join(''));
-console.log(shasum.digest('hex'));
+//console.log(shasum.digest('hex'));
     
-    //return shasum.digest('hex') === signature;
-    return true;
+    return shasum.digest('hex') === signature;
+    //return true;
 };
 
 
 router.get('/weibo',function(req,res,next){
 console.log(req.query);
     console.log(config.weibo.appkey);
-    if(checkSignature(req.query,config.weibo.appkey)){
+    if(checkSignature(req.query,config.weibo.appSecret)){
         res.end(req.query.echostr);
     }else{
         res.end('0');

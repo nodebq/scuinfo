@@ -229,11 +229,12 @@ router.post('/weibo',function(req,res,next){
                         service.love(message, req, res, next);
 
                         break;
+                    default:
+                        res.reply('');
+                        break;
 
                 }
-                default:
-                    res.reply('');
-                    break;
+
             }
 
 

@@ -215,6 +215,13 @@ router.post('/weibo',function(req,res,next){
 
                     break;
 
+                    case
+                    'love'
+                    :
+                        service.love(message, req, res, next);
+
+                        break;
+
                 }
             }
 

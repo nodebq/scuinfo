@@ -643,6 +643,25 @@ var texts=[];
 
 };
 
+service.love = function(msg,req,res,next){
+//content,secret,openId
+    conn.query(
+        {
+            sql:"insert into wechat_session (openId,createAt,type) values ('"+msg.FromUserName+"',"+common.time()+",3)"
+        },function(e,r) {
+            if (e) {
+                console.log(e);
+                res.reply(code.mysqlError.message);
+                return;
+            }
+            //todo 严谨起见还是判断下id好
+            res.reply('接下来请直接写下你的表白（我会帮你加上#川大表白#的话题，10分钟内有效，表白发布后超过'+config.postWeibo.count+'个人点赞，就会自动发布到@scuinfo的新浪微博）：');
+            return;
+        });
+
+    return;
+};
+
 service.fm = function(msg,req,res,next){
 
     //http://music.163.com/radio?id=1136006

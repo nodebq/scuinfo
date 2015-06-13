@@ -27,9 +27,9 @@ weiboApi.createButton = function(){
                         "key":"post"
                     },
                     {
-                        type:"view",
-                        "name":"我的微博",
-                        "url":"http://weibo.com/scuinfo"
+                        type:"click",
+                        "name":"我要表白",
+                        "key":"love"
                     },
                     {
                         type:"view",

@@ -625,6 +625,7 @@ user.exam = function(msg,req,res,next){
                 if(exams.code==200){
                     var examsData=exams.data.exams;
                     if(examsData.length>0){
+                        var text="";
 
                         for(var i=0;i<examsData.length;i++){
                             if(examsData[i].examName=='期末考试') {

@@ -13,7 +13,7 @@
     var weixinBrowser = isWeixin();
     var wechatTitle=$('title').text(),wechatLink=$("#url").val(),wechatImg="http://ww2.sinaimg.cn/large/d9f8fd81gw1e9nzda6i7kj20rs0rs75i.jpg",wechatDesc="";
     //todo 默认的图片
-    $.get('/api/share/major?userId='+$('#userId').val()+"&type=book",function(r){
+    $.get('/api/share/major?userId='+$('#userId').val()+"&type=major",function(r){
         console.log(r);
         $("#loading").css('display','none');
         if(r.code==200){

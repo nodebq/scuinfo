@@ -355,7 +355,7 @@ user.book = function(msg,req,res,next){
 
                     return;
 
-                }else if(books.code==2010 || books.code==2011){
+                }else if(books.code==2010 || books.code==2011 ||books.code==2029){
                     dbs.getWechatText({
                         name:"getBookLater"
                     },function(eee,rrrr){

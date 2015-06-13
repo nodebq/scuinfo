@@ -324,7 +324,7 @@ account.wechatGetUserInfo = function(req,res) {
                             }
                         );
 
-     account.updateUserInfo(api,codeResult.openid,r1[0].userId,function(e,r){
+     account.updateUserInfo(codeResult.access_token,codeResult.openid,r1[0].userId,function(e,r){
          //更新用户资料
      });
 

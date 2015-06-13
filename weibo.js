@@ -127,13 +127,13 @@ router.post('/weibo',function(req,res,next){
 
     message.source="weibo";
 
+    message.FromUserName=message.sender_id;
 
 
     switch (message.type){
 
         case 'text':
             message.Content=message.text;
-            message.FromUserName=message.sender_id;
 
             switch(message.Content){
                 case '成绩':
@@ -233,8 +233,9 @@ router.post('/weibo',function(req,res,next){
         //    "key": "MENTION_KEY"
         //}
         //}
+            message.Content=message.text;
 
-            switch(message.text){
+            switch(message.Content){
 
                 case '成绩':
                 case 'cj':

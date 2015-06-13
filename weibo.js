@@ -26,7 +26,7 @@ console.log(query);
     
     console.log(arr.join(''));
     shasum.update(arr.join(''));
-console.log(shasum.digest('hex'));
+//console.log(shasum.digest('hex'));
     
     return shasum.digest('hex') === signature;
 };

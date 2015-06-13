@@ -23,8 +23,11 @@ console.log(query);
 
     var shasum = crypto.createHash('sha1');
     var arr = [token, timestamp, nonce].sort();
+    
+    console.log(arr.join(''));
     shasum.update(arr.join(''));
 console.log(shasum.digest('hex'));
+    
     return shasum.digest('hex') === signature;
 };
 

@@ -167,7 +167,7 @@ user.score = function(msg,req,res,next){
                             }
                         }
 
-                        text+='\n\n <a href="'+config.site.url+'/score">点击查看全部成绩详情</a>' +
+                        text+=((msg.source=='weibo')?('点此查看详情:'+config.site.url+'/score'):('\n\n <a href="'+config.site.url+'/score">点击查看全部成绩详情</a>')) +
                             '\n\n最后更新时间:'+(new Date(parseInt(scores.data.updateAt)*1000).getMonth()+1)+"月"+(new Date(parseInt(scores.data.updateAt)*1000).getDate())+"日 "+new Date(parseInt(scores.data.updateAt)*1000).getHours()+":"+new Date(parseInt(scores.data.updateAt)*1000).getMinutes() ;
                         res.reply(text);
                         return;

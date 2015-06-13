@@ -11,9 +11,9 @@ var config=require('./config.js');
  * 检查签名
  */
 var checkSignature = function (query, token) {
-console.log(query);
+//console.log(query);
     if(!query.signature || !query.timestamp ||!query.nonce ||!token){
-        console.log('1');
+        //console.log('1');
         return false;
     }
 
@@ -24,7 +24,7 @@ console.log(query);
     var shasum = crypto.createHash('sha1');
     var arr = [token, timestamp, nonce].sort();
     
-    console.log(arr.join(''));
+    //console.log(arr.join(''));
     shasum.update(arr.join(''));
 //console.log(shasum.digest('hex'));
     
@@ -34,8 +34,6 @@ console.log(query);
 
 
 router.get('/weibo',function(req,res,next){
-console.log(req.query);
-    console.log(config.weibo.appkey);
     if(checkSignature(req.query,config.weibo.appSecret)){
         res.end(req.query.echostr);
     }else{
@@ -43,6 +41,14 @@ console.log(req.query);
     };
 
 });
+
+router.post('/weibo',function(req,res,next){
+    if(!checkSignature(req.body,config.weibo.appSecret)){
+        console.log('not weibo ');
+        res.end('not weibo')
+        return;
+    }
+    });
 
 app.use('/',router);
 

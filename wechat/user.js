@@ -186,6 +186,7 @@ user.score = function(msg,req,res,next){
                                 res.reply(rrrr);
                                 return;
                             });
+                            return;
                         }
 
                         dbs.getWechatText({
@@ -199,6 +200,7 @@ user.score = function(msg,req,res,next){
                             res.reply(rrrr);
                             return;
                         });
+
                     }
                     return;
 
@@ -235,6 +237,7 @@ user.score = function(msg,req,res,next){
                             res.reply(rrrr);
                             return;
                         });
+                        return;
                     }
 
                     dbs.getWechatText({
@@ -369,6 +372,8 @@ user.book = function(msg,req,res,next){
                                 res.reply(rrrr);
                                 return;
                             });
+                            return;
+
                         }
                         dbs.getWechatText({
                             name:"noBooks"
@@ -416,6 +421,8 @@ user.book = function(msg,req,res,next){
                             res.reply(rrrr);
                             return;
                         });
+                        return;
+
                     }
 
                     dbs.getWechatText({
@@ -566,6 +573,8 @@ user.major = function(msg,req,res,next){
                                 res.reply(rrrr);
                                 return;
                             });
+                            return;
+
                         }
                         dbs.getWechatText({
                             name:"noMajors"
@@ -613,6 +622,8 @@ user.major = function(msg,req,res,next){
                             res.reply(rrrr);
                             return;
                         });
+                        return;
+
                     }
 
                     dbs.getWechatText({
@@ -755,6 +766,7 @@ user.exam = function(msg,req,res,next){
                                 res.reply(rrrr);
                                 return;
                             });
+                            return;
                         }
                         dbs.getWechatText({
                             name:"noExams"
@@ -802,6 +814,8 @@ user.exam = function(msg,req,res,next){
                             res.reply(rrrr);
                             return;
                         });
+                        return;
+
                     }
 
                     dbs.getWechatText({

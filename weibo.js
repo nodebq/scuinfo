@@ -29,7 +29,8 @@ var checkSignature = function (query, token) {
 
 
 router.get('/weibo',function(req,res,next){
-
+console.log(req.query);
+    console.log(config.weibo.appkey);
     if(checkSignature(req.query,config.weibo.appkey)){
         res.end(req.body.echostr);
     }else{

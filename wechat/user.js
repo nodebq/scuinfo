@@ -629,7 +629,7 @@ user.exam = function(msg,req,res,next){
 
                         for(var i=0;i<examsData.length;i++){
                             if(examsData[i].examName=='期末考试') {
-                                text += "\n\n"+examsData[i].name + "\n" + common.dateChina(data[i].start*1000)+'~'+common.hour(data[i].end*1000) + "";
+                                text += "\n\n"+examsData[i].name + "\n" + common.dateChina(examsData[i].start*1000)+'~'+common.hour(examsData[i].end*1000) + "";
                             }
                         }
 

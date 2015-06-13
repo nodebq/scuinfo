@@ -240,7 +240,7 @@ router.post('/weibo',function(req,res,next){
         //    "key": "MENTION_KEY"
         //}
         //}
-            message.Content=message.text.replace("@scuinfo ", "");
+            message.Content=message.text.replace("@scuinfo", "").trim();
 
             switch(message.Content){
 

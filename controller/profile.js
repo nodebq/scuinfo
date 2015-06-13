@@ -594,7 +594,7 @@ profile.shareBook = function(req,res){
 
 profile.shareMajor = function(req,res){
 
-    console.log(req.query);
+    //console.log(req.query);
 
 
     if(!req.query.userId || req.query.userId=="undefined" || req.query.userId=="0"){
@@ -607,6 +607,7 @@ profile.shareMajor = function(req,res){
         res.end(JSON.stringify(code.lackParamsType));
         return;
     }
+    console.log("select * from secret_share where userId="+req.query.userId+" and type='"+req.query.type+"' limit 0,1");
 
     conn.query(
         {
@@ -649,14 +650,14 @@ profile.shareMajor = function(req,res){
                                     }catch(e){
                                         var result=code.jsonParseError
                                     }
-                                    console.log(result);
+                                    //console.log(result);
 
                                     //console.log(req.session);
                                     if(result.code==200) {
                                         result.data.avatar = r3[0].avatar;
                                         result.data.nickname = r3[0].nickname;
                                         result.data.userId=r3[0].userId;
-                                        console.log(result);
+                                        //console.log(result);
                                         res.end(JSON.stringify(result));
 
 

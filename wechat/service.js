@@ -81,6 +81,7 @@ service.advise = function(msg,req,res,next){
             });
             return;
         });
+    return;
 
 };
 
@@ -708,6 +709,8 @@ service.signout = function(msg,req,res,next){
     service.logout(msg.FromUserName,function(e,r){
 //console.log(e,r);
     });
+
+    return;
 };
 
 /**

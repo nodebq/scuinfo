@@ -9,15 +9,17 @@ var user = require('./wechat/user.js');
 var config = require('./config.js');
 var service = require('./wechat/service.js');
 var app = express();
+var router = express.Router();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.set('env','production');
-app.use(logger('pro'));
+//app.use(logger('pro'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -84,6 +86,7 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
     // PicUrl: 'http://mmsns.qpic.cn/mmsns/bfc815ygvIWcaaZlEXJV7NzhmA3Y2fc4eBOxLjpPI60Q1Q6ibYicwg/0',
     // MediaId: 'media_id',
     // MsgId: '5837397301622104395' }
+    res.reply("收到");
 }).voice(function (message, req, res, next) {
     // message为音频内容
     // { ToUserName: 'gh_d3e07d51b513',
@@ -93,6 +96,8 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
     // MediaId: 'OMYnpghh8fRfzHL8obuboDN9rmLig4s0xdpoNT6a5BoFZWufbE6srbCKc_bxduzS',
     // Format: 'amr',
     // MsgId: '5837397520665436492' }
+
+    res.reply("收到");
 }).video(function (message, req, res, next) {
     // message为视频内容
     // { ToUserName: 'gh_d3e07d51b513',
@@ -102,6 +107,8 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
     // MediaId: 'OMYnpghh8fRfzHL8obuboDN9rmLig4s0xdpoNT6a5BoFZWufbE6srbCKc_bxduzS',
     // ThumbMediaId: 'media_id',
     // MsgId: '5837397520665436492' }
+    res.reply("收到");
+
 }).location(function (message, req, res, next) {
     // message为位置内容
     // { ToUserName: 'gh_d3e07d51b513',
@@ -113,6 +120,8 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
     // Scale: '15',
     // Label: {},
     // MsgId: '5837398761910985062' }
+    res.reply("收到");
+
 }).link(function (message, req, res, next) {
     // message为链接内容
     // { ToUserName: 'gh_d3e07d51b513',
@@ -123,6 +132,8 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
     // Description: '公众平台官网链接',
     // Url: 'http://1024.com/',
     // MsgId: '5837397520665436492' }
+    res.reply("收到");
+
 }).event(function (message, req, res, next) {
     // message为事件内容
     // { ToUserName: 'gh_d3e07d51b513',
@@ -134,7 +145,7 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
     // Longitude: '113.352425',
     // Precision: '119.385040',
     // MsgId: '5837397520665436492' }
-    console.log(message);
+    //console.log(message);
     //
     switch(message.Event){
 
@@ -175,6 +186,10 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
             service.subscribe(message,req,res,next);
             break;
 
+        default:
+            res.reply("");
+            break;
+
 
     }
     
@@ -197,15 +212,15 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
+//if (app.get('env') === 'development') {
+//    app.use(function(err, req, res, next) {
+//        res.status(err.status || 500);
+//        res.render('error', {
+//            message: err.message,
+//            error: err
+//        });
+//    });
+//}
 
 // production error handler
 // no stacktraces leaked to user

@@ -114,9 +114,6 @@ router.post('/weibo',function(req,res,next){
             res.end(JSON.stringify(info));
 
     };
-
-
-    console.log(req.body);
     if(!checkSignature(req.query,config.weibo.appSecret)){
         console.log('not weibo ');
         res.end('not weibo')
@@ -234,6 +231,9 @@ router.post('/weibo',function(req,res,next){
                         break;
 
                 }
+                default:
+                    res.reply('');
+                    break;
             }
 
 
@@ -284,15 +284,23 @@ router.post('/weibo',function(req,res,next){
                 case 'tc':
                     service.signout(message,req,res,next);
                     break;
+
+                default:
+                    res.reply('');
+                    break;
             }
 
 
 
             break;
 
+        default:
+            res.reply('');
+            break;
+
+
 
     }
-
 
 
 

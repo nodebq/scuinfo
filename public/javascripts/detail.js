@@ -57,7 +57,7 @@
                                 '•<span class="am-icon-heart am-icon-sm comment-footer-like"></span><span class="comment-footer-like-count">'+data.data[i].likeCount+'</span></footer></article>';
                         }
 
-                        $('#comments .comments').append(comments).clone(true);
+                        $('#comments .comments').append(comments.replace(/\n/g,"<br>")).clone(true);
                         $("#comments #myComments").html("");
 
 

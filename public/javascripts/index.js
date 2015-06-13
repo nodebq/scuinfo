@@ -127,7 +127,7 @@
                         }
                         // postsStore+=posts;
 //console.log(posts);
-                        $('#posts').append(posts).clone(true);
+                        $('#posts').append(posts.replace(/\n/g,"<br>")).clone(true);
                         //console.log(data.data);
                         //console.log(o);
                         /*

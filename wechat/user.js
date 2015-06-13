@@ -477,10 +477,12 @@ user.major = function(msg,req,res,next){
                                 text += '\n\n第'+majorsData[i].lesson+'小节\n'+majorsData[i].name+"["+majorsData[i].teacherName+"]" + "\n" + majorsData[i].building+majorsData[i].classroom +"\n"+((isCurrentWeek==-1)?"本周不上":"本周要上");
                             }
 
-                            if(lessonCount==0){
 
-                                text+="\n\n咦，今天没课^_^"
-                            }
+                        }
+
+                        if(lessonCount==0){
+
+                            text+="\n\n咦，今天没课^_^"
                         }
 
                         text+='\n\n <a href="'+config.site.url+'/major">点击查看全部课表</a>' +

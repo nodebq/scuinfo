@@ -9,7 +9,7 @@ var app = express();
 var config=require('./config.js');
 var bodyParser = require('body-parser');
 var user=require('./wechat/user.js');
-var service= requie('./wechat/service.js');
+var service= require('./wechat/service.js');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 /**

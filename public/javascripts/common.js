@@ -678,7 +678,7 @@ bom.getDateDiff = function(dateTimeStamp) {
     //
     //});
 
-    $("#posts").on('tap','.posts-footer-more',function(){
+    $("#posts").on('click','.posts-footer-more',function(){
 
             var x=$(this).parents('article').attr('level');
             console.log(x);
@@ -710,7 +710,7 @@ bom.getDateDiff = function(dateTimeStamp) {
 
 
 
-    $("#posts").on('tap','.shareToWeibo',function(){
+    $("#posts").on('click','.shareToWeibo',function(){
         var weibo = $($(this).children()[0]);
         var article = $(this).parents('article');
         wbUrl			= article.attr('href'),

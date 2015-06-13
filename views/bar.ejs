@@ -4,9 +4,9 @@
         <a title="首页" href="/" class="">
             <i class="am-icon-btn am-header-icon am-icon-home icon-btn"></i>
         </a>
-        <a title="点击进入「神奇海螺」电台" href="/fm" class="">
-            <i class="am-icon-btn am-header-icon am-icon-music icon-btn"></i>
-        </a>
+        <!--<a title="点击进入「神奇海螺」电台" href="/fm" class="">-->
+            <!--<i class="am-icon-btn am-header-icon am-icon-music icon-btn"></i>-->
+        <!--</a>-->
     </div>
     <h1 class="am-header-title" id="title"><%= barTitle %><span id="barTitleAjax"></span></h1>
     <div class="am-header-right am-header-nav  header-nav">
@@ -16,9 +16,9 @@
         </a>
 
         <% if(page.userStatus=='login'){%>
-        <a title="通知" href="/notice" class="">
-            <i class="am-icon-btn am-header-icon am-icon-bell icon-btn"></i>
-        </a>
+        <!--<a title="通知" href="/notice" class="">-->
+            <!--<i class="am-icon-btn am-header-icon am-icon-bell icon-btn"></i>-->
+        <!--</a>-->
         <% }else{%>
         <a title="使用微博登录" href="https://api.weibo.com/oauth2/authorize?client_id=1159008171&response_type=code&redirect_uri=http://scuinfo.com/auth/weibo/&state=weibo,<%= page.url%>" class="">
             <i class="am-icon-btn am-header-icon am-icon-weibo icon-btn"></i>

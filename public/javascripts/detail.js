@@ -130,9 +130,7 @@
                 '<li class="shareToWeibo"><a href="#"><span class="am-icon-weibo"></span> 分享到微博</a></li>'+
                 '<li class="posts-delete"><a href="#"><span class="am-icon-trash"></span> 删除</a></li>'+
                 '</ul> </div> </span></footer> </article>';
-                $("#posts").html(
-                    post
-                );
+                $("#posts").html(post.replace(/\n/g,"<br>"));
                 $("#loading").css('display','none');
 
         });

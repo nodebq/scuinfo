@@ -325,7 +325,7 @@ user.book = function(msg,req,res,next){
 
                     }else{
                         dbs.getWechatText({
-                            name:"noScores"
+                            name:"noBooks"
                         },function(eee,rrrr){
                             if(eee){
                                 res.reply(JSON.stringify(eee));
@@ -357,7 +357,7 @@ user.book = function(msg,req,res,next){
 
                 }else if(books.code==2010 || books.code==2011){
                     dbs.getWechatText({
-                        name:"getScoreLater"
+                        name:"getBookLater"
                     },function(eee,rrrr){
                         if(eee){
                             res.reply(JSON.stringify(eee));

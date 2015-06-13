@@ -8,6 +8,8 @@ var router = express.Router();
 var app = express();
 var config=require('./config.js');
 var bodyParser = require('body-parser');
+var user=require('./wechat/user.js');
+var service= requie('./wechat/service.js');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 /**
@@ -47,18 +49,104 @@ router.get('/weibo',function(req,res,next){
 });
 
 router.post('/weibo',function(req,res,next){
+
+    res.reply = function (content) {
+        //
+        //{
+        //    "result": true,
+        //    "receiver_id":123456,
+        //    "sender_id":123123,
+        //    "type": "text",
+        //    "data":"{}"
+        //}
+
+        res.writeHead(200);
+        // 响应空字符串，用于响应慢的情况，避免微信重试
+        if (!content) {
+            return res.end('');
+        }
+        //var json = reply(content, message.ToUserName, message.FromUserName);
+        var info = {};
+        var type = 'text';
+        info.content = content || '';
+        if (Array.isArray(content)) {
+            type = 'news';
+        } else if (typeof content === 'object') {
+            if (content.hasOwnProperty('type')) {
+                type = content.type;
+                info.content = content.content;
+            } else {
+                type = 'music';
+            }
+        }
+        info.type = type;
+        info.createTime = new Date().getTime();
+        info.receiver_id = req.body.sender_id;
+        info.sender_id = req.body.receiver_id;
+        info.data=
+            res.end(JSON.stringify(info));
+
+    };
+
+
     console.log(req.body);
-    
-    console.log(req.query);
     if(!checkSignature(req.query,config.weibo.appSecret)){
         console.log('not weibo ');
         res.end('not weibo')
         return;
     }
 
-    console.log(typeof(req.body));
-console.log(JSON.parse(req.body));
-    });
+    var message=req.body;
+
+
+
+    switch (message.type){
+
+        case 'text':
+            message.Content=message.text;
+            message.FromUserName=message.sender_id;
+
+            switch(message.Content){
+                case '成绩':
+                case 'cj':
+                    user.score(message,req,res,next);
+                    break;
+                case '图书':
+                    user.book(message,req,res,next);
+                    break;
+                case '课表':
+                    user.major(message,req,res,next);
+                    break;
+                case '考表':
+                    user.exam(message,req,res,next);
+                    break;
+
+                case '退出':
+                case 'tc':
+                    service.signout(message,req,res,next);
+                    break;
+
+                default:
+
+                    service.text(message,req,res,next);
+
+                    break;
+            }
+            break;
+
+        case 'event':
+            break;
+        case 'mention':
+            break;
+
+
+    }
+
+
+
+
+
+ });
 
 app.use('/',router);
 

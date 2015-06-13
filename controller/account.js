@@ -31,7 +31,7 @@ var oauth = new OAUTH(config.wechatWeb.appId,config.wechatWeb.appSecret, functio
 
 var oauthWechat = new OAUTH(config.wechat.appId,config.wechat.appSecret, function (openid,callback) {
     // 传入一个获取全局token的方法
-    fs.readFile('./token/'+oepnid+'AccessToken.txt', 'utf8', function (err, txt) {
+    fs.readFile('./token/'+openid+'AccessToken.txt', 'utf8', function (err, txt) {
         //console.log(err,txt);//return;
         if (err) {return callback(err);}
         callback(null, JSON.parse(txt));
@@ -622,6 +622,8 @@ account.wechatLogin = function (req, res) {
                     return;
                 }
                 var codeResult = result.data;
+                
+                console.log(codeResult);
                 conn.query(
                     {
                         sql:'select unionId,userId from secret_open where openId = "'+codeResult.openid+'"'

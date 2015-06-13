@@ -125,6 +125,8 @@ router.post('/weibo',function(req,res,next){
 
     var message=req.body;
 
+    message.source="weibo";
+
 
 
     switch (message.type){

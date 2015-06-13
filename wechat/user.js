@@ -89,6 +89,24 @@ user.score = function(msg,req,res,next){
 
             if(e.code == 2020){
 
+
+                if(msg.source=='weibo'){
+
+                    dbs.getWechatNews({
+                        name:"notBindDean"
+                    },function(eee,rrrr){
+                        if(eee){
+                            res.reply(JSON.stringify(eee));
+                            return;
+                        }
+                        //console.log(rrrr);
+                        res.reply(rrrr);
+
+                    });
+                    return;
+                }
+
+
                 bind.register(msg.FromUserName,function(ee,rr){
 
                     if(ee){
@@ -279,6 +297,21 @@ user.book = function(msg,req,res,next){
 
 
             if(e.code == 2020){
+                if(msg.source=='weibo'){
+
+                    dbs.getWechatNews({
+                        name:"notBindLibrary"
+                    },function(eee,rrrr){
+                        if(eee){
+                            res.reply(JSON.stringify(eee));
+                            return;
+                        }
+                        //console.log(rrrr);
+                        res.reply(rrrr);
+
+                    });
+                    return;
+                }
 
                 bind.register(msg.FromUserName,function(ee,rr){
 
@@ -460,6 +493,21 @@ user.major = function(msg,req,res,next){
 
 
             if(e.code == 2020){
+                if(msg.source=='weibo'){
+
+                    dbs.getWechatNews({
+                        name:"notBindDean"
+                    },function(eee,rrrr){
+                        if(eee){
+                            res.reply(JSON.stringify(eee));
+                            return;
+                        }
+                        //console.log(rrrr);
+                        res.reply(rrrr);
+
+                    });
+                    return;
+                }
 
                 bind.register(msg.FromUserName,function(ee,rr){
 
@@ -662,6 +710,21 @@ user.exam = function(msg,req,res,next){
 
 
             if(e.code == 2020){
+                if(msg.source=='weibo'){
+
+                    dbs.getWechatNews({
+                        name:"notBindDean"
+                    },function(eee,rrrr){
+                        if(eee){
+                            res.reply(JSON.stringify(eee));
+                            return;
+                        }
+                        //console.log(rrrr);
+                        res.reply(rrrr);
+
+                    });
+                    return;
+                }
 
                 bind.register(msg.FromUserName,function(ee,rr){
 

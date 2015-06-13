@@ -422,7 +422,7 @@ var user = result;
                                                 openId: user.openid,
                                                 unionId: user.unionid,
                                                 nickname: user.nickname,
-                                                gender: user.sex,
+                                                gender: user.sex?user.sex:0,
                                                 source: state[0],
                                                 redirect: state[1]
                                             });

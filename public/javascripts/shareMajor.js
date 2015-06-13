@@ -35,7 +35,7 @@
                 word=",约吗？"
             }
 
-            $("#shareMajor").attr('wechatTitle', r.data.nickname+"下学期的满课率是"+percent+"%"+word).clone();
+            $("#shareTheBookList").attr('wechatTitle', r.data.nickname+"下学期的满课率是"+percent+"%"+word).clone();
             $("#shareTheBookList").attr('wechatDesc','点击查看').clone();
             $("#shareTheBookList").attr('wechatImg', r.data.avatar).clone();
             $("#shareTheBookList").attr('wechatUrl',getBookHref({id: r.data.userId})).clone();

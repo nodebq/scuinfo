@@ -43,6 +43,8 @@ $.get('/api/major',function(r){
 
         if(percent>50){
             word="，你们别来找我玩了"
+        }else{
+            word=",约吗？"
         }
 
         $("#shareMajor").attr('wechatTitle', "我下学期的满课率是"+percent+"%"+word).clone();

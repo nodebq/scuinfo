@@ -571,10 +571,10 @@ service.noSessionText = function(msg,req,res,next){
         }
 var texts=[];
 
-        for(var i=0;i< r.length;i++){
+        for(var i=0;i< rrrr.length;i++){
 
-            if(r[i].name.split('|').indexOf(msg.Content)>-1){
-                texts.push(r[i].content);
+            if(rrrr[i].name.split('|').indexOf(msg.Content)>-1){
+                texts.push(rrrr[i].content);
             }
         }
 

@@ -55,7 +55,7 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
 
         case '退出':
         case 'tc':
-            service.logout(message,req,res,next);
+            service.signout(message,req,res,next);
             break;
 
         default:

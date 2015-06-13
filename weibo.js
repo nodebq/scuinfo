@@ -37,6 +37,7 @@ var checkSignature = function (query, token) {
 
 
 router.get('/weibo',function(req,res,next){
+    
     if(checkSignature(req.query,config.weibo.appSecret)){
         res.end(req.query.echostr);
     }else{
@@ -47,11 +48,16 @@ router.get('/weibo',function(req,res,next){
 
 router.post('/weibo',function(req,res,next){
     console.log(req.body);
-    if(!checkSignature(req.body,config.weibo.appSecret)){
+    
+    console.log(req.query);
+    if(!checkSignature(req.query,config.weibo.appSecret)){
         console.log('not weibo ');
         res.end('not weibo')
         return;
     }
+
+    console.log(typeof(req.body));
+console.log(JSON.parse(req.body));
     });
 
 app.use('/',router);

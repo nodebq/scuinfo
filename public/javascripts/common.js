@@ -604,79 +604,79 @@ bom.getDateDiff = function(dateTimeStamp) {
         ev.stopPropagation();
     });
 
-    $("#posts").hammer({
-        domEvents:true,
-        threshold:1,
-        velocity:0.8
-    }).on('swiperight','.posts-body', function(ev){
-
-        // alert('滑动')
-        // console.log($(this));
-        var like = $($(this).children()[0]);
-        like.css('display','block');
-        var id =  $(this).parent().attr('id') ;
-        var likeIcon = $($($($(this).parent().children()[2]).children()[1]).children()[0]);
-        var likeCount = $($($($(this).parent().children()[2]).children()[1]).children()[1]);
-        if(likeIcon.hasClass("posts-footer-icon-active")){
-            like.removeClass("posts-footer-icon-active");
-            likeIcon.removeClass("posts-footer-icon-active");
-            if((parseInt(likeCount.text())-1)>=0) {
-                likeCount.text((parseInt(likeCount.text()) - 1));
-            }
-            bom.postLike({
-                id:id,
-                method:"DELETE"
-            },function(e,r){
-                if(e){
-                    like.addClass("posts-footer-icon-active");
-                    likeIcon.addClass("posts-footer-icon-active");
-                        likeCount.text((parseInt(likeCount.text()) + 1));
-                    alert(e.message);
-
-                    console.log(e);
-                    return;
-                }
-
-                if(r.code!=200){
-                    alert(r.message);
-                    like.addClass("posts-footer-icon-active");
-                    likeIcon.addClass("posts-footer-icon-active");
-                    likeCount.text((parseInt(likeCount.text()) + 1));
-                }
-
-            });
-        }else{
-            like.addClass("posts-footer-icon-active");
-            likeIcon.addClass("posts-footer-icon-active");
-            likeCount.text((parseInt(likeCount.text()) + 1));
-            bom.postLike({
-                id:id
-            },function(e,r){
-                if(e){
-                    like.removeClass("posts-footer-icon-active");
-                    likeIcon.removeClass("posts-footer-icon-active");
-                    likeCount.text((parseInt(likeCount.text()) - 1));
-                    console.log(e);
-                    alert(e.message);
-                    return;
-                }
-
-                if(r.code!=200){
-                    like.removeClass("posts-footer-icon-active");
-                    likeIcon.removeClass("posts-footer-icon-active");
-                    likeCount.text((parseInt(likeCount.text()) - 1));
-                    console.log(e);
-                    alert(e.message);
-                    return;
-                }
-
-            });
-        }
-        setTimeout(function(){
-            like.css('display','none');
-        },1000);
-
-    });
+    //$("#posts").hammer({
+    //    domEvents:true,
+    //    threshold:1,
+    //    velocity:0.8
+    //}).on('swiperight','.posts-body', function(ev){
+    //
+    //    // alert('滑动')
+    //    // console.log($(this));
+    //    var like = $($(this).children()[0]);
+    //    like.css('display','block');
+    //    var id =  $(this).parent().attr('id') ;
+    //    var likeIcon = $($($($(this).parent().children()[2]).children()[1]).children()[0]);
+    //    var likeCount = $($($($(this).parent().children()[2]).children()[1]).children()[1]);
+    //    if(likeIcon.hasClass("posts-footer-icon-active")){
+    //        like.removeClass("posts-footer-icon-active");
+    //        likeIcon.removeClass("posts-footer-icon-active");
+    //        if((parseInt(likeCount.text())-1)>=0) {
+    //            likeCount.text((parseInt(likeCount.text()) - 1));
+    //        }
+    //        bom.postLike({
+    //            id:id,
+    //            method:"DELETE"
+    //        },function(e,r){
+    //            if(e){
+    //                like.addClass("posts-footer-icon-active");
+    //                likeIcon.addClass("posts-footer-icon-active");
+    //                    likeCount.text((parseInt(likeCount.text()) + 1));
+    //                alert(e.message);
+    //
+    //                console.log(e);
+    //                return;
+    //            }
+    //
+    //            if(r.code!=200){
+    //                alert(r.message);
+    //                like.addClass("posts-footer-icon-active");
+    //                likeIcon.addClass("posts-footer-icon-active");
+    //                likeCount.text((parseInt(likeCount.text()) + 1));
+    //            }
+    //
+    //        });
+    //    }else{
+    //        like.addClass("posts-footer-icon-active");
+    //        likeIcon.addClass("posts-footer-icon-active");
+    //        likeCount.text((parseInt(likeCount.text()) + 1));
+    //        bom.postLike({
+    //            id:id
+    //        },function(e,r){
+    //            if(e){
+    //                like.removeClass("posts-footer-icon-active");
+    //                likeIcon.removeClass("posts-footer-icon-active");
+    //                likeCount.text((parseInt(likeCount.text()) - 1));
+    //                console.log(e);
+    //                alert(e.message);
+    //                return;
+    //            }
+    //
+    //            if(r.code!=200){
+    //                like.removeClass("posts-footer-icon-active");
+    //                likeIcon.removeClass("posts-footer-icon-active");
+    //                likeCount.text((parseInt(likeCount.text()) - 1));
+    //                console.log(e);
+    //                alert(e.message);
+    //                return;
+    //            }
+    //
+    //        });
+    //    }
+    //    setTimeout(function(){
+    //        like.css('display','none');
+    //    },1000);
+    //
+    //});
 
     $("#posts").on('tap','.posts-footer-more',function(){
 

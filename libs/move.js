@@ -578,7 +578,7 @@ console.log(o);
     )
 
 };
-//
+
 //move.user(
 //    {
 //        start:0
@@ -589,13 +589,13 @@ console.log(o);
 //});
 
 
- //
+
  //move.wish(
  //{start:0}
  //);
 
 
-
+ //
  //
  //move.love({
  //start:0
@@ -603,7 +603,7 @@ console.log(o);
 
 
 
- //
+
  //move.hole(
  //{start:0}
  //);

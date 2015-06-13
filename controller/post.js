@@ -830,30 +830,30 @@ post.postsView = function (req, res) {
     if(!req.query.userId){
             if (!req.query.fromId) {
 
-                sql= 'select * from(SELECT * FROM secret_post order by date desc limit 0,'+ req.query.pageSize+') t1 union select * from secret_post where top=1'
+                sql= 'select * from(SELECT * FROM secret_post order by id desc limit 0,'+ req.query.pageSize+') t1 union select * from secret_post where top=1'
             }else{
-                sql='SELECT * FROM secret_post where id<' + req.query.fromId + ' order by date desc limit 0,' + req.query.pageSize;
+                sql='SELECT * FROM secret_post where id<' + req.query.fromId + ' order by id desc limit 0,' + req.query.pageSize;
             }
     }else {
         if (req.query.userId == req.session.userId) {
             if (!req.query.fromId) {
-                sql= 'select * from(SELECT * FROM secret_post where userId = ' + req.query.userId + ' order by date desc limit 0,'+ req.query.pageSize+') t1 union select * from secret_post where top=1'
+                sql= 'select * from(SELECT * FROM secret_post where userId = ' + req.query.userId + ' order by id desc limit 0,'+ req.query.pageSize+') t1 union select * from secret_post where top=1'
 
             } else {
-                sql = 'SELECT * FROM secret_post where id<' + req.query.fromId + ' and userId = ' + req.query.userId + ' order by date desc limit 0,' + req.query.pageSize;
+                sql = 'SELECT * FROM secret_post where id<' + req.query.fromId + ' and userId = ' + req.query.userId + ' order by id desc limit 0,' + req.query.pageSize;
             }
         } else {
             if (!req.query.fromId) {
-                sql= 'select * from(SELECT * FROM secret_post where userId = ' + req.query.userId + ' and secret=0 order by date desc limit 0,'+ req.query.pageSize+') t1 union select * from secret_post where top=1'
+                sql= 'select * from(SELECT * FROM secret_post where userId = ' + req.query.userId + ' and secret=0 order by id desc limit 0,'+ req.query.pageSize+') t1 union select * from secret_post where top=1'
 
             } else {
-                sql = 'SELECT * FROM secret_post where userId='+req.query.userId+' and secret=0 and id<' + req.query.fromId + ' order by date desc limit 0,' + req.query.pageSize;
+                sql = 'SELECT * FROM secret_post where userId='+req.query.userId+' and secret=0 and id<' + req.query.fromId + ' order by id desc limit 0,' + req.query.pageSize;
             }
         }
     }
     //console.log(sql);return;
     //console.log('SELECT * FROM secret_post where userId = ' + req.query.userId + ' order by date desc limit 0,' + req.query.pageSize);return;
-console.log(sql);
+//console.log(sql);
     conn.query(
         {
             sql: sql

@@ -68,22 +68,41 @@ router.post('/weibo',function(req,res,next){
         //var json = reply(content, message.ToUserName, message.FromUserName);
         var info = {};
         var type = 'text';
+
+        var data={};
         info.content = content || '';
         if (Array.isArray(content)) {
             type = 'news';
+
+            data.articles=[];
+            for(var i=0;i<content.length;i++){
+                data.articles[i]={
+                    "display_name": content[i].title,
+                    "summary": content[i].description,
+                    "image":content[i].pic,
+                    "url": content[i].url
+                }
+            }
+
+
         } else if (typeof content === 'object') {
             if (content.hasOwnProperty('type')) {
                 type = content.type;
-                info.content = content.content;
+                data=content.data;
             } else {
-                type = 'music';
+                type = 'position';
+                data=content.data;
+
             }
+        }else{
+            data.text=content;
         }
         info.type = type;
         info.createTime = new Date().getTime();
         info.receiver_id = req.body.sender_id;
         info.sender_id = req.body.receiver_id;
-        info.data=
+        info.data=encodeURIComponent(JSON.stringify(data));
+        console.log(info);
             res.end(JSON.stringify(info));
 
     };

@@ -109,7 +109,7 @@ profile.like = function (req, res) {
             )
         }
     }else if(req.session.userId){
-        console.log('select count("postId") from `secret_post` where userId = ' + req.session.userId);
+        //console.log('select count("postId") from `secret_post` where userId = ' + req.session.userId);
         conn.query(
             {
                 sql:'select count("postId") from `secret_post` where userId = ' + req.session.userId
@@ -177,10 +177,10 @@ profile.score = function(req,res){
                 res.end(JSON.stringify(code.mysqlError));
                 return;
             }
-            console.log(r);
+            //console.log(r);
 
             if(r.length>0){
-                console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
+                //console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                 request.get(
                     {
                         url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
@@ -227,7 +227,7 @@ profile.major = function(req,res){
             //console.log(r);
 
             if(r.length>0){
-                console.log(config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
+                //console.log(config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                 request.get(
                     {
                         url:config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
@@ -244,7 +244,7 @@ profile.major = function(req,res){
                         }catch(e){
                             var result=code.jsonParseError
                         }
-                        console.log(result);
+                        //console.log(result);
                         if(result.code==200) {
                             result.data.avatar = req.session.avatar;
                             result.data.nickname = req.session.nickname;
@@ -300,7 +300,7 @@ profile.exam = function(req,res){
             //console.log(r);
 
             if(r.length>0){
-                console.log(config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
+                //console.log(config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                 request.get(
                     {
                         url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
@@ -317,7 +317,7 @@ profile.exam = function(req,res){
                         }catch(e){
                             var result=code.jsonParseError
                         }
-                        console.log(result);
+                        //console.log(result);
                         if(result.code==200) {
                             result.data.avatar = req.session.avatar;
                             result.data.nickname = req.session.nickname;
@@ -373,16 +373,16 @@ profile.book = function(req,res){
                 res.end(JSON.stringify(code.mysqlError));
                 return;
             }
-            console.log(r);
+            //console.log(r);
 
             if(r.length>0){
-                console.log(config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
+                //console.log(config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                 request.get(
                     {
                         url:config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
                     },function(eeeee,rrrrr,body){
 
-                        console.log(eeeee,body);
+                        //console.log(eeeee,body);
                         if(eeeee){
                             res.end(JSON.stringify(code.requestError));
                             return;
@@ -393,7 +393,7 @@ profile.book = function(req,res){
                         }catch(e){
                             var result=code.jsonParseError
                         }
-                        console.log(result);
+                        //console.log(result);
 
                         //console.log(req.session);
                        if(result.code==200) {
@@ -435,13 +435,13 @@ profile.book = function(req,res){
 
 
 profile.renew = function(req,res){
-console.log(req.body);
+//console.log(req.body);
     check.renew(req.body,function(ee,rr){
 if(ee){
     res.end(JSON.stringify(ee));
     return;
 }
-console.log("select studentId,password from secret_library where userId="+req.session.userId);
+//console.log("select studentId,password from secret_library where userId="+req.session.userId);
     conn.query(
         {
             sql:"select studentId,password from secret_library where userId="+req.session.userId+" order by id desc"
@@ -451,18 +451,18 @@ console.log("select studentId,password from secret_library where userId="+req.se
                 res.end(JSON.stringify(code.mysqlError));
                 return;
             }
-            console.log(r);
+            //console.log(r);
 
             if(r.length>0){
-console.log(config.api.baseUrl+"/api/renew?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password=" +
-    ""+ r[0].password+"&xc="+rr.xc+"&barcode="+rr.barcode+"&borId="+rr.borId);
+//console.log(config.api.baseUrl+"/api/renew?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password=" +
+//    ""+ r[0].password+"&xc="+rr.xc+"&barcode="+rr.barcode+"&borId="+rr.borId);
                 request.get(
                     {
                         url:config.api.baseUrl+"/api/renew?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password=" +
                         ""+ r[0].password+"&xc="+r[0].xc+"&barcode="+r[0].barcode+"&borId="+r[0].borId
                     },function(eeeee,rrrrr,body){
 
-                        console.log(eeeee,body);
+                        //console.log(eeeee,body);
                         if(eeeee){
                             res.end(JSON.stringify(code.requestError));
                             return;
@@ -490,7 +490,7 @@ console.log(config.api.baseUrl+"/api/renew?appId="+ config.api.appId+"&appSecret
 
 profile.shareBook = function(req,res){
     
-    console.log(req.query);
+    //console.log(req.query);
 
 
     if(!req.query.userId || req.query.userId=="undefined" || req.query.userId=="0"){
@@ -528,13 +528,13 @@ profile.shareBook = function(req,res){
                         //console.log(r);
 
                         if(r.length>0){
-                            console.log(config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
+                            //console.log(config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                             request.get(
                                 {
                                     url:config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
                                 },function(eeeee,rrrrr,body){
 
-                                    console.log(eeeee,body);
+                                    //console.log(eeeee,body);
                                     if(eeeee){
                                         res.end(JSON.stringify(code.requestError));
                                         return;
@@ -545,14 +545,14 @@ profile.shareBook = function(req,res){
                                     }catch(e){
                                         var result=code.jsonParseError
                                     }
-                                    console.log(result);
+                                    //console.log(result);
 
                                     //console.log(req.session);
                                     if(result.code==200) {
                                         result.data.avatar = r3[0].avatar;
                                         result.data.nickname = r3[0].nickname;
                                         result.data.userId=r3[0].userId;
-                                        console.log(result);
+                                        //console.log(result);
                                         res.end(JSON.stringify(result));
 
 
@@ -607,7 +607,7 @@ profile.shareMajor = function(req,res){
         res.end(JSON.stringify(code.lackParamsType));
         return;
     }
-    console.log("select * from secret_share where userId="+req.query.userId+" and type='"+req.query.type+"' limit 0,1");
+    //console.log("select * from secret_share where userId="+req.query.userId+" and type='"+req.query.type+"' limit 0,1");
 
     conn.query(
         {
@@ -633,7 +633,7 @@ profile.shareMajor = function(req,res){
                         //console.log(r);
 
                         if(r.length>0){
-                            console.log(config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
+                            //console.log(config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                             request.get(
                                 {
                                     url:config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
@@ -701,7 +701,7 @@ profile.shareMajor = function(req,res){
 
 profile.shareExam = function(req,res){
 
-    console.log(req.query);
+    //console.log(req.query);
 
 
     if(!req.query.userId || req.query.userId=="undefined" || req.query.userId=="0"){
@@ -725,7 +725,7 @@ profile.shareExam = function(req,res){
                 return;
             }
             
-            console.log(r3);
+            //console.log(r3);
             
             if(r3.length>0){
 
@@ -741,13 +741,13 @@ profile.shareExam = function(req,res){
                         //console.log(r);
 
                         if(r.length>0){
-                            console.log(config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
+                            //console.log(config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                             request.get(
                                 {
                                     url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
                                 },function(eeeee,rrrrr,body){
 
-                                    console.log(eeeee,body);
+                                    //console.log(eeeee,body);
                                     if(eeeee){
                                         res.end(JSON.stringify(code.requestError));
                                         return;
@@ -758,14 +758,14 @@ profile.shareExam = function(req,res){
                                     }catch(e){
                                         var result=code.jsonParseError
                                     }
-                                    console.log(result);
+                                    //console.log(result);
 
                                     //console.log(req.session);
                                     if(result.code==200) {
                                         result.data.avatar = r3[0].avatar;
                                         result.data.nickname = r3[0].nickname;
                                         result.data.userId=r3[0].userId;
-                                        console.log(result);
+                                        //console.log(result);
                                         res.end(JSON.stringify(result));
 
 
@@ -837,7 +837,7 @@ profile.share = function(req,res){
     };
 
 profile.updateCallback = function(req,res){
-    console.log(req.body.type);
+    //console.log(req.body.type);
     if(req.body.type){
         var first="";
         var keyword1=req.body.studentId;
@@ -900,7 +900,7 @@ profile.updateCallback = function(req,res){
                     res.end(JSON.stringify(code[noBind]));
                     return;
                 }
-                console.log("select openId from secret_open where userId="+r[0].userId+" and source='wechat'");
+                //console.log("select openId from secret_open where userId="+r[0].userId+" and source='wechat'");
                 conn.query(
                     {
                         sql:"select openId from secret_open where userId="+r[0].userId+" and source='wechat'"
@@ -916,17 +916,17 @@ profile.updateCallback = function(req,res){
                             return;
                         }
 //console.log(config.urls.wechatSendTemplate);
-console.log({
-    url:url?url:(config.site.url+"/u"),
-    template:(req.body.code==200)?"ok":"fail",
-    first:first,
-    remark:(req.body.code==200)?"点击这里或右下角自定义菜单查看结果":"点击查看详情",
-    keyword1:keyword1,
-    keyword2:keyword2,
-    keyword3:keyword3,
-    keyword4:(req.body.code==200)?"成功更新":req.body.message,
-    openId:rr[0].openId
-});
+//console.log({
+//    url:url?url:(config.site.url+"/u"),
+//    template:(req.body.code==200)?"ok":"fail",
+//    first:first,
+//    remark:(req.body.code==200)?"点击这里或右下角自定义菜单查看结果":"点击查看详情",
+//    keyword1:keyword1,
+//    keyword2:keyword2,
+//    keyword3:keyword3,
+//    keyword4:(req.body.code==200)?"成功更新":req.body.message,
+//    openId:rr[0].openId
+//});
                         request.post(
                             {
                                 url:config.urls.wechatSendTemplate,
@@ -986,7 +986,7 @@ profile.update = function(req,res){
                 res.end(JSON.stringify(code.mysqlError));
                 return;
             }
-            console.log(r);
+            //console.log(r);
 
             if (r.length > 0) {
 

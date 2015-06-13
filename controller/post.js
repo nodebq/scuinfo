@@ -81,8 +81,8 @@ console.log(req.body);
                     }
 
 
-                    console.log('下面一条输出是userinfo');
-                    console.log(user);
+                    //console.log('下面一条输出是userinfo');
+                    //console.log(user);
                     if (user.errcode) {
                         //没有拿到用户资料
 
@@ -281,19 +281,19 @@ post.createArticle = function(req,res,data){
                     res.end(JSON.stringify(code.mysqlError));
                     return;
                 }
-console.log('1');
-                console.log(datas.tag);
+//console.log('1');
+//                console.log(datas.tag);
                 
-                console.log('2');
+                //console.log('2');
                 
                 if (r.tags.length > 0) {
-                    console.log(r.tags);
+                    //console.log(r.tags);
                     var newTags = [];
                     for (var i = 0; i < r.tags.length; i++) {
-                        console.log(r[i]);
+                        //console.log(r[i]);
                         
-                        console.log('3');
-                        console.log(datas.tag);
+                        //console.log('3');
+                        //console.log(datas.tag);
                         if (!datas.tag[r.tags[i]]) {
                             newTags.push(r.tags[i]);
                         }
@@ -551,23 +551,23 @@ post.create = function(req,res){
                     res.end(JSON.stringify(code.mysqlError));
                     return;
                 }
-console.log('1');
-                console.log(datas.tag);
+//console.log('1');
+//                console.log(datas.tag);
                 
-                console.log('22');
+                //console.log('22');
                 if (r.tags.length > 0) {
                     var newTags = [];
                     for (var i = 0; i < r.tags.length; i++) {
                         //console.log(r);return;
-                        console.log(r.tags[i]);
-console.log('3');
+                        //console.log(r.tags[i]);
+//console.log('3');
                         
-                        console.log("是否有:"+datas.tag[r.tags[i]]);
+                        //console.log("是否有:"+datas.tag[r.tags[i]]);
 
 
                         if (!datas.tag[r.tags[i]]) {
 
-                            console.log(newTags);
+                            //console.log(newTags);
 
                             newTags.push(r.tags[i]);
                         }
@@ -600,7 +600,7 @@ console.log('3');
                                     for (var i = 0; i < r.tags.length; i++) {
                                         tagRelationValues[i] = '(' + common.time() + ',' + datas.tag[r.tags[i]] + ',' + rr.insertId + ')';
                                     }
-                                    console.log("insert into secret_tag_relation (date,tagId,postId) values " + tagRelationValues.join(','));
+                                    //console.log("insert into secret_tag_relation (date,tagId,postId) values " + tagRelationValues.join(','));
                                     conn.query(
                                         {
                                             sql: "insert into secret_tag_relation (date,tagId,postId) values " + tagRelationValues.join(',')
@@ -625,7 +625,7 @@ console.log('3');
                             tagRelationValues[i] = '(' + common.time() + ',"' + datas.tag[r.tags[i]] + '",' + rr.insertId + ')';
                         }
                         
-                        console.log("insert into secret_tag_relation (date,tagId,postId) values " + tagRelationValues.join(','));
+                        //console.log("insert into secret_tag_relation (date,tagId,postId) values " + tagRelationValues.join(','));
                         conn.query(
                             {
                                 sql: "insert into secret_tag_relation (date,tagId,postId) values " + tagRelationValues.join(',')

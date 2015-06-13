@@ -208,7 +208,7 @@ service.text = function(msg,req,res,next){
                     //处理留言
 
                     user.getUserId(msg.FromUserName,function(e,r) {
-                        console.log(e, r);
+                        //console.log(e, r);
                         if (e) {
                             if (e.code == 2020) {
 

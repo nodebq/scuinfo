@@ -101,7 +101,7 @@ tag.list= function (req, res) {
                             var postid = postId.join(',');
 //                        console.log('SELECT * FROM secret_post where id in('+postid+')');
 //                        return;
-                            console.log('SELECT * FROM secret_post where id in(' + postid + ')');
+//                            console.log('SELECT * FROM secret_post where id in(' + postid + ')');
                             conn.query(
                                 {
                                     sql: 'SELECT * FROM secret_post where id in(' + postid + ')'
@@ -344,7 +344,7 @@ tag.like = function (req, res) {
         }
     )
     }else{
-        console.log('Hey Siri,where is userId?');
+        //console.log('Hey Siri,where is userId?');
         res.end(JSON.stringify(code.paramError));
         return;
     }

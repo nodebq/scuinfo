@@ -291,7 +291,7 @@ move.love = function(o){
                 console.log(e);
                 return;
             } else {
-                console.log(r);
+                //console.log(r);
                 
                 if(r.length>0) {
 
@@ -336,7 +336,7 @@ move.love = function(o){
                                                 move.love({
                                                     start: o.start + 1
                                                 });
-                                                console.log(bbb);
+                                                //console.log(bbb);
                                             }
                                         }
                                     )
@@ -360,7 +360,7 @@ move.love = function(o){
 };
 
 move.hole = function(o){
-console.log(o);
+//console.log(o);
 //找到数据，然后request 接口
     conn.query(
 
@@ -421,7 +421,7 @@ console.log(o);
                                                 move.hole({
                                                     start: o.start + 1
                                                 });
-                                                console.log(bbb);
+                                                //console.log(bbb);
                                             }
                                         }
                                     )
@@ -462,7 +462,7 @@ move.wish = function(o){
                 console.log(e);
                 return;
             } else {
-                console.log(r);
+                //console.log(r);
 
                 if(r.length>0) {
 

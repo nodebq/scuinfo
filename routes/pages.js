@@ -23,7 +23,7 @@ var api = new API(config.wechat.appId,config.wechat.appSecret, function (callbac
     fs.writeFile('./token/access_token.txt', JSON.stringify(token), callback);
 });
 api.registerTicketHandle(function (type, callback) {
-        console.log(type);
+        //console.log(type);
 
         // 传入一个获取全局ticket的方法
         fs.readFile('./token/ticketToken.txt', 'utf8', function (err, txt) {
@@ -319,7 +319,7 @@ pages.major = function(req,res){
 
 };
 pages.shareBook = function(req,res){
-    console.log(req.session);
+    //console.log(req.session);
     var url = req.protocol+"://"+config.host.url+req.originalUrl;
     var param = {
         url: url
@@ -357,7 +357,7 @@ pages.shareBook = function(req,res){
 };
 
 pages.shareMajor = function(req,res){
-    console.log(req.session);
+    //console.log(req.session);
     var url = req.protocol+"://"+config.host.url+req.originalUrl;
     var param = {
         url: url
@@ -395,7 +395,7 @@ pages.shareMajor = function(req,res){
 };
 
 pages.shareExam = function(req,res){
-    console.log(req.session);
+    //console.log(req.session);
     var url = req.protocol+"://"+config.host.url+req.originalUrl;
     var param = {
         url: url

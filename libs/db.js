@@ -81,7 +81,7 @@ var sql;
 };
 
 db.getWechatContainsText = function(o,cb){
-    console.log("select * from wechat_text where name like '%"+ o.name+"%'");
+    //console.log("select * from wechat_text where name like '%"+ o.name+"%'");
     var sql="select * from wechat_text where name like '%"+ o.name+"%'";
 
     conn.query(
@@ -93,7 +93,7 @@ db.getWechatContainsText = function(o,cb){
                 console.log(e);
                 return;
             }
-            console.log(r);
+            //console.log(r);
             if(r.length>0){
 
                 cb(null,r);
@@ -107,7 +107,7 @@ db.getWechatContainsText = function(o,cb){
 };
 
 db.getWechatContainsNews = function(o,cb){
-    console.log("select * from wechat_news where name like '%"+ o.name+"%'");
+    //console.log("select * from wechat_news where name like '%"+ o.name+"%'");
     var sql="select * from wechat_news where name like '%"+ o.name+"%'";
 
     conn.query(
@@ -134,7 +134,7 @@ db.getWechatContainsNews = function(o,cb){
 
 
 db.getWechatText = function(o,cb){
-console.log("select * from wechat_text where name='"+ o.name+"'");
+//console.log("select * from wechat_text where name='"+ o.name+"'");
        var sql="select * from wechat_text where name='"+ o.name+"'";
 
     conn.query(
@@ -146,7 +146,7 @@ console.log("select * from wechat_text where name='"+ o.name+"'");
                 console.log(e);
                 return;
             }
-            console.log(r);
+            //console.log(r);
             if(r.length>0){
 
                 cb(null,r[0].content);
@@ -169,7 +169,7 @@ db.getUser = function(o,cb){
                 cb(code.mysqlError);
                 return;
             }
-            console.log(r);
+            //console.log(r);
         }
     )
 

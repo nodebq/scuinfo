@@ -97,7 +97,7 @@ like.post = function(req,res){
                           if (r5.length == 0) {
 
                               console.log('加入微博发布队列');
-                              console.log("insert into secret_weibo_query (postId,createAt) values (" + parseInt(req.body.id) + "," + common.time() + ")");
+                              //console.log("insert into secret_weibo_query (postId,createAt) values (" + parseInt(req.body.id) + "," + common.time() + ")");
                               conn.query(
                                   {
                                       sql: "insert into secret_weibo_query (postId,createAt) values (" + parseInt(req.body.id) + "," + common.time() + ")"

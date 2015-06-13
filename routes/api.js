@@ -537,7 +537,7 @@ api.before = function (req, res, next) {
 };
 api.tags = function (req, res) {
     //console.log('xxx')
-    console.log(datas);
+    //console.log(datas);
     res.end(common.format(200, "", datas.tag));
 };
 module.exports = api;

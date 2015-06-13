@@ -45,8 +45,8 @@ if(e){
     cb(e);
     return;
 }
-console.log(r);
-        console.log("select studentId,password from secret_"+ ((msg.field=='library')?"library":"account")+" where userId = "+ r);
+//console.log(r);
+//        console.log("select studentId,password from secret_"+ ((msg.field=='library')?"library":"account")+" where userId = "+ r);
 conn.query(
     {
         sql:"select studentId,password from secret_"+ ((msg.field=='library')?"library":"account")+" where userId = "+ r
@@ -56,7 +56,7 @@ conn.query(
             cb(code.mysqlError);
             return;
         }
-        console.log(rr);
+        //console.log(rr);
 
         if(rr.length>0) {
             cb(null, {
@@ -83,7 +83,7 @@ conn.query(
 
 user.score = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
-console.log(e,r);
+//console.log(e,r);
         if(e){
 
 
@@ -102,7 +102,7 @@ console.log(e,r);
                             res.reply(JSON.stringify(eee));
                             return;
                         }
-                        console.log(rrrr);
+                        //console.log(rrrr);
                         res.reply(rrrr);
 
                     });
@@ -122,7 +122,7 @@ console.log(e,r);
                         res.reply(JSON.stringify(eee));
                         return;
                     }
-                    console.log(rrrr);
+                    //console.log(rrrr);
                     res.reply(rrrr);
 
                 });
@@ -135,13 +135,13 @@ console.log(e,r);
             res.reply(e.message);
             return;
         }
-        console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password);
+        //console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password);
         request.get(
             {
                 url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password
             },function(eeeee,rrrrr,body){
                 
-                console.log(eeeee,body);
+                //console.log(eeeee,body);
                 if(eeeee){
                     res.reply(code.requestError.message);
                     return;
@@ -152,12 +152,12 @@ console.log(e,r);
                 }catch(e){
                     var scores= {};
                 }
-console.log(scores);
-                console.log(scores.code);
+//console.log(scores);
+//                console.log(scores.code);
                 if(scores.code==200){
-                    console.log(scores);
+                    //console.log(scores);
                     var scoresData=scores.data.scores;
-                    console.log(scoresData);
+                    //console.log(scoresData);
                     if(scoresData.length>0){
 
                         var text=scoresData[0].term+"成绩:";
@@ -180,7 +180,7 @@ console.log(scores);
                                 res.reply(JSON.stringify(eee));
                                 return;
                             }
-                            console.log(rrrr);
+                            //console.log(rrrr);
                             res.reply(rrrr);
                             return;
                         });
@@ -197,7 +197,7 @@ console.log(scores);
                             res.reply(JSON.stringify(eee));
                             return;
                         }
-                        console.log(rrrr);
+                        //console.log(rrrr);
                         res.reply(rrrr);
 
                     });
@@ -212,7 +212,7 @@ console.log(scores);
                             res.reply(JSON.stringify(eee));
                             return;
                         }
-                        console.log(rrrr);
+                        //console.log(rrrr);
                         res.reply(rrrr);
                         return;
 
@@ -239,7 +239,7 @@ console.log(scores);
 user.book = function(msg,req,res,next){
     msg.field="library";
     user.valid(msg,req,res,function(e,r){
-        console.log(e,r);
+        //console.log(e,r);
         if(e){
 
 
@@ -258,7 +258,7 @@ user.book = function(msg,req,res,next){
                             res.reply(JSON.stringify(eee));
                             return;
                         }
-                        console.log(rrrr);
+                        //console.log(rrrr);
                         res.reply(rrrr);
 
                     });
@@ -278,7 +278,7 @@ user.book = function(msg,req,res,next){
                         res.reply(JSON.stringify(eee));
                         return;
                     }
-                    console.log(rrrr);
+                    //console.log(rrrr);
                     res.reply(rrrr);
 
                 });
@@ -288,13 +288,13 @@ user.book = function(msg,req,res,next){
             res.reply(e.message);
             return;
         }
-        console.log(config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password);
+        //console.log(config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password);
         request.get(
             {
                 url:config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password
             },function(eeeee,rrrrr,body){
 
-                console.log(eeeee,body);
+                //console.log(eeeee,body);
                 if(eeeee){
                     res.reply(code.requestError.message);
                     return;
@@ -304,12 +304,12 @@ user.book = function(msg,req,res,next){
                 }catch(e){
                     var books= {};
                 }
-                console.log(books);
-                console.log(books.code);
+                //console.log(books);
+                //console.log(books.code);
                 if(books.code==200){
-                    console.log(books);
+                    //console.log(books);
                     var booksData=books.data.books;
-                    console.log(booksData);
+                    //console.log(booksData);
                     if(booksData.length>0){
 
                         var text="我借的图书:";
@@ -331,7 +331,7 @@ user.book = function(msg,req,res,next){
                                 res.reply(JSON.stringify(eee));
                                 return;
                             }
-                            console.log(rrrr);
+                            //console.log(rrrr);
                             res.reply(rrrr);
                             return;
                         });
@@ -348,7 +348,7 @@ user.book = function(msg,req,res,next){
                             res.reply(JSON.stringify(eee));
                             return;
                         }
-                        console.log(rrrr);
+                        //console.log(rrrr);
                         res.reply(rrrr);
 
                     });
@@ -363,7 +363,7 @@ user.book = function(msg,req,res,next){
                             res.reply(JSON.stringify(eee));
                             return;
                         }
-                        console.log(rrrr);
+                        //console.log(rrrr);
                         res.reply(rrrr);
                         return;
 
@@ -386,7 +386,7 @@ user.book = function(msg,req,res,next){
 
 user.major = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
-        console.log(e,r);
+        //console.log(e,r);
         if(e){
 
 
@@ -405,7 +405,7 @@ user.major = function(msg,req,res,next){
                             res.reply(JSON.stringify(eee));
                             return;
                         }
-                        console.log(rrrr);
+                        //console.log(rrrr);
                         res.reply(rrrr);
 
                     });
@@ -425,7 +425,7 @@ user.major = function(msg,req,res,next){
                         res.reply(JSON.stringify(eee));
                         return;
                     }
-                    console.log(rrrr);
+                    //console.log(rrrr);
                     res.reply(rrrr);
 
                 });
@@ -498,7 +498,7 @@ user.major = function(msg,req,res,next){
                                 res.reply(JSON.stringify(eee));
                                 return;
                             }
-                            console.log(rrrr);
+                            //console.log(rrrr);
                             res.reply(rrrr);
                             return;
                         });
@@ -515,7 +515,7 @@ user.major = function(msg,req,res,next){
                             res.reply(JSON.stringify(eee));
                             return;
                         }
-                        console.log(rrrr);
+                        //console.log(rrrr);
                         res.reply(rrrr);
 
                     });
@@ -530,7 +530,7 @@ user.major = function(msg,req,res,next){
                             res.reply(JSON.stringify(eee));
                             return;
                         }
-                        console.log(rrrr);
+                        //console.log(rrrr);
                         res.reply(rrrr);
                         return;
 
@@ -554,7 +554,7 @@ user.major = function(msg,req,res,next){
 
 user.exam = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
-        console.log(e,r);
+        //console.log(e,r);
         if(e){
 
 
@@ -573,7 +573,7 @@ user.exam = function(msg,req,res,next){
                             res.reply(JSON.stringify(eee));
                             return;
                         }
-                        console.log(rrrr);
+                        //console.log(rrrr);
                         res.reply(rrrr);
 
                     });
@@ -593,7 +593,7 @@ user.exam = function(msg,req,res,next){
                         res.reply(JSON.stringify(eee));
                         return;
                     }
-                    console.log(rrrr);
+                    //console.log(rrrr);
                     res.reply(rrrr);
 
                 });
@@ -606,7 +606,7 @@ user.exam = function(msg,req,res,next){
             res.reply(e.message);
             return;
         }
-        console.log(config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password);
+        //console.log(config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password);
         request.get(
             {
                 url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password
@@ -657,7 +657,7 @@ user.exam = function(msg,req,res,next){
                                 res.reply(JSON.stringify(eee));
                                 return;
                             }
-                            console.log(rrrr);
+                            //console.log(rrrr);
                             res.reply(rrrr.replace("\n","\n"));
                             return;
                         });
@@ -674,7 +674,7 @@ user.exam = function(msg,req,res,next){
                             res.reply(JSON.stringify(eee));
                             return;
                         }
-                        console.log(rrrr);
+                        //console.log(rrrr);
                         res.reply(rrrr);
 
                     });
@@ -689,7 +689,7 @@ user.exam = function(msg,req,res,next){
                             res.reply(JSON.stringify(eee));
                             return;
                         }
-                        console.log(rrrr);
+                        //console.log(rrrr);
                         res.reply(rrrr);
                         return;
 

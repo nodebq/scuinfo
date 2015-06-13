@@ -33,7 +33,7 @@ conn.query(
             datas.tagById[r[i].id] = r[i].name;
         }
         console.log('tag载入完成');
-        console.log(datas.tag);
+        //console.log(datas.tag);
         cb(null);
     }
 )
@@ -64,7 +64,7 @@ datas.updateWechatToken = function(cb){
                 code:result.errcode,
                 message:result.message
             });
-            console.log(result);
+            //console.log(result);
 
             return;
         }
@@ -72,7 +72,7 @@ datas.updateWechatToken = function(cb){
 
         datas.wechat.accessToken = result.access_token;
         datas.wechat.tokenExpire = parseInt(result.expires_in)+common.time();
-        console.log(datas.wechat);
+        //console.log(datas.wechat);
         console.log('wechat accessToken load');
         cb(null, result);
     });
@@ -102,15 +102,15 @@ datas.updateWechatJsApiTicket = function(cb){
                         code:result.errcode,
                         message:result.message
                     });
-                    console.log(result);
+                    //console.log(result);
 
                     return;
                 }
 
                 datas.wechat.jsApiTicket = result.ticket;
                 datas.wechat.ticketExpire = parseInt(result.expires_in)+common.time();
-                console.log(datas.wechat);
-                console.log('wechat jsApiTicket load');
+                //console.log(datas.wechat);
+                //console.log('wechat jsApiTicket load');
                 cb(null, result);
 
             }

@@ -59,6 +59,13 @@ router.post('/weibo',function(req,res,next){
         //    "type": "text",
         //    "data":"{}"
         //}
+        //
+        //{ content: '收到。',
+        //    result: true,
+        //    type: 'text',
+        //    receiver_id: 2786119320,
+        //    sender_id: 3656973697,
+        //    data: '%7B%22text%22%3A%22%E6%94%B6%E5%88%B0%E3%80%82%22%7D' }
 
         res.writeHead(200);
         // 响应空字符串，用于响应慢的情况，避免微信重试
@@ -70,7 +77,6 @@ router.post('/weibo',function(req,res,next){
         var type = 'text';
 
         var data={};
-        info.content = content || '';
         if (Array.isArray(content)) {
             type = 'news';
 
@@ -103,6 +109,8 @@ router.post('/weibo',function(req,res,next){
         info.sender_id = req.body.receiver_id;
         info.data=encodeURIComponent(JSON.stringify(data));
         console.log(info);
+
+        console.log(JSON.stringify(info));
             res.end(JSON.stringify(info));
 
     };

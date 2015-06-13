@@ -164,8 +164,100 @@ router.post('/weibo',function(req,res,next){
             break;
 
         case 'event':
+
+            switch (message.data.subtype) {
+
+                case 'subscribe':
+                    service.subscribe(message,req,res,next);
+                    break;
+
+                case 'click':
+
+                switch(message.data.key)
+                {
+
+
+                case
+                    'score'
+                :
+                    user.score(message, req, res, next);
+                    break;
+                case
+                    'book'
+                :
+                    user.book(message, req, res, next);
+                    break;
+                case
+                    'major'
+                :
+                    user.major(message, req, res, next);
+                    break;
+
+                case
+                    'exam'
+                :
+                    user.exam(message, req, res, next);
+                    break;
+                case
+                    'advise'
+                :
+                    service.advise(message, req, res, next);
+                    break;
+                case
+                    'post'
+                :
+                    service.post(message, req, res, next);
+                    break;
+                case
+                    'fm'
+                :
+                    service.fm(message, req, res, next);
+
+                    break;
+
+                }
+            }
+
+
             break;
         case 'mention':
+        //
+        //{
+        //    "type": "mention",
+        //    "receiver_id": 1902538057,
+        //    "sender_id": 2489518277,
+        //    "created_at": "Mon Jul 16 18:09:20 +0800 2012",
+        //    "text": "被@的微博或评论文本信息",
+        //    "data": {
+        //    "subtype": "MENTION_TYPE,
+        //    "key": "MENTION_KEY"
+        //}
+        //}
+
+            switch(message.text){
+
+                case '成绩':
+                case 'cj':
+                    user.score(message,req,res,next);
+                    break;
+                case '图书':
+                    user.book(message,req,res,next);
+                    break;
+                case '课表':
+                    user.major(message,req,res,next);
+                    break;
+                case '考表':
+                    user.exam(message,req,res,next);
+                    break;
+
+                case '退出':
+                case 'tc':
+                    service.signout(message,req,res,next);
+                    break;
+            }
+
+
+
             break;
 
 

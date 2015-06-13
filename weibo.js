@@ -136,17 +136,28 @@ router.post('/weibo',function(req,res,next){
             message.Content=message.text;
 
             switch(message.Content){
+
                 case '成绩':
                 case 'cj':
+                case '我的成绩':
+                case 'score':
                     user.score(message,req,res,next);
                     break;
+                case 'book':
+                case '我的图书':
                 case '图书':
                     user.book(message,req,res,next);
                     break;
+                case '课单':
+                case 'major':
                 case '课表':
                     user.major(message,req,res,next);
                     break;
                 case '考表':
+                case '考试':
+                case 'exam':
+                case '我的考表':
+
                     user.exam(message,req,res,next);
                     break;
 
@@ -240,24 +251,32 @@ router.post('/weibo',function(req,res,next){
         //    "key": "MENTION_KEY"
         //}
         //}
-            console.log(message.text.replace("@scuinfo",""));
-            
-            console.log(message.text.replace("@scuinfo","").trim());
+
             message.Content=message.text.replace("@scuinfo","").trim();
 
             switch(message.Content){
 
                 case '成绩':
                 case 'cj':
+                case '我的成绩':
+                case 'score':
                     user.score(message,req,res,next);
                     break;
+                case 'book':
+                case '我的图书':
                 case '图书':
                     user.book(message,req,res,next);
                     break;
+                case '课单':
+                case 'major':
                 case '课表':
                     user.major(message,req,res,next);
                     break;
                 case '考表':
+                    case '考试':
+                case 'exam':
+                case '我的考表':
+
                     user.exam(message,req,res,next);
                     break;
 

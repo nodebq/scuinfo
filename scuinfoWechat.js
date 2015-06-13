@@ -39,17 +39,28 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
     // MsgId: '5837397576500011341' }
 
     switch(message.Content){
+
         case '成绩':
         case 'cj':
+        case '我的成绩':
+        case 'score':
             user.score(message,req,res,next);
             break;
+        case 'book':
+        case '我的图书':
         case '图书':
             user.book(message,req,res,next);
             break;
+        case '课单':
+        case 'major':
         case '课表':
             user.major(message,req,res,next);
             break;
         case '考表':
+        case '考试':
+        case 'exam':
+        case '我的考表':
+
             user.exam(message,req,res,next);
             break;
 

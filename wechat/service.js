@@ -53,6 +53,21 @@ service.advise = function(msg,req,res,next){
                 res.reply(code.mysqlError.message);
                 return;
             }
+            if(msg.source=='weibo'){
+                dbs.getWechatText({
+                    name: "adviseWeibo"
+                }, function (eee, rrrr) {
+                    if (eee) {
+                        res.reply(JSON.stringify(eee));
+                        return;
+                    }
+                    //console.log(rrrr);
+                    res.reply(rrrr);
+
+                });
+                return;
+            }
+
             dbs.getWechatText({
                 name: "advise"
             }, function (eee, rrrr) {
@@ -71,6 +86,20 @@ service.advise = function(msg,req,res,next){
 
 
 service.subscribe = function(msg,req,res,next){
+    if(msg.source=='weibo'){
+        dbs.getWechatText({
+            name: "subscribeWeibo"
+        }, function (eee, rrrr) {
+            if (eee) {
+                res.reply(JSON.stringify(eee));
+                return;
+            }
+            //console.log(rrrr);
+            res.reply(rrrr);
+
+        });
+        return;
+    }
     dbs.getWechatText({
         name:"subscribe"
     },function(eee,rrrr){
@@ -99,6 +128,21 @@ conn.query(
             return;
         }
         //todo 严谨起见还是判断下id好
+
+        if(msg.source=='weibo'){
+            dbs.getWechatText({
+                name: "postWeibo"
+            }, function (eee, rrrr) {
+                if (eee) {
+                    res.reply(JSON.stringify(eee));
+                    return;
+                }
+                //console.log(rrrr);
+                res.reply(rrrr);
+
+            });
+            return;
+        }
 
     dbs.getWechatText({
         name:"post"
@@ -290,7 +334,7 @@ service.text = function(msg,req,res,next){
                                 console.log(e9);
                                 return;
                             }
-console.log(b9);
+//console.log(b9);
                             try{
                                 var result = JSON.parse(b9);
                             }catch(e){

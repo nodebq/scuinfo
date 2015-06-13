@@ -7,6 +7,9 @@ var crypto = require('crypto');
 var router = express.Router();
 var app = express();
 var config=require('./config.js');
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 /**
  * 检查签名
  */

@@ -3,6 +3,7 @@
  */
 var express = require('express');
 var weibo={};
+var crypto = require('crypto');
 var router = express.Router();
 var app = express();
 var config=require('./config.js');

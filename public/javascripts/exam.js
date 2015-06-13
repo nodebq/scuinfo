@@ -65,6 +65,8 @@
 
                 }
                 $("#shareSection").html(html).clone();
+                $("#shareTips").html('<a type="button" wechatTitle="'+ r.data.nickname+'期末有'+data.length+'门试要考'+word+'" wechatDesc="点击查看考表" wechatImg="'+ r.data.avatar+'" wechatUrl="'+getExamHref({id: r.data.userId})+'" class="am-btn am-btn-default am-radius am-btn-block hrefNone shareTheBookList"><i class="am-icon-wechat"></i> 分享我的考表</a>').clone();
+
 
             }else{
                 //没有图书
@@ -226,6 +228,103 @@
                 wbRalateUid	= $("#weiboUid").val(),
                 wbPic			= "",
                 wbLanguage	= "zh_cn";
+            location.href = "http://service.weibo.com/share/share.php?url="+wbUrl+"&appkey="+wbAppkey+"&title="+wbTitle+"&pic="+wbPic+"&ralateUid="+wbRalateUid+"&language="+wbLanguage+"";
+
+        }
+
+    });
+
+    $("#shareTips").on('click','.shareTheBookList',function() {
+        wechatTitle = $(this).attr('wechatTitle');
+        wechatDesc = $(this).attr('wechatDesc');
+        wechatLink = $(this).attr('wechatUrl');
+        wechatImg = $(this).attr('wechatImg');
+        $.post('/api/share',{
+            userId:$("#userId").val(),
+            type:"exam",
+            avatar:wechatImg,
+            nickname:$("#nickname").val(),
+            gender:$("#gender").val()
+        },function(data){
+            console.log(data);
+        });
+
+        if(weixinBrowser) {
+            $("#wechatShareTips").css('display', "block");
+            //console.log(wechatLink);
+            wx.onMenuShareTimeline({
+                title: wechatTitle,
+                link: wechatLink,
+                imgUrl: wechatImg,
+                trigger: function (res) {
+                    // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                    //alert('用户点击分享到朋友圈');
+                },
+                success: function (res) {
+                    //alert('已分享');
+                    $("#wechatShareTips").css('display', "none");
+                    //插入分享表
+
+                },
+                cancel: function (res) {
+                    $("#wechatShareTips").css('display', "none");
+
+                },
+                fail: function (res) {
+                    $("#wechatShareTips").css('display', "none");
+                    alert(JSON.stringify(res));
+                }
+            });
+
+
+            wx.onMenuShareAppMessage({
+                title: wechatTitle, // 分享标题
+                desc: wechatDesc, // 分享描述
+                link: wechatLink, // 分享链接
+                imgUrl: wechatImg, // 分享图标
+                type: 'link', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    $("#wechatShareTips").css('display', "none");
+
+                },
+                cancel: function () {
+                    $("#wechatShareTips").css('display', "none");
+
+                }
+            });
+
+
+
+            wx.onMenuShareQQ({
+                title: wechatTitle, // 分享标题
+                desc: wechatDesc, // 分享描述
+                link: wechatLink, // 分享链接
+                imgUrl: wechatImg, // 分享图标
+                type: 'link', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    $("#wechatShareTips").css('display', "none");
+                },
+                cancel: function () {
+                    $("#wechatShareTips").css('display', "none");
+
+                }
+            });
+
+            // });
+        }else{
+
+
+            article=$(this);
+            wbUrl			= encodeURIComponent(article.attr('wechatUrl')),
+                wbAppkey		= $("#weiboAppKey").val(),
+                wbTitle			= encodeURIComponent(article.attr('wechatTitle')),
+                wbRalateUid	= $("#weiboUid").val(),
+                wbPic			= "",
+                wbLanguage	= "zh_cn";
+            //console.log('2222');
+            //console.log(wbTitle);
             location.href = "http://service.weibo.com/share/share.php?url="+wbUrl+"&appkey="+wbAppkey+"&title="+wbTitle+"&pic="+wbPic+"&ralateUid="+wbRalateUid+"&language="+wbLanguage+"";
 
         }

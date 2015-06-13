@@ -25,9 +25,17 @@
                     lessonCount += lesson.length;
                 }
             }
-            console.log(lessonCount);
+            var word="";
 
-            $("#shareTheBookList").attr('wechatTitle', r.data.nickname+"下学期的共要上"+(lessonCount*17)+"小时的课").clone();
+            var percent=parseInt(lessonCount/60*100);
+
+            if(percent>50){
+                word="，哈哈哈哈哈哈"
+            }else{
+                word=",约吗？"
+            }
+
+            $("#shareMajor").attr('wechatTitle', r.data.nickname+"下学期的满课率是"+percent+"%"+word).clone();
             $("#shareTheBookList").attr('wechatDesc','点击查看').clone();
             $("#shareTheBookList").attr('wechatImg', r.data.avatar).clone();
             $("#shareTheBookList").attr('wechatUrl',getBookHref({id: r.data.userId})).clone();

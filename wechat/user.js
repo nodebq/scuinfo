@@ -640,7 +640,7 @@ user.exam = function(msg,req,res,next){
 
                         for(var i=0;i<examsData.length;i++){
                             if(examsData[i].examName=='期末考试') {
-                                text += "\n\n"+examsData[i].name + "\n" + common.dateChina(examsData[i].start*1000)+'~'+common.hour(examsData[i].end*1000) + "";
+                                text += "\n\n["+(((new Date().getTime()/1000)>data[i].end)?"已完成":"未完成")+"]"+examsData[i].name + "\n" + common.dateChina(examsData[i].start*1000)+'~'+common.hour(examsData[i].end*1000) + "";
                             }
                         }
 

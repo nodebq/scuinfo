@@ -696,7 +696,7 @@ service.log = function(msg){
         {
             sql:"insert into wechat_log (openId,content,createAt) values ('"+msg.FromUserName+"','"+msg.Content+"',"+common.time()+")"
         },function(e,r){
-            console.log(e,'记录日志成功');
+            //console.log(e,'记录日志成功');
         }
     )
 

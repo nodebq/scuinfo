@@ -8,7 +8,7 @@
         $.post('/api/update', {type: "book"}, function (data) {
 
             refreshButton.removeClass('am-icon-spin');
-
+// console.log(data)
             if(data.code==200){
 
                 $("#modalUpdateTips").modal('open');

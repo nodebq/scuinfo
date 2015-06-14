@@ -1,11 +1,11 @@
 var check = require('../libs/check.js');
 var common = require('../libs/common.js');
 var code = require('../libs/code.js');
-var async = require('async');
 var conn = require('../libs/mysql.js');
 var datas = require('../libs/datas.js');
 var config = require('../config.js');
 var request = require('request');
+var aes=require('../libs/aes.js');
 //var tokenName = 1;
 var profile = {
 
@@ -180,10 +180,13 @@ profile.score = function(req,res){
             //console.log(r);
 
             if(r.length>0){
+                
+                console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password));
+                
                 //console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                 request.get(
                     {
-                        url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
+                        url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)
                     },function(eeeee,rrrrr,body){
 
                         //console.log(eeeee,body);

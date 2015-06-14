@@ -27,7 +27,7 @@
 
 $.get('/api/major',function(r){
     $("#loading").css('display','none');
-    console.log(r);
+    //console.log(r);
     if(r.code==200){
         var lessonCount=0;
         for (var i=0;i< r.data.majors.length;i++){
@@ -53,7 +53,7 @@ $.get('/api/major',function(r){
         $("#shareMajor").attr('wechatUrl',getMajorHref({id: r.data.userId})).clone();
         $("#userAvatar").html("<img src='"+ r.data.avatar+"'>");
         $("#nickname").text(r.data.nickname);
-        $("#profile-post-count").text(r.data.count);
+        $("#profile-post-count").text(r.data.majors.length);
         var majorsData = r.data.majors;
         var creditCount=0;
         for (var i=0;i< majorsData.length;i++){

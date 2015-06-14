@@ -108,7 +108,7 @@ router.post('/weibo',function(req,res,next){
         info.receiver_id = req.body.sender_id;
         info.sender_id = req.body.receiver_id;
         info.data=encodeURIComponent(JSON.stringify(data));
-        console.log(info);
+        //console.log(info);
         //console.log(JSON.stringify(info));
             res.end(JSON.stringify(info));
 

@@ -925,24 +925,47 @@ post.postsView = function (req, res) {
                     }
                     //console.log(data);
                     var topStatus=0;
+                    function compare(a,b){
+                        if(a.id> b.id){
+                            return -1;
+                        }else{
+                            return 1
+                        }
+                    }
                     if(flag==0) {
                         var newData=[];
+                        //console.log(data);
                         for (var i = 0; i < data.length; i++) {
                             if (data[i].top == 1) {
+                                
+                                //console.log(i);
                                 newData.push(data[i]);
                                 data.splice(i,1);
                                 topStatus=1;
                             }
                         }
+                        
+                        //console.log(data);
+
 
                         if(topStatus==1){
+
+                            data.sort(compare);
+                            //console.log(data);
+
                             for(var i=0;i<data.length;i++){
                                 newData.push(data[i]);
                             }
                             data=newData;
 
+                        }else{
+                            data.sort(compare);
+
                         }
 
+
+                    }else{
+                        data.sort(compare);
 
                     }
 

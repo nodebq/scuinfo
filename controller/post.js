@@ -919,7 +919,7 @@ post.postsView = function (req, res) {
 
 
 
-                    data.sort(compare);
+                    //data.sort(compare);
                     res.end(common.format(200, "success", data));
                 }
             )

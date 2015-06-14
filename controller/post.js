@@ -862,6 +862,7 @@ post.postsView = function (req, res) {
 
                                     conn.query(
                                         {
+
                                             sql:'select userId from secret_post_like where postId ='+item.id
                                         },function(e3,r3){
                                             if(e3){
@@ -915,25 +916,9 @@ post.postsView = function (req, res) {
                         res.end(JSON.stringify(err));
                         return;
                     }
-                    function compare(value1,value2){
-                        if(value1.date < value2.date){
-                            if(value1.top<=value2.top){
-                                return 1
-                            }else{
-                                return -1
-                            }
 
 
-                        }else if (value1.date >value2.date) {
-                            if(value1.top>=value2.top){
-                                return -1
-                            }else{
-                                return 1
-                            }
 
-
-                        }
-                    }
                     data.sort(compare);
                     res.end(common.format(200, "success", data));
                 }

@@ -99,7 +99,7 @@
             };
             $.get(url,function(data){
                 var post ='<article class="posts '+gender[data.data.gender]+'" id="'+data.data.id+'" href="'+
-                getPostHref({id:data.data.id})+'" userId="'+data.data.userId+'" img="'+getWechatImg({gender:data.data.gender})+'" wechatTitle="'+getWechatTitle({title:data.data.title})+'" weiboTitle="'+getWeiboTitle({title:data.data.title})+'" level="'+data.data.level+'" author="'+data.data.author+'">'+
+                getPostHref({id:data.data.id})+'" userId="'+data.data.userId+'" img="'+data.data.avatar+'" wechatTitle="'+getWechatTitle({title:data.data.title})+'" weiboTitle="'+getWeiboTitle({title:data.data.title})+'" level="'+data.data.level+'" author="'+data.data.author+'">'+
                 '<header class="posts-header">' +
                 '<div class="am-text-truncate posts-header-left "><span class="posts-header-user">'+
                 '<img src="'+data.data.avatar+'" />'+

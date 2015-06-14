@@ -437,8 +437,15 @@ check.register = function(o,cb){
         nickname= o.nickname;
     }
 
+    if(!o.gender){
+        gender=0;
+    }else{
+        gender= o.gender;
+    }
     if(!o.avatar){
-        avatar=libs.randomAvatar();
+        avatar=libs.randomAvatar({
+            gender:gender
+        });
     }else{
         //todo  正则
         avatar= o.avatar;
@@ -457,11 +464,7 @@ check.register = function(o,cb){
         unionId= o.unionId;
     }
 
-    if(!o.gender){
-        gender=0;
-    }else{
-        gender= o.gender;
-    }
+
 
     if(!o.redirect){
         redirect = '/';
@@ -497,7 +500,7 @@ check.renew = function(o,cb){
     }
 
     if(!o.borId){
-        cb(code.lackParamsBorId)
+        cb(code.lackParamsBorId);
         return;
     }
     cb(null,o);

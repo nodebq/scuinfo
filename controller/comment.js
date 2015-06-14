@@ -122,82 +122,68 @@ comment.commentView = function (req, res) {
                     //
                     var items = {};
                     //console.log(item);
-                    conn.query(
-                        {
-                            sql: 'select userId from `secret_comment_like` where commentId = ' + item.id + ''
-                        }, function (e1, r1) {
-                            //console.log('select count ("postId") from `secret_comment` where "postId" = "' + item.id + '"')
 
-                            if (e1) {
-                                console.log(e1);
-                                callback(code.mysqlError);
-                                return;
-                            }
-                            //console.log(r1);
-                            //console.log('select count("commentId") from `secret_comment_like` where "commentId" = ' + item.id);
-                                conn.query(
-                                    {//
-                                        sql: 'select count("commentId") from `secret_comment_like` where commentId = ' + item.id
-                                    }, function (e2, r2) {
-                                        //console.log('select count("commentId") from `secret_comment_like` where commentId = ' + item.id);
-                                        if (e2) {
-                                            console.log(e2);
-                                            callback(code.mysqlError);
-                                            return;
+
+
+                        conn.query(
+                            {
+                                sql: 'select userId from `secret_comment_like` where commentId = ' + item.id
+                            }, function (e1, r1) {
+                                //console.log('select count ("postId") from `secret_comment` where "postId" = "' + item.id + '"')
+
+                                if (e1) {
+                                    console.log(e1);
+                                    callback(code.mysqlError);
+                                    return;
+                                }
+
+                                items.id = item.id;
+                                items.parentId = item.parentId;
+                                items.gender = item.gender;
+                                items.secret = item.secret;
+                                items.avatar = item.avatar;
+                                items.nickname = item.nickname;
+                                //console.log(item.userId);return;
+                                items.level = req.session.level;
+                                if (item.userId == req.session.userId) {
+                                    items.author = 1;
+                                    items.userId=item.userId;
+                                } else {
+                                    items.author = 0;
+                                    items.userId=item.userId;
+                                }
+
+                                items.content = item.content;
+
+                                var like=0;
+
+
+                                if(r1.length>0 && req.session.userId ){
+
+
+                                    for(var i=0;i<r1.length;i++){
+                                        if(r1[i].userId==req.session.userId){
+                                            like=1;
                                         }
-                                        //console.log(r2);
-                                       conn.query(
-                                           {
-                                               sql:'select userId from secret_post where id='+req.query.postId
-                                           },function(e3,r3){
-                                               if(e3){
-                                                   console.log(e3);
-                                                   callback(code.mysqlError);
-                                                   return;
-                                               }
-                                               items.id = item.id;
-                                               items.parentId = item.parentId;
-                                               items.gender = item.gender;
-                                               items.secret = item.secret;
-                                               items.avatar = item.avatar;
-                                               items.nickname = item.nickname;
-                                               //console.log(item.userId);return;
-                                               items.level = req.session.level;
-                                               if (item.userId == req.session.userId) {
-                                                   items.author = 1;
-                                                   items.userId=item.userId;
-                                               } else {
-                                                   items.author = 0;
-                                                   items.userId=item.userId;
-                                               }
-
-                                               items.content = item.content;
-
-                                               if(r1.length>0) {
-                                                   if (r1.length>0&&r1[0].userId == req.session.userId) {
-                                                       items.like = 1;
-                                                   } else {
-                                                       items.like = 0;
-                                                   }
-                                               }else{
-                                                   items.like = 0;
-                                               }
-                                               items.likeCount = r2[0]['count("commentId")'];
-                                               //console.log(r1);
-                                               // items.likeCount = r2[0]['count("postId")'];
-                                               items.date = item.date;
-                                               //console.log(items);
-                                               data.push(items);
-                                               //console.log(data);
-                                               callback(null);
-
-                                           }
-                                       )
                                     }
-                                )
 
-                }
-                    );
+                                }
+
+                                items.like=like;
+                                items.likeCount=r1.length;
+                                //console.log(r1);
+                                items.date = item.date;
+                                //console.log(items);
+                                data.push(items);
+                                //console.log(data);
+                                callback(null);
+
+
+
+                            }
+                        );
+
+
 
 
                 }, function (err) {

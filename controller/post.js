@@ -744,33 +744,33 @@ post.postsDetail = function (req, res) {
                             res.end(JSON.stringify(code.mysqlError));
                             return;
                         }
-                        //console.log(r2);return;
-                        conn.query(
-                            {
-                                sql: 'select count("postId") from `secret_post_like` where postId = "' + req.query.id + '"'
-                            }, function (e3, r3) {
-                                if (e3) {
-                                    console.log(e3);
-                                    res.end(JSON.stringify(code.mysqlError));
-                                    return;
-                                }
-                                //console.log(r3);return;
-                                if(req.session.userId){
+
                                 conn.query(
                                     {
-                                        sql: 'select * from secret_post_like where postId =' + req.query.id + ' and userId= '+req.session.userId
+                                        sql: 'select * from secret_post_like where postId =' + req.query.id
                                     }, function (e4, r4) {
                                         if (e4) {
                                             console.log(e4);
                                             res.end(JSON.stringify(code.mysqlError));
                                             return;
                                         }
-                                        //console.log(r4);return;
-                                        if (r4.length>0) {
-                                            data.like = 1;
-                                        } else {
-                                            data.like = 0;
+
+                                        var like=0;
+
+
+                                        if(r4.length>0 && req.session.userId ){
+
+
+                                            for(var i=0;i<r4.length;i++){
+                                                if(r4[i].userId==req.session.userId){
+                                                    like=1
+                                                }
+                                            }
+
                                         }
+
+                                        data.like=like;
+
                                         data.id = r1[0].id;
                                         data.title = r1[0].title;
                                         data.content = r1[0].content;
@@ -779,37 +779,17 @@ post.postsDetail = function (req, res) {
                                         data.avatar = r1[0].avatar;
                                         data.title = r1[0].title;
                                         data.nickname = r1[0].nickname;
-                                        data.author = (r1.length>0&&r1[0].userId == req.session.userId) ? 1 : 0;
+                                        data.author = (r1.length > 0 && r1[0].userId == req.session.userId) ? 1 : 0;
                                         data.userId = data.secret ? 0 : r1[0].userId;
                                         data.commentCount = r2[0]['count("postId")'];
-                                        data.likeCount = r3[0]['count("postId")'];
+                                        data.likeCount = r4.length;
                                         data.date = r1[0].date;
                                         data.level = req.session.level;
 
                                         //console.log(data);
                                         res.end(common.format(200, "success", data));
-                                    }
-                                )}else{
-                                    data.like = 0;
-                                    data.id = r1[0].id;
-                                    data.title = r1[0].title;
-                                    data.content = r1[0].content;
-                                    data.gender = r1[0].gender;
-                                    data.secret = r1[0].secret;
-                                    data.avatar = r1[0].avatar;
-                                    data.title = r1[0].title;
-                                    data.nickname = r1[0].nickname;
-                                    data.author = (r1.length>0&&r1[0].userId == req.session.userId) ? 1 : 0;
-                                    data.userId = data.secret ? 0 : r1[0].userId;
-                                    data.commentCount = r2[0]['count("postId")'];
-                                    data.likeCount = r3[0]['count("postId")'];
-                                    data.date = r1[0].date;
+                                    });
 
-                                    //console.log(data);
-                                    res.end(common.format(200, "success", data));
-                                }
-                            }
-                        )
                     }
                 )
             }else{
@@ -876,16 +856,10 @@ post.postsView = function (req, res) {
                                 callback(code.mysqlError);
                                 return;
                             }
-                            conn.query(
-                                {//
-                                    sql: 'select count("postId") from `secret_post_like` where postId = ' + item.id + ''
-                                }, function (e2, r2) {
-                                    if (e2) {
-                                        console.log(e2);
-                                        callback(code.mysqlError);
-                                        return;
-                                    }
+
                                   //  console.log(r2);
+
+
                                     conn.query(
                                         {
                                             sql:'select userId from secret_post_like where postId ='+item.id
@@ -907,13 +881,24 @@ post.postsView = function (req, res) {
                                             //console.log(r1);
                                             items.author = (item.userId==req.session.userId)?1:0;
                                             items.userId = (item.secret)?0:item.userId;
-                                            items.likeCount = r2[0]['count("postId")'];
-                                            items.top = item.top;
-                                            if(r3.length>0 && r3[0].userId == req.session.userId){
-                                                items.like = 1
-                                            }else{
-                                                items.like = 0
+                                            items.likeCount = r3.length;
+
+                                            var like=0;
+
+
+                                            if(r3.length>0 && req.session.userId ){
+
+
+                                                for(var i=0;i<r3.length;i++){
+                                                    if(r3[i].userId==req.session.userId){
+                                                        like=1
+                                                    }
+                                                        }
+
                                             }
+
+                                            items.like=like;
+
                                             items.level = req.session.level;
                                             items.date = item.date;
                                             items.more = item.more;
@@ -922,8 +907,7 @@ post.postsView = function (req, res) {
                                             callback(null);
                                         }
                                     )
-                                }
-                            )
+
                         }
                     );
                 }, function (err) {

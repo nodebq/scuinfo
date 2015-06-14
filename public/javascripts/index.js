@@ -184,7 +184,7 @@
                }
 
             }else {
-                //store.clear();
+                store.clear();
                 
                 store.set('timestamp', historyTimestamp);
                 $(dom).scroll(function () {

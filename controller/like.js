@@ -195,13 +195,15 @@ like.postsDel = function(req,res){
 like.commentDel = function(req,res){
     conn.query(
         {
-            sql:'DELETE FROM `secret_comment_like` where userId = '+req.session.userId+' and id = ' + req.body.id
+            sql:'DELETE FROM `secret_comment_like` where userId = '+req.session.userId+' and commentId = ' + req.body.id
         },function(e1,r1){
             if(e1){
                 console.log(e1);
                 res.end(JSON.stringify(code.mysqlError));
                 return;
             }
+            
+            //console.log(r1);
             res.end(common.format(200,'yes',{
                 id:r1.insertId
             }))

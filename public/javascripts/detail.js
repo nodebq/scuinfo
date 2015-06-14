@@ -74,14 +74,7 @@
                         $("#loadMore").attr('fromid',fromId).clone(true);
                         $("#loadMoreButton").button('reset');
  
-                        
 
-
-                        if(store.enabled){
-                            store.set('commentFromId',fromId);
-                            store.set('comments',(store.get('comments')?store.get('comments'):"")+comments);
-
-                        }
                         cb(null);
 
                     }else{
@@ -142,39 +135,11 @@
             }
         );
 
-        var store = $.AMUI.store;
-        var historyTimestamp = $("#timestamp").val();
-       // console.log(historyTimestamp);
-        if(store.enabled){
+        bom.loadComment({
+            action:"init"
+        },function(){
 
-            if(historyTimestamp == store.get('commentTimestamp')){
-              //  console.log(2);
-               if(store.get('comments')){
-                   $("#comments").html(
-                      store.get('comments')
-                   ).clone(true);
-                   setTimeout(function() {window.scrollTo(0,store.get('y'));},1);
-                   $("#loadMore").attr('fromid',store.get('commentFromId'));
-                   $("#loadMoreButton").button('reset');
-                   $("#loadMore").css('display','block');
-                   $(dom).scroll(function () {
-                       store.set('y', $(dom).scrollTop());
-                   });
-               }
-
-            }else {
-              //  console.log('2');
-              //  store.clear();
-                store.set('commentTimestamp', historyTimestamp);
-
-                bom.loadComment({
-                    action:"init"
-                },function(){
-
-                });
-            }
-        }
-
+        });
 
         var flag=false,count= 0,max=100;
 

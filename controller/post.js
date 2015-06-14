@@ -806,13 +806,14 @@ post.postsView = function (req, res) {
     if (!req.query.pageSize) {
         req.query.pageSize = 15
     }
-    var sql;
+    var sql,flag=0;
     if(!req.query.userId){
             if (!req.query.fromId) {
 
                 sql= 'select * from(SELECT * FROM secret_post order by id desc limit 0,'+ req.query.pageSize+') t1 union select * from secret_post where top=1'
             }else{
-                sql='SELECT * FROM secret_post where id<' + req.query.fromId + ' order by id desc limit 0,' + req.query.pageSize;
+                sql='SELECT * FROM secret_post where top=0 and id<' + req.query.fromId + ' order by id desc limit 0,' + req.query.pageSize;
+                flag=1;
             }
     }else {
         if (req.query.userId == req.session.userId) {
@@ -820,17 +821,23 @@ post.postsView = function (req, res) {
                 sql= 'select * from(SELECT * FROM secret_post where userId = ' + req.query.userId + ' order by id desc limit 0,'+ req.query.pageSize+') t1 union select * from secret_post where top=1'
 
             } else {
-                sql = 'SELECT * FROM secret_post where id<' + req.query.fromId + ' and userId = ' + req.query.userId + ' order by id desc limit 0,' + req.query.pageSize;
+                flag=1;
+
+                sql = 'SELECT * FROM secret_post where top=0 id<' + req.query.fromId + ' and userId = ' + req.query.userId + ' order by id desc limit 0,' + req.query.pageSize;
             }
         } else {
             if (!req.query.fromId) {
                 sql= 'select * from(SELECT * FROM secret_post where userId = ' + req.query.userId + ' and secret=0 order by id desc limit 0,'+ req.query.pageSize+') t1 union select * from secret_post where top=1'
 
             } else {
-                sql = 'SELECT * FROM secret_post where userId='+req.query.userId+' and secret=0 and id<' + req.query.fromId + ' order by id desc limit 0,' + req.query.pageSize;
+                flag=1;
+
+                sql = 'SELECT * FROM secret_post where top=0 and userId='+req.query.userId+' and secret=0 and id<' + req.query.fromId + ' order by id desc limit 0,' + req.query.pageSize;
             }
         }
     }
+    
+    //console.log(sql);
     //console.log(sql);return;
     //console.log('SELECT * FROM secret_post where userId = ' + req.query.userId + ' order by date desc limit 0,' + req.query.pageSize);return;
 //console.log(sql);
@@ -899,7 +906,7 @@ post.postsView = function (req, res) {
                                             }
 
                                             items.like=like;
-
+                                            items.top=item.top;
                                             items.level = req.session.level;
                                             items.date = item.date;
                                             items.more = item.more;
@@ -915,6 +922,28 @@ post.postsView = function (req, res) {
                     if (err) {
                         res.end(JSON.stringify(err));
                         return;
+                    }
+                    //console.log(data);
+                    var topStatus=0;
+                    if(flag==0) {
+                        var newData=[];
+                        for (var i = 0; i < data.length; i++) {
+                            if (data[i].top == 1) {
+                                newData.push(data[i]);
+                                data.splice(i,1);
+                                topStatus=1;
+                            }
+                        }
+
+                        if(topStatus==1){
+                            for(var i=0;i<data.length;i++){
+                                newData.push(data[i]);
+                            }
+                            data=newData;
+
+                        }
+
+
                     }
 
 

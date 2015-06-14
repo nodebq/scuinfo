@@ -98,7 +98,7 @@ consumer.weibo = function(){
                                         {
                                             sql:"update secret_weibo_query set status=1,postAt="+common.time()+",weiboId="+userInfo.id
                                         },function(eeeee,rrrrr){
-                                            console.log(eeeee,'成功发布一条微博');
+                                            //console.log(eeeee,'成功发布一条微博');
                                         }
                                     )
 
@@ -124,10 +124,10 @@ consumer.weibo = function(){
 
 
                 
-                console.log('发布');
+                //console.log('发布');
                 
             }else{
-                console.log('没有待发布的微博');
+                //console.log('没有待发布的微博');
             }
         }
     )

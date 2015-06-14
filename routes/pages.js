@@ -47,7 +47,7 @@ api.registerTicketHandle(function (type, callback) {
 
 pages.index = function(req,res){
 
-    //res.header('Cache-Control','public');
+    res.header('Cache-Control','public');
     var url = req.protocol+"://"+config.host.url+req.originalUrl;
 
 //console.log(url);

@@ -78,7 +78,7 @@
 
 
                         if(store.enabled){
-                            store.set('fromId',fromId);
+                            store.set('commentFromId',fromId);
                             store.set('comments',(store.get('comments')?store.get('comments'):"")+comments);
 
                         }
@@ -147,14 +147,14 @@
        // console.log(historyTimestamp);
         if(store.enabled){
 
-            if(historyTimestamp == store.get('timestamp')){
+            if(historyTimestamp == store.get('commentTimestamp')){
               //  console.log(2);
                if(store.get('comments')){
                    $("#comments").html(
                       store.get('comments')
                    ).clone(true);
                    setTimeout(function() {window.scrollTo(0,store.get('y'));},1);
-                   $("#loadMore").attr('fromid',store.get('fromId'));
+                   $("#loadMore").attr('fromid',store.get('commentFromId'));
                    $("#loadMoreButton").button('reset');
                    $("#loadMore").css('display','block');
                    $(dom).scroll(function () {
@@ -164,8 +164,8 @@
 
             }else {
               //  console.log('2');
-                store.clear();
-                store.set('timestamp', historyTimestamp);
+              //  store.clear();
+                store.set('commentTimestamp', historyTimestamp);
 
                 bom.loadComment({
                     action:"init"

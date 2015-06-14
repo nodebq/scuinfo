@@ -19,10 +19,16 @@ $.get('/api/score',function(r){
 
         var score = r.data.scores;
         var credit = 0;
-        console.log(score.length);
+        //console.log(score.length);
+        var passCredit = 0;
         for(var i=0;i<score.length;i++){
-console.log(score[i].credit);
+//console.log(score[i].credit);
             credit=credit+parseFloat(score[i].credit);
+            //console.log(score[i].score);
+            if(!(score[i].score<60)){
+                //console.log(score[i].credit);
+                passCredit+=parseFloat(score[i].credit);
+            }
             content[i]={
                 title: score[i].name+ "["+score[i].score+"分]",
                 content: '学期:'+score[i].term+"" +
@@ -34,9 +40,9 @@ console.log(score[i].credit);
 
             }
         }
-        console.log(credit);
+        //console.log(credit);
         $("#credit").text(credit);
-        $("#courseCount").text(r.data.scores.length);
+        $("#courseCount").text(passCredit);
         var $tpl = $('#score'),
             tpl = $tpl.text(),
             template = Handlebars.compile(tpl),

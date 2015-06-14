@@ -95,10 +95,11 @@ wechatApi.sendTemplate = function(req,res,next){
         case 'test':
             break;
     }
-    //console.log(data);
+    console.log(data);
+    console.log(req.body.openId);
     api.sendTemplate(req.body.openId, templateId, url, topColor, data, function(e,r){
         if(r){
-            //console.log(r);
+            console.log(r);
             if(r.errcode==0){
                 res.end(JSON.stringify({
                     code:200,

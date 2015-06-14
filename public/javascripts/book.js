@@ -118,6 +118,9 @@ $.get('/api/book',function(r){
        var renewButton=$(this);
         $(this).html('<i class="am-icon-refresh am-icon-spin"></i>');
         var book = $(this).parents('article');
+        console.log(book);
+        console.log(book.attr('xc'));
+        console.log({xc:book.attr('xc'),barcode:book.attr('barcode'),borId:book.attr('borId')})
         $.post("/api/renew",{xc:book.attr('xc'),barcode:book.attr('barcode'),borId:book.attr('borId')},function(r){
 console.log(r);
 

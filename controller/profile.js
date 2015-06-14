@@ -45,12 +45,12 @@ profile.like = function (req, res) {
                                         res.end(JSON.stringify(code.mysqlError));
                                         return;
                                     }if(rrr.length>0){
-                                    data.avatar = rrr[0].avatar;
-                                    data.nickname = rrr[0].nickname;
-                                    data.gender = rrr[0].gender;
-                                    data.level = req.session.level;
-                                    res.end(common.format(200,'success',data));
-                                }else{
+                                        data.avatar = rrr[0].avatar;
+                                        data.nickname = rrr[0].nickname;
+                                        data.gender = rrr[0].gender;
+                                        data.level = req.session.level;
+                                        res.end(common.format(200,'success',data));
+                                    }else{
                                         console.log('没有这个用户');
                                         res.end(JSON.stringify(code.paramError));
                                         return;
@@ -91,13 +91,13 @@ profile.like = function (req, res) {
                                         res.end(JSON.stringify(code.mysqlError));
                                         return;
                                     }if(rrr.length>0){
-                                    data.avatar = rrr[0].avatar;
-                                    data.nickname = rrr[0].nickname;
-                                    data.gender = rrr[0].gender;
+                                        data.avatar = rrr[0].avatar;
+                                        data.nickname = rrr[0].nickname;
+                                        data.gender = rrr[0].gender;
                                         data.level = req.session.level;
                                         //console.log(data);
-                                    res.end(common.format(200,'success',data));
-                                }else{
+                                        res.end(common.format(200,'success',data));
+                                    }else{
                                         console.log('没有这个用户');
                                         res.end(JSON.stringify(code.paramError));
                                         return;
@@ -140,12 +140,12 @@ profile.like = function (req, res) {
                                     res.end(JSON.stringify(code.mysqlError));
                                     return;
                                 }if(rrr.length>0){
-                                data.avatar = rrr[0].avatar;
-                                data.nickname = rrr[0].nickname;
-                                data.gender = rrr[0].gender;
+                                    data.avatar = rrr[0].avatar;
+                                    data.nickname = rrr[0].nickname;
+                                    data.gender = rrr[0].gender;
                                     data.level = req.session.level;
-                                res.end(common.format(200,'success',data));
-                            }else{
+                                    res.end(common.format(200,'success',data));
+                                }else{
                                     console.log('没有这个用户');
                                     res.end(JSON.stringify(code.noUserInfo));
                                     return;
@@ -180,9 +180,9 @@ profile.score = function(req,res){
             //console.log(r);
 
             if(r.length>0){
-                
+
                 console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password));
-                
+
                 //console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                 request.get(
                     {
@@ -338,7 +338,7 @@ profile.exam = function(req,res){
                                 gender:req.session.gender
 
 
-                        };
+                            };
                             res.end(JSON.stringify(result));
 
                         }
@@ -399,24 +399,24 @@ profile.book = function(req,res){
                         //console.log(result);
 
                         //console.log(req.session);
-                       if(result.code==200) {
-                           result.data.avatar = req.session.avatar;
-                           result.data.nickname = req.session.nickname;
-                           result.data.userId=req.session.userId;
-                           res.end(JSON.stringify(result));
+                        if(result.code==200) {
+                            result.data.avatar = req.session.avatar;
+                            result.data.nickname = req.session.nickname;
+                            result.data.userId=req.session.userId;
+                            res.end(JSON.stringify(result));
 
 
-                       }else{
+                        }else{
 
-                           result.data={
-                               avatar:req.session.avatar,
-                               nickname:req.session.nickname,
-                               userId:req.session.userId
+                            result.data={
+                                avatar:req.session.avatar,
+                                nickname:req.session.nickname,
+                                userId:req.session.userId
 
-                           };
-                           res.end(JSON.stringify(result));
+                            };
+                            res.end(JSON.stringify(result));
 
-                       }
+                        }
 
                         return;
 
@@ -440,50 +440,50 @@ profile.book = function(req,res){
 profile.renew = function(req,res){
 //console.log(req.body);
     check.renew(req.body,function(ee,rr){
-if(ee){
-    res.end(JSON.stringify(ee));
-    return;
-}
+        if(ee){
+            res.end(JSON.stringify(ee));
+            return;
+        }
 //console.log("select studentId,password from secret_library where userId="+req.session.userId);
-    conn.query(
-        {
-            sql:"select studentId,password from secret_library where userId="+req.session.userId+" order by id desc"
-        },function(e,r){
-            if(e){
-                console.log(e);
-                res.end(JSON.stringify(code.mysqlError));
-                return;
-            }
-            //console.log(r);
+        conn.query(
+            {
+                sql:"select studentId,password from secret_library where userId="+req.session.userId+" order by id desc"
+            },function(e,r){
+                if(e){
+                    console.log(e);
+                    res.end(JSON.stringify(code.mysqlError));
+                    return;
+                }
+                // console.log(r);
 
-            if(r.length>0){
+                if(r.length>0){
 //console.log(config.api.baseUrl+"/api/renew?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password=" +
 //    ""+ r[0].password+"&xc="+rr.xc+"&barcode="+rr.barcode+"&borId="+rr.borId);
-                request.get(
-                    {
-                        url:config.api.baseUrl+"/api/renew?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password=" +
-                        ""+ r[0].password+"&xc="+r[0].xc+"&barcode="+r[0].barcode+"&borId="+r[0].borId
-                    },function(eeeee,rrrrr,body){
+                    request.get(
+                        {
+                            url:config.api.baseUrl+"/api/renew?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password=" +
+                            ""+ r[0].password+"&xc="+req.body.xc+"&barcode="+req.body.barcode+"&borId="+req.body.borId
+                        },function(eeeee,rrrrr,body){
 
-                        //console.log(eeeee,body);
-                        if(eeeee){
-                            res.end(JSON.stringify(code.requestError));
+                            //console.log(eeeee,body);
+                            if(eeeee){
+                                res.end(JSON.stringify(code.requestError));
+                                return;
+                            }
+                            res.end(body);
                             return;
-                        }
-                        res.end(body);
-                        return;
 
 
-                    });
+                        });
 
+                    return;
+                }
+
+                res.end(JSON.stringify(code.noBindLibrary));
                 return;
+
             }
-
-            res.end(JSON.stringify(code.noBindLibrary));
-            return;
-
-        }
-    )
+        )
     });
 
 
@@ -492,7 +492,7 @@ if(ee){
 
 
 profile.shareBook = function(req,res){
-    
+
     //console.log(req.query);
 
 
@@ -727,9 +727,9 @@ profile.shareExam = function(req,res){
                 res.end(JSON.stringify(code.mysqlError));
                 return;
             }
-            
+
             //console.log(r3);
-            
+
             if(r3.length>0){
 
                 conn.query(
@@ -837,10 +837,10 @@ profile.share = function(req,res){
     )
 
 
-    };
+};
 
 profile.updateCallback = function(req,res){
-    //console.log(req.body.type);
+    //console.log(req.body);
     if(req.body.type){
         var first="";
         var keyword1=req.body.studentId;
@@ -893,7 +893,7 @@ profile.updateCallback = function(req,res){
             {sql:"select userId from "+table+" where studentId="+req.body.studentId+" order by id desc limit 0,1"},function(e,r){
 
                 if(e){
-                    
+
                     res.end(JSON.stringify(code.mysqlError));
                     return;
                 }
@@ -945,11 +945,13 @@ profile.updateCallback = function(req,res){
                                     openId:rr[0].openId
                                 }
                             },function(eee,rrr,bbb){
+                                //console.log(eee);
                                 if(eee){
-                                    console.log(eee);
+                                    //console.log(eee);
                                     res.end(JSON.stringify(code.requestError));
                                     return;
                                 }
+                                //console.log('222');
 
                                 res.end(bbb);
                                 return;
@@ -964,7 +966,7 @@ profile.updateCallback = function(req,res){
             }
         )
 
-return;
+        return;
     }
 
     res.end(JSON.stringify(code.unknownError));

@@ -186,7 +186,7 @@ profile.score = function(req,res){
                         url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
                     },function(eeeee,rrrrr,body){
 
-                        console.log(eeeee,body);
+                        //console.log(eeeee,body);
                         if(eeeee){
                             res.end(JSON.stringify(code.requestError));
                             return;
@@ -639,7 +639,7 @@ profile.shareMajor = function(req,res){
                                     url:config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
                                 },function(eeeee,rrrrr,body){
 
-                                    console.log(eeeee,body);
+                                    //console.log(eeeee,body);
                                     if(eeeee){
                                         res.end(JSON.stringify(code.requestError));
                                         return;

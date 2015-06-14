@@ -55,7 +55,7 @@ $.get('/api/book',function(r){
         $("#shareBook").attr('wechatUrl',getBookHref({id: r.data.userId})).clone();
         $("#userAvatar").html("<img src='"+ r.data.avatar+"'>");
         $("#nickname").text(r.data.nickname);
-        $("#profile-post-count").text(r.data.count);
+        $("#profile-post-count").text(r.data.books.length);
         //$("#profile-like-count").text(r.data.likePostsCount);
         var data = r.data.books;
 

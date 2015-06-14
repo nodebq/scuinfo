@@ -36,7 +36,7 @@ console.log(score[i].credit);
         }
         console.log(credit);
         $("#credit").text(credit);
-        $("#courseCount").text(r.data.count);
+        $("#courseCount").text(r.data.scores.length);
         var $tpl = $('#score'),
             tpl = $tpl.text(),
             template = Handlebars.compile(tpl),

@@ -13,6 +13,7 @@
     "easymysql": "~0.2.7",
     "ejs": "~2.1.4",
     "ejs-mate": "^2.1.0",
+    "escape-html": "^1.0.2",
     "express": "~4.11.0",
     "express-session": "~1.11.1",
     "jade": "~1.9.2",

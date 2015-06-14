@@ -3,6 +3,7 @@ var common = require('./common.js');
 var libs = require('./libs.js');
 var conn = require('./mysql.js');
 var config =require('../config.js');
+var escape = require('escape-html');
 var check = {
     name:"检测页"
 };
@@ -357,6 +358,8 @@ check.userInfo = function(o){
 
 };
 check.postCreate = function(o,cb){
+    
+    //console.log(o);
     if(!o.content){
         cb(code.contentCantNull);
         return;
@@ -367,6 +370,10 @@ check.postCreate = function(o,cb){
     if(o.secret){
         secret=1;
     }
+
+    o.content=escape(o.content);
+    
+
     var title = check.title({content: o.content});
 
     var userInfo = check.userInfo({session: o.session,secret:secret});
@@ -387,6 +394,7 @@ check.postCreate = function(o,cb){
             cb(code.contentRepeat);
             return;
         }
+        
         cb(null,{
 
             title:title.title,

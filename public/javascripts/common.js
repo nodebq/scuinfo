@@ -8,7 +8,11 @@
      * @returns {string}
      */
     bom.date = function (time) {
-        if(time){
+
+        if(time==0){
+
+            return "";
+        }else if(time){
             return new Date(time).getFullYear().toString()+"年"+(new Date(time).getMonth()+1).toString()+"月"+new Date(time).getDate(time).toString()+"日 "+new Date(time).getHours().toString()+":"+((new Date(time).getMinutes()<10)?"0":"")+(new Date(time).getMinutes()).toString()
 
         }
@@ -21,7 +25,11 @@
      * @returns {string}
      */
     bom.day = function (time) {
-        if(time){
+
+        if(time==0){
+
+            return "";
+        }else if(time){
             return new Date(time).getFullYear().toString()+"年"+(new Date(time).getMonth()+1).toString()+"月"+new Date(time).getDate(time).toString()+"日";
 
         }
@@ -34,7 +42,11 @@
      * @returns {string}
      */
     bom.hour = function (time) {
-        if(time){
+
+        if(time==0){
+
+            return "";
+        }else if(time){
             return new Date(time).getHours().toString()+":"+((new Date(time).getMinutes()<10)?"0":"")+new Date(time).getMinutes().toString()
 
         }

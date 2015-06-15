@@ -823,7 +823,7 @@ post.postsView = function (req, res) {
             } else {
                 flag=1;
 
-                sql = 'SELECT * FROM secret_post where top=0 id<' + req.query.fromId + ' and userId = ' + req.query.userId + ' order by id desc limit 0,' + req.query.pageSize;
+                sql = 'SELECT * FROM secret_post where top=0 and id<' + req.query.fromId + ' and userId = ' + req.query.userId + ' order by id desc limit 0,' + req.query.pageSize;
             }
         } else {
             if (!req.query.fromId) {

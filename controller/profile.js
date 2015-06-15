@@ -227,10 +227,10 @@ profile.major = function(req,res){
                 res.end(JSON.stringify(code.mysqlError));
                 return;
             }
-            //console.log(r);
+            console.log(r);
 
             if(r.length>0){
-                //console.log(config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
+                console.log(config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                 request.get(
                     {
                         url:config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password

@@ -78,6 +78,7 @@
                     o.type=$("#pageType").val();
                     bom.bind(o,function(r){
                         if(r.code==200) {
+                            alert('绑定成功');
                             $submitButton.button('reset');
                             console.log('success');
                             //跳转到前一页

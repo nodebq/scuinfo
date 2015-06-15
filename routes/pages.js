@@ -551,7 +551,7 @@ var url = "";
 
     conn.query(
         {
-            sql:"select studentId,password from secret_account where userId="+req.session.userId
+            sql:"select studentId,password from secret_account where userId="+req.session.userId+" order id desc"
         },function(e,r){
             if(e){
                 console.log(e);
@@ -595,7 +595,7 @@ var url = "";
 pages.bindBook = function(req,res){
     conn.query(
         {
-            sql:"select studentId,password from secret_account where userId="+req.session.userId
+            sql:"select studentId,password from secret_library where userId="+req.session.userId+" order by id desc"
         },function(e,r) {
             if (e) {
                 console.log(e);

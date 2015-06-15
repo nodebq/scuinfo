@@ -551,7 +551,7 @@ var url = "";
 
     conn.query(
         {
-            sql:"select studentId,password from secret_account where userId="+req.session.userId+" order id desc"
+            sql:"select studentId,password from secret_account where userId="+req.session.userId+" order by id desc"
         },function(e,r){
             if(e){
                 console.log(e);

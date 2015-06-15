@@ -79,6 +79,7 @@
 
 
         }else if(r.code==2021 || r.code==2012 || r.code ==2031){
+            alert(r.message);
             location.href="/bind/dean";
 
         }else{

@@ -148,7 +148,7 @@ $.get('/api/major',function(r){
 
 
     }else if(r.code==2021 || r.code==2012 || r.code ==2031){
-
+alert(r.message);
         location.href="/bind/dean";
 
     }else if(r.code==2010 || r.code ==2029 || r.code == 2028 || r.code == 2032){

@@ -125,6 +125,7 @@
                 },2000);
 
             }else if(data.code==2021 || data.code==2012 || data.code ==2031){
+                alert(data.message);
                 location.href="/bind/dean";
 
             }else{

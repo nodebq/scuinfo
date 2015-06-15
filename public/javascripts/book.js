@@ -18,6 +18,7 @@
                 },2000);
 
             }else if(data.code==2021 || data.code==2015 || data.code==2012 || data.code ==2031){
+                alert(data.message);
                 location.href="/bind/library";
 
             }else{
@@ -133,6 +134,7 @@ console.log(r);
 
                 },2000);
             }else if(r.code==2021 || r.code==2012){
+                alert(r.message);
 
                 location.href="/bind/library";
 

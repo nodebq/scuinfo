@@ -65,9 +65,9 @@ $.get('/api/book',function(r){
             for (var i=0;i<data.length;i++){
                 html+='<div class="am-panel am-panel-default">'+
                     '<article class="am-panel-bd book-body" xc="'+data[i].xc+'" barcode="'+data[i].barcode+'" borId="'+data[i].borId+'"><div class="bookInfo">'
-                    +(((data[i].deadline-parseInt(new Date().getTime()/1000))>=0)?"还有":"已超期")+'<span class="left '+(((data[i].deadline-parseInt(new Date().getTime()/1000))>0)?"":"over")+'">'+Math.abs(parseInt((data[i].deadline-parseInt(new Date().getTime()/1000))/3600/24))+'</span>天（'+(new Date(data[i].deadline*1000).getFullYear())+'.'+(new Date(data[i].deadline*1000).getMonth()+1)+'.'+new Date(data[i].deadline*1000).getDate()+')'+
+                    +(((data[i].deadline-parseInt(new Date().getTime()/1000))>=0)?"还有":"已超期")+'<span class="left '+(((data[i].deadline-parseInt(new Date().getTime()/1000))>=0)?"":"over")+'">'+Math.abs(parseInt((data[i].deadline-parseInt(new Date().getTime()/1000))/3600/24))+'</span>天（'+(new Date(data[i].deadline*1000).getFullYear())+'.'+(new Date(data[i].deadline*1000).getMonth()+1)+'.'+new Date(data[i].deadline*1000).getDate()+')'+
             '<br><span class="bookTitle">《'+data[i].name+'》</span></div>'+
-                '<span class="renewButton"><button type="button" '+(((data[i].deadline-parseInt(new Date().getTime()/1000))>=0)?"":'disabled=disabled')+' class="am-btn am-btn-'+(((data[i].deadline-parseInt(new Date().getTime()/1000))>0)?"success":'default')+' am-round renew">续</button></span>'+
+                '<span class="renewButton"><button type="button" '+(((data[i].deadline-parseInt(new Date().getTime()/1000))>=0)?"":'disabled=disabled')+' class="am-btn am-btn-'+(((data[i].deadline-parseInt(new Date().getTime()/1000))>=0)?"success":'default')+' am-round renew">续</button></span>'+
                 '</article>'+
                 '</div>'
 

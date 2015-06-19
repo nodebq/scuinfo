@@ -223,7 +223,7 @@ user.score = function(msg,req,res,next){
                     return;
 
 
-                }else if(scores.code==2012){
+                }else if(scores.code==2012 || scores.code==2001){
 
                     dbs.getWechatNews({
                         name:"deanPasswordError"
@@ -423,7 +423,7 @@ user.book = function(msg,req,res,next){
                     return;
 
 
-                }else if(books.code==2012){
+                }else if(books.code==2015 ){
 
                     dbs.getWechatNews({
                         name:"deanPasswordError"
@@ -639,7 +639,7 @@ user.major = function(msg,req,res,next){
                     return;
 
 
-                }else if(majors.code==2012){
+                }else if(majors.code==2012 || majors.code==2001){
 
                     dbs.getWechatNews({
                         name:"deanPasswordError"
@@ -846,7 +846,7 @@ user.exam = function(msg,req,res,next){
                     return;
 
 
-                }else if(exams.code==2012){
+                }else if(exams.code==2012 || exams.code==2001){
 
                     dbs.getWechatNews({
                         name:"deanPasswordError"

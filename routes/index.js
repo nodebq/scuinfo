@@ -200,14 +200,6 @@ router.post('/api/update',function(req,res){
    profile.update(req,res);
 });
 
-/**
- * api回调类
- */
-
-//todo 检查是否是官方apipost的东西
-router.post('/api/updateCallback',function(req,res){
-    profile.updateCallback(req,res);
-});
 
 
 /**
@@ -254,6 +246,8 @@ router.get('/auth/wechatUserAgent',check.isNotLogin,function(req,res){
 
 //
 router.get('/',check.autoWechat,function(req,res){
+
+    //console.log(req.url);
     //req.session.level=1;
     //req.session.userId=9767;
     //req.session.avatar="http://img5q.duitang.com/uploads/blog/201504/03/20150403214054_nekQt.jpeg";

@@ -490,12 +490,9 @@ check.register = function(o,cb){
 
 check.renew = function(o,cb){
 //console.log(o);
-    if(!o.xc){
-        cb(code.lackParamsXc);
-        return;
-    }
-    if(!o.barcode){
-        cb(code.lackParamsBarcode);
+
+    if(!o.bookId){
+        cb(code.lackParamsBookId);
         return;
     }
 

@@ -462,7 +462,7 @@ profile.renew = function(req,res){
                     request.get(
                         {
                             url:config.api.baseUrl+"/api/renew?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password=" +
-                            ""+ r[0].password+"&xc="+req.body.xc+"&barcode="+req.body.barcode+"&borId="+req.body.borId
+                            ""+ r[0].password+'"'+"&borcode="+req.body.bookId+"&borId="+req.body.borrowId
                         },function(eeeee,rrrrr,body){
 
                             //console.log(eeeee,body);

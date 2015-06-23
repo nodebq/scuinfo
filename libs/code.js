@@ -191,7 +191,15 @@ var code = {
     'noWechatSession':{
         code:2041,
         message:"没有微信会话"
-    }
+    },
+    'lackParamsBookId':{
+        code:2042,
+        message:"缺少参数 bookId"
+    },
+    'lackParamsBorrowId':{
+        code:2043,
+        message:"缺少参数 borrowId"
+    },
 };
 
 

@@ -64,7 +64,7 @@ $.get('/api/book',function(r){
             var html="";
             for (var i=0;i<data.length;i++){
                 html+='<div class="am-panel am-panel-default">'+
-                    '<article class="am-panel-bd book-body" xc="'+data[i].xc+'" barcode="'+data[i].barcode+'" borId="'+data[i].borId+'"><div class="bookInfo">'
+                    '<article class="am-panel-bd book-body" bookId="'+data[i].bookId+'" borrowId="'+data[i].borrowId+'"><div class="bookInfo">'
                     +(((data[i].deadline-parseInt(new Date().getTime()/1000))>=0)?"还有":"已超期")+'<span class="left '+(((data[i].deadline-parseInt(new Date().getTime()/1000))>=0)?"":"over")+'">'+Math.abs(parseInt((data[i].deadline-parseInt(new Date().getTime()/1000))/3600/24))+'</span>天（'+(new Date(data[i].deadline*1000).getFullYear())+'.'+(new Date(data[i].deadline*1000).getMonth()+1)+'.'+new Date(data[i].deadline*1000).getDate()+')'+
             '<br><span class="bookTitle">《'+data[i].name+'》</span></div>'+
                 '<span class="renewButton"><button type="button" '+(((data[i].deadline-parseInt(new Date().getTime()/1000))>=0)?"":'disabled=disabled')+' class="am-btn am-btn-'+(((data[i].deadline-parseInt(new Date().getTime()/1000))>=0)?"success":'default')+' am-round renew">续</button></span>'+
@@ -119,11 +119,8 @@ $.get('/api/book',function(r){
        var renewButton=$(this);
         $(this).html('<i class="am-icon-refresh am-icon-spin"></i>');
         var book = $(this).parents('article');
-        console.log(book);
-        console.log(book.attr('xc'));
-        console.log({xc:book.attr('xc'),barcode:book.attr('barcode'),borId:book.attr('borId')})
-        $.post("/api/renew",{xc:book.attr('xc'),barcode:book.attr('barcode'),borId:book.attr('borId')},function(r){
-console.log(r);
+
+        $.post("/api/renew",{bookId:book.attr('bookId'),borrowId:book.attr('borrowId')},function(r){
 
             if(r.code==200){
 

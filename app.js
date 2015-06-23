@@ -60,7 +60,8 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(4150,function(){
-    console.log('已监听4150端口,go!go!go!');
+    console.log('已监听4150端口,go');
 });
+
 
 module.exports = app;

@@ -83,7 +83,7 @@ conn.query(
 
 user.score = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
-//console.log(e,r);
+console.log(e,r);
         if(e){
 
 
@@ -153,13 +153,13 @@ user.score = function(msg,req,res,next){
             res.reply(e.message);
             return;
         }
-        //console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password);
+        console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password);
         request.get(
             {
                 url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password
             },function(eeeee,rrrrr,body){
                 
-                //console.log(eeeee,body);
+                console.log(eeeee,body);
                 if(eeeee){
                     res.reply(code.requestError.message);
                     return;

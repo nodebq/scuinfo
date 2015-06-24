@@ -67,7 +67,7 @@ var sql;
                 console.log(e);
                 return;
             }
-            console.log(r);
+            //console.log(r);
             if(r.length>0){
                     cb(null,r);
                     return;
@@ -119,7 +119,7 @@ db.getWechatContainsNews = function(o,cb){
                 console.log(e);
                 return;
             }
-            console.log(r);
+            //console.log(r);
             if(r.length>0){
 
                 cb(null,r);

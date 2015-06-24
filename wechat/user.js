@@ -245,7 +245,7 @@ console.log(e,r);
 
                     if(msg.source=='weibo'){
                         dbs.getWechatText({
-                            name:"getScoresLaterWeibo"
+                            name:"getScoreLaterWeibo"
                         },function(eee,rrrr){
                             if(eee){
                                 res.reply(JSON.stringify(eee));
@@ -259,7 +259,7 @@ console.log(e,r);
                     }
 
                     dbs.getWechatText({
-                        name:"getScoresLater"
+                        name:"getScoreLater"
                     },function(eee,rrrr){
                         if(eee){
                             res.reply(JSON.stringify(eee));

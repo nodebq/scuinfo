@@ -156,7 +156,7 @@ weiboApi.createButton = function(){
                 menus:encodeURIComponent(xx)
             }
         },function(e,r,b){
-            console.log(e,b);
+            //console.log(e,b);
         }
     )
 

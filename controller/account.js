@@ -625,7 +625,7 @@ account.wechatLogin = function (req, res) {
                 }
                 var codeResult = result.data;
                 
-                console.log(codeResult);
+                //console.log(codeResult);
                 conn.query(
                     {
                         sql:'select unionId,userId from secret_open where openId = "'+codeResult.openid+'"'
@@ -812,7 +812,7 @@ account.weiboLogin = function (req, res) {
 
                 if(codeResult.error_code){
                     //err
-                    console.log(codeResult);
+                    //console.log(codeResult);
                     res.end(JSON.stringify(code.weiboLoginCodeToAccessTokenError));
                     return;
                 }

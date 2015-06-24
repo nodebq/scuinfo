@@ -187,7 +187,7 @@ profile.score = function(req,res){
                         url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)
                     },function(eeeee,rrrrr,body){
 
-                        console.log(eeeee,body);
+                        //console.log(eeeee,body);
                         if(eeeee){
                             res.end(JSON.stringify(code.requestError));
                             return;
@@ -225,7 +225,7 @@ profile.major = function(req,res){
                 res.end(JSON.stringify(code.mysqlError));
                 return;
             }
-            console.log(r);
+            //console.log(r);
 
             if(r.length>0){
                 request.get(

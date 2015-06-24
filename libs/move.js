@@ -483,7 +483,7 @@ move.wish = function(o){
                                 console.log(ee);
                                 return;
                             } else {
-                                console.log(rr);
+                                //console.log(rr);
 
                                 if (rr.length > 0) {
                                     request.post(
@@ -537,7 +537,7 @@ move.wish = function(o){
  * 更改来源
  */
 move.updateSourse = function(o){
-console.log(o);
+//console.log(o);
     
     conn.query(
         {

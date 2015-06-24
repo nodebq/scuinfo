@@ -11,7 +11,7 @@ var like = {
 };
 
 like.post = function(req,res){
-    console.log(req.body);
+    //console.log(req.body);
 
     conn.query(
         {
@@ -102,7 +102,7 @@ like.post = function(req,res){
                                   {
                                       sql: "insert into secret_weibo_query (postId,createAt) values (" + parseInt(req.body.id) + "," + common.time() + ")"
                                   }, function (e4, r4) {
-                                      console.log(e4, r4);
+                                      //console.log(e4, r4);
                                   }
                               )
 

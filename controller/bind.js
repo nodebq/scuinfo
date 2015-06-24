@@ -10,7 +10,7 @@ var bind = {
 
 
 bind.accounts = function(req,res){
-    console.log(req.body);
+    //console.log(req.body);
     //console.log(req.session);
 var sql ={
     library:"secret_library",

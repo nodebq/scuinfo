@@ -180,13 +180,14 @@ profile.score = function(req,res){
             //console.log(r);
 
             if(r.length>0){
+                console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password);
 
                 request.get(
                     {
                         url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)
                     },function(eeeee,rrrrr,body){
 
-                        //console.log(eeeee,body);
+                        console.log(eeeee,body);
                         if(eeeee){
                             res.end(JSON.stringify(code.requestError));
                             return;

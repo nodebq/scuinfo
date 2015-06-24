@@ -5,6 +5,7 @@ var config = require('../config.js');
 var bind = require('../libs/bind');
 var dbs = require('../libs/db');
 var common = require('../libs/common.js');
+var aes=require('../libs/aes.js');
 var user = {
 
 };

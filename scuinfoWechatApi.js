@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var profile = require('./controller/profile.js');
+var wechatApi= require('./libs/wechatApi.js');
+
 var app = express();
 
 // view engine setup
@@ -22,13 +24,21 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 require('./libs/wechatApi.js');
 app.use('/api/updateCallback', function(req,res,next){
-
-    if(req.method=="POST"){
+        if(req.method=="POST"){
 profile.updateCallback(req,res);
     }else{
         next();
     }
 });
+
+app.use('/api/wechat/sendTemplate', function(req,res,next){
+        if(req.method=="POST"){
+wechatApi.sendTemplate(req,res);
+    }else{
+        next();
+    }
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -62,7 +72,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(8120,function(){
-    console.log('已监听8120端口');
+    console.log('已监听8120端口'+new Date());
 });
 
 

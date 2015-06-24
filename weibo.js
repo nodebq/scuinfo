@@ -114,7 +114,7 @@ router.post('/weibo',function(req,res,next){
 
     };
     if(!checkSignature(req.query,config.weibo.appSecret)){
-        console.log('not weibo ');
+        //console.log('not weibo ');
         res.end('not weibo')
         return;
     }
@@ -311,5 +311,5 @@ app.use('/',router);
 
 
 app.listen(8121,function(){
-    console.log('8121');
+    console.log('8121'+new Date());
 });

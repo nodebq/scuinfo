@@ -860,7 +860,7 @@ user.exam = function(msg,req,res,next){
 
                     return;
 
-                }else if(exams.code==2010 || exams.code==2011){
+                }else if(exams.code==2010 || exams.code==2011 || exams.code==2032){
 
 
                     if(msg.source=='weibo'){

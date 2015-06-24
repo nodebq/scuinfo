@@ -143,11 +143,11 @@ weiboApi.createButton = function(){
     };
 
 
-    console.log((JSON.stringify(menu1)));
+    //console.log((JSON.stringify(menu1)));
 
     var xx=JSON.stringify(menu);
     
-    console.log(encodeURIComponent(xx));
+    //console.log(encodeURIComponent(xx));
     request.post(
         {
             url:url,
@@ -165,4 +165,4 @@ weiboApi.createButton = function(){
 
 };
 
-weiboApi.createButton();
+//weiboApi.createButton();

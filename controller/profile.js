@@ -830,7 +830,7 @@ profile.share = function(req,res){
 };
 
 profile.updateCallback = function(req,res){
-    //console.log(req.body);
+    console.log(req.body);
     if(req.body.type){
         var first="";
         var keyword1=req.body.studentId;
@@ -908,18 +908,18 @@ profile.updateCallback = function(req,res){
                             res.end(JSON.stringify(code.notSubscribe));
                             return;
                         }
-//console.log(config.urls.wechatSendTemplate);
-//console.log({
-//    url:url?url:(config.site.url+"/u"),
-//    template:(req.body.code==200)?"ok":"fail",
-//    first:first,
-//    remark:(req.body.code==200)?"点击这里或右下角自定义菜单查看结果":"点击查看详情",
-//    keyword1:keyword1,
-//    keyword2:keyword2,
-//    keyword3:keyword3,
-//    keyword4:(req.body.code==200)?"成功更新":req.body.message,
-//    openId:rr[0].openId
-//});
+console.log(config.urls.wechatSendTemplate);
+console.log({
+   url:url?url:(config.site.url+"/u"),
+   template:(req.body.code==200)?"ok":"fail",
+   first:first,
+   remark:(req.body.code==200)?"点击这里或右下角自定义菜单查看结果":"点击查看详情",
+   keyword1:keyword1,
+   keyword2:keyword2,
+   keyword3:keyword3,
+   keyword4:(req.body.code==200)?"成功更新":req.body.message,
+   openId:rr[0].openId
+});
                         request.post(
                             {
                                 url:config.urls.wechatSendTemplate,
@@ -937,7 +937,7 @@ profile.updateCallback = function(req,res){
                             },function(eee,rrr,bbb){
                                 //console.log(eee);
                                 if(eee){
-                                    //console.log(eee);
+                                    console.log(eee);
                                     res.end(JSON.stringify(code.requestError));
                                     return;
                                 }

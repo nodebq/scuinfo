@@ -233,7 +233,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(8119,function(){
-    console.log('已监听8119端口');
+    console.log('已监听8119端口'+new Date());
 });
 
 

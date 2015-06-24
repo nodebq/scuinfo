@@ -206,9 +206,7 @@ router.post('/api/update',function(req,res){
  * 微信主动接口类
  */
 
-router.post('/api/wechat/sendTemplate',function(req,res){
-wechatApi.sendTemplate(req,res);
-});
+
 
 /**
  * 账户绑定类

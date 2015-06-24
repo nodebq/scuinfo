@@ -18,14 +18,14 @@ var weiboToken = {
 fs.readFile('./token/weibo_token.txt', 'utf8', function (err, txt) {
     //console.log(err,txt);//return;
     if (err) {
-        console.log(err);
+        console.log(err+new Date());
         console.log('微博初始化失败');
         return;
     }
 //console.log(txt);
     try{
         weiboToken=JSON.parse(txt);
-        console.log('初始化微博分享');
+        //console.log('初始化微博分享');
     }catch(e){
         weiboToken={}
     }
@@ -41,7 +41,7 @@ consumer.weibo = function(){
             sql:"select * from secret_weibo_query where status=0 limit 0,1"
         },function(e,r){
             if(e){
-                console.log(e);
+                console.log(e+new Date());
                 return;
             }
             
@@ -57,7 +57,7 @@ consumer.weibo = function(){
                     },function(ee,rr){
 
                         if(ee){
-                            console.log(ee);
+                            console.log(ee+new Date());
                             return;
                         }
                         
@@ -89,7 +89,7 @@ consumer.weibo = function(){
                                     //
 
                                     if(userInfo.error_code){
-                                        console.log(userInfo);
+                                        console.log(userInfo+new Date());
                                         return;
                                     }
 
@@ -108,7 +108,7 @@ consumer.weibo = function(){
 
                             
                         }else{
-                            console.log('该帖子已被删除');
+                            console.log('该帖子已被删除'+new Date());
                         }
 
                     }

@@ -153,10 +153,9 @@ console.log(e,r);
             res.reply(e.message);
             return;
         }
-        console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password);
         request.get(
             {
-                url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password
+                url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
             },function(eeeee,rrrrr,body){
                 
                 console.log(eeeee,body);
@@ -356,10 +355,9 @@ user.book = function(msg,req,res,next){
             res.reply(e.message);
             return;
         }
-        //console.log(config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password);
         request.get(
             {
-                url:config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password
+                url:config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
             },function(eeeee,rrrrr,body){
 
                 //console.log(eeeee,body);
@@ -557,7 +555,7 @@ user.major = function(msg,req,res,next){
         }
         request.get(
             {
-                url:config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password
+                url:config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
             },function(eeeee,rrrrr,body){
 
                 //console.log(eeeee,body);
@@ -772,10 +770,9 @@ user.exam = function(msg,req,res,next){
             res.reply(e.message);
             return;
         }
-        //console.log(config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password);
         request.get(
             {
-                url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r.studentId+"&password="+ r.password
+                url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
             },function(eeeee,rrrrr,body){
 
                 if(eeeee){

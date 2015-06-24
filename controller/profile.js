@@ -181,9 +181,6 @@ profile.score = function(req,res){
 
             if(r.length>0){
 
-                console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password));
-
-                //console.log(config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                 request.get(
                     {
                         url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)
@@ -230,10 +227,9 @@ profile.major = function(req,res){
             console.log(r);
 
             if(r.length>0){
-                console.log(config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                 request.get(
                     {
-                        url:config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
+                        url:config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+aes.encode(config.api.appId,config.api.appSecret,r[0].password)
                     },function(eeeee,rrrrr,body){
 
                         //console.log(eeeee,body);
@@ -303,10 +299,9 @@ profile.exam = function(req,res){
             //console.log(r);
 
             if(r.length>0){
-                //console.log(config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                 request.get(
                     {
-                        url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
+                        url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)
                     },function(eeeee,rrrrr,body){
 
                         //console.log(eeeee,body);
@@ -379,10 +374,9 @@ profile.book = function(req,res){
             //console.log(r);
 
             if(r.length>0){
-                //console.log(config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                 request.get(
                     {
-                        url:config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
+                        url:config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+aes.encode(config.api.appId,config.api.appSecret, r[0].password)
                     },function(eeeee,rrrrr,body){
 
                         //console.log(eeeee,body);
@@ -457,12 +451,10 @@ profile.renew = function(req,res){
                 // console.log(r);
 
                 if(r.length>0){
-//console.log(config.api.baseUrl+"/api/renew?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password=" +
-//    ""+ r[0].password+"&xc="+rr.xc+"&barcode="+rr.barcode+"&borId="+rr.borId);
                     request.get(
                         {
-                            url:config.api.baseUrl+"/api/renew?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password=" +
-                            ""+ r[0].password+'"'+"&borcode="+req.body.bookId+"&borId="+req.body.borrowId
+                            url:config.api.baseUrl+"/api/renew?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password=" +
+                            ""+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)+'"'+"&borcode="+req.body.bookId+"&borId="+req.body.borrowId
                         },function(eeeee,rrrrr,body){
 
                             //console.log(eeeee,body);
@@ -531,10 +523,9 @@ profile.shareBook = function(req,res){
                         //console.log(r);
 
                         if(r.length>0){
-                            //console.log(config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                             request.get(
                                 {
-                                    url:config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
+                                    url:config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)
                                 },function(eeeee,rrrrr,body){
 
                                     //console.log(eeeee,body);
@@ -636,10 +627,9 @@ profile.shareMajor = function(req,res){
                         //console.log(r);
 
                         if(r.length>0){
-                            //console.log(config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                             request.get(
                                 {
-                                    url:config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
+                                    url:config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)
                                 },function(eeeee,rrrrr,body){
 
                                     //console.log(eeeee,body);
@@ -744,10 +734,9 @@ profile.shareExam = function(req,res){
                         //console.log(r);
 
                         if(r.length>0){
-                            //console.log(config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password);
                             request.get(
                                 {
-                                    url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&debug=1&studentId="+ r[0].studentId+"&password="+ r[0].password
+                                    url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)
                                 },function(eeeee,rrrrr,body){
 
                                     //console.log(eeeee,body);
@@ -995,7 +984,7 @@ profile.update = function(req,res){
 
             if (r.length > 0) {
 
-                request.get(config.api.baseUrl + '/api/update?appId=' + config.api.appId + '&appSecret=' + config.api.appSecret + '&studentId='+r[0].studentId+'&password='+r[0].password+'&debug=1&type=' + req.body.type,function(ee,rr,bb) {
+                request.get(config.api.baseUrl + '/api/update?appId=' + config.api.appId + '&appSecret=' + config.api.appSecret + '&studentId='+r[0].studentId+'&password='+aes.encode(config.api.appId,config.api.appSecret,r[0].password)+'&type=' + req.body.type,function(ee,rr,bb) {
                     if(ee){
                         res.end(JSON.stringify(code.requestError));
                         return;

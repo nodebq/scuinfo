@@ -23,10 +23,40 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 require('./libs/wechatApi.js');
+var checkSignature = function (query, token) {
+//console.log(query);
+    if(!query.signature || !query.timestamp ||!query.nonce ||!token){
+        //console.log('1');
+        return false;
+    }
+
+    var signature = query.signature;
+    var timestamp = query.timestamp;
+    var nonce = query.nonce;
+
+    var shasum = crypto.createHash('sha1');
+    var arr = [token, timestamp, nonce].sort();
+
+    //console.log(arr.join(''));
+    shasum.update(arr.join(''));
+//console.log(shasum.digest('hex'));
+console.log('验证通过');
+    return shasum.digest('hex') === signature;
+    //return true;
+};
 app.use('/api/updateCallback', function(req,res,next){
     console.log(req.body);
+
+
+
     if(req.method=="POST"){
-            console.log(req.body);
+
+        if(!checkSignature(req.query,config.api.appSecret)){
+            next();
+            return;
+        }
+
+            //console.log(req.body);
 profile.updateCallbackNews(req,res);
     }else{
         next();

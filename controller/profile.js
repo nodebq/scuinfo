@@ -878,7 +878,7 @@ profile.updateCallbackNews = function(req,res){
         }
         articles[0]={
             title:"通知:你的"+type+"更新"+((req.body.code==200)?"成功":"失败"),
-            description:((req.body.code==200)?("点击这里或自定义菜单查看最新"+type):("原因："+req.body.message+"\n点击这里或自定义菜单重试")),
+            description:((req.body.code==200)?("点击这里或自定义菜单查看最新"+type):("原因："+req.body.message+"\n点击这里进入后可以重试")),
             url:url
         };
 

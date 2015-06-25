@@ -119,6 +119,39 @@ wechatApi.sendTemplate = function(req,res,next){
 
 };
 
+
+wechatApi.sendText = function(req,res){
+    api.sendText(req.body.openId, req.body.content, function(e,r){
+
+        if(e){
+            console.log(e+new Date());
+            res.end(JSON.stringify(code.sendWechatTextError));
+
+        }else{
+            res.end(JSON.stringify(code.success));
+            return;
+        }
+
+    });
+};
+
+
+
+
+wechatApi.sendNews = function(req,res){
+    api.sendNews(req.body.openId, req.body.articles, function(e){
+
+        if(e){
+            console.log(e+new Date());
+            res.end(JSON.stringify(code.sendWechatTextError));
+        }else{
+            res.end(JSON.stringify(code.success));
+            return;
+        }
+
+    });
+};
+
 /**
  * 创建菜单
  */

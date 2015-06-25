@@ -829,7 +829,129 @@ profile.share = function(req,res){
 
 };
 
-profile.updateCallback = function(req,res){
+
+
+profile.updateCallbackNews = function(req,res){
+    //console.log(req.body);
+    if(req.body.type){
+        var studentId=req.body.studentId;
+        var time=common.date(parseInt(req.body.time)*1000);
+        var table='secret_account';
+        var noBind="noBindDean";
+        var url="";
+        var type="";
+        var articles=[];
+
+        switch (req.body.type){
+
+            case 'exam':
+                type='考表';
+                url=config.site.url+"/exam";
+                break;
+
+            case 'book':
+                table="secret_library";
+                noBind="noBindLibrary";
+                type='借阅图书';
+                url=config.site.url+"/book";
+                return;
+
+                break;
+            case 'renew':
+                table="secret_library";
+                noBind="noBindLibrary";
+                type='续借操作';
+                url=config.site.url+"/book";
+
+                break;
+            case 'score':
+                type='成绩';
+                url=config.site.url+"/score";
+
+                break;
+            case 'major':
+                url=config.site.url+"/major";
+
+                type='课表';
+
+                break;
+        }
+        articles[0]={
+            title:"通知:你的"+type+"更新"+((req.body.code==200)?"成功":"失败"),
+            description:((req.body.code==200)?("点击这里或自定义菜单查看最新"+type):("原因："+req.body.message+"\n点击这里或自定义菜单重试")),
+            url:url
+        };
+
+
+        conn.query(
+            {sql:"select userId from "+table+" where studentId="+req.body.studentId+" order by id desc limit 0,1"},function(e,r){
+
+                if(e){
+
+                    res.end(JSON.stringify(code.mysqlError));
+                    return;
+                }
+
+                if(r.length==0){
+
+                    res.end(JSON.stringify(code[noBind]));
+                    return;
+                }
+                //console.log("select openId from secret_open where userId="+r[0].userId+" and source='wechat'");
+                conn.query(
+                    {
+                        sql:"select openId from secret_open where userId="+r[0].userId+" and source='wechat'"
+                    },function(ee,rr){
+
+                        if(ee){
+                            res.end(JSON.stringify(code.mysqlError));
+                            return;
+                        }
+
+                        if(rr.length==0){
+                            res.end(JSON.stringify(code.notSubscribe));
+                            return;
+                        }
+                        //console.log(config.urls.wechatSendTemplate);
+                        request.post(
+                            {
+                                url:config.urls.wechatSendNews,
+                                json:true,
+                                body:{
+                                    url:url?url:(config.site.url+"/u"),
+                                    articles:articles,
+                                    openId:rr[0].openId
+                                }
+                            },function(eee,rrr,bbb){
+                                //console.log(eee);
+                                if(eee){
+                                    console.log(eee);
+                                    res.end(JSON.stringify(code.requestError));
+                                    return;
+                                }
+                                //console.log('222');
+
+                                res.end(bbb);
+                                return;
+                            }
+                        )
+
+                    }
+                )
+
+
+
+            }
+        );
+
+        return;
+    }
+
+    res.end(JSON.stringify(code.unknownError));
+};
+
+
+profile.updateCallbackTemplate = function(req,res){
     console.log(req.body);
     if(req.body.type){
         var first="";

@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('./libs/wechatApi.js');
 app.use('/api/updateCallback', function(req,res,next){
         if(req.method=="POST"){
-profile.updateCallback(req,res);
+profile.updateCallbackNews(req,res);
     }else{
         next();
     }
@@ -39,6 +39,22 @@ wechatApi.sendTemplate(req,res);
     }
 });
 
+
+app.use('/api/wechat/sendText', function(req,res,next){
+    if(req.method=="POST"){
+        wechatApi.sendText(req,res);
+    }else{
+        next();
+    }
+});
+
+app.use('/api/wechat/sendNews', function(req,res,next){
+    if(req.method=="POST"){
+        wechatApi.sendNews(req,res);
+    }else{
+        next();
+    }
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

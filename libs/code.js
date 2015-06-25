@@ -200,6 +200,10 @@ var code = {
         code:2043,
         message:"缺少参数 borrowId"
     },
+    'sendWechatTextError':{
+        code:2044,
+        message:"发送微信客服消息失败"
+    }
 };
 
 

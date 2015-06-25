@@ -7,7 +7,7 @@ var profile = require('./controller/profile.js');
 var wechatApi= require('./libs/wechatApi.js');
 var config = require('./config.js');
 var app = express();
-
+var crypto = require('crypto');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

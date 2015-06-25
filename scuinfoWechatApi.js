@@ -25,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('./libs/wechatApi.js');
 app.use('/api/updateCallback', function(req,res,next){
         if(req.method=="POST"){
+            console.log(req.body);
 profile.updateCallbackNews(req,res);
     }else{
         next();

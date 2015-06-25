@@ -670,34 +670,48 @@ var common= require('./common');
 //    console.log(week);
 //},2000);
 
-var articles=[
-    {
-        title:"test",
-        description:"desc",
-        url:"http://baidu.com"
-    }
-]
+//var articles=[
+//    {
+//        title:"test",
+//        description:"desc",
+//        url:"http://baidu.com"
+//    }
+//]
+//
+//request.post(
+//    {
+//        url:config.urls.wechatSendNews,
+//        json:true,
+//        body:{
+//            url:(config.site.url+"/u"),
+//            articles:articles,
+//            openId:'orJ8DjwvPDnWzhoVEVSc-T0Q60Fo'
+//        }
+//    },function(eee,rrr,bbb){
+//        //console.log(eee);
+//        if(eee){
+//            console.log(eee);
+//            //res.end(JSON.stringify(code.requestError));
+//            return;
+//        }
+//        //console.log('222');
+//console.log(bbb);
+//        //res.end(bbb);
+//        return;
+//    }
+//)
+
 
 request.post(
     {
-        url:config.urls.wechatSendNews,
-        json:true,
-        body:{
-            url:(config.site.url+"/u"),
-            articles:articles,
-            openId:'orJ8DjwvPDnWzhoVEVSc-T0Q60Fo'
+        url:"http://203.195.164.179:8120/api/updateCallback",
+        form:{
+            code:200,
+            message:"成功",
+            type:"exam",
+            studentId:"2012141442029"
         }
-    },function(eee,rrr,bbb){
-        //console.log(eee);
-        if(eee){
-            console.log(eee);
-            //res.end(JSON.stringify(code.requestError));
-            return;
-        }
-        //console.log('222');
-console.log(bbb);
-        //res.end(bbb);
-        return;
+    },function(e,r){
+        console.log(e, r.body);
     }
 )
-

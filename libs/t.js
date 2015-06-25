@@ -1,7 +1,7 @@
 var request = require('request');
-
+var config = require('../config.js');
 var common= require('./common');
-var datas= require('../datas');
+//var datas= require('../datas');
 //
 //var conn = require('../libs/mysql.js');
 ////
@@ -663,10 +663,41 @@ var datas= require('../datas');
 //    )
 //};
 
-datas.load();
+//datas.load();
+//
+//setTimeout(function(){
+//   var week =  (common.todayStartTimestamp-datas.firstDay[datas.currentTerm.termId])/3600/24/7
+//    console.log(week);
+//},2000);
 
-setTimeout(function(){
-   var week =  (common.todayStartTimestamp-datas.firstDay[datas.currentTerm.termId])/3600/24/7
-    console.log(week);
-},2000);
+var articles=[
+    {
+        title:"test",
+        description:"desc",
+        url:"http://baidu.com"
+    }
+]
+
+request.post(
+    {
+        url:config.urls.wechatSendNews,
+        json:true,
+        body:{
+            url:(config.site.url+"/u"),
+            articles:articles,
+            openId:'orJ8DjwvPDnWzhoVEVSc-T0Q60Fo'
+        }
+    },function(eee,rrr,bbb){
+        //console.log(eee);
+        if(eee){
+            console.log(eee);
+            //res.end(JSON.stringify(code.requestError));
+            return;
+        }
+        //console.log('222');
+console.log(bbb);
+        //res.end(bbb);
+        return;
+    }
+)
 

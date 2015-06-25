@@ -50,6 +50,7 @@ app.use('/api/wechat/sendText', function(req,res,next){
 
 app.use('/api/wechat/sendNews', function(req,res,next){
     if(req.method=="POST"){
+        console.log(req.body);
         wechatApi.sendNews(req,res);
     }else{
         next();

@@ -930,8 +930,8 @@ profile.updateCallbackNews = function(req,res){
                                     return;
                                 }
                                 //console.log('222');
-
-                                res.end(bbb);
+console.log(bbb);
+                                res.end('2');
                                 return;
                             }
                         )

@@ -375,6 +375,7 @@ profile.book = function(req,res){
             //console.log(r);
 
             if(r.length>0){
+                console.log(config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+aes.encode(config.api.appId,config.api.appSecret, r[0].password));
                 request.get(
                     {
                         url:config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+aes.encode(config.api.appId,config.api.appSecret, r[0].password)

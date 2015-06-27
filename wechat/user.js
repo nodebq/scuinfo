@@ -185,7 +185,7 @@ console.log(e,r);
                             }
                         }
 
-                        text+=((msg.source=='weibo')?('\n\n点此查看详情:'+config.site.url+'/score'):('\n\n <a href="'+config.site.url+'/score">点击查看全部成绩详情</a>')) +
+                        text+=((msg.source=='weibo')?('\n\n点此查看详情或更新:'+config.site.url+'/score'):('\n\n <a href="'+config.site.url+'/score">点击查看全部成绩详情或更新</a>')) +
                             '\n\n最后更新时间:'+(new Date(parseInt(scores.data.updateAt)*1000).getMonth()+1)+"月"+(new Date(parseInt(scores.data.updateAt)*1000).getDate())+"日 "+new Date(parseInt(scores.data.updateAt)*1000).getHours()+":"+new Date(parseInt(scores.data.updateAt)*1000).getMinutes() ;
                         res.reply(text);
                         return;
@@ -385,7 +385,7 @@ user.book = function(msg,req,res,next){
 
                         }
 
-                        text+=((msg.source=='weibo')?('\n\n点此查看详情:'+config.site.url+'/book'):('\n\n <a href="'+config.site.url+'/book">点击查看详情或续借</a>')) +
+                        text+=((msg.source=='weibo')?('\n\n点此查看详情或更新数据:'+config.site.url+'/book'):('\n\n <a href="'+config.site.url+'/book">点击查看详情或续借</a>')) +
                             '\n\n最后更新时间:'+(new Date(parseInt(books.data.updateAt)*1000).getMonth()+1)+"月"+(new Date(parseInt(books.data.updateAt)*1000).getDate())+"日 "+new Date(parseInt(books.data.updateAt)*1000).getHours()+":"+new Date(parseInt(books.data.updateAt)*1000).getMinutes() ;
                         res.reply(text);
                         return;
@@ -601,7 +601,7 @@ user.major = function(msg,req,res,next){
                             text+="\n\n咦，今天没课^_^"
                         }
 
-                        text+=((msg.source=='weibo')?('\n\n点此查看详情:'+config.site.url+'/major'):('\n\n <a href="'+config.site.url+'/major">点击查看全部课表详情或更新</a>')) +
+                        text+=((msg.source=='weibo')?('\n\n点此查看详情或更新数据:'+config.site.url+'/major'):('\n\n <a href="'+config.site.url+'/major">点击查看全部课表详情或更新</a>')) +
                             '\n\n课表最后更新时间:'+(new Date(parseInt(majors.data.updateAt)*1000).getMonth()+1)+"月"+(new Date(parseInt(majors.data.updateAt)*1000).getDate())+"日 "+new Date(parseInt(majors.data.updateAt)*1000).getHours()+":"+new Date(parseInt(majors.data.updateAt)*1000).getMinutes() ;
                         res.reply(text);
                         return;
@@ -808,7 +808,7 @@ user.exam = function(msg,req,res,next){
                             }
                         }
 
-                        text+=((msg.source=='weibo')?('\n\n点此生成你的专属考试页面或查看详情:'+config.site.url+'/exam'):('\n\n <a href="'+config.site.url+'/exam">点击生成你的专属考试页面或更新</a>')) +
+                        text+=((msg.source=='weibo')?('\n\n点此生成你的专属考试页面或查看详情或更新数据:'+config.site.url+'/exam'):('\n\n <a href="'+config.site.url+'/exam">点击生成你的专属考试页面或更新</a>')) +
                             '\n\n最后更新时间:'+common.dateChina(exams.data.updateAt*1000) ;
                         res.reply(text);
                         return;

@@ -434,12 +434,13 @@ profile.book = function(req,res){
 
 
 profile.renew = function(req,res){
-//console.log(req.body);
+console.log(req.body);
     check.renew(req.body,function(ee,rr){
         if(ee){
             res.end(JSON.stringify(ee));
             return;
         }
+        console.log(ee,rr);
 //console.log("select studentId,password from secret_library where userId="+req.session.userId);
         conn.query(
             {
@@ -450,16 +451,15 @@ profile.renew = function(req,res){
                     res.end(JSON.stringify(code.mysqlError));
                     return;
                 }
-                // console.log(r);
 
                 if(r.length>0){
                     request.get(
                         {
                             url:config.api.baseUrl+"/api/renew?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password=" +
-                            ""+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)+'"'+"&borcode="+req.body.bookId+"&borId="+req.body.borrowId
+                            ""+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)+"&bookId="+req.body.bookId+"&borrowId="+req.body.borrowId
                         },function(eeeee,rrrrr,body){
 
-                            //console.log(eeeee,body);
+                            console.log(eeeee,body);
                             if(eeeee){
                                 res.end(JSON.stringify(code.requestError));
                                 return;

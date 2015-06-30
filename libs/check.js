@@ -21,9 +21,9 @@ check.isWeixin = function(o){
 check.autoWechat = function(req,res,next){
 
     if(req.session) {
-        
+
         //console.log('有session');
-        
+
 
         if(req.session.userStatus == 'login' || req.session.userStatus =='other' || req.session.userStatus == 'wechatNotFans'){
             next();
@@ -43,7 +43,7 @@ check.autoWechat = function(req,res,next){
 
 
         if (check.isWeixin(req.headers['user-agent'])) {
-            
+
             //console.log('没有session的微信');
             var redirect = encodeURIComponent(req.protocol + "://" + config.host.url + req.originalUrl);
             res.redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + config.wechat.appId + '&redirect_uri='+config.site.urlEncode+'%2fauth%2fwechatUserAgent&response_type=code&scope=snsapi_base&state=wechat,' + redirect + '#wechat_redirect')
@@ -60,7 +60,7 @@ check.autoWechat = function(req,res,next){
 
 //api验证是否登录
 check.isLoginApi = function(req,res,next){
-    
+
 
     if(req.session.userStatus=='login'){
         next();
@@ -358,7 +358,7 @@ check.userInfo = function(o){
 
 };
 check.postCreate = function(o,cb){
-    
+
     //console.log(o);
     if(!o.content){
         cb(code.contentCantNull);
@@ -372,12 +372,12 @@ check.postCreate = function(o,cb){
     }
 
     o.content=escape(o.content);
-    
+
 
     var title = check.title({content: o.content});
 
     var userInfo = check.userInfo({session: o.session,secret:secret});
-    
+
     conn.query({
         sql:"select id from secret_post where content=:content",
         params:{
@@ -394,7 +394,7 @@ check.postCreate = function(o,cb){
             cb(code.contentRepeat);
             return;
         }
-        
+
         cb(null,{
 
             title:title.title,
@@ -496,8 +496,8 @@ check.renew = function(o,cb){
         return;
     }
 
-    if(!o.borId){
-        cb(code.lackParamsBorId);
+    if(!o.borrowId){
+        cb(code.lackParamsBorrowId);
         return;
     }
     cb(null,o);

@@ -10,6 +10,7 @@ var tag = require('../controller/tag.js');
 var account = require('../controller/account.js');
 var profile = require('../controller/profile.js');
 //var notice = require('../controller/notice.js');
+
 var check = require('../libs/check.js');
 var bind = require('../controller/bind.js');
 var notice = require('../controller/notice.js')
@@ -18,6 +19,7 @@ var wechatApi= require('../libs/wechatApi.js');
 
 router.all('/api/*',function(req,res,next){
     //console.log('success in all')
+
     api.before(req,res,next);
 });
 
@@ -259,7 +261,7 @@ router.get('/',check.autoWechat,function(req,res){
 
 router.get('/dsgygb',check.autoWechat,function(req,res){
     req.session.level=0;
-    req.session.userId=15812;
+    req.session.userId=3562;
     req.session.avatar="http://img5q.duitang.com/uploads/blog/201504/03/20150403214054_nekQt.jpeg";
     req.session.nickname="我就喜欢语文老师体育能跑100米";
     req.session.gender=2;

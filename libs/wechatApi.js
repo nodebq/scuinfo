@@ -152,6 +152,9 @@ wechatApi.sendNews = function(req,res){
     });
 };
 
+
+
+
 /**
  * 创建菜单
  */
@@ -286,6 +289,14 @@ console.log(e,r);
  * 创建菜单
  */
 //wechatApi.createMenu();
+
+
+/**
+ * 删除菜单
+ */
+//api.removeMenu(function(e,r){
+//    console.log(e,r);
+//});
 
 /**
  * 获取菜单

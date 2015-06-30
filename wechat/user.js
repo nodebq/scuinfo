@@ -84,7 +84,7 @@ conn.query(
 
 user.score = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
-console.log(e,r);
+// console.log(e,r);
         if(e){
 
 
@@ -158,7 +158,7 @@ console.log(e,r);
             {
                 url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
             },function(eeeee,rrrrr,body){
-                
+
                 console.log(eeeee,body);
                 if(eeeee){
                     res.reply(code.requestError.message);
@@ -173,6 +173,10 @@ console.log(e,r);
 //console.log(scores);
 //                console.log(scores.code);
                 if(scores.code==200){
+
+                  request.get(config.api.baseUrl + '/api/update?appId=' + config.api.appId + '&appSecret=' + config.api.appSecret + '&studentId='+r.studentId+'&password='+aes.encode(config.api.appId,config.api.appSecret,r.password)+'&type=score',function(ee,rr,bb) {
+
+                  });
                     //console.log(scores);
                     var scoresData=scores.data.scores;
                     //console.log(scoresData);
@@ -220,6 +224,9 @@ console.log(e,r);
                         });
 
                     }
+
+
+
                     return;
 
 
@@ -276,7 +283,7 @@ console.log(e,r);
                 }
                 res.reply(scores.code+":"+scores.message);
                 return;
-                
+
 
 
             });
@@ -374,6 +381,9 @@ user.book = function(msg,req,res,next){
                 //console.log(books);
                 //console.log(books.code);
                 if(books.code==200){
+                  request.get(config.api.baseUrl + '/api/update?appId=' + config.api.appId + '&appSecret=' + config.api.appSecret + '&studentId='+r.studentId+'&password='+aes.encode(config.api.appId,config.api.appSecret,r.password)+'&type=book',function(ee,rr,bb) {
+
+                  });
                     //console.log(books);
                     var booksData=books.data.books;
                     //console.log(booksData);
@@ -573,6 +583,9 @@ user.major = function(msg,req,res,next){
                 //console.log(majors);
                 //console.log(majors.code);
                 if(majors.code==200){
+                  request.get(config.api.baseUrl + '/api/update?appId=' + config.api.appId + '&appSecret=' + config.api.appSecret + '&studentId='+r.studentId+'&password='+aes.encode(config.api.appId,config.api.appSecret,r.password)+'&type=major',function(ee,rr,bb) {
+
+                  });
                     //console.log(majors);
                     var majorsData=majors.data.majors;
                     //console.log(JSON.stringify(majorsData));
@@ -788,6 +801,9 @@ user.exam = function(msg,req,res,next){
                 }
 
                 if(exams.code==200){
+                  request.get(config.api.baseUrl + '/api/update?appId=' + config.api.appId + '&appSecret=' + config.api.appSecret + '&studentId='+r.studentId+'&password='+aes.encode(config.api.appId,config.api.appSecret,r.password)+'&type=exam',function(ee,rr,bb) {
+
+                  });
                     var examsData=exams.data.exams;
                     if(examsData.length>0){
                         function sortByTime(a,b){

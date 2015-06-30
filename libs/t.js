@@ -700,18 +700,33 @@ var common= require('./common');
 //        return;
 //    }
 //)
+//
+//
+// request.post(
+//     {
+//         url:"http://203.195.164.179:8120/api/updateCallback",
+//         form:{
+//             code:200,
+//             message:"成功",
+//             type:"exam",
+//             studentId:"2012141442029"
+//         }
+//     },function(e,r){
+//         console.log(e, r.body);
+//     }
+// )
+function b() {
 
 
-request.post(
-    {
-        url:"http://203.195.164.179:8120/api/updateCallback",
-        form:{
-            code:200,
-            message:"成功",
-            type:"exam",
-            studentId:"2012141442029"
-        }
-    },function(e,r){
-        console.log(e, r.body);
-    }
-)
+if(true){
+  console.log('111');
+  // return;
+}else{
+  console.log('2');
+  return;
+}
+console.log('c');
+}
+
+
+b()

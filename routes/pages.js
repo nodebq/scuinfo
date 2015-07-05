@@ -58,7 +58,8 @@ pages.index = function(req,res){
 
 
         if(e){
-            res.end(JSON.stringify(code.getWechatTicketError))
+            res.end(JSON.stringify(code.getWechatTicketError));
+            console.log(e);
             return;
         }
         res.render('index',{

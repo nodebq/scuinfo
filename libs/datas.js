@@ -33,7 +33,7 @@ conn.query(
             datas.tagById[r[i].id] = r[i].name;
         }
         console.log('tag载入完成');
-        //console.log(datas.tag);
+        console.log(datas.tag);
         cb(null);
     }
 )

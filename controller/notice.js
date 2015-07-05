@@ -123,30 +123,37 @@ notice.list = function (req, res) {
 
 notice.change = function (req, res) {
     if(req.session.userId){
-        if(req.query.action=='0'||req.query.action=='1'){
-            if(!req.query.type){
-                req.query.type='single';
+        //console.log("success");return;
+        //console.log(req.body);return;
+        if(req.body.action=='0'||req.body.action=='1'){
+
+            if(!req.body.type){
+                req.body.type='single';
             }
             var sql='';
-            switch(req.query.type){
+            switch(req.body.type){
                 case 'single':
-                    sql='update secret_notice set status='+req.query.action+' where id='+req.query.id;
+                    sql='update secret_notice set status='+req.body.action+' where userId='+req.session.userId+' and id='+req.body.id;
                     break;
                 case 'multiply':
-                    var a = req.query.id.join();
-                    sql='update secret_notice set status='+req.query.action+' where id in('+a+')';
+                    var a = req.body.id.join();
+                    sql='update secret_notice set status='+req.body.action+' where userId='+req.session.userId+' and id in('+a+')';
                     break;
                 case 'all':
-                    sql='update secret_notice set status='+req.query.action+' where userId='+req.session.id;
+                    sql='update secret_notice set status='+req.body.action+' where userId='+req.session.userId;
                     break;
             }
+            //console.log(sql);
+
+            //return;
             conn.query(
                 {
                     sql:sql
                 }, function (err,rows) {
                     if(err){
                         console.log(err);
-                        res.end(JSON.stringify(code.mysqlError))
+                        //console.log("here");
+                        res.end(JSON.stringify(code.mysqlError));
                         return;
                     }else{
                         res.end(common.format(200,'success',''))
@@ -154,6 +161,8 @@ notice.change = function (req, res) {
                 }
             )
         }else{
+            //console.log(req.query.action);
+            //console.log('success?');
             console.log('参数错误');
             res.end(JSON.stringify(code.paramError));
             return;

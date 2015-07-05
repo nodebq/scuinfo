@@ -1,7 +1,7 @@
 var request = require('request');
 
-var common= require('./common');
-var datas= require('../datas');
+//var common= require('./common');
+//var datas= require('../datas');
 //
 //var conn = require('../libs/mysql.js');
 ////
@@ -124,19 +124,19 @@ var datas= require('../datas');
 //})
 
 
-//request({
-//    method:"POST",
-//    url:"http://localhost:4150/api/comments/2/delete?token=1",
-//    json:true
-////    body:{
-////        userId:1,
-////        secret:1,
-////        parentId:"2",
-////        content:"大帅哥杨国宝"
-////    }
-//},function(e,r){
-//     console.log(e, r.body);
-//})
+request({
+    method:'post',
+    url:'http://localhost:4150/api/notice/status',
+    json:true,
+    body:{
+        type:'single',
+        action:'0',
+        parentId:'1',
+        id:6
+    }
+},function(e,r){
+     console.log(e, r.body);
+});
 
 
 //api.postsPost = function (req, res) {
@@ -662,11 +662,11 @@ var datas= require('../datas');
 //        }
 //    )
 //};
-
-datas.load();
-
-setTimeout(function(){
-   var week =  (common.todayStartTimestamp-datas.firstDay[datas.currentTerm.termId])/3600/24/7
-    console.log(week);
-},2000);
+//
+//datas.load();
+//
+//setTimeout(function(){
+//   var week =  (common.todayStartTimestamp-datas.firstDay[datas.currentTerm.termId])/3600/24/7
+//    console.log(week);
+//},2000);
 

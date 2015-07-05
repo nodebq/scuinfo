@@ -504,7 +504,7 @@
           ### 20.标记通知为已读，未读状态
 
           {
-          method:"get",
+          method:"post",
           url:"/api/notice/status"
           params:{
           type:"single,multiply,all",single为单条通知,multiply为多条通知,all为全部通知,默认为single,

@@ -55,6 +55,7 @@ conn.query(
         sql:"select studentId,password from secret_"+ ((msg.field=='library')?"library":"account")+" where userId = "+ r
     },function(ee,rr){
         console.log(ee,rr);
+
         if(ee){
             console.log(ee);
             cb(code.mysqlError);
@@ -86,8 +87,93 @@ conn.query(
 
 user.score = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
-            
-            
+
+            if(e){
+
+                if(e.code== 2001){
+
+                    dbs.getWechatNews({
+                        name:"deanPasswordError"
+                    },function(eee,rrrr){
+                        if(eee){
+                            res.reply(JSON.stringify(eee));
+                            return;
+                        }
+                        //console.log(rrrr);
+                        res.reply(rrrr);
+
+                    });
+
+                    return;
+                }
+                if(e.code == 2020){
+
+
+                    if(msg.source=='weibo'){
+
+                        dbs.getWechatNews({
+                            name:"notBindDean"
+                        },function(eee,rrrr){
+                            if(eee){
+                                res.reply(JSON.stringify(eee));
+                                return;
+                            }
+                            //console.log(rrrr);
+                            res.reply(rrrr);
+
+                        });
+                        return;
+                    }
+
+
+                    bind.register(msg.FromUserName,function(ee,rr){
+
+                        if(ee){
+                            res.reply(JSON.stringify(ee));
+                            return;
+                        }
+                        dbs.getWechatNews({
+                            name:"notBindDean"
+                        },function(eee,rrrr){
+                            if(eee){
+                                res.reply(JSON.stringify(eee));
+                                return;
+                            }
+                            //console.log(rrrr);
+                            res.reply(rrrr);
+
+                        });
+                        return;
+
+                    });
+
+                    return;
+                }
+
+
+                if(e.code == 2021){
+                    dbs.getWechatNews({
+                        name:"notBindDean"
+                    },function(eee,rrrr){
+                        if(eee){
+                            res.reply(JSON.stringify(eee));
+                            return;
+                        }
+                        //console.log(rrrr);
+                        res.reply(rrrr);
+
+                    });
+
+                    return;
+                }
+
+
+
+                res.reply(e.message+"\n\n回复：绑定 可以重新绑定\n\n如需反馈bug，请联系微信号:dsgygb");
+                return;
+            }
+
+
             libs.get(
                 {
                     studentId: r.studentId,
@@ -97,84 +183,8 @@ user.score = function(msg,req,res,next){
                     
                     //console.log(e,r);
                     if (e) {
-                        if(e.code == 2020){
-                            if(msg.source=='weibo'){
 
-                                dbs.getWechatNews({
-                                    name:"notBindDean"
-                                },function(eee,rrrr){
-                                    if(eee){
-                                        res.reply(JSON.stringify(eee));
-                                        return;
-                                    }
-                                    //console.log(rrrr);
-                                    res.reply(rrrr);
-
-                                });
-                                return;
-                            }
-
-
-                            bind.register(msg.FromUserName,function(ee,rr){
-                                if(ee){
-                                    res.reply(JSON.stringify(ee));
-                                    return;
-                                }
-                                dbs.getWechatNews({
-                                    name:"notBindDean"
-                                },function(eee,rrrr){
-                                    if(eee){
-                                        res.reply(JSON.stringify(eee));
-                                        return;
-                                    }
-                                    //console.log(rrrr);
-                                    res.reply(rrrr);
-
-                                });
-                                return;
-
-                            });
-
-                            return;
-                        }
-
-                        if(e.code== 2001){
-
-                            dbs.getWechatNews({
-                                name:"deanPasswordError"
-                            },function(eee,rrrr){
-                                if(eee){
-                                    res.reply(JSON.stringify(eee));
-                                    return;
-                                }
-                                //console.log(rrrr);
-                                res.reply(rrrr);
-
-                            });
-
-                            return;
-                        }
-
-
-                        if(e.code == 2021){
-                            dbs.getWechatNews({
-                                name:"notBindDean"
-                            },function(eee,rrrr){
-                                if(eee){
-                                    res.reply(JSON.stringify(eee));
-                                    return;
-                                }
-                                //console.log(rrrr);
-                                res.reply(rrrr);
-
-                            });
-
-                            return;
-                        }
-
-
-
-                        res.reply(e.message+"\n\n回复：绑定 可以重新绑定\n\n如需反馈bug，请联系微信号:dsgygb");
+                        res.reply("教务处无法访问。请稍后重试");
                         return;
 
                     } else {

@@ -378,7 +378,7 @@ user.score = function(msg,req,res,next){
                 url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
             },function(eeeee,rrrrr,body){
 
-                console.log(eeeee,body);
+                //console.log(eeeee,body);
                 if(eeeee){
                     res.reply(code.requestError.message);
                     return;

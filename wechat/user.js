@@ -85,12 +85,16 @@ conn.query(
 
 user.score = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
+            
+            
             libs.get(
                 {
                     studentId: r.studentId,
                     password: r.password,
                     url: "http://202.115.47.141/bxqcjcxAction.do?totalrows=16&pageSize=300"
                 }, function (e, r) {
+                    
+                    console.log(e,r);
                     if (e) {
                         if(e.code == 2020){
                             if(msg.source=='weibo'){

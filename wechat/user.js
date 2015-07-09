@@ -83,7 +83,7 @@ conn.query(
 
 user.testScore = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
-// console.log(e,r);
+ console.log(e,r);
             if(e){
 
 
@@ -161,6 +161,7 @@ user.testScore = function(msg,req,res,next){
                 {
                     url:config.api.baseUrl+"/api/score/latest?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
                 },function(eeeee,rrrrr,body){
+                    console.log(eeeee);
                     if(eeeee){
                         res.reply(code.requestError.message);
                         return;
@@ -171,6 +172,8 @@ user.testScore = function(msg,req,res,next){
                     }catch(e){
                         var scores= {};
                     }
+                    
+                    console.log(scores);
                     if(scores.code==200){
                         var scoresData=scores.data.scores;
                         if(scoresData.length>0){

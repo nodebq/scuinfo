@@ -173,7 +173,7 @@ user.score = function(msg,req,res,next){
 
 
 
-                        res.reply(e.message);
+                        res.reply(e.message+"\n\n回复：绑定 可以重新绑定\n\n如需反馈bug，请联系微信号:dsgygb");
                         return;
 
                     } else {

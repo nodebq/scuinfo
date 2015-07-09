@@ -83,7 +83,7 @@ conn.query(
 
 };
 
-user.testScore = function(msg,req,res,next){
+user.score = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
             libs.get(
                 {
@@ -93,8 +93,6 @@ user.testScore = function(msg,req,res,next){
                 }, function (e, r) {
                     if (e) {
                         if(e.code == 2020){
-
-
                             if(msg.source=='weibo'){
 
                                 dbs.getWechatNews({
@@ -113,7 +111,6 @@ user.testScore = function(msg,req,res,next){
 
 
                             bind.register(msg.FromUserName,function(ee,rr){
-
                                 if(ee){
                                     res.reply(JSON.stringify(ee));
                                     return;
@@ -468,7 +465,7 @@ user.testScore = function(msg,req,res,next){
 
 };
 
-user.score = function(msg,req,res,next){
+user.oldScore = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
 // console.log(e,r);
         if(e){

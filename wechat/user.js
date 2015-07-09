@@ -163,18 +163,32 @@ user.testScore = function(msg,req,res,next){
                         var scoresData=scores;
                         if(scoresData.length>0){
 
-                            var text="你的本学期最新成绩如下:";
+                            var text="你本学期最新已出成绩的科目:";
+                            var hasFlag=false;
                             for(var i=0;i<scoresData.length;i++){
                                 if(scoresData[i].score!="") {
-                                    text += "\n\n已出成绩:"+scoresData[i].name+"["+scoresData[i].property+"]" + ":" + scoresData[i].score + "";
+                                    hasFlag=true;
+                                    text += "\n\n"+scoresData[i].name+"["+scoresData[i].property+"]" + ":" + scoresData[i].score + "";
+                                }
+                            }
+                            
+                            if(hasFlag==false){
+                                text+="\n\n 本学期没有已出成绩的科目";
+                            }
+                            
+                            
+                            var notFlag=false;
+                            
+                            text="\n\n未出成绩的科目：";
+                            for(var i=0;i<scoresData.length;i++){
+                                if(scoresData[i].score=="") {
+                                    notFlag=true;
+                                    text += "\n\n"+scoresData[i].name+","+scoresData[i].property;
                                 }
                             }
 
-
-                            for(var i=0;i<scoresData.length;i++){
-                                if(scoresData[i].score=="") {
-                                    text += "\n\n未出成绩:"+scoresData[i].name+","+scoresData[i].property;
-                                }
+                            if(notFlag==false){
+                                text+="\n\n 无";
                             }
 
                             text+=((msg.source=='weibo')?('\n\n点此查看全部成绩:'+config.site.url+'/score'):('\n\n <a href="'+config.site.url+'/score">点击查看全部成绩</a>'));

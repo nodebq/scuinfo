@@ -81,6 +81,216 @@ conn.query(
 
 };
 
+user.testScore = function(msg,req,res,next){
+    user.valid(msg,req,res,function(e,r){
+// console.log(e,r);
+            if(e){
+
+
+                if(e.code == 2020){
+
+
+                    if(msg.source=='weibo'){
+
+                        dbs.getWechatNews({
+                            name:"notBindDean"
+                        },function(eee,rrrr){
+                            if(eee){
+                                res.reply(JSON.stringify(eee));
+                                return;
+                            }
+                            //console.log(rrrr);
+                            res.reply(rrrr);
+
+                        });
+                        return;
+                    }
+
+
+                    bind.register(msg.FromUserName,function(ee,rr){
+
+                        if(ee){
+                            res.reply(JSON.stringify(ee));
+                            return;
+                        }
+                        dbs.getWechatNews({
+                            name:"notBindDean"
+                        },function(eee,rrrr){
+                            if(eee){
+                                res.reply(JSON.stringify(eee));
+                                return;
+                            }
+                            //console.log(rrrr);
+                            res.reply(rrrr);
+
+                        });
+                        return;
+
+                    });
+
+                    return;
+                }
+
+
+                if(e.code == 2021){
+                    dbs.getWechatNews({
+                        name:"notBindDean"
+                    },function(eee,rrrr){
+                        if(eee){
+                            res.reply(JSON.stringify(eee));
+                            return;
+                        }
+                        //console.log(rrrr);
+                        res.reply(rrrr);
+
+                    });
+
+                    return;
+                }
+
+
+
+                res.reply(e.message);
+                return;
+            }
+
+
+
+            request.get(
+
+                {
+                    url:config.api.baseUrl+"/api/score/latest?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
+                },function(eeeee,rrrrr,body){
+                    if(eeeee){
+                        res.reply(code.requestError.message);
+                        return;
+                    }
+
+                    try{
+                        var scores = JSON.parse(body);
+                    }catch(e){
+                        var scores= {};
+                    }
+                    if(scores.code==200){
+                        var scoresData=scores.data.scores;
+                        if(scoresData.length>0){
+
+                            var text="你的本学期最新成绩如下:";
+                            for(var i=0;i<scoresData.length;i++){
+                                if(scoresData[i].score!="") {
+                                    text += "\n\n已出成绩:"+scoresData[i].name+"["+scoresData[i].property+"]" + ":" + scoresData[i].score + "";
+                                }
+                            }
+
+
+                            for(var i=0;i<scoresData.length;i++){
+                                if(scoresData[i].score=="") {
+                                    text += "\n\n未出成绩:"+scoresData[i].name+","+scoresData[i].property;
+                                }
+                            }
+
+                            text+=((msg.source=='weibo')?('\n\n点此查看全部成绩:'+config.site.url+'/score'):('\n\n <a href="'+config.site.url+'/score">点击查看全部成绩</a>'));
+
+                            var date ='\n\n最后更新时间:'+(new Date(parseInt(scores.data.updateAt)*1000).getMonth()+1)+"月"+(new Date(parseInt(scores.data.updateAt)*1000).getDate())+"日 "+new Date(parseInt(scores.data.updateAt)*1000).getHours()+":"+new Date(parseInt(scores.data.updateAt)*1000).getMinutes();
+                            res.reply(text);
+                            return;
+
+                        }else{
+
+                            if(msg.source=='weibo'){
+                                dbs.getWechatText({
+                                    name:"noScoresWeibo"
+                                },function(eee,rrrr){
+                                    if(eee){
+                                        res.reply(JSON.stringify(eee));
+                                        return;
+                                    }
+                                    //console.log(rrrr);
+                                    res.reply(rrrr);
+                                    return;
+                                });
+                                return;
+                            }
+
+                            dbs.getWechatText({
+                                name:"noScores"
+                            },function(eee,rrrr){
+                                if(eee){
+                                    res.reply(JSON.stringify(eee));
+                                    return;
+                                }
+                                //console.log(rrrr);
+                                res.reply(rrrr);
+                                return;
+                            });
+
+                        }
+
+
+
+                        return;
+
+
+                    }else if(scores.code==2012 || scores.code==2001){
+
+                        dbs.getWechatNews({
+                            name:"deanPasswordError"
+                        },function(eee,rrrr){
+                            if(eee){
+                                res.reply(JSON.stringify(eee));
+                                return;
+                            }
+                            //console.log(rrrr);
+                            res.reply(rrrr);
+
+                        });
+
+                        return;
+
+                    }else if(scores.code==2010 || scores.code==2011){
+
+
+
+                        if(msg.source=='weibo'){
+                            dbs.getWechatText({
+                                name:"getScoreLaterWeibo"
+                            },function(eee,rrrr){
+                                if(eee){
+                                    res.reply(JSON.stringify(eee));
+                                    return;
+                                }
+                                //console.log(rrrr);
+                                res.reply(rrrr);
+                                return;
+                            });
+                            return;
+                        }
+
+                        dbs.getWechatText({
+                            name:"getScoreLater"
+                        },function(eee,rrrr){
+                            if(eee){
+                                res.reply(JSON.stringify(eee));
+                                return;
+                            }
+                            //console.log(rrrr);
+                            res.reply(rrrr);
+                            return;
+
+                        });
+
+                        return;
+
+                    }
+                    res.reply(scores.code+":"+scores.message);
+                    return;
+
+                });
+        }
+
+    );
+
+};
 
 user.score = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
@@ -154,6 +364,12 @@ user.score = function(msg,req,res,next){
             res.reply(e.message);
             return;
         }
+
+
+
+
+
+
         request.get(
             {
                 url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
@@ -288,7 +504,9 @@ user.score = function(msg,req,res,next){
 
             });
 
+
     });
+
 
 };
 

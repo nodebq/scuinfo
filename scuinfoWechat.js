@@ -48,6 +48,11 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
         case 'score':
             user.score(message,req,res,next);
             break;
+
+        case 'test':
+
+            user.testScore(message,req,res,next);
+            break;
         case 'book':
         case '我的图书':
         case '图书':

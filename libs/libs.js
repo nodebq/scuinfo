@@ -3,6 +3,8 @@ var request=require('request');
 var iconv= require('iconv-lite');
 var Buffer = require('buffer').Buffer;
 var code = require('./code.js');
+var cheerio = require('cheerio');
+
 var libs = {
 
     name:"项目公共函数"

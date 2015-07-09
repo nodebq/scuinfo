@@ -45,6 +45,7 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
         case '成绩':
         case 'cj':
         case '我的成绩':
+        case '成绩查询':
         case 'score':
             user.score(message,req,res,next);
             break;

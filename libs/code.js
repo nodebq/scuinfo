@@ -203,6 +203,10 @@ var code = {
     'sendWechatTextError':{
         code:2044,
         message:"发送微信客服消息失败"
+    },
+    'passwordMustString':{
+        code:2045,
+        message:"密码必须是string类型"
     }
 };
 

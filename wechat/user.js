@@ -6,6 +6,8 @@ var bind = require('../libs/bind');
 var dbs = require('../libs/db');
 var common = require('../libs/common.js');
 var aes=require('../libs/aes.js');
+var libs = require('../libs/libs.js');
+var pages = require('../libs/pages.js');
 var user = {
 
 };
@@ -83,7 +85,162 @@ conn.query(
 
 user.testScore = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
- console.log(e,r);
+            libs.get(
+                {
+                    studentId: r.studentId,
+                    password: r.password,
+                    url: "http://202.115.47.141/bxqcjcxAction.do?totalrows=16&pageSize=300"
+                }, function (e, r) {
+                    if (e) {
+                        if(e.code == 2020){
+
+
+                            if(msg.source=='weibo'){
+
+                                dbs.getWechatNews({
+                                    name:"notBindDean"
+                                },function(eee,rrrr){
+                                    if(eee){
+                                        res.reply(JSON.stringify(eee));
+                                        return;
+                                    }
+                                    //console.log(rrrr);
+                                    res.reply(rrrr);
+
+                                });
+                                return;
+                            }
+
+
+                            bind.register(msg.FromUserName,function(ee,rr){
+
+                                if(ee){
+                                    res.reply(JSON.stringify(ee));
+                                    return;
+                                }
+                                dbs.getWechatNews({
+                                    name:"notBindDean"
+                                },function(eee,rrrr){
+                                    if(eee){
+                                        res.reply(JSON.stringify(eee));
+                                        return;
+                                    }
+                                    //console.log(rrrr);
+                                    res.reply(rrrr);
+
+                                });
+                                return;
+
+                            });
+
+                            return;
+                        }
+
+
+                        if(e.code == 2021){
+                            dbs.getWechatNews({
+                                name:"notBindDean"
+                            },function(eee,rrrr){
+                                if(eee){
+                                    res.reply(JSON.stringify(eee));
+                                    return;
+                                }
+                                //console.log(rrrr);
+                                res.reply(rrrr);
+
+                            });
+
+                            return;
+                        }
+
+
+
+                        res.reply(e.message);
+                        return;
+
+                    } else {
+                        var scores = pages.currentScore(r.data);
+                        var scoresData=scores;
+                        if(scoresData.length>0){
+
+                            var text="你的本学期最新成绩如下:";
+                            for(var i=0;i<scoresData.length;i++){
+                                if(scoresData[i].score!="") {
+                                    text += "\n\n已出成绩:"+scoresData[i].name+"["+scoresData[i].property+"]" + ":" + scoresData[i].score + "";
+                                }
+                            }
+
+
+                            for(var i=0;i<scoresData.length;i++){
+                                if(scoresData[i].score=="") {
+                                    text += "\n\n未出成绩:"+scoresData[i].name+","+scoresData[i].property;
+                                }
+                            }
+
+                            text+=((msg.source=='weibo')?('\n\n点此查看全部成绩:'+config.site.url+'/score'):('\n\n <a href="'+config.site.url+'/score">点击查看全部成绩</a>'));
+
+                            var date ='\n\n最后更新时间:'+(new Date(parseInt(scores.data.updateAt)*1000).getMonth()+1)+"月"+(new Date(parseInt(scores.data.updateAt)*1000).getDate())+"日 "+new Date(parseInt(scores.data.updateAt)*1000).getHours()+":"+new Date(parseInt(scores.data.updateAt)*1000).getMinutes();
+                            res.reply(text);
+                            return;
+
+                        }else{
+
+                            if(msg.source=='weibo'){
+                                dbs.getWechatText({
+                                    name:"noScoresWeibo"
+                                },function(eee,rrrr){
+                                    if(eee){
+                                        res.reply(JSON.stringify(eee));
+                                        return;
+                                    }
+                                    //console.log(rrrr);
+                                    res.reply(rrrr);
+                                    return;
+                                });
+                                return;
+                            }
+
+                            dbs.getWechatText({
+                                name:"noScores"
+                            },function(eee,rrrr){
+                                if(eee){
+                                    res.reply(JSON.stringify(eee));
+                                    return;
+                                }
+                                //console.log(rrrr);
+                                res.reply(rrrr);
+                                return;
+                            });
+
+                        }
+
+
+
+                        return;
+
+                        //
+                        //libs.rePost(
+                        //    {
+                        //        url: 'http://202.115.47.141/logout.do?totalrows=300&pageSize=300',
+                        //        form: {
+                        //            'loginType': "platformLogin"
+                        //        },
+                        //        j: r.j
+                        //    }, function (ee, rr) {
+                        //        var scores = pages.currentScore(r.data);
+                        //        res.dump('ok', scores);
+                        //    });
+
+                    }
+
+
+                });
+
+
+
+/*
+
+            console.log(e,r);
             if(e){
 
 
@@ -289,6 +446,8 @@ user.testScore = function(msg,req,res,next){
                     return;
 
                 });
+            
+            */
         }
 
     );

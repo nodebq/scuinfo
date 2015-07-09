@@ -1,4 +1,8 @@
 var config = require('../config.js')
+var request=require('request');
+var iconv= require('iconv-lite');
+var Buffer = require('buffer').Buffer;
+var code = require('./code.js');
 var libs = {
 
     name:"项目公共函数"
@@ -65,6 +69,104 @@ libs.randomAvatar = function(o){
 //todo 期待封装
 libs.randomNickname = function(){
     return '某同学';
+};
+
+
+
+/**
+ * 检查用户名和密码是否正确
+ * @param options{studentId,password}
+ *
+ */
+libs.check = function (o,cb){
+    if(typeof(o.password)!='string'){
+        cb(code.passwordMustString);
+        return;
+    }
+
+    var j = request.jar();
+//console.log(o.password);
+    //console.log(encodeURIComponent(o.password));
+    var options = {
+        method:"post",
+        url: 'http://202.115.47.141/loginAction.do?zjh='+ o.studentId+'&mm='+encodeURIComponent(o.password),
+        encoding: 'binary',
+        form:{zjh: o.studentId,mm:""+o.password+""},
+        jar:j
+    };
+    request(options,function(err,response){
+
+        //console.log(err,response.body);
+        if(err){
+
+            cb({code:code.requestError.code,message:code.requestError.message});
+            console.log(err+new Date());
+            return;
+        }
+        if(response.statusCode!=200){
+            cb({code:code.requestError.code,message:code.requestError.message});
+            return;
+        }
+        var loginCallback = iconv.decode(new Buffer(response.body, 'binary'), 'GBK');//登录返回页面
+        //console.log(loginCallback);
+        var $ = cheerio.load(loginCallback);
+        if($('title').text().trim()=="学分制综合教务"){
+            cb(null,j);
+        }else{
+            //console.log('222');
+            // console.log(loginCallback);
+            cb({
+                code:code.loginError.code,
+                message:$('.errorTop').text().trim()
+            });
+        }
+    });
+};
+
+/**
+ *
+ * @get {options}
+ */
+libs.get = function (o,cb){
+
+    libs.check(o,function(err,j){
+        if(err) {
+
+            console.log(err);
+            console.log('i');
+            cb(err);
+            return;
+        }
+        var opts={
+            method:"get",
+            url: o.url,
+            encoding:"binary",
+            jar:j
+        };
+        //console.log('222');
+        //console.log(opts);
+        request(opts,function(err,r){
+
+            //console.log(opts);
+            //console.log(r.body);
+            if(err){
+
+                console.log('第一次get错误');
+                cb({code:code.requestError.code,message:code.requestError.message,j:j});
+                console.log(err);
+                return;
+            }
+
+            if(r.statusCode!=200){
+                cb({code:code.requestError.code,message:code.requestError.message,j:j});
+                return;
+            }
+            cb(null, {code:0,j:j, data:iconv.decode(new Buffer(r.body, 'binary'), 'GBK')});
+        });
+    });
+
+
+
 };
 
 module.exports = libs;

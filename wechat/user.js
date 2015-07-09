@@ -54,6 +54,7 @@ conn.query(
     {
         sql:"select studentId,password from secret_"+ ((msg.field=='library')?"library":"account")+" where userId = "+ r
     },function(ee,rr){
+        console.log(ee,rr);
         if(ee){
             console.log(ee);
             cb(code.mysqlError);

@@ -179,7 +179,7 @@ user.testScore = function(msg,req,res,next){
                             
                             var notFlag=false;
                             
-                            text="\n\n未出成绩的科目：";
+                            text+="\n\n未出成绩的科目：";
                             for(var i=0;i<scoresData.length;i++){
                                 if(scoresData[i].score=="") {
                                     notFlag=true;

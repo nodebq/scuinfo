@@ -94,7 +94,7 @@ user.score = function(msg,req,res,next){
                     url: "http://202.115.47.141/bxqcjcxAction.do?totalrows=16&pageSize=300"
                 }, function (e, r) {
                     
-                    console.log(e,r);
+                    //console.log(e,r);
                     if (e) {
                         if(e.code == 2020){
                             if(msg.source=='weibo'){
@@ -131,6 +131,23 @@ user.score = function(msg,req,res,next){
 
                                 });
                                 return;
+
+                            });
+
+                            return;
+                        }
+
+                        if(e.code== 2001){
+
+                            dbs.getWechatNews({
+                                name:"deanPasswordError"
+                            },function(eee,rrrr){
+                                if(eee){
+                                    res.reply(JSON.stringify(eee));
+                                    return;
+                                }
+                                //console.log(rrrr);
+                                res.reply(rrrr);
 
                             });
 

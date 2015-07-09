@@ -172,11 +172,11 @@ user.score = function(msg,req,res,next){
                 return;
             }
 
-console.log({
-    studentId: r.studentId,
-    password: r.password,
-    url: "http://202.115.47.141/bxqcjcxAction.do?totalrows=16&pageSize=300"
-});
+//console.log({
+//    studentId: r.studentId,
+//    password: r.password,
+//    url: "http://202.115.47.141/bxqcjcxAction.do?totalrows=16&pageSize=300"
+//});
             libs.get(
                 {
                     studentId: r.studentId,
@@ -184,7 +184,7 @@ console.log({
                     url: "http://202.115.47.141/bxqcjcxAction.do?totalrows=16&pageSize=300"
                 }, function (e, r) {
                     
-                    console.log(e);
+                    //console.log(e);
                     if (e) {
 
                         res.reply("教务处无法访问。请稍后重试");
@@ -193,7 +193,7 @@ console.log({
                     } else {
                         var scores = pages.currentScore(r.data);
                         var scoresData=scores;
-                        console.log(scores);
+                        //console.log(scores);
                         if(scoresData.length>0){
 
                             var text="你本学期最新已出成绩的科目:";

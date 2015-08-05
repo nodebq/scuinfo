@@ -4,7 +4,6 @@ var code = require('../libs/code.js');
 var async = require('async');
 var conn = require('../libs/mysql.js');
 var datas = require('../libs/datas.js');
-
 var request = require('request');
 //var tokenName = 1;
 var post = {

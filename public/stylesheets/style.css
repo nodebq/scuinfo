@@ -225,9 +225,18 @@ right:2px;
 
 }
 
-.container.detail{
+.classroom{
+  padding-top: 44px;
+
+}
+
+.container.classroom{
   margin-bottom: 44px;
 
+}
+
+#data{
+  padding-top: 30px;
 }
 
 .posts{

@@ -181,8 +181,8 @@ var menu1 ={
             },
             {
               type:"view",
-                "name":"我的微博",
-                "url":"http://weibo.com/scuinfo"
+                "name":"空闲教室",
+                "url":"http://scuinfo.com/classroom"
             },
             {
                 type:"view",

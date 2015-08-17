@@ -1,0 +1,60 @@
+<% include header %>
+<% include bar%>
+
+<div class="container classroom">
+
+
+    <div class="am-g">
+        <div class="am-u-md-8 am-u-sm-centered">
+            <form class="am-form">
+                <fieldset class="am-form-set">
+                    <div class="am-form-group am-form-select">
+                        <select id="campus" class=" am-input-lg">
+                            <option value="03">校区:江安</option>
+                            <option value="01">校区:望江</option>
+                            <option value="02">校区:华西</option>
+                        </select>
+                    </div>
+                    <div class="am-form-group am-form-select">
+                        <select id="building" class=" am-input-lg">
+                            <option value="0">教学楼:不限</option>
+                        </select>
+                    </div>
+
+                        <input type="date" id="date" class="am-form-field am-input-lg" placeholder="日期">
+
+
+
+                </fieldset>
+                <button id="queryClassroom" data-am-loading="{spinner: 'circle-o-notch', loadingText: '查询中...', resetText: '查询空闲教室'}" type="Button" class="am-btn am-btn-primary am-btn-block am-btn-lg">查询空闲教室</button>
+            </form>
+
+
+            <div >
+
+                <ul class="am-list am-list-static" id="data">
+
+
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<% include footer%>
+<% include js%>
+<script src="/javascripts/handlebars.min.js"></script>
+<script src="/javascripts/amazeui.widgets.helper.min.js"></script>
+<script src="/javascripts/classroom.js">
+
+</script>
+</body>
+</html>
+
+

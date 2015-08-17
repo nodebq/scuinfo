@@ -280,6 +280,25 @@ pages.score = function(req,res){
         }})
 
 };
+
+
+
+pages.classroom = function(req,res){
+    var url = req.protocol+"://"+config.host.url+req.originalUrl;
+    res.render('classroom',{title:"空闲教室"+config.site.separator+config.site.name,
+        userId:req.session.userId,
+        barTitle:"教室",
+        page:{
+            avatar:req.session.avatar,
+            nickname:req.session.nickname,
+            gender:req.session.gender,
+            userStatus:req.session.userStatus,
+            url:url,
+            type:"classroom"
+
+        }})
+
+};
 pages.major = function(req,res){
     var url = req.protocol+"://"+config.host.url+req.originalUrl;
 

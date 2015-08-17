@@ -77,6 +77,9 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
             service.signout(message,req,res,next);
             break;
 
+        //case '空教室':
+        //    service.classroom(message,req,res,next);
+
         default:
 
             service.text(message,req,res,next);

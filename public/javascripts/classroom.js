@@ -313,7 +313,7 @@
 
 
 
-
+var currentPage = 1;
     $("#queryClassroom").on("click",function(){
         var $submitButton=$(this);
         $submitButton.button('loading');
@@ -345,10 +345,16 @@ var url;
                             content+="<li>"+capmpusHash[data.data[i].campusId]+data.data[i].building+data.data[i].classroom+"</li>"
                         }
                         $("#data").html(content);
-                    }else{
-                        var content="抱歉,该条件下目前没有空闲教室^_^";
-                        $("#data").html('<span style="color:#333333">'+content+'</span>');
+                        $("#noMore").css("display",'none');
+                        $("#loadMore").css('display','block');
+                        $("#noData").css("display",'none');
 
+
+                    }else{
+                        $("#data").html("");
+                        $("#loadMore").css('display','none');
+
+                        $("#noData").css("display",'block');
                     }
 
                 }else{
@@ -360,5 +366,121 @@ var url;
 
     });
 
+
+    $("#loadMore").on("click",function(){
+        var $loadButton=$(this);
+        $loadButton.button('loading');
+        var url;
+
+        var selectBuilding = $("#building option:selected").val();
+
+        var apiBase = "http://api.fyscu.com";
+        if(selectBuilding=="0"){
+            url = apiBase+"/classroom?start="+datetimeToTimestamp($("#date").val())+"&end="+(parseInt(datetimeToTimestamp($("#date").val()))+24*60*60)+"&campusId="+$("#campus").val()+"&page="+(currentPage+1);
+        }else{
+            url = apiBase+"/classroom?start="+datetimeToTimestamp($("#date").val())+"&end="+(parseInt(datetimeToTimestamp($("#date").val()))+24*60*60)+"&campusId="+$("#campus").val()+"&buildingId="+selectBuilding+"&page="+(currentPage+1);
+
+        }
+        
+        console.log(url);
+        
+        $.get(url,function(data){
+                console.log(data);
+                $loadButton.button('reset');
+                if(data.code=='200'){
+                    $("#loadMore").css('display','none');
+
+                    //console.log(data);
+                    var capmpusHash = {
+                        "01":"望江",
+                        "02":"华西",
+                        "03":"江安"
+                    };
+
+                    if(data.data.length>0){
+                        var content="";
+                        for(var i=0;i<data.data.length;i++){
+                            content+="<li>"+capmpusHash[data.data[i].campusId]+data.data[i].building+data.data[i].classroom+"</li>"
+                        }
+                        $("#data").append(content);
+                        currentPage++;
+
+                        $("#loadMore").css('display','block');
+                        $("#noData").css("display",'none');
+                        $("#noMore").css("display",'none');
+
+
+
+                    }else{
+                        $("#noMore").css("display",'block');
+                        $("#loadMore").css('display','none');
+                    }
+
+                }else{
+                    alert(data.message);
+                }
+
+            }
+        );
+
+    });
+
+
+    $(bom).scroll(function() {
+        //console.log(morePosts);
+        if(($(bom).scrollTop()  >( $(dom).height() - $(bom).height() - 30 )) ){
+
+            var url;
+
+            var selectBuilding = $("#building option:selected").val();
+
+            var apiBase = "http://api.fyscu.com";
+            if(selectBuilding=="0"){
+                url = apiBase+"/classroom?start="+datetimeToTimestamp($("#date").val())+"&end="+(parseInt(datetimeToTimestamp($("#date").val()))+24*60*60)+"&campusId="+$("#campus").val()+"&page="+(currentPage+1);
+            }else{
+                url = apiBase+"/classroom?start="+datetimeToTimestamp($("#date").val())+"&end="+(parseInt(datetimeToTimestamp($("#date").val()))+24*60*60)+"&campusId="+$("#campus").val()+"&buildingId="+selectBuilding+"&page="+(currentPage+1);
+
+            }
+
+            console.log(url);
+
+            $.get(url,function(data){
+                    if(data.code=='200'){
+                        $("#loadMore").css('display','none');
+
+                        //console.log(data);
+                        var capmpusHash = {
+                            "01":"望江",
+                            "02":"华西",
+                            "03":"江安"
+                        };
+
+                        if(data.data.length>0){
+                            var content="";
+                            for(var i=0;i<data.data.length;i++){
+                                content+="<li>"+capmpusHash[data.data[i].campusId]+data.data[i].building+data.data[i].classroom+"</li>"
+                            }
+                            $("#data").append(content);
+                            currentPage++;
+
+                            $("#loadMore").css('display','block');
+                            $("#noData").css("display",'none');
+                            $("#noMore").css("display",'none');
+
+
+
+                        }else{
+                            $("#noMore").css("display",'block');
+                            $("#loadMore").css('display','none');
+                        }
+
+                    }else{
+                        alert(data.message);
+                    }
+
+                }
+            );
+        }
+    });
 
 })(self,self.document,self.jQuery);

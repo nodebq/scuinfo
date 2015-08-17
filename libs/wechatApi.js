@@ -288,7 +288,7 @@ console.log(e,r);
 /**
  * 创建菜单
  */
-//wechatApi.createMenu();
+wechatApi.createMenu();
 
 
 /**

@@ -321,7 +321,7 @@ var url;
 
         var selectBuilding = $("#building option:selected").val();
 
-        var apiBase = "http://localhost:9231";
+        var apiBase = "http://api.fyscu.com";
         if(selectBuilding=="0"){
             url = apiBase+"/classroom?start="+datetimeToTimestamp($("#date").val())+"&end="+(parseInt(datetimeToTimestamp($("#date").val()))+24*60*60)+"&campusId="+$("#campus").val();
         }else{
@@ -329,23 +329,28 @@ var url;
 
         }
         $.get(url,function(data){
-
-                data = JSON.parse(data);
                 $submitButton.button('reset');
                 if(data.code=='200'){
                     
-                    console.log(data);
+                    //console.log(data);
                     var capmpusHash = {
                         "01":"望江",
                         "02":"华西",
                         "03":"江安"
+                    };
+
+                    if(data.data.length>0){
+                        var content="<div style='line-height:3'>下面为是没课的教室：</div>";
+                        for(var i=0;i<data.data.length;i++){
+                            content+="<li>"+capmpusHash[data.data[i].campusId]+data.data[i].building+data.data[i].classroom+"</li>"
+                        }
+                        $("#data").html(content);
+                    }else{
+                        var content="抱歉,该条件下目前没有空闲教室^_^";
+                        $("#data").html('<span style="color:#333333">'+content+'</span>');
+
                     }
-                    var content="下面为是没课的教室：";
-                    for(var i=0;i<data.data.length;i++){
-                        content+="<li>"+capmpusHash[data.data[i].campusId]+data.data[i].building+data.data[i].classroom+"</li>"
-                    }
-                    console.log(content);
-                    $("#data").append(content);
+
                 }else{
                     alert(data.message);
                 }

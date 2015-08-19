@@ -342,6 +342,17 @@ router.get('/classroom',check.autoWechat,function(req,res){
     pages.classroom(req,res);
 });
 
+
+router.get('/course',check.autoWechat,function(req,res){
+
+    //req.session.userId=1;
+    //req.session.avatar="http://img5q.duitang.com/uploads/blog/201504/03/20150403214054_nekQt.jpeg";
+    //req.session.nickname="我就喜欢语文老师体育能跑100米";
+    //req.session.gender=1;
+    //req.session.userStatus='login';
+    pages.course(req,res);
+});
+
 router.get('/major',check.autoWechat,check.isLogin,function(req,res){
 
     //req.session.userId=1;

@@ -299,6 +299,26 @@ pages.classroom = function(req,res){
         }})
 
 };
+
+
+
+pages.course = function(req,res){
+    var url = req.protocol+"://"+config.host.url+req.originalUrl;
+    res.render('course',{title:"课程"+config.site.separator+config.site.name,
+        userId:req.session.userId,
+        barTitle:"课程",
+        page:{
+            avatar:req.session.avatar,
+            nickname:req.session.nickname,
+            gender:req.session.gender,
+            userStatus:req.session.userStatus,
+            url:url,
+            type:"course"
+
+        }})
+
+};
+
 pages.major = function(req,res){
     var url = req.protocol+"://"+config.host.url+req.originalUrl;
 

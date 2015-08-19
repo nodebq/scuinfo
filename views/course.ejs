@@ -1,0 +1,52 @@
+<% include header %>
+<% include bar%>
+
+<div class="container classroom">
+
+
+    <div class="am-g">
+        <div class="am-u-md-8 am-u-sm-centered">
+            <form class="am-form">
+                <fieldset class="am-form-set">
+
+                        <input type="text" id="teacherName" class="am-form-field am-input-lg" placeholder="请输入老师的名字">
+
+
+                </fieldset>
+                <button id="queryClassroom" data-am-loading="{spinner: 'circle-o-notch', loadingText: '查询中...', resetText: '查询课程'}" type="Button" class="am-btn am-btn-primary am-btn-block am-btn-lg">查询课程</button>
+            </form>
+
+
+            <div >
+
+                <ul class="am-list am-list-static" id="data">
+
+
+                </ul>
+
+                <div id="loading" style="display: none;"><span class="am-icon-lg am-icon-spinner am-icon-pulse"></span></div>
+                <div id="noMore"><span>^_^ 没有更多了</span></div>
+                <div id="noData"><span>^_^ 抱歉,当前条件下没有查到课程</span></div>
+                <div id="loadMore"><button type="button" id="loadMoreButton"  data-am-loading="{spinner: 'circle-o-notch', loadingText: '正在加载...', resetText: '加载更多'}"  class="am-btn am-btn-default am-btn-block loadMoreButton">加载更多</button></div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<% include footer%>
+<% include js%>
+<script src="/javascripts/handlebars.min.js"></script>
+<script src="/javascripts/amazeui.widgets.helper.min.js"></script>
+<script src="/javascripts/course.js">
+
+</script>
+</body>
+</html>
+
+

@@ -189,10 +189,16 @@ var menu1 ={
                 "name":"跳蚤市场",
                 "url":"http://xiaoqu.qq.com/mobile/barindex.html?_bid=128&_wv=1027&bid=130899"
             },
+            //{
+            //    type:"click",
+            //    "name":"合作建议",
+            //    "key":"advise"
+            //}
+
             {
-                type:"click",
-                "name":"合作建议",
-                "key":"advise"
+                type:"view",
+                "name":"官方微博",
+                "url":"http://weibo.com/scuinfo"
             }
 
             /*
@@ -288,7 +294,7 @@ console.log(e,r);
 /**
  * 创建菜单
  */
-wechatApi.createMenu();
+//wechatApi.createMenu();
 
 
 /**

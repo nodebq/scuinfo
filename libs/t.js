@@ -1,16 +1,18 @@
-function LateBloomer() {
-    this.petalCount = Math.ceil(Math.random() * 12) + 1;
-}
 
-// 1 秒后声明 bloom
-LateBloomer.prototype.bloom = function() {
-    setTimeout(this.declare.bind(this), 1000);
-};
 
-LateBloomer.prototype.declare = function() {
-    console.log('I am a beautiful flower with ' +
-        this.petalCount + ' petals!');
-};
+var conn = require("./mysql.js");
 
-var flower = new LateBloomer();
-flower.bloom();  // 1 秒钟后，调用 declare 方法
+
+conn.query(
+    
+    {
+        sql:"select * from scu_college"
+    },function(e,r){
+        console.log(e,r);
+        var val = "";
+        for(var i=0;i< r.length;i++){
+            val+='<option value="'+r[i].collegeId+'">'+r[i].name+"</option>"
+        }
+        console.log(val);
+    }
+)

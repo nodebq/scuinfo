@@ -7,12 +7,12 @@ var currentPage = 1;
         var $submitButton=$(this);
         $submitButton.button('loading');
 var url;
-        //var apiBase = "http://api.fyscu.com";
+        var apiBase = "http://api.fyscu.com";
 
-        var apiBase = "http://localhost:9231";
+        //var apiBase = "http://localhost:9231";
 
 
-        url = apiBase+"/course?name="+$("#teacherName").val();
+        //url = apiBase+"/course?name="+$("#teacherName").val();
 
 
 
@@ -76,7 +76,7 @@ var url;
         var apiBase = "http://api.fyscu.com";
 
 
-        var apiBase = "http://localhost:9231";
+        //var apiBase = "http://localhost:9231";
 
 
         url = apiBase+"/course?name="+$("#teacherName").val();

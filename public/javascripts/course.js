@@ -42,7 +42,7 @@ var url;
                     if(data.data.length>0){
                         var content="<div style='line-height:3'>下面为是为您查询到的课程：</div>";
                         for(var i=0;i<data.data.length;i++){
-                            content+="<li>"+data.data[i].name+(data.data[i].type?("["+data.data[i].type+"]"):"")+"</li>"
+                            content+="<li>"+data.data[i].name+(data.data[i].teacher?("-"+data.data[i].teacher):"")+(data.data[i].type?("["+data.data[i].type+"]"):"")+"</li>"
                         }
                         $("#data").html(content);
                         $("#noMore").css("display",'none');
@@ -113,7 +113,7 @@ var url;
 
                         var content="";
                         for(var i=0;i<data.data.length;i++){
-                            content+="<li>"+data.data[i].name+(data.data[i].type?("["+data.data[i].type+"]"):"")+"</li>"
+                            content+="<li>"+data.data[i].name+(data.data[i].teacher?("-"+data.data[i].teacher):"")+(data.data[i].type?("["+data.data[i].type+"]"):"")+"</li>"
                         }
                         $("#data").append(content);
                         currentPage++;

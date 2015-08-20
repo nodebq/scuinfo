@@ -692,22 +692,22 @@ service.fm = function(msg,req,res,next){
 service.dean = function(msg,req,res,next){
     var news=[
         {
-            title:'点击选择学院',
+            title:'点击可以查看其他学院通知',
             description:'',
-            pic:'http://img2.imgtn.bdimg.com/it/u=1398589042,2186704234&fm=21&gp=0.jpg',
+            pic:'https://mmbiz.qlogo.cn/mmbiz/icXrYrDQetLuVWd2DfuqNiaEiaOpgdDFatcEvvgqf9AkvvxxLHAjz87RKUJlIC9x43cH6ia37aSPffia4fH9gCLicDVQ/0?wx_fmt=jpeg',
             url:"http://scuinfo.com/dean"
         },
         {
-            title:'【计算机学院】学术报告——Ensemble Approaches in Learning',
-            description:'',
-            pic:'http://img3.imgtn.bdimg.com/it/u=918117846,618543267&fm=21&gp=0.jpg',
-            url:"http://cs.scu.edu.cn/cs/xytz/webinfo/2015/08/1438225285901685.htm"
-        },
-        {
-            title:'【计算机学院】学术报告——未来智能互联网',
+            title:'【教务通知】关于组织学生参加首届中国“互联网+”大学生创新创业大赛的通知',
             description:'',
             pic:'',
-            url:"http://cs.scu.edu.cn/cs/xytz/webinfo/2015/08/1438225285867796.htm"
+            url:"http://jwc.scu.edu.cn/jwc/newsShow.action?news.id=2820"
+        },
+        {
+            title:'【教务通知】2015年7月结业生返校考试课程安排表',
+            description:'',
+            pic:'',
+            url:"http://jwc.scu.edu.cn/jwc/newsShow.action?news.id=2832"
         },
         {
             title:'【计算机学院】四川大学关于开展第十批成都市有突出贡献的优秀专家推荐选拔工作的通知',

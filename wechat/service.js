@@ -695,7 +695,7 @@ service.dean = function(msg,req,res,next){
             title:'点击选择学院',
             description:'',
             pic:'http://img2.imgtn.bdimg.com/it/u=1398589042,2186704234&fm=21&gp=0.jpg',
-            url:config.site.url+'/p/'+result.data.insertId
+            url:"http://scuinfo.com/dean"
         },
         {
             title:'【计算机学院】学术报告——Ensemble Approaches in Learning',
@@ -744,8 +744,7 @@ service.dean = function(msg,req,res,next){
             description:'',
             pic:'',
             url:"http://cs.scu.edu.cn/cs/xytz/webinfo/2015/07/1421892285187689.htm"
-        },
-
+        }
     ];
 
     res.reply(news);

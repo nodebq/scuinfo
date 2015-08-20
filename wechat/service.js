@@ -236,6 +236,9 @@ service.text = function(msg,req,res,next){
                                     pic:'http://mmbiz.qpic.cn/mmbiz/icXrYrDQetLvPllUpdooiaIDLf9icrHuGDzxGFpCSOKG8snTOb8RX8JNRib8vkm0VtI9ISzPf1sT3ibERbshSf2Tliaw/640?wx_fmt=png&tp=webp&wxfrom=5',
                                     url:config.site.url+'/p/'+result.data.insertId
                             };
+
+
+
                                 res.reply(news);
                                 return;
 
@@ -684,7 +687,71 @@ service.fm = function(msg,req,res,next){
 
     return;
 
-}
+};
+
+service.dean = function(msg,req,res,next){
+    var news=[
+        {
+            title:'点击选择学院',
+            description:'',
+            pic:'http://img2.imgtn.bdimg.com/it/u=1398589042,2186704234&fm=21&gp=0.jpg',
+            url:config.site.url+'/p/'+result.data.insertId
+        },
+        {
+            title:'【计算机学院】学术报告——Ensemble Approaches in Learning',
+            description:'',
+            pic:'http://img3.imgtn.bdimg.com/it/u=918117846,618543267&fm=21&gp=0.jpg',
+            url:"http://cs.scu.edu.cn/cs/xytz/webinfo/2015/08/1438225285901685.htm"
+        },
+        {
+            title:'【计算机学院】学术报告——未来智能互联网',
+            description:'',
+            pic:'',
+            url:"http://cs.scu.edu.cn/cs/xytz/webinfo/2015/08/1438225285867796.htm"
+        },
+        {
+            title:'【计算机学院】四川大学关于开展第十批成都市有突出贡献的优秀专家推荐选拔工作的通知',
+            description:'',
+            pic:'',
+            url:"http://cs.scu.edu.cn/cs/xytz/webinfo/2015/07/1437467900752832.htm"
+        },
+        {
+            title:'【计算机学院】“中国高校计算机教育MOOC联盟”第一期假期研修班的通知',
+            description:'',
+            pic:'',
+            url:"http://cs.scu.edu.cn/cs/xytz/webinfo/2015/07/1437239172868331.htm"
+        },
+        {
+            title:'【计算机学院】学院教职工大会通知',
+            description:'',
+            pic:'',
+            url:"http://cs.scu.edu.cn/cs/xytz/webinfo/2015/07/1421892286279952.htm"
+        },
+        {
+            title:'【计算机学院】学术报告——Game Theory for Security: Challenges and Recent Progress',
+            description:'',
+            pic:'',
+            url:"http://cs.scu.edu.cn/cs/xytz/webinfo/2015/07/1421892285635186.htm"
+        },
+        {
+            title:'【计算机学院】学术报告——Pattern Aided Regression Modeling',
+            description:'',
+            pic:'',
+            url:"http://cs.scu.edu.cn/cs/xytz/webinfo/2015/07/1421892285595255.htm"
+        },
+        {
+            title:'【计算机学院】转发校学位办关于博士、硕士研究生导师增列工作的通知',
+            description:'',
+            pic:'',
+            url:"http://cs.scu.edu.cn/cs/xytz/webinfo/2015/07/1421892285187689.htm"
+        },
+
+    ];
+
+    res.reply(news);
+
+
+};
 
 /**
  * 记录日志到数据库

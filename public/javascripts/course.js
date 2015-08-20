@@ -11,7 +11,6 @@ var url;
 
         //var apiBase = "http://localhost:9231";
 
-
         //url = apiBase+"/course?name="+$("#teacherName").val();
 
 

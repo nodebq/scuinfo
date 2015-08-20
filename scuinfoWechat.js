@@ -182,6 +182,9 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
                     break;
                 case 'fm':
                     service.fm(message,req,res,next);
+                    break;
+                case 'dean':
+                    service.dean(message,req,res,next);
 
                     break;
             }

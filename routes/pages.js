@@ -319,6 +319,23 @@ pages.course = function(req,res){
 
 };
 
+pages.dean = function(req,res){
+    var url = req.protocol+"://"+config.host.url+req.originalUrl;
+    res.render('dean',{title:"教务新闻"+config.site.separator+config.site.name,
+        userId:req.session.userId,
+        barTitle:"教务",
+        page:{
+            avatar:req.session.avatar,
+            nickname:req.session.nickname,
+            gender:req.session.gender,
+            userStatus:req.session.userStatus,
+            url:url,
+            type:"dean"
+
+        }})
+
+};
+
 pages.major = function(req,res){
     var url = req.protocol+"://"+config.host.url+req.originalUrl;
 

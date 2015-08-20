@@ -184,10 +184,15 @@ var menu1 ={
                 "name":"空闲教室",
                 "url":"http://scuinfo.com/classroom"
             },
+            //{
+            //    type:"view",
+            //    "name":"跳蚤市场",
+            //    "url":"http://xiaoqu.qq.com/mobile/barindex.html?_bid=128&_wv=1027&bid=130899"
+            //},
             {
-                type:"view",
-                "name":"跳蚤市场",
-                "url":"http://xiaoqu.qq.com/mobile/barindex.html?_bid=128&_wv=1027&bid=130899"
+                type:"click",
+                "name":"教务通知",
+                "key":"dean"
             },
             //{
             //    type:"click",

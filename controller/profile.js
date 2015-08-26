@@ -870,7 +870,114 @@ profile.shareExam = function(req,res){
         }
     )
 
-}
+};
+
+
+
+profile.shareExamAgain = function(req,res){
+
+    //console.log(req.query);
+
+
+    if(!req.query.userId || req.query.userId=="undefined" || req.query.userId=="0"){
+        res.end(JSON.stringify(code.lackParamsUserId));
+        return;
+    }
+
+
+    if(!req.query.type){
+        res.end(JSON.stringify(code.lackParamsType));
+        return;
+    }
+//console.log("select * from secret_share where userId="+req.query.userId+" and type='"+req.query.type+"' limit 0,1");
+    conn.query(
+        {
+            sql:"select * from secret_share where userId="+req.query.userId+" and type='"+req.query.type+"' order by id desc limit 0,1"
+        },function(e3,r3){
+            if(e3){
+                console.log(e3);
+                res.end(JSON.stringify(code.mysqlError));
+                return;
+            }
+
+            //console.log(r3);
+
+            if(r3.length>0){
+
+                conn.query(
+                    {
+                        sql:"select studentId,password from secret_account where userId="+req.query.userId+" order by id desc"
+                    },function(e,r){
+                        if(e){
+                            console.log(e);
+                            res.end(JSON.stringify(code.mysqlError));
+                            return;
+                        }
+                        //console.log(r);
+
+                        if(r.length>0){
+                            request.get(
+                                {
+                                    url:config.api.baseUrl+"/api/examAgain?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)
+                                },function(eeeee,rrrrr,body){
+
+                                    //console.log(eeeee,body);
+                                    if(eeeee){
+                                        res.end(JSON.stringify(code.requestError));
+                                        return;
+                                    }
+
+                                    try{
+                                        var result=JSON.parse(body);
+                                    }catch(e){
+                                        var result=code.jsonParseError
+                                    }
+                                    //console.log(result);
+
+                                    //console.log(req.session);
+                                    if(result.code==200) {
+                                        result.data.avatar = r3[0].avatar;
+                                        result.data.nickname = r3[0].nickname;
+                                        result.data.userId=r3[0].userId;
+                                        //console.log(result);
+                                        res.end(JSON.stringify(result));
+
+
+                                    }else{
+
+                                        result.data={
+                                            avatar:r3[0].avatar,
+                                            nickname:r3[0].nickname,
+                                            userId:r3[0].userId
+
+                                        };
+                                        res.end(JSON.stringify(result));
+
+                                    }
+
+                                    return;
+
+
+                                });
+
+                            return;
+                        }
+
+                        res.end(JSON.stringify(code.noBindDean));
+                        return;
+
+                    }
+                )
+
+
+            }else{
+                res.end(JSON.stringify(code.userNoShare));
+                return;
+            }
+        }
+    )
+
+};
 
 profile.share = function(req,res){
 

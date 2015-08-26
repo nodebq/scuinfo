@@ -13,7 +13,7 @@
     var weixinBrowser = isWeixin();
     var wechatTitle=$('title').text(),wechatLink=$("#url").val(),wechatImg="http://ww2.sinaimg.cn/large/d9f8fd81gw1e9nzda6i7kj20rs0rs75i.jpg",wechatDesc="";
     //todo 默认的图片
-    $.get('/api/share/exam?userId='+$('#userId').val()+"&type=exam",function(r){
+    $.get('/api/share/examAgain?userId='+$('#userId').val()+"&type=examAgain",function(r){
         console.log(r);
         $("#loading").css('display','none');
         if(r.code==200){
@@ -23,9 +23,8 @@
             //$("#profile-like-count").text(r.data.likePostsCount);
             var data=[];
             for (var i=0;i<r.data.exams.length;i++){
-                if(r.data.exams[i].examName=='期末考试') {
                     data.push(r.data.exams[i]);
-                }
+
 
             }
             if(data.length>0){
@@ -56,19 +55,19 @@
                 for (var i=0;i<data.length;i++){
 
                     html+='<li><time class="cbp_tmtime" datetime="'+data[i].start*1000+'"><span>'+day(data[i].start*1000)+'</span> <span>'+hour(data[i].start*1000)+'</span></time>'+
-                        '<div wechatTitle="'+ r.data.nickname+'期末有'+data.length+'门试要考'+word+'" wechatDesc="点击查看考表" wechatImg="'+ r.data.avatar+'" wechatUrl="'+getExamHref({id: r.data.userId})+'" class="cbp_tmicon shareTheBookList"><i class="am-icon-external-link"></i></div>'+
+                        '<div wechatTitle="'+ r.data.nickname+'期末有'+data.length+'门试要考'+word+'" wechatDesc="点击查看考表" wechatImg="'+ r.data.avatar+'" wechatUrl="'+getExamAgainHref({id: r.data.userId})+'" class="cbp_tmicon shareTheBookList"><i class="am-icon-external-link"></i></div>'+
                         '<div class="cbp_tmlabel"><h2>'+(((new Date().getTime()/1000)>data[i].end)?'<span class="am-icon-check-square-o"></span> ':"")+data[i].name+'</h2><p><span class="am-icon-clock-o"></span> '+date(data[i].start*1000)+'~'+hour(data[i].end*1000)+'</p><p><span class="am-icon-location-arrow"></span> '+data[i].campus+"校区"+data[i].building+data[i].classroom+'</p></div></li>';
 
                 }
                 $("#shareSection").html(html).clone();
 
-                $("#findMyBook").html('<a href="/exam" type="button" class="am-btn am-btn-default am-radius am-btn-block hrefNone"><i class="am-icon-calendar"></i> 查看我的考表</a>').clone();
+                $("#findMyBook").html('<a href="/examAgain" type="button" class="am-btn am-btn-default am-radius am-btn-block hrefNone"><i class="am-icon-calendar"></i> 查看我的考表</a>').clone();
 
 
             }else{
                 //没有图书
 
-                $("#shareSection").html('^_^当前没有考试');
+                $("#shareSection").html('^_^当前没有补缓考');
 
 
 
@@ -90,7 +89,7 @@
 
 
     $("#shareSection").on('click','.refresh',function() {
-        location.href="/exam";
+        location.href="/examAgain";
     });
 
     $("#shareSection").on('click','.shareTheBookList',function() {

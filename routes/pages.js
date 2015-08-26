@@ -489,6 +489,45 @@ pages.shareExam = function(req,res){
 };
 
 
+pages.shareExamAgain = function(req,res){
+    //console.log(req.session);
+    var url = req.protocol+"://"+config.host.url+req.originalUrl;
+    var param = {
+        url: url
+    };
+    api.getJsConfig(param, function(e,wechatJs) {
+
+        if (e) {
+            res.end(JSON.stringify(code.getWechatTicketError))
+            return;
+        }
+        res.render('shareExamAgain', {
+            title: '补考' + config.site.separator + config.site.name,
+            timestamp: parseInt(new Date() / 1000),
+            wechatJs: wechatJs,
+            barTitle: "补考",
+            weibo: {
+                appKey: config.weibo.appkey,
+                uid: config.weibo.uid
+            }, id: req.params.id,
+            userId: req.session.userId,
+            page: {
+                avatar: req.session.avatar,
+                nickname: req.session.nickname,
+                gender: req.session.gender,
+                userStatus: req.session.userStatus,
+                userId:req.query.userId?req.query.userId:0,
+                type: 'exam',
+                url: url
+
+            }
+        });
+    });
+
+
+};
+
+
 pages.book = function(req,res){
     var url = req.protocol+"://"+config.host.url+req.originalUrl;
     var param = {

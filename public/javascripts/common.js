@@ -318,6 +318,10 @@ bom.getDateDiff = function(dateTimeStamp) {
 
         return baseUrl+'/share/exam/?userId='+ o.id;
     };
+    bom.getExamAgainHref = function(o){
+        return baseUrl+'/share/examAgain/?userId='+ o.id;
+
+    };
     bom.getMajorHref = function(o){
 
         return baseUrl+'/share/major?userId='+ o.id;

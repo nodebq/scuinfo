@@ -1452,14 +1452,13 @@ user.examAgain = function(msg,req,res,next){
                         }
 
                         examsData.sort(sortByTime);
-                        var text="你的本次考试时间地点如下：";
+                        var text="你的本次补缓考时间地点如下：";
 
                         for(var i=0;i<examsData.length;i++){
-                                text += "\n\n["+(((new Date().getTime()/1000)>examsData[i].end)?"已完成":"未完成")+"]"+examsData[i].name + "\n" + common.dateChina(examsData[i].start*1000)+'~'+common.hour(examsData[i].end*1000) + "\n"+examsData[i].campus+examsData[i].building+examsData[i].classroom;
-
+                                text += "\n\n["+(((new Date().getTime()/1000)>examsData[i].end)?"已完成":"未完成")+"]("+examsData[i].examName+")"+examsData[i].name + "\n" + common.dateChina(examsData[i].start*1000)+'~'+common.hour(examsData[i].end*1000) + "\n"+examsData[i].campus+examsData[i].building+examsData[i].classroom;
                         }
 
-                        text+=((msg.source=='weibo')?('\n\n点此生成你的专属补缓考页面或查看详情或更新数据:'+config.site.url+'/exam'):('\n\n <a href="'+config.site.url+'/exam">点击生成你的专属考试页面或更新</a>')) +
+                        text+=((msg.source=='weibo')?('\n\n点此生成你的专属补缓考页面或查看详情或更新数据:'+config.site.url+'/examAgain'):('\n\n <a href="'+config.site.url+'/examAgain">点击生成你的专属考试页面或更新</a>')) +
                             '\n\n最后更新时间:'+common.dateChina(exams.data.updateAt*1000) ;
                         res.reply(text);
                         return;

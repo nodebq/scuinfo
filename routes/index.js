@@ -174,6 +174,10 @@ router.get('/api/share/exam',function(req,res){
     profile.shareExam(req,res);
 });
 
+router.get('/api/share/examAgain',function(req,res){
+    profile.shareExamAgain(req,res);
+});
+
 router.get('/api/score',check.isLoginApi,function(req,res){
     profile.score(req,res);
 });
@@ -419,6 +423,11 @@ router.get('/share/major',check.autoWechat,function(req,res){
 
 router.get('/share/exam',check.autoWechat,function(req,res){
     pages.shareExam(req,res);
+});
+
+
+router.get('/share/examAgain',check.autoWechat,function(req,res){
+    pages.shareExamAgain(req,res);
 });
 
 router.get('/u/:id',check.autoWechat,function(req,res){

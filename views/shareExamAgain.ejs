@@ -1,0 +1,56 @@
+<% include head %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/default.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/component.css" />
+
+<link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.3.0/css/amazeui.min.css">
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<link rel="stylesheet" href="/stylesheets/amazeui.switch.css" />
+<% include top%>
+<% include bar%>
+
+<!--<div class="container shareContainer">-->
+
+<div id="loading"><span class="am-icon-lg am-icon-spinner am-icon-pulse"></span></div>
+<div class="shareHeader" style="padding-top:30px;">
+    <div class="shareAvatar" id="shareAvatar">
+    </div>
+    <input type="hidden" id="nickname" value="">
+    <div class="shareDescription" id="shareDescription">
+    </div>
+
+
+</div>
+<div class="main" >
+    <ul class="cbp_tmtimeline" id="shareSection">
+    </ul>
+
+    <div class="findMyBook" id="findMyBook">
+
+    </div>
+
+
+
+<!--</div>-->
+</div>
+<!--</div>-->
+
+<div class="wechatInit">
+    <input type="hidden" id="timestamp" value="<%=timestamp %>" />
+    <input type="hidden" id="wechatAppId" value="<%= wechatJs.appId %>">
+    <input type="hidden" id="wechatTimestamp" value="<%= wechatJs.timestamp %>">
+    <input type="hidden" id="wechatNonceStr" value="<%= wechatJs.nonceStr %>">
+    <input type="hidden" id="wechatSignature" value="<%= wechatJs.signature %>">
+    <input type="hidden" id="weiboAppKey" value="<%= weibo.appKey%>">
+    <input type="hidden" id="weiboUid" value="<%= weibo.uid%>">
+    <input type="hidden" id="userId" value="<%= page.userId%>">
+    <input type="hidden" id="url" value="<%= page.url%>">
+    <input type="hidden" id="userStatus" value="<%= page.userStatus%>">
+</div>
+<% include footer%>
+<% include js%>
+<script src="/javascripts/modernizr.custom.js"></script>
+<script src="/javascripts/shareExamAgain.js"></script>
+</body>
+</html>
+
+

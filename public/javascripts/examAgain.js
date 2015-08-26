@@ -13,7 +13,8 @@
     var weixinBrowser = isWeixin();
     var wechatTitle=$('title').text(),wechatLink=$("#url").val(),wechatImg="http://ww2.sinaimg.cn/large/d9f8fd81gw1e9nzda6i7kj20rs0rs75i.jpg",wechatDesc="";
     //todo 默认的图片
-    $.get('/api/exam',function(r){
+    $.get('/api/examAgain',function(r){
+        console.log(r);
         $("#loading").css('display','none');
         if(r.code==200){
 
@@ -25,11 +26,10 @@
             //$("#profile-like-count").text(r.data.likePostsCount);
             var data=[];
             for (var i=0;i<r.data.exams.length;i++){
-                if(r.data.exams[i].examName=='期末考试') {
                     data.push(r.data.exams[i]);
-                }
 
             }
+
             if(data.length>0){
                 function sortByTime(a,b){
                     if(parseInt(a.start)> parseInt(b.start)){
@@ -49,7 +49,6 @@
                 }else{
                     word='';
                 }
-
                 var html='<li><time class="cbp_tmtime" datetime="'+data[0].start*1000+'"><span>'+(day(data[0].start*1000))+'</span> <span>开考</span></time>'+
                 '<div class="cbp_tmicon refresh"><i class="am-icon-refresh"></i></div>'+
                 '<div class="cbp_tmlabel"><h2>共有'+data.length+'门考试</h2><p>从'+date(data[0].start*1000)+'起</p>'+
@@ -58,6 +57,7 @@
 
 
                 for (var i=0;i<data.length;i++){
+                    console.log(data[i]);
 
 
                     html+='<li><time class="cbp_tmtime" datetime="'+data[i].start*1000+'"><span>'+(day(data[i].start*1000))+'</span> <span>'+hour(data[i].start*1000)+'</span></time>'+

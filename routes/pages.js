@@ -729,5 +729,42 @@ pages.exam = function(req,res){
 
 };
 
+pages.examAgain = function(req,res){
+    var url = req.protocol+"://"+config.host.url+req.originalUrl;
 
+    var param = {
+        url: url
+    };
+    api.getJsConfig(param, function(e,wechatJs) {
+
+
+        if (e) {
+            res.end(JSON.stringify(code.getWechatTicketError))
+            return;
+        }
+        res.render('examAgain', {
+            title: '补考' + config.site.separator + config.site.name,
+            barTitle:"补考",
+            timestamp: parseInt(new Date() / 1000),
+            wechatJs: wechatJs,
+            weibo: {
+                appKey: config.weibo.appkey,
+                uid: config.weibo.uid
+            },
+            userId: req.session.userId,
+            page: {
+                type: 'exam',
+                userId: req.session.userId,
+                avatar: req.session.avatar,
+                nickname: req.session.nickname,
+                gender: req.session.gender,
+                userStatus: req.session.userStatus,
+                url: url
+
+            }
+        });
+    });
+
+
+};
 module.exports = pages;

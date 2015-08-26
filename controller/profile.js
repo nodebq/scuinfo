@@ -281,6 +281,79 @@ profile.major = function(req,res){
 
 };
 
+/**
+ * 获取补考api封装
+ * @param req
+ * @param res
+ */
+profile.examAgain = function(req,res){
+    conn.query(
+        {
+            sql:"select studentId,password from secret_account where userId="+req.session.userId+" order by id desc"
+        },function(e,r){
+            if(e){
+                console.log(e);
+                res.end(JSON.stringify(code.mysqlError));
+                return;
+            }
+            //console.log(r);
+
+            if(r.length>0){
+                request.get(
+                    {
+                        url:config.api.baseUrl+"/api/examAgain?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r[0].studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r[0].password)
+                    },function(eeeee,rrrrr,body){
+
+                        //console.log(eeeee,body);
+                        if(eeeee){
+                            res.end(JSON.stringify(code.requestError));
+                            return;
+                        }
+
+                        try{
+                            var result=JSON.parse(body);
+                        }catch(e){
+                            var result=code.jsonParseError
+                        }
+                        //console.log(result);
+                        if(result.code==200) {
+                            result.data.avatar = req.session.avatar;
+                            result.data.nickname = req.session.nickname;
+                            result.data.userId=req.session.userId;
+                            result.data.gender= req.session.gender;
+                            res.end(JSON.stringify(result));
+
+
+                        }else{
+
+                            result.data={
+                                avatar:req.session.avatar,
+                                nickname:req.session.nickname,
+                                userId:req.session.userId,
+                                gender:req.session.gender
+
+
+                            };
+                            res.end(JSON.stringify(result));
+
+                        }
+                        return;
+
+
+                    });
+
+                return;
+            }
+
+            res.end(JSON.stringify(code.noBindDean));
+            return;
+
+        }
+    )
+
+
+
+};
 
 /**
  * 获取考表api封装

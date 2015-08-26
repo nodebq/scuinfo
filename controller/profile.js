@@ -1249,7 +1249,7 @@ console.log({
                                 res.end(bbb);
                                 return;
                             }
-                        )
+                        );
 
                     }
                 )
@@ -1257,13 +1257,16 @@ console.log({
 
 
             }
-        )
+        );
 
         return;
     }
 
     res.end(JSON.stringify(code.unknownError));
 };
+
+
+
 
 
 profile.update = function(req,res){
@@ -1307,5 +1310,83 @@ profile.update = function(req,res){
         });
 
 
+};
+
+
+profile.examAgainNotice = function(req,res){
+
+    conn.query(
+        {sql:"select userId from secret_account where studentId="+req.body.studentId+" order by id desc limit 0,1"},function(e,r) {
+console.log(e,r);
+            if (e) {
+
+                res.end(JSON.stringify(code.mysqlError));
+                return;
+            }
+
+            if (r.length == 0) {
+
+                res.end(JSON.stringify(code['noBind']));
+                return;
+            }
+            console.log("select openId from secret_open where userId="+r[0].userId+" and source='wechat'");
+            conn.query(
+                {
+                    sql: "select openId from secret_open where userId=" + r[0].userId + " and source='wechat' order by id desc"
+                }, function (ee, rr) {
+                    if (ee) {
+                        res.end(JSON.stringify(code.mysqlError));
+                        return;
+                    }
+
+                    if (rr.length == 0) {
+                        res.end(JSON.stringify(code.notSubscribe));
+                        return;
+                    }
+console.log(  {
+    url: config.urls.wechatSendTemplate,
+    form: {
+        url: (config.site.url + "/examAgain"),
+        template: 'examAgain',
+        first: req.body.first,
+        remark: req.body.remark,
+        keyword1: req.body.username,
+        keyword2: req.body.studentId,
+        keyword3: req.body.name,
+        keyword4: req.body.place,
+        openId: rr[0].openId
+    }
+});
+                    request.post(
+                        {
+                            url: config.urls.wechatSendTemplate,
+                            form: {
+                                url: (config.site.url + "/examAgain"),
+                                template: 'examAgain',
+                                first: req.body.first,
+                                remark: req.body.remark,
+                                keyword1: req.body.username,
+                                keyword2: req.body.studentId,
+                                keyword3: req.body.name,
+                                keyword4: req.body.time,
+                                keyword5:req.body.place,
+                                openId: rr[0].openId
+                            }
+                        }, function (eee, rrr, bbb) {
+                            console.log(eee,bbb);
+                            if (eee) {
+                                console.log(eee);
+                                res.end(JSON.stringify(code.requestError));
+                                return;
+                            }
+                            //console.log('222');
+                            res.end(bbb);
+                            return;
+                        }
+                    );
+
+                });
+
+        });
 };
 module.exports = profile;

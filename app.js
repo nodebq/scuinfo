@@ -8,10 +8,8 @@ var datas = require('./libs/datas.js');
 var routes = require('./routes/index');
 var session = require('express-session');
 var app = express();
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 // uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.set('env','production');

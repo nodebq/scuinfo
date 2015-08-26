@@ -272,7 +272,7 @@ var menu1 ={
                 },
                 {
                     "type":"click",
-                    "name":"考试查询",
+                    "name":"补考缓考",
                     "key":"exam"
                 },
                 {
@@ -323,7 +323,7 @@ console.log(e,r);
 /**
  * 创建菜单
  */
-//wechatApi.createMenu();
+wechatApi.createMenu();
 
 
 /**

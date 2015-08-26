@@ -61,12 +61,12 @@
 
 
                     html+='<li><time class="cbp_tmtime" datetime="'+data[i].start*1000+'"><span>'+(day(data[i].start*1000))+'</span> <span>'+hour(data[i].start*1000)+'</span></time>'+
-                        '<div wechatTitle="'+ r.data.nickname+'期末有'+data.length+'门试要考'+word+'" wechatDesc="点击查看考表" wechatImg="'+ r.data.avatar+'" wechatUrl="'+getExamAgainHref({id: r.data.userId})+'" class="cbp_tmicon shareTheBookList"><i class="am-icon-external-link"></i></div>'+
+                        '<div wechatTitle="'+ r.data.nickname+'开学有'+data.length+'门试要考'+word+'" wechatDesc="点击查看考表" wechatImg="'+ r.data.avatar+'" wechatUrl="'+getExamAgainHref({id: r.data.userId})+'" class="cbp_tmicon shareTheBookList"><i class="am-icon-external-link"></i></div>'+
                         '<div class="cbp_tmlabel"><h2>'+(((new Date().getTime()/1000)>data[i].end)?'<span class="am-icon-check-square-o"></span> ':"")+data[i].name+'</h2><p><span class="am-icon-clock-o"></span> '+date(data[i].start*1000)+(data[i].start?'~':"")+hour(data[i].end*1000)+'</p><p><span class="am-icon-location-arrow"></span> '+(data[i].campus+data[i].building?"校区":"")+data[i].building+data[i].classroom+'</p></div></li>';
 
                 }
                 $("#shareSection").html(html).clone();
-                $("#shareTips").html('<a type="button" wechatTitle="'+ r.data.nickname+'期末有'+data.length+'门试要考'+word+'" wechatDesc="点击查看考表" wechatImg="'+ r.data.avatar+'" wechatUrl="'+getExamAgainHref({id: r.data.userId})+'" class="am-btn am-btn-default am-radius am-btn-block hrefNone shareTheBookList"><i class="am-icon-wechat"></i> 分享我的考表</a>').clone();
+                $("#shareTips").html('<a type="button" wechatTitle="'+ r.data.nickname+'开学有'+data.length+'门试要考'+word+'" wechatDesc="点击查看考表" wechatImg="'+ r.data.avatar+'" wechatUrl="'+getExamAgainHref({id: r.data.userId})+'" class="am-btn am-btn-default am-radius am-btn-block hrefNone shareTheBookList"><i class="am-icon-wechat"></i> 分享我的考表</a>').clone();
 
 
             }else{

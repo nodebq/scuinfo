@@ -55,7 +55,7 @@
                 for (var i=0;i<data.length;i++){
 
                     html+='<li><time class="cbp_tmtime" datetime="'+data[i].start*1000+'"><span>'+day(data[i].start*1000)+'</span> <span>'+hour(data[i].start*1000)+'</span></time>'+
-                        '<div wechatTitle="'+ r.data.nickname+'期末有'+data.length+'门试要考'+word+'" wechatDesc="点击查看考表" wechatImg="'+ r.data.avatar+'" wechatUrl="'+getExamAgainHref({id: r.data.userId})+'" class="cbp_tmicon shareTheBookList"><i class="am-icon-external-link"></i></div>'+
+                        '<div wechatTitle="'+ r.data.nickname+'开学有'+data.length+'门试要考'+word+'" wechatDesc="点击查看考表" wechatImg="'+ r.data.avatar+'" wechatUrl="'+getExamAgainHref({id: r.data.userId})+'" class="cbp_tmicon shareTheBookList"><i class="am-icon-external-link"></i></div>'+
                         '<div class="cbp_tmlabel"><h2>'+(((new Date().getTime()/1000)>data[i].end)?'<span class="am-icon-check-square-o"></span> ':"")+data[i].name+'</h2><p><span class="am-icon-clock-o"></span> '+date(data[i].start*1000)+'~'+hour(data[i].end*1000)+'</p><p><span class="am-icon-location-arrow"></span> '+data[i].campus+"校区"+data[i].building+data[i].classroom+'</p></div></li>';
 
                 }

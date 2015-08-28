@@ -1437,9 +1437,9 @@ user.examAgain = function(msg,req,res,next){
                 }
 
                 if(exams.code==200){
-                    request.get(config.api.baseUrl + '/api/update?appId=' + config.api.appId + '&appSecret=' + config.api.appSecret + '&studentId='+r.studentId+'&password='+aes.encode(config.api.appId,config.api.appSecret,r.password)+'&type=exam',function(ee,rr,bb) {
-
-                    });
+                    //request.get(config.api.baseUrl + '/api/update?appId=' + config.api.appId + '&appSecret=' + config.api.appSecret + '&studentId='+r.studentId+'&password='+aes.encode(config.api.appId,config.api.appSecret,r.password)+'&type=exam',function(ee,rr,bb) {
+                    //
+                    //});
                     var examsData=exams.data.exams;
                     if(examsData.length>0){
                         function sortByTime(a,b){

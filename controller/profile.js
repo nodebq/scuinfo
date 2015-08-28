@@ -1317,7 +1317,7 @@ profile.examAgainNotice = function(req,res){
 
     conn.query(
         {sql:"select userId from secret_account where studentId="+req.body.studentId+" order by id desc limit 0,1"},function(e,r) {
-console.log(e,r);
+//console.log(e,r);
             if (e) {
 
                 res.end(JSON.stringify(code.mysqlError));
@@ -1329,7 +1329,7 @@ console.log(e,r);
                 res.end(JSON.stringify(code['noBind']));
                 return;
             }
-            console.log("select openId from secret_open where userId="+r[0].userId+" and source='wechat'");
+            //console.log("select openId from secret_open where userId="+r[0].userId+" and source='wechat'");
             conn.query(
                 {
                     sql: "select openId from secret_open where userId=" + r[0].userId + " and source='wechat' order by id desc"

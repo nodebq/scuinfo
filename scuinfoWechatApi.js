@@ -58,7 +58,7 @@ profile.updateCallbackNews(req,res);
 
 
 app.use('/api/examAgainNotice', function(req,res,next){
-    console.log(req.body);
+    //console.log(req.body);
 
     if(req.method=="POST"){
 

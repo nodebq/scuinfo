@@ -292,6 +292,15 @@ router.post('/weibo',function(req,res,next){
                     user.exam(message,req,res,next);
                     break;
 
+                case '补考':
+                case '缓考':
+                case '补缓考':
+                case 'bk':
+                case 'examAgain':
+                    user.examAgain(message,req,res,next);
+
+                    break;
+
                 case '退出':
                 case 'tc':
                     service.signout(message,req,res,next);

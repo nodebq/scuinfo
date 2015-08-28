@@ -31,10 +31,16 @@ weiboApi.createButton = function(){
                         "name":"我要表白",
                         "key":"love"
                     },
+                    //{
+                    //    type:"view",
+                    //    "name":"跳蚤市场",
+                    //    "url":"http://xiaoqu.qq.com/mobile/barindex.html?_bid=128&_wv=1027&bid=130899"
+                    //},
+
                     {
                         type:"view",
-                        "name":"跳蚤市场",
-                        "url":"http://xiaoqu.qq.com/mobile/barindex.html?_bid=128&_wv=1027&bid=130899"
+                        "name":"空闲教室",
+                        "url":"http://scuinfo.com/classroom"
                     },
                     {
                         type:"click",
@@ -82,10 +88,16 @@ weiboApi.createButton = function(){
                         "name":"成绩查询 ",
                         "key":"score"
                     },
+                    //{
+                    //    "type":"click",
+                    //    "name":"考试查询",
+                    //    "key":"exam"
+                    //},
+
                     {
                         "type":"click",
-                        "name":"考试查询",
-                        "key":"exam"
+                        "name":"补考缓考",
+                        "key":"examAgain"
                     },
                     {
                         "type":"click",
@@ -146,8 +158,9 @@ weiboApi.createButton = function(){
     //console.log((JSON.stringify(menu1)));
 
     var xx=JSON.stringify(menu);
-    
-    //console.log(encodeURIComponent(xx));
+    console.log(xx);
+    console.log(JSON.parse(xx));
+    console.log(encodeURIComponent(xx));
     request.post(
         {
             url:url,
@@ -156,12 +169,9 @@ weiboApi.createButton = function(){
                 menus:encodeURIComponent(xx)
             }
         },function(e,r,b){
-            //console.log(e,b);
+            console.log(e,b);
         }
     )
-
-
-
 
 };
 

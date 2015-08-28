@@ -273,7 +273,7 @@ var menu1 ={
                 {
                     "type":"click",
                     "name":"补考缓考",
-                    "key":"exam"
+                    "key":"examAgain"
                 },
                 {
                     "type":"click",
@@ -323,7 +323,7 @@ console.log(e,r);
 /**
  * 创建菜单
  */
-wechatApi.createMenu();
+//wechatApi.createMenu();
 
 
 /**

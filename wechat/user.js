@@ -862,7 +862,7 @@ user.book = function(msg,req,res,next){
                 }else if(books.code==2015 ){
 
                     dbs.getWechatNews({
-                        name:"deanPasswordError"
+                        name:"libraryPasswordError"
                     },function(eee,rrrr){
                         if(eee){
                             res.reply(JSON.stringify(eee));

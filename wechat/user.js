@@ -706,7 +706,7 @@ user.score = function(msg,req,res,next){
                     return;
 
                 }
-                res.reply(scores.code+":"+scores.message);
+                res.reply("抱歉，由于以下原因，本次请求失败:\n错误代码:"+scores.code+"\n错误原因:"+scores.message);
                 return;
 
 
@@ -910,7 +910,7 @@ user.book = function(msg,req,res,next){
                     return;
 
                 }
-                res.reply(books.code+":"+books.message);
+                res.reply("抱歉，由于以下原因，本次请求失败:\n错误代码:"+books.code+"\n错误原因:"+books.message);
                 return;
 
 
@@ -1129,7 +1129,7 @@ user.major = function(msg,req,res,next){
                     return;
 
                 }
-                res.reply(majors.code+":"+majors.message);
+                res.reply("抱歉，由于以下原因，本次请求失败:\n错误代码:"+majors.code+"\n错误原因:"+majors.message);
                 return;
 
 
@@ -1338,7 +1338,7 @@ user.exam = function(msg,req,res,next){
                     return;
 
                 }
-                res.reply(exams.code+":"+exams.message);
+                res.reply("抱歉，由于以下原因，本次请求失败:\n错误代码:"+exams.code+"\n错误原因:"+exams.message);
                 return;
 
 
@@ -1545,7 +1545,7 @@ user.examAgain = function(msg,req,res,next){
                     return;
 
                 }
-                res.reply(exams.code+":"+exams.message);
+                res.reply("抱歉，由于以下原因，本次请求失败:\n错误代码:"+exams.code+"\n错误原因:"+exams.message);
                 return;
 
 

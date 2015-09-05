@@ -94,7 +94,9 @@ libs.check = function (o,cb){
         url: 'http://202.115.47.141/loginAction.do?zjh='+ o.studentId+'&mm='+encodeURIComponent(o.password),
         encoding: 'binary',
         form:{zjh: o.studentId,mm:""+o.password+""},
-        jar:j
+        jar:j,
+        timeout: o.timeout? o.timeout:10000
+
     };
     request(options,function(err,response){
 
@@ -143,7 +145,8 @@ libs.get = function (o,cb){
             method:"get",
             url: o.url,
             encoding:"binary",
-            jar:j
+            jar:j,
+            timeout: o.timeout? o.timeout:10000
         };
         //console.log('222');
         //console.log(opts);

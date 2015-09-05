@@ -181,12 +181,12 @@ user.score2 = function(msg,req,res,next){
                 {
                     studentId: r.studentId,
                     password: r.password,
-                    url: "http://202.115.47.141/bxqcjcxAction.do?totalrows=16&pageSize=300"
+                    url: "http://202.115.47.141/bxqcjcxAction.do?totalrows=16&pageSize=300",
+                    timeout:3000
                 }, function (e, r) {
                     
                     //console.log(e);
                     if (e) {
-
                         res.reply("教务处无法访问。请稍后重试");
                         return;
 
@@ -581,7 +581,8 @@ user.score = function(msg,req,res,next){
 
         request.get(
             {
-                url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
+                url:config.api.baseUrl+"/api/score?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password),
+                timeout:3000
             },function(eeeee,rrrrr,body){
 
                 //console.log(eeeee,body);
@@ -792,7 +793,8 @@ user.book = function(msg,req,res,next){
         }
         request.get(
             {
-                url:config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
+                url:config.api.baseUrl+"/api/book?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password),
+                timeout:3000
             },function(eeeee,rrrrr,body){
 
                 //console.log(eeeee,body);
@@ -993,7 +995,8 @@ user.major = function(msg,req,res,next){
         }
         request.get(
             {
-                url:config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
+                url:config.api.baseUrl+"/api/major?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password),
+                timeout:3000
             },function(eeeee,rrrrr,body){
 
                 //console.log(eeeee,body);
@@ -1213,7 +1216,9 @@ user.exam = function(msg,req,res,next){
         }
         request.get(
             {
-                url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
+                url:config.api.baseUrl+"/api/exam?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password),
+                timeout:3000
+
             },function(eeeee,rrrrr,body){
 
                 if(eeeee){
@@ -1422,7 +1427,9 @@ user.examAgain = function(msg,req,res,next){
         }
         request.get(
             {
-                url:config.api.baseUrl+"/api/examAgain?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password)
+                url:config.api.baseUrl+"/api/examAgain?appId="+ config.api.appId+"&appSecret="+config.api.appSecret+"&studentId="+ r.studentId+"&password="+ aes.encode(config.api.appId,config.api.appSecret,r.password),
+                timeout:3000
+
             },function(eeeee,rrrrr,body){
 
                 if(eeeee){

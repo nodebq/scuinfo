@@ -82,7 +82,7 @@ console.log(result);
                                     
                                     
                                     console.log({
-                                        status: encodeURIComponent(rr[0].content.substr(0,100)+config.site.url+"/p/"+rr[0].id),
+                                        status: (rr[0].content.substr(0,100)+config.site.url+"/p/"+rr[0].id),
                                         access_token:weiboToken.access_token,
                                         url:result.data.url
                                         //annotations:JSON.stringify({
@@ -94,7 +94,7 @@ console.log(result);
                                 {
                                     url:"https://api.weibo.com/2/statuses/upload_url_text.json",
                                     form:{
-                                        status: encodeURIComponent(rr[0].content.substr(0,100)+config.site.url+"/p/"+rr[0].id),
+                                        status: (rr[0].content.substr(0,100)+config.site.url+"/p/"+rr[0].id),
                                         access_token:weiboToken.access_token,
                                         url:result.data.url
                                         //annotations:JSON.stringify({

@@ -44,7 +44,7 @@ consumer.weibo = function(){
                 console.log(e+new Date());
                 return;
             }
-            console.log(r);
+            //console.log(r);
             if(r.length>0){
 
 
@@ -62,7 +62,7 @@ consumer.weibo = function(){
                         }
                         
                         if(rr.length>0){
-console.log(rr);
+//console.log(rr);
 
                             request.post('http://text2pic.scuinfo.com',{form:{
                                 "text":rr[0].content,
@@ -77,24 +77,15 @@ console.log(rr);
                                         message:"json解析出错"
                                     }
                                 }
-console.log(result);
+//console.log(result);
                                 if(result.code==200){
                                     
-                                    
-                                    console.log({
-                                        status: (rr[0].content.substr(0,100)+config.site.url+"/p/"+rr[0].id),
-                                        access_token:weiboToken.access_token,
-                                        url:result.data.url
-                                        //annotations:JSON.stringify({
-                                        //    secret: rr[0].secret,
-                                        //    userId:rr[0].userId
-                                        //})
-                                    });
+
                             request.post(
                                 {
                                     url:"https://api.weibo.com/2/statuses/upload_url_text.json",
                                     form:{
-                                        status: (rr[0].content.substr(0,100)+config.site.url+"/p/"+rr[0].id),
+                                        status: (rr[0].content.substr(0,120)+config.site.url+"/p/"+rr[0].id),
                                         access_token:weiboToken.access_token,
                                         url:result.data.url
                                         //annotations:JSON.stringify({
@@ -111,7 +102,7 @@ console.log(result);
                                             error_code:20000
                                         }
                                     }
-                                    console.log(userInfo);
+                                    //console.log(userInfo);
 
                                     //todo 判断是否能拿到用户资料，如果能拿到的话，正常执行登录/注册流程
                                     // 如果拿不到的话，跳到redirect页，并设置 session.userStatus:wechatNotFans
@@ -199,5 +190,5 @@ consumer.weibo();
 
 setInterval(function(){
     consumer.weibo();
-},1*20*1000);
+},1*90*1000);
 

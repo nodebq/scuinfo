@@ -62,12 +62,30 @@ consumer.weibo = function(){
                         }
                         
                         if(rr.length>0){
+
+
+                            request.post('http://text2pic.scuinfo.com',{form:{
+                                "text":rr[0].content,
+                                "footer":rr[0].nickname+"\n"+common.dayWeibo(rr[0].date*1000)
+                            }},function(eeeee,rrrrr,bbbbb){
+                                try{
+                                    var result = JSON.parse(bbbbb);
+                                }catch(e){
+                                    console.log(e);
+                                    var result = {
+                                        code:2009,
+                                        message:"json解析出错"
+                                    }
+                                }
+
+                                if(result.code==200){
                             request.post(
                                 {
-                                    url:"https://api.weibo.com/2/statuses/update.json",
+                                    url:"https://api.weibo.com/2/statuses/upload_url_text.json",
                                     form:{
-                                        status:rr[0].content.substr(0,120)+config.site.url+"/p/"+rr[0].id,
-                                        access_token:weiboToken.access_token
+                                        status: encodeURIComponent(rr[0].content.substr(0,120)+config.site.url+"/p/"+rr[0].id),
+                                        access_token:weiboToken.access_token,
+                                        url:result.data.url
                                         //annotations:JSON.stringify({
                                         //    secret: rr[0].secret,
                                         //    userId:rr[0].userId
@@ -104,7 +122,17 @@ consumer.weibo = function(){
 
 
                     }
-                            )
+                            );
+
+
+                                }else{
+
+
+                                    console.log(result);
+
+                                }
+
+                            });
 
                             
                         }else{
@@ -112,7 +140,7 @@ consumer.weibo = function(){
                         }
 
                     }
-                )
+                );
 
 
 

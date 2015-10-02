@@ -41,6 +41,15 @@ common.day = function (time) {
     return new Date().getFullYear().toString()+"年"+(new Date().getMonth()+1).toString()+"月"+new Date().getDate().toString()+"日"
 };
 
+
+common.dayWeibo = function (time) {
+    if(time){
+        return new Date(time).getFullYear().toString()+"."+(new Date(time).getMonth()+1).toString()+"."+new Date(time).getDate(time).toString();
+
+    }
+    return new Date().getFullYear().toString()+"."+(new Date().getMonth()+1).toString()+"."+new Date().getDate().toString()
+};
+
 /**
  * 输出格式化的小时:分钟
  * @param time

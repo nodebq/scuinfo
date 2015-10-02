@@ -80,6 +80,16 @@ console.log(rr);
 console.log(result);
                                 if(result.code==200){
                                     
+                                    
+                                    console.log({
+                                        status: encodeURIComponent(rr[0].content.substr(0,100)+config.site.url+"/p/"+rr[0].id),
+                                        access_token:weiboToken.access_token,
+                                        url:result.data.url
+                                        //annotations:JSON.stringify({
+                                        //    secret: rr[0].secret,
+                                        //    userId:rr[0].userId
+                                        //})
+                                    });
                             request.post(
                                 {
                                     url:"https://api.weibo.com/2/statuses/upload_url_text.json",

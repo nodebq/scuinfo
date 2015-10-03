@@ -476,6 +476,8 @@
         method:"get",
         url:"/api/notices",
         params:{
+        fromId:1,
+        pageSize:10,
         type:"all,like,reply"  //默认是all
          },
          return:{

@@ -571,7 +571,7 @@ service.noSessionText = function(msg,req,res,next){
     }
 
 
-    if(msg.Content.substr(0,2)=='hi'){
+    if(msg.Content.substr(0,2)=='添加'){
         service.postAnswer(msg,req,res,next);
         return;
     }

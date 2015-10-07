@@ -821,7 +821,7 @@ service.logout = function(openId,cb){
 service.postAnswer = function(msg,req,res,next){
 
     var text = msg.Content.substr(2);
-console.log("insert into secret_answer (text,time) values ('"+text+"',"+common.date()+")");
+console.log("insert into secret_answer (text,time) values ('"+text+"',"+common.time()+")");
     conn.query(
         {
             sql:"insert into secret_answer (text,time) values ('"+text+"',"+common.date()+")"

@@ -838,7 +838,6 @@ service.postAnswer = function(msg,req,res,next){
 
             }else{
                 res.reply('成功添加答案['+text+']');
-
             }
         }
     )

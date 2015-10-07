@@ -824,7 +824,7 @@ service.postAnswer = function(msg,req,res,next){
 console.log("insert into secret_answer (text,time) values ('"+text+"',"+common.time()+")");
     conn.query(
         {
-            sql:"insert into secret_answer (text,time) values ('"+text+"',"+common.date()+")"
+            sql:"insert into secret_answer (`text`,`time`) values ('"+text+"',"+common.time()+")"
         },function(e,r){
             console.log(e,r);
             if(e){

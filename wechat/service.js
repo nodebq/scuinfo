@@ -850,7 +850,7 @@ service.answer = function(msg,req,res,next){
 
 conn.query(
     {
-        sql:"SELECT * FROM secret_anwser ORDER BY RAND() LIMIT 1"
+        sql:"SELECT * FROM secret_answer ORDER BY RAND() LIMIT 1"
     },function(e,r){
         console.log(e,r);
         if(e){

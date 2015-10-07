@@ -824,8 +824,9 @@ service.postAnswer = function(msg,req,res,next){
 
     conn.query(
         {
-            sql:"insert into secret_answer (text,time) values ("+text+","+common.date()+")"
-        },function(e,r){
+            sql:"insert into secret_answer (text,time) values ('"+text+"',"+common.date()+")"
+        },function(e){
+            console.log(e,r);
             if(e){
                 res.reply('添加失败');
 

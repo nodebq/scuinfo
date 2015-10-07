@@ -54,6 +54,7 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
 
             service.test(message,req,res,next);
             break;
+
         case 'book':
         case '我的图书':
         case '图书':

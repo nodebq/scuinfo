@@ -185,6 +185,11 @@ service.text = function(msg,req,res,next){
                 return;
 
             }
+
+
+
+
+
             dbs.getWechatText({
                 name:"default"
             },function(eee,rrrr){
@@ -556,6 +561,12 @@ service.noSessionText = function(msg,req,res,next){
             }
         );
 
+        return;
+    }
+
+
+    if(msg.Content.substr(0,2)=='添加'){
+        service.postAnswer(msg,req,res,next);
         return;
     }
 

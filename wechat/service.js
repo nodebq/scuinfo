@@ -565,7 +565,13 @@ service.noSessionText = function(msg,req,res,next){
     }
 
 
-    if(msg.Content.substr(0,2)=='添加'){
+    if(msg.Content.substr(0,2)=='请问'){
+        service.answer(msg,req,res,next);
+        return;
+    }
+
+
+    if(msg.Content.substr(0,2)=='hi'){
         service.postAnswer(msg,req,res,next);
         return;
     }
@@ -839,10 +845,21 @@ console.log("insert into secret_answer (text,time) values ('"+text+"',"+common.t
 
 };
 
-service.test = function(msg,req,res,next){
+service.answer = function(msg,req,res,next){
 
 
-
+conn.query(
+    {
+        sql:"SELECT * FROM secret_anwser ORDER BY RAND() LIMIT 1"
+    },function(e,r){
+        console.log(e,r);
+        if(e){
+            res.reply("不知道");
+        }else{
+            res.reply(r[0].text);
+        }
+    }
+)
 
 };
 

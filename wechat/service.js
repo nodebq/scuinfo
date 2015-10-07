@@ -805,4 +805,33 @@ service.logout = function(openId,cb){
 
 };
 
+
+
+service.postAnswer = function(msg,req,res,next){
+
+    var text = msg.Content.substr(2);
+
+    conn.query(
+        {
+            sql:"insert into secret_answer (text,time) values ("+text+","+common.date()+")"
+        },function(e,r){
+            if(e){
+                res.reply('添加失败');
+
+            }else{
+                res.reply('成功添加答案['+text+']');
+
+            }
+        }
+    )
+
+};
+
+service.test = function(msg,req,res,next){
+
+
+
+
+};
+
 module.exports = service;

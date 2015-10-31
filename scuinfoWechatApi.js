@@ -1,3 +1,5 @@
+"use strict";
+
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -39,7 +41,7 @@ var checkSignature = function (query, token) {
     return a === signature;
 };
 app.use('/api/updateCallback', function(req,res,next){
-    console.log(req.body);
+    //console.log(req.body);
 
 
 
@@ -92,7 +94,7 @@ app.use('/api/wechat/sendText', function(req,res,next){
 
 app.use('/api/wechat/sendNews', function(req,res,next){
     if(req.method=="POST"){
-        console.log(req.body);
+        //console.log(req.body);
         wechatApi.sendNews(req,res);
     }else{
         next();
@@ -130,7 +132,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.listen(8120,function(){
+app.listen(8120,"127.0.0.1",function(){
     console.log('已监听8120端口'+new Date());
 });
 

@@ -1014,6 +1014,8 @@ profile.share = function(req,res){
 
 profile.updateCallbackNews = function(req,res){
     //console.log(req.body);
+    //console.log('2');
+
     if(req.body.type){
         var studentId=req.body.studentId;
         var time=common.date(parseInt(req.body.time)*1000);
@@ -1057,16 +1059,25 @@ profile.updateCallbackNews = function(req,res){
 
                 break;
         }
+
+        //console.log('2');
+
         articles[0]={
             title:"通知:你的"+type+"更新"+((req.body.code==200)?"成功":"失败"),
             description:((req.body.code==200)?("点击这里或自定义菜单查看最新"+type):("原因："+req.body.message+"\n点击这里进入后可以重试")),
             url:url
         };
 
+        var sql = "";
 
+        if(table=="secret_library"){
+            sql ="select userId from "+table+" where studentId='"+req.body.studentId+"' order by id desc limit 0,1";
+        }else{
+            sql="select userId from "+table+" where studentId="+req.body.studentId+" order by id desc limit 0,1";
+        }
         conn.query(
-            {sql:"select userId from "+table+" where studentId="+req.body.studentId+" order by id desc limit 0,1"},function(e,r){
-
+            {sql:sql},function(e,r){
+//console.log(e,r);
                 if(e){
 
                     res.end(JSON.stringify(code.mysqlError));
@@ -1078,10 +1089,11 @@ profile.updateCallbackNews = function(req,res){
                     res.end(JSON.stringify(code[noBind]));
                     return;
                 }
-                //console.log("select openId from secret_open where userId="+r[0].userId+" and source='wechat'");
+                
+                //console.log("select openId from secret_open where userId="+r[0].userId+" and source='wechat' order by id desc limit 0,1");
                 conn.query(
                     {
-                        sql:"select openId from secret_open where userId="+r[0].userId+" and source='wechat'"
+                        sql:"select openId from secret_open where userId="+r[0].userId+" and source='wechat' order by id desc limit 0,1"
                     },function(ee,rr){
 
                         if(ee){
@@ -1094,6 +1106,8 @@ profile.updateCallbackNews = function(req,res){
                             return;
                         }
                         //console.log(config.urls.wechatSendTemplate);
+                        //console.log('2');
+
                         request.post(
                             {
                                 url:config.urls.wechatSendNews,
@@ -1104,6 +1118,7 @@ profile.updateCallbackNews = function(req,res){
                                     openId:rr[0].openId
                                 }
                             },function(eee,rrr,bbb){
+                                //console.log(bbb);
                                 //console.log(eee);
                                 if(eee){
                                     console.log(eee);
@@ -1111,7 +1126,7 @@ profile.updateCallbackNews = function(req,res){
                                     return;
                                 }
                                 //console.log('222');
-console.log(bbb);
+//console.log(bbb);
                                 res.end('2');
                                 return;
                             }

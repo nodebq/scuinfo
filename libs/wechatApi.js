@@ -1,7 +1,11 @@
+"use strict";
+
 var API = require('wechat-api');
 var fs = require('fs');
 var config = require('../config.js');
 var code = require('../libs/code.js');
+var common = require('../libs/common.js');
+var log = require('../libs/log.js');
 var wechatApi = {
 
 };
@@ -129,14 +133,18 @@ wechatApi.sendTemplate = function(req,res,next){
                     code:200,
                     message:JSON.stringify(r)
                 }));
-                return;
             }else{
                 res.end(JSON.stringify({
                     code:code.wechatError,
                     message:JSON.stringify(r)
                 }));
-                return;
             }
+
+            var openId=req.body.openId,type="template",data=req.body,callback=e?e:r,time=common.time();
+
+            log.wechatNotice({openId,type,time,data,callback},function(e,r){
+                //console.log(e, r);
+            })
         }
     });
 
@@ -153,8 +161,12 @@ wechatApi.sendText = function(req,res){
 
         }else{
             res.end(JSON.stringify(code.success));
-            return;
         }
+        var openId=req.body.openId,type="text",data=req.body.content,callback=e?e:r,time=common.time();
+
+        log.wechatNotice({openId,type,time,data,callback},function(e,r){
+            //console.log(e, r);
+        })
 
     });
 };
@@ -163,15 +175,26 @@ wechatApi.sendText = function(req,res){
 
 
 wechatApi.sendNews = function(req,res){
-    api.sendNews(req.body.openId, req.body.articles, function(e){
 
+    //console.log(req.body);
+    
+    api.sendNews(req.body.openId, req.body.articles, function(e,r){
+        //console.log(e,r);
         if(e){
-            console.log(e+new Date());
+            //console.log(e+new Date());
             res.end(JSON.stringify(code.sendWechatTextError));
         }else{
             res.end(JSON.stringify(code.success));
-            return;
         }
+
+        var openId=req.body.openId,type="news",data=req.body.articles,callback=e?e:r,time=common.time();
+
+
+        //console.log({openId,type,time,data,callback});
+        log.wechatNotice({openId,type,time,data,callback},function(e,r){
+            //console.log(e, r);
+        })
+
 
     });
 };

@@ -624,7 +624,7 @@
           method:"post",
           url:"/api/bind/dean",
           params:{
-          studentId:2012141442029,
-          password:013991
+          studentId:"学号",
+          password:"密码"
           }
           }

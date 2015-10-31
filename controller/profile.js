@@ -1037,8 +1037,6 @@ profile.updateCallbackNews = function(req,res){
                 noBind="noBindLibrary";
                 type='借阅图书';
                 url=config.site.url+"/book";
-                return;
-
                 break;
             case 'renew':
                 table="secret_library";
@@ -1067,7 +1065,7 @@ profile.updateCallbackNews = function(req,res){
             description:((req.body.code==200)?("点击这里或自定义菜单查看最新"+type):("原因："+req.body.message+"\n点击这里进入后可以重试")),
             url:url
         };
-
+        //console.log(articles);
         var sql = "";
 
         if(table=="secret_library"){
@@ -1105,9 +1103,8 @@ profile.updateCallbackNews = function(req,res){
                             res.end(JSON.stringify(code.notSubscribe));
                             return;
                         }
-                        //console.log(config.urls.wechatSendTemplate);
-                        //console.log('2');
 
+                        
                         request.post(
                             {
                                 url:config.urls.wechatSendNews,
@@ -1118,15 +1115,12 @@ profile.updateCallbackNews = function(req,res){
                                     openId:rr[0].openId
                                 }
                             },function(eee,rrr,bbb){
-                                //console.log(bbb);
-                                //console.log(eee);
                                 if(eee){
                                     console.log(eee);
                                     res.end(JSON.stringify(code.requestError));
                                     return;
                                 }
-                                //console.log('222');
-//console.log(bbb);
+
                                 res.end('2');
                                 return;
                             }

@@ -17,7 +17,7 @@
     method:"post",
     header:{
     "Content-Type":"Application/json"
-    },
+    },eng
     url:"/api/wechat/sendNews",
     params:
     {

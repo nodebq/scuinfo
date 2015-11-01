@@ -132,7 +132,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.listen(8120,"127.0.0.1",function(){
+app.listen(8120,function(){
     console.log('已监听8120端口'+new Date());
 });
 

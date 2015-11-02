@@ -19,7 +19,10 @@ profile.like = function (req, res) {
             //是本人
             conn.query(
                 {
-                    sql:'select count("postId") from `secret_post` where userId = ' + req.query.userId
+                    sql:'select count("postId") from `secret_post` where userId = ' + ":userId",
+                    params:{
+                        userId:parseInt(req.query.userId)
+                    }
                 }, function (e, r) {
                     if(e){
                         console.log(e);
@@ -27,7 +30,10 @@ profile.like = function (req, res) {
                         return;
                     }conn.query(
                         {
-                            sql:'select count("postId") from secret_post_like where userId ='+req.query.userId
+                            sql:'select count("postId") from secret_post_like where userId ='+":userId",
+                            params:{
+                                userId:parseInt(req.query.userId)
+                            }
                         }, function (ee, rr) {
                             if(ee){
                                 console.log(ee);
@@ -38,7 +44,10 @@ profile.like = function (req, res) {
                             data.likePostsCount = rr[0]['count("postId")'];
                             conn.query(
                                 {
-                                    sql:'select * from secret_user_extend where userId='+req.query.userId
+                                    sql:'select * from secret_user_extend where userId='+":userId",
+                                    params:{
+                                        userId:parseInt(req.query.userId)
+                                    }
                                 },function(eee,rrr){
                                     if(eee){
                                         console.log(eee);
@@ -64,7 +73,10 @@ profile.like = function (req, res) {
             //不是本人
             conn.query(
                 {
-                    sql:'select count("postId") from `secret_post` where secret=0 and userId = ' + req.query.userId
+                    sql:'select count("postId") from `secret_post` where secret=0 and userId = ' + ":userId",
+                    params:{
+                        userId:parseInt(req.query.userId)
+                    }
                 }, function (e, r) {
                     if(e){
                         console.log(e);
@@ -72,7 +84,10 @@ profile.like = function (req, res) {
                         return;
                     }conn.query(
                         {
-                            sql:'select count("postId") from secret_post_like where userId ='+req.query.userId
+                            sql:'select count("postId") from secret_post_like where userId ='+":userId",
+                            params:{
+                                userId:parseInt(req.query.userId)
+                            }
                         }, function (ee, rr) {
                             if(ee){
                                 console.log(ee);
@@ -84,7 +99,10 @@ profile.like = function (req, res) {
                             data.likePostsCount = rr[0]['count("postId")'];
                             conn.query(
                                 {
-                                    sql:'select * from secret_user_extend where userId='+req.query.userId
+                                    sql:'select * from secret_user_extend where userId='+":userId",
+                                    params:{
+                                        userId:parseInt(req.query.userId)
+                                    }
                                 },function(eee,rrr){
                                     if(eee){
                                         console.log(eee);
@@ -576,7 +594,11 @@ profile.shareBook = function(req,res){
 
     conn.query(
         {
-            sql:"select * from secret_share where userId="+req.query.userId+" and type='"+req.query.type+"' limit 0,1"
+            sql:"select * from secret_share where userId="+":userId"+" and type='"+":type"+"' limit 0,1",
+            params:{
+                userId:parseInt(req.query.userId),
+                type:req.query.type
+            }
         },function(e3,r3){
             if(e3){
                 console.log(e3);
@@ -588,7 +610,10 @@ profile.shareBook = function(req,res){
 
                 conn.query(
                     {
-                        sql:"select studentId,password from secret_library where userId="+req.query.userId+" order by id desc"
+                        sql:"select studentId,password from secret_library where userId="+":userId"+" order by id desc",
+                        params:{
+                            userId:parseInt(req.query.userId)
+                        }
                     },function(e,r){
                         if(e){
                             console.log(e);
@@ -680,7 +705,11 @@ profile.shareMajor = function(req,res){
 
     conn.query(
         {
-            sql:"select * from secret_share where userId="+req.query.userId+" and type='"+req.query.type+"' limit 0,1"
+            sql:"select * from secret_share where userId="+":userId"+" and type='"+":type"+"' limit 0,1",
+            params:{
+                userId:parseInt(req.query.userId),
+                type:req.query.type
+            }
         },function(e3,r3){
             if(e3){
                 console.log(e3);
@@ -692,7 +721,10 @@ profile.shareMajor = function(req,res){
 
                 conn.query(
                     {
-                        sql:"select studentId,password from secret_account where userId="+req.query.userId+" order by id desc"
+                        sql:"select studentId,password from secret_account where userId="+":userId"+" order by id desc",
+                        params:{
+                            userId:parseInt(req.query.userId)
+                        }
                     },function(e,r){
                         if(e){
                             console.log(e);
@@ -785,7 +817,11 @@ profile.shareExam = function(req,res){
 //console.log("select * from secret_share where userId="+req.query.userId+" and type='"+req.query.type+"' limit 0,1");
     conn.query(
         {
-            sql:"select * from secret_share where userId="+req.query.userId+" and type='"+req.query.type+"' order by id desc limit 0,1"
+            sql:"select * from secret_share where userId="+":userId"+" and type='"+":type"+"' order by id desc limit 0,1",
+            params:{
+                userId:parseInt(req.query.userId),
+                type:req.query.type
+            }
         },function(e3,r3){
             if(e3){
                 console.log(e3);
@@ -799,7 +835,10 @@ profile.shareExam = function(req,res){
 
                 conn.query(
                     {
-                        sql:"select studentId,password from secret_account where userId="+req.query.userId+" order by id desc"
+                        sql:"select studentId,password from secret_account where userId="+":userId"+" order by id desc",
+                        params:{
+                            userId:parseInt(req.query.userId)
+                        }
                     },function(e,r){
                         if(e){
                             console.log(e);
@@ -892,7 +931,11 @@ profile.shareExamAgain = function(req,res){
 //console.log("select * from secret_share where userId="+req.query.userId+" and type='"+req.query.type+"' limit 0,1");
     conn.query(
         {
-            sql:"select * from secret_share where userId="+req.query.userId+" and type='"+req.query.type+"' order by id desc limit 0,1"
+            sql:"select * from secret_share where userId="+":userId"+" and type='"+":type"+"' order by id desc limit 0,1",
+            params:{
+                userId:parseInt(req.query.userId),
+                type:req.query.type
+            }
         },function(e3,r3){
             if(e3){
                 console.log(e3);
@@ -906,7 +949,10 @@ profile.shareExamAgain = function(req,res){
 
                 conn.query(
                     {
-                        sql:"select studentId,password from secret_account where userId="+req.query.userId+" order by id desc"
+                        sql:"select studentId,password from secret_account where userId="+":userId"+" order by id desc",
+                        params:{
+                            userId:parseInt(req.query.userId)
+                        }
                     },function(e,r){
                         if(e){
                             console.log(e);
@@ -994,8 +1040,13 @@ profile.share = function(req,res){
     }
     conn.query(
         {
-            sql:"insert into secret_share (userId,type,avatar,nickname,gender,createAt) values ("+req.body.userId+",'"+req.body.type+"','"+(req.body.avatar?req.body.avatar:"http://ww2.sinaimg.cn/large/d9f8fd81gw1e9nzda6i7kj20rs0rs75i.jpg") +
-            "','"+req.body.nickname+"',"+(req.body.gender?req.body.gender:0)+","+common.time()+")"
+            sql:"insert into secret_share (userId,type,avatar,nickname,gender,createAt) values ("+":userId"+",'"+":type"+"','"+":avatar" +
+            "','"+req.body.nickname+"',"+(req.body.gender?req.body.gender:0)+","+common.time()+")",
+            params:{
+                userId:parseInt(req.body.userId),
+                type:req.body.type,
+                avatar:req.body.avatar?req.body.avatar:"http://ww2.sinaimg.cn/large/d9f8fd81gw1e9nzda6i7kj20rs0rs75i.jpg"
+            }
         },function(e){
             if(e){
                 console.log(e);
@@ -1043,7 +1094,6 @@ profile.updateCallbackNews = function(req,res){
                 noBind="noBindLibrary";
                 type='续借操作';
                 url=config.site.url+"/book";
-
                 break;
             case 'score':
                 type='成绩';
@@ -1069,12 +1119,16 @@ profile.updateCallbackNews = function(req,res){
         var sql = "";
 
         if(table=="secret_library"){
-            sql ="select userId from "+table+" where studentId='"+req.body.studentId+"' order by id desc limit 0,1";
+            sql ="select userId from "+table+" where studentId='"+":studentId"+"' order by id desc limit 0,1";
         }else{
-            sql="select userId from "+table+" where studentId="+req.body.studentId+" order by id desc limit 0,1";
+            sql="select userId from "+table+" where studentId="+":studentId"+" order by id desc limit 0,1";
         }
         conn.query(
-            {sql:sql},function(e,r){
+            {sql:sql,
+                params:{
+                    studentId:parseInt(req.body.studentId)
+                }
+            },function(e,r){
 //console.log(e,r);
                 if(e){
 
@@ -1192,7 +1246,10 @@ profile.updateCallbackTemplate = function(req,res){
                 break;
         }
         conn.query(
-            {sql:"select userId from "+table+" where studentId="+req.body.studentId+" order by id desc limit 0,1"},function(e,r){
+            {sql:"select userId from "+table+" where studentId="+":studentId"+" order by id desc limit 0,1",
+                params:{
+                    studentId:parseInt(req.body.studentId)
+                }},function(e,r){
 
                 if(e){
 
@@ -1325,7 +1382,10 @@ profile.update = function(req,res){
 profile.examAgainNotice = function(req,res){
 
     conn.query(
-        {sql:"select userId from secret_account where studentId="+req.body.studentId+" order by id desc limit 0,1"},function(e,r) {
+        {sql:"select userId from secret_account where studentId="+":studentId"+" order by id desc limit 0,1",
+            params:{
+                studentId:parseInt(req.body.studentId)
+            }},function(e,r) {
 //console.log(e,r);
             if (e) {
 

@@ -20,13 +20,17 @@ tag.tag = function (req, res) {
     items = {};
     if (!req.query.fromId) {
 
-        sql='SELECT * FROM secret_tag order by date desc limit 0,' + req.query.pageSize;
+        sql='SELECT * FROM secret_tag order by date desc limit 0,' + ":pageSize";
     }else{
-        sql='SELECT * FROM secret_tag where id<' + req.query.fromId + ' order by date desc limit 0,' + req.query.pageSize;
+        sql='SELECT * FROM secret_tag where id<' + ":fromId" + ' order by date desc limit 0,' + ":pageSize";
     }
     conn.query(
         {
-            sql:sql
+            sql:sql,
+            params:{
+                fromId:parseInt(req.query.fromId),
+                pageSize:parseInt(req.query.pageSize)
+            }
         },function(err,rows){
             if(err){
                 console.log(err);
@@ -62,7 +66,10 @@ tag.list= function (req, res) {
     //console.log('select * from secret_tag where name = "'+req.query.name+'"');return;
     conn.query(
         {
-            sql:'select * from secret_tag where name = "'+req.query.name+'"'
+            sql:'select * from secret_tag where name = "'+":name"+'"',
+            params:{
+                name:req.query.name
+            }
         }, function (err, rows) {
             if(err){
                 console.log(err);
@@ -76,14 +83,18 @@ tag.list= function (req, res) {
                 post_id = rows[0].id;
 
                 if (!req.query.fromId) {
-                    sql='select postId from secret_tag_relation where tagId = '+post_id+' order by date desc limit 0,' + req.query.pageSize;
+                    sql='select postId from secret_tag_relation where tagId = '+post_id+' order by date desc limit 0,' + ":pageSize";
                 }else{
-                    sql='select postId from secret_tag_relation where tagId = '+post_id+' and postId<' + req.query.fromId+' order by date desc limit 0,' + req.query.pageSize;
+                    sql='select postId from secret_tag_relation where tagId = '+post_id+' and postId<' + ":fromId"+' order by date desc limit 0,' + ":pageSize";
                     //console.log(sql);return
                 }
                 conn.query(
                     {
-                        sql:sql
+                        sql:sql,
+                        params:{
+                            fromId:parseInt(req.query.fromId),
+                            pageSize:parseInt(req.query.pageSize)
+                        }
                     },function(eee,rrr){
                         if(eee){
                             console.log(eee);
@@ -237,14 +248,19 @@ tag.like = function (req, res) {
 
     if (!req.query.fromId) {
 
-        sql='SELECT * FROM secret_post where id in(select postId from secret_post_like where userId = '+req.query.userId+') order by date desc limit 0,' + req.query.pageSize;
+        sql='SELECT * FROM secret_post where id in(select postId from secret_post_like where userId = '+":userId"+') order by date desc limit 0,' + ":pageSize";
     }else{
-        sql='SELECT * FROM secret_post where id<' + req.query.fromId + ' and id in(select postId from secret_post_like where userId = '+req.query.userId+') order by date desc limit 0,' + req.query.pageSize;
+        sql='SELECT * FROM secret_post where id<' + ":fromId" + ' and id in(select postId from secret_post_like where userId = '+":userId"+') order by date desc limit 0,' + ":pageSize";
     }
     //console.log(sql);return;
     conn.query(
         {
-            sql: sql
+            sql: sql,
+            params:{
+                userId:parseInt(req.query.userId),
+                fromId:parseInt(req.query.fromId),
+                pageSize:parseInt(req.query.pageSize)
+            }
         }, function (err, rows) {
             var data = [];
 
@@ -280,9 +296,13 @@ tag.like = function (req, res) {
                                         console.log(e2);
                                         callback(code.mysqlError);
                                         return;
-                                    }conn.query(
+                                    }
+                                    conn.query(
                                         {
-                                            sql:'select * from secret_post_like where userId='+req.query.userId+' and postId ='+item.id
+                                            sql:'select * from secret_post_like where userId='+":userId"+' and postId ='+item.id,
+                                            params:{
+                                                userId:parseInt(req.query.userId)
+                                            }
                                         },function(e3,r3){
                                             if(e3){
                                                 console.log(e3);
@@ -357,7 +377,10 @@ tag.count=function(req,res){
         //console.log('select * from secret_tag where name='+req.query.name);return;
                conn.query(
                    {
-                       sql:'select * from secret_tag where name="'+req.query.name+'"'
+                       sql:'select * from secret_tag where name="'+":name"+'"',
+                       params:{
+                           name:req.query.name
+                       }
                    }, function (ee, rr) {
                        if(ee){
                            console.log(ee);
@@ -369,14 +392,14 @@ tag.count=function(req,res){
                            if(req.query.start){
                                //有start
                                if(req.query.end){
-                                   sql='select count("id") from `secret_tag_relation` where tagId ='+rr[0].id+' and date>'+req.query.start+' and date<'+req.query.end
+                                   sql='select count("id") from `secret_tag_relation` where tagId ='+rr[0].id+' and date>'+":start"+' and date<'+":end"
                                }else{
-                                   sql='select count("id") from `secret_tag_relation` where tagId ='+rr[0].id+' and date>'+req.query.start
+                                   sql='select count("id") from `secret_tag_relation` where tagId ='+rr[0].id+' and date>'+":start"
                                }
                            }else{
                                //没有start
                                if(req.query.end){
-                                   sql='select count("id") from `secret_tag_relation` where tagId ='+rr[0].id+' and date<'+req.query.end
+                                   sql='select count("id") from `secret_tag_relation` where tagId ='+rr[0].id+' and date<'+":end"
                                }else{
 
                                    sql='select count("id") from `secret_tag_relation` where tagId ='+rr[0].id
@@ -385,7 +408,11 @@ tag.count=function(req,res){
                            //console.log(sql);return;
                            conn.query(
                                {
-                                   sql:sql
+                                   sql:sql,
+                                   params:{
+                                       start:parseInt(req.query.start),
+                                       end:parseInt(req.query.end)
+                                   }
                                },function(e,r){
 
                                    if(e){

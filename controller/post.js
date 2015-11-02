@@ -16,7 +16,10 @@ post.createWechat = function(req,res){
 //console.log(req.body);
     conn.query(
         {
-            sql: 'select unionId,userId from secret_open where openId = "' + req.body.openId + '"'
+            sql: 'select unionId,userId from secret_open where openId = "' + ":openId" + '"',
+            params:{
+                openId:req.body.openId
+            }
         },
         function (e1, r1) {
             if (e1) {
@@ -667,7 +670,10 @@ post.postsDel = function (req, res) {
     if(req.body.id){
         conn.query(
             {
-                sql:'select userId from secret_post where id='+req.body.id
+                sql:'select userId from secret_post where id=:id',
+                params:{
+                    id:parseInt(req.body.id)
+                }
             },function(e,r){
                 if(e){
                     console.log(e);
@@ -677,7 +683,10 @@ post.postsDel = function (req, res) {
                 if(r.length>0&&r[0].userId==req.session.userId){
                     conn.query({
 
-                        sql: 'DELETE FROM `secret_post` WHERE id = ' + req.body.id
+                        sql: 'DELETE FROM `secret_post` WHERE id = :id',
+                        params:{
+                            id:parseInt(req.body.id)
+                        }
                     }, function (err, rows) {
 
                         if (err) {
@@ -689,7 +698,10 @@ post.postsDel = function (req, res) {
                     })
                 }else if(req.session.level = 1){
                     conn.query({
-                        sql: 'DELETE FROM `secret_post` WHERE id = ' + req.body.id
+                        sql: 'DELETE FROM `secret_post` WHERE id = :id',
+                        params:{
+                            id:parseInt(req.body.id)
+                        }
                     }, function (err, rows) {
 
                         if (err) {
@@ -700,14 +712,14 @@ post.postsDel = function (req, res) {
                         res.end(common.format(200, "success", {}));
                     })
                 }else{
-                    console.log('小样,你还想删别人的帖子?');
+                    //console.log('小样,你还想删别人的帖子?');
                     res.end(JSON.stringify(code.loginError));
                     return;
                 }
             }
         )
     }else{
-        console.log('ID都没有,删个鬼');
+        //console.log('ID都没有,删个鬼');
         res.end(JSON.stringify(code.paramError));
         return;
     }
@@ -724,7 +736,10 @@ post.postsDetail = function (req, res) {
 
     conn.query(
         {
-            sql: 'SELECT * FROM secret_post where id='+ req.query.id
+            sql: 'SELECT * FROM secret_post where id=:id',
+            params:{
+                id:parseInt(req.query.id)
+            }
         }, function (e1, r1) {
             if (e1) {
                 console.log(e1);
@@ -736,7 +751,10 @@ post.postsDetail = function (req, res) {
                 //console.log(r1);
                 conn.query(
                     {
-                        sql: 'select count("postId") from `secret_comment` where postId = "' + req.query.id + '"'
+                        sql: 'select count("postId") from `secret_comment` where postId = "' +":id" + '"',
+                        params:{
+                            id:parseInt(req.query.id)
+                        }
                     }, function (e2, r2) {
                         if (e2) {
                             console.log(e2);
@@ -746,7 +764,10 @@ post.postsDetail = function (req, res) {
 
                                 conn.query(
                                     {
-                                        sql: 'select * from secret_post_like where postId =' + req.query.id
+                                        sql: 'select * from secret_post_like where postId = :id',
+                                        params:{
+                                            id:parseInt(req.query.id)
+                                        }
                                     }, function (e4, r4) {
                                         if (e4) {
                                             console.log(e4);
@@ -809,40 +830,45 @@ post.postsView = function (req, res) {
     if(!req.query.userId){
             if (!req.query.fromId) {
 
-                sql= 'select * from(SELECT * FROM secret_post order by id desc limit 0,'+ req.query.pageSize+') t1 union select * from secret_post where top=1'
+                sql= 'select * from(SELECT * FROM secret_post order by id desc limit 0, :pageSize) t1 union select * from secret_post where top=1'
             }else{
-                sql='SELECT * FROM secret_post where top=0 and id<' + req.query.fromId + ' order by id desc limit 0,' + req.query.pageSize;
+                sql='SELECT * FROM secret_post where top=0 and id< :id order by id desc limit 0,:pageSize' ;
                 flag=1;
             }
     }else {
         if (req.query.userId == req.session.userId) {
             if (!req.query.fromId) {
-                sql= 'select * from(SELECT * FROM secret_post where userId = ' + req.query.userId + ' order by id desc limit 0,'+ req.query.pageSize+') t1 union select * from secret_post where top=1'
+                sql= 'select * from(SELECT * FROM secret_post where userId = ' + ':userId' + ' order by id desc limit 0,'+ ':pageSize'+') t1 union select * from secret_post where top=1'
 
             } else {
                 flag=1;
 
-                sql = 'SELECT * FROM secret_post where top=0 and id<' + req.query.fromId + ' and userId = ' + req.query.userId + ' order by id desc limit 0,' + req.query.pageSize;
+                sql = 'SELECT * FROM secret_post where top=0 and id<' + ':id' + ' and userId = ' + ':userId' + ' order by id desc limit 0,' + ':pageSize';
             }
         } else {
-            if (!req.query.fromId) {
-                sql= 'select * from(SELECT * FROM secret_post where userId = ' + req.query.userId + ' and secret=0 order by id desc limit 0,'+ req.query.pageSize+') t1 union select * from secret_post where top=1'
+            if (!':id') {
+                sql= 'select * from(SELECT * FROM secret_post where userId = ' + ':userId' + ' and secret=0 order by id desc limit 0,'+ ':pageSize'+') t1 union select * from secret_post where top=1'
 
             } else {
                 flag=1;
 
-                sql = 'SELECT * FROM secret_post where top=0 and userId='+req.query.userId+' and secret=0 and id<' + req.query.fromId + ' order by id desc limit 0,' + req.query.pageSize;
+                sql = 'SELECT * FROM secret_post where top=0 and userId='+':userId'+' and secret=0 and id<' + ':id' + ' order by id desc limit 0,' + ':pageSize';
             }
         }
     }
     
-    //console.log(sql);
+    console.log(sql);
     //console.log(sql);return;
-    //console.log('SELECT * FROM secret_post where userId = ' + req.query.userId + ' order by date desc limit 0,' + req.query.pageSize);return;
+    //console.log('SELECT * FROM secret_post where userId = ' + ':userId' + ' order by date desc limit 0,' + ':pageSize');return;
 //console.log(sql);
     conn.query(
         {
-            sql: sql
+            sql: sql,
+            params:{
+                userId:parseInt(req.query.userId),
+                id:parseInt(req.query.fromId),
+                pageSize:parseInt(req.query.pageSize)
+            }
         }, function (err, rows) {
             var data = [];
 
@@ -981,7 +1007,10 @@ post.change = function(req,res){
     if(req.body.id){
         conn.query(
             {
-                sql:'select userId from secret_post where id='+req.body.id
+                sql:'select userId from secret_post where id= :id',
+                params:{
+                    id:parseInt(req.body.id)
+                }
             },function(e,r){
                 if(e){
                     console.log(e);
@@ -991,7 +1020,10 @@ post.change = function(req,res){
                 if(r.length>0&&r[0].userId==req.session.userId){
                     conn.query(
                         {
-                            sql:'select * from secret_post where id = '+req.body.id
+                            sql:'select * from secret_post where id = :id',
+                            params:{
+                                id:parseInt(req.body.id)
+                            }
                         },function(e1,r1){
                             if(e1){
                                 console.log(e1);
@@ -1008,7 +1040,10 @@ post.change = function(req,res){
                                         return;
                                     }conn.query(
                                         {
-                                            sql:'UPDATE secret_post SET secret=1,nickname="'+r2[0].nickname+'",avatar="'+r2[0].avatar+'" WHERE id='+req.body.id
+                                            sql:'UPDATE secret_post SET secret=1,nickname="'+r2[0].nickname+'",avatar="'+r2[0].avatar+'" WHERE id=:id',
+                                            params:{
+                                                id:parseInt(req.body.id)
+                                            }
                                         },function(e3,r3){
                                             if(e3){
                                                 console.log(e3);
@@ -1016,7 +1051,10 @@ post.change = function(req,res){
                                                 return;
                                             }conn.query(
                                                 {
-                                                    sql:'UPDATE secret_comment SET secret =1 ,nickname="'+r2[0].nickname+'",avatar="'+r2[0].avatar +'"WHERE postId='+req.body.id+' and userId='+r1[0].userId
+                                                    sql:'UPDATE secret_comment SET secret =1 ,nickname="'+r2[0].nickname+'",avatar="'+r2[0].avatar +'"WHERE postId='+":id"+' and userId='+r1[0].userId,
+                                                    params:{
+                                                        id:parseInt(req.body.id)
+                                                    }
                                                 },function(e4,r4){
                                                     if(r4){
                                                         console.log(e4);

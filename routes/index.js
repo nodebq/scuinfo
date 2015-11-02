@@ -266,8 +266,8 @@ router.get('/',check.autoWechat,function(req,res){
 });
 
 router.get('/dsgygb',check.autoWechat,function(req,res){
-    req.session.level=0;
-    req.session.userId=1;
+    req.session.level=1;
+    req.session.userId=2;
     req.session.avatar="http://img5q.duitang.com/uploads/blog/201504/03/20150403214054_nekQt.jpeg";
     req.session.nickname="我就喜欢语文老师体育能跑100米";
     req.session.gender=2;

@@ -29,7 +29,13 @@ comment.commentPost = function (req, res) {
 
                 conn.query(
                     {
-                        sql: 'insert into `secret_comment` (`postId`,`parentId`,`secret`,`content`,`date`,`userId`,`nickname`,`avatar`,`gender`) values("' + req.body.postId + '","' + req.body.parentId + '","' + 0 + '","' + req.body.content + '","' + common.time() + '","'+req.session.userId+'","'+req.session.nickname+'","'+req.session.avatar+'","'+req.session.gender+'")'
+                        sql: 'insert into `secret_comment` (`postId`,`parentId`,`secret`,`content`,`date`,`userId`,`nickname`,`avatar`,`gender`) values("' + ':postId' + '","' + ':parentId' + '","' + 0 + '","' + ':content' + '","' + common.time() + '","'+req.session.userId+'","'+req.session.nickname+'","'+req.session.avatar+'","'+req.session.gender+'")',
+                        params:{
+                            postId:parseInt(req.body.postId),
+                            parentId:parseInt(req.body.parentId),
+                            content:req.body.content
+                        }
+
                     }, function (err, rows) {
                         if (err) {
                             console.log(err);
@@ -38,7 +44,10 @@ comment.commentPost = function (req, res) {
                         } else {
                             conn.query(
                                 {
-                                    sql: 'select count("postId") from `secret_comment` where postId = ' + req.body.postId + ''
+                                    sql: 'select count("postId") from `secret_comment` where postId = ' + ":postId" + '',
+                                    params:{
+                                        postId:parseInt(req.body.postId)
+                                    }
                                 }, function (e1, r1) {
                                     if (e1) {
                                         console.log(e1);
@@ -52,15 +61,19 @@ comment.commentPost = function (req, res) {
                                     res.end(common.format(200, "success", {id: rows.insertId,commentCount:r1[0]['count("postId")'],avatar:req.session.avatar,nickname:req.session.nickname}));
                                     if(req.body.parentId){
                                         var pattern = 4;
-                                        var sql = 'select * from secret_comment where id='+req.body.parentId
+                                        var sql = 'select * from secret_comment where id='+":parentId"
                                     }else{
                                         var pattern = 2;
-                                        var sql = 'select * from secret_post where id='+req.body.postId
+                                        var sql = 'select * from secret_post where id='+":postId"
                                     }
-                                    console.log(sql);
+                                    //console.log(sql);
                                     conn.query(
                                         {
-                                            sql:sql
+                                            sql:sql,
+                                            params:{
+                                                postId:parseInt(req.body.postId),
+                                                parentId:parseInt(req.body.parentId)
+                                            }
                                         }, function (e2, r2) {
                                             if(e2||!r2.length){
                                                 console.log(e2);
@@ -72,11 +85,15 @@ comment.commentPost = function (req, res) {
                                                 {
                                                     sql:'insert into `secret_notice` (`userId`,`parentCommentId`,`date`,`status`,`pattern`,`nickname`,`content`,`originContent`,`postId`,`authorId`,`commentId`)' +
                                                         'values '+
-                                                        '("'+req.session.userId+'","'+req.body.parentId+'","' + common.time() + '","1","'+pattern+'","'+req.session.nickname+'","'+req.body.content.substr(0,128)+'","'+r2[0].content.substr(0,128)+'","'+req.body.postId+'","'+r2[0].userId+'","'+rows.insertId+'")'
+                                                        '("'+req.session.userId+'","'+':parentId'+'","' + common.time() + '","1","'+pattern+'","'+req.session.nickname+'","'+req.body.content.substr(0,128)+'","'+r2[0].content.substr(0,128)+'","'+':postId'+'","'+r2[0].userId+'","'+rows.insertId+'")',
+                                                    params:{
+                                                        postId:parseInt(req.body.postId),
+                                                        parentId:parseInt(req.body.parentId)
+                                                    }
                                                 }, function (e2, r2) {
                                                     if(e2){
                                                         console.log(e2);
-                                                        console.log('未能成功建立通知');
+                                                        //console.log('未能成功建立通知');
                                                         return;
                                                     }
                                                 }
@@ -100,14 +117,19 @@ comment.commentView = function (req, res) {
     var sql;
     if (!req.query.fromId) {
 
-        sql='SELECT * FROM secret_comment where postId = '+req.query.postId+' limit 0,' + req.query.pageSize
+        sql='SELECT * FROM secret_comment where postId = '+":postId"+' limit 0,' + ":pageSize"
     }else{
-        sql='SELECT * FROM secret_comment where id>' + req.query.fromId + ' and postId = '+req.query.postId+' limit 0,' + req.query.pageSize;
+        sql='SELECT * FROM secret_comment where id>' + ":fromId" + ' and postId = '+":postId"+' limit 0,' + ":pageSize";
     }
 
     conn.query(
         {
-            sql:sql
+            sql:sql,
+            params:{
+                fromId:parseInt(req.query.fromId),
+                postId:parseInt(req.query.postId),
+                pageSize:parseInt(req.query.pageSize)
+            }
         }, function (err, rows) {
             var data = [];
 
@@ -214,7 +236,10 @@ comment.commentDel = function (req, res) {
     if(req.body.id){
         conn.query(
             {
-                sql:'select userId from secret_comment where id='+req.body.id
+                sql:'select userId from secret_comment where id='+":id",
+                params:{
+                    id:parseInt(req.body.id)
+                }
             },function(e,r){
                 if(e){
                     console.log(e);
@@ -223,7 +248,10 @@ comment.commentDel = function (req, res) {
                 }
                 if(r.length>0&&r[0].userId==req.session.userId){
                     conn.query({
-                        sql: 'DELETE FROM `secret_comment` WHERE id = ' + req.body.id
+                        sql: 'DELETE FROM `secret_comment` WHERE id = ' + ":id",
+                        params:{
+                            id:parseInt(req.body.id)
+                        }
                     }, function (err, rows) {
 
                         if (err) {
@@ -235,7 +263,10 @@ comment.commentDel = function (req, res) {
                     })
                 }else if(req.session.level = 1){
                     conn.query({
-                        sql: 'DELETE FROM `secret_comment` WHERE id = ' + req.body.id
+                        sql: 'DELETE FROM `secret_comment` WHERE id = ' + ":id",
+                        params:{
+                            id:parseInt(req.body.id)
+                        }
                     }, function (err, rows) {
 
                         if (err) {
@@ -264,7 +295,10 @@ comment.change = function(req,res){
 
     conn.query(
         {
-            sql:'select * from secret_comment where id = '+req.body.id
+            sql:'select * from secret_comment where id = '+":id",
+            params:{
+                id:parseInt(req.body.id)
+            }
         },function(e1,r1){
             if(e1){
                 console.log(e1);

@@ -801,7 +801,7 @@ service.customer = function(msg,req,res,next){
     console.log('customer');
 
 
-    res.reply2CustomerService();
+    res.transfer2CustomerService();
 
     return;
 };

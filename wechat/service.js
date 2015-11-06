@@ -798,11 +798,7 @@ service.signout = function(msg,req,res,next){
 
 
 service.customer = function(msg,req,res,next){
-    console.log('customer');
-
-
     res.transfer2CustomerService();
-
     return;
 };
 

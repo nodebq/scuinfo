@@ -92,6 +92,10 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
         //    service.classroom(message,req,res,next);
 
             case '主页君':
+                case '主页':
+                    case '你好':
+                        case '哥':
+                            case '姐':
                 service.customer(message,req,res,next);
             break;
 

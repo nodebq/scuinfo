@@ -91,6 +91,10 @@ app.use('/wechat', wechat(config, wechat.text(function (message, req, res, next)
         //case '空教室':
         //    service.classroom(message,req,res,next);
 
+            case '主页君':
+                service.customer(message,req,res,next);
+            break;
+
         default:
 
             service.text(message,req,res,next);

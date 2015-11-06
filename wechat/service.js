@@ -796,6 +796,16 @@ service.signout = function(msg,req,res,next){
     return;
 };
 
+
+service.customer = function(msg,req,res,next){
+    console.log('customer');
+
+
+    res.reply2CustomerService();
+
+    return;
+};
+
 /**
  * 退出
  * @param msg

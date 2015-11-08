@@ -27,13 +27,13 @@ api.registerTicketHandle(function (type, callback) {
 
         // 传入一个获取全局ticket的方法
         fs.readFile('./token/ticketToken.txt', 'utf8', function (err, txt) {
-            console.log(txt);console.log('read');
+            //console.log(txt);console.log('read');
             //console.log(err,txt);//return;
             if (err) {return callback(err);}
             callback(null, JSON.parse(txt));
         });
     }, function (type, _ticketToken, callback) {
-        console.log(type,_ticketToken);console.log('write');
+        //console.log(type,_ticketToken);console.log('write');
 
         fs.writeFile('./token/ticketToken.txt', JSON.stringify(_ticketToken), function(err){
             if(err) return callack(err);
@@ -49,8 +49,6 @@ pages.index = function(req,res){
 
     res.header('Cache-Control','public');
     var url = req.protocol+"://"+config.host.url+req.originalUrl;
-
-//console.log(url);
     var param = {
         url: url
     };

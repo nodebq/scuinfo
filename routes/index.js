@@ -10,7 +10,6 @@ var tag = require('../controller/tag.js');
 var account = require('../controller/account.js');
 var profile = require('../controller/profile.js');
 //var notice = require('../controller/notice.js');
-
 var check = require('../libs/check.js');
 var bind = require('../controller/bind.js');
 var notice = require('../controller/notice.js')
@@ -24,7 +23,6 @@ router.all('/api/*',function(req,res,next){
 });
 
 router.get('/api/post',function(req,res) {//文章详情
-    //console.log('succeee to index.js');return;
 
     post.postsDetail(req, res);
 //    console.log(req.params.id);
@@ -252,15 +250,6 @@ router.get('/auth/wechatUserAgent',check.isNotLogin,function(req,res){
 
 //
 router.get('/',check.autoWechat,function(req,res){
-
-    //console.log(req.url);
-    //req.session.level=1;
-    //req.session.userId=9767;
-    //req.session.avatar="http://img5q.duitang.com/uploads/blog/201504/03/20150403214054_nekQt.jpeg";
-    //req.session.nickname="我就喜欢语文老师体育能跑100米";
-    //req.session.gender=0;
-    //req.session.userStatus='login';
-    //console.log(req.session);
     pages.index(req,res);
 //
 });

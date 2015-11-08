@@ -17,7 +17,7 @@ tag.tag = function (req, res) {
 
     var sql;
     var data = [];
-    items = {};
+    var items = {};
     if (!req.query.fromId) {
 
         sql='SELECT * FROM secret_tag order by date desc limit 0,' + ":pageSize";
@@ -41,7 +41,6 @@ tag.tag = function (req, res) {
             for(var i = 0;i<rows.length;i++){
                 items.id = rows[i].id;
                 items.name = rows[i].name;
-                //console.log(items);
                 data.push(items);
             }
             //return;
@@ -52,7 +51,7 @@ tag.tag = function (req, res) {
 };
 tag.list= function (req, res) {
     //console.log('success in api');
-    //console.log(req.body);
+    //console.log(req.query);
 
     if (!req.query.pageSize) {
         req.query.pageSize = 15
@@ -66,7 +65,7 @@ tag.list= function (req, res) {
     //console.log('select * from secret_tag where name = "'+req.query.name+'"');return;
     conn.query(
         {
-            sql:'select * from secret_tag where name = "'+":name"+'"',
+            sql:'select * from secret_tag where name = '+":name",
             params:{
                 name:req.query.name
             }
@@ -76,17 +75,13 @@ tag.list= function (req, res) {
                 res.end(JSON.stringify(code.mysqlError));
                 return;
             }
-            //console.log(rows);return;
-            //if (rows.length>0){post_id = rows[0].id;}else{post_id = 1}
             if(rows.length>0){
-
                 post_id = rows[0].id;
 
                 if (!req.query.fromId) {
                     sql='select postId from secret_tag_relation where tagId = '+post_id+' order by date desc limit 0,' + ":pageSize";
                 }else{
                     sql='select postId from secret_tag_relation where tagId = '+post_id+' and postId<' + ":fromId"+' order by date desc limit 0,' + ":pageSize";
-                    //console.log(sql);return
                 }
                 conn.query(
                     {
@@ -105,14 +100,10 @@ tag.list= function (req, res) {
 
                         if(rrr.length>0) {
                             var postId = [];
-                            //console.log(rrr);
                             for (var i = 0; i < rrr.length; i++) {
                                 postId[i] = rrr[i].postId;
                             }
                             var postid = postId.join(',');
-//                        console.log('SELECT * FROM secret_post where id in('+postid+')');
-//                        return;
-//                            console.log('SELECT * FROM secret_post where id in(' + postid + ')');
                             conn.query(
                                 {
                                     sql: 'SELECT * FROM secret_post where id in(' + postid + ')'
@@ -140,9 +131,7 @@ tag.list= function (req, res) {
                                                         callback(code.mysqlError);
                                                         return;
                                                     }
-                                                    //console.log(conn.query.sql);
-//                            console.log(r1[0]);
-//                            console.log(r1[0]['count ("postId")']);
+
                                                     conn.query(
                                                         {//
                                                             sql: 'select count("postId") from `secret_post_like` where postId = ' + item.id
@@ -377,7 +366,7 @@ tag.count=function(req,res){
         //console.log('select * from secret_tag where name='+req.query.name);return;
                conn.query(
                    {
-                       sql:'select * from secret_tag where name="'+":name"+'"',
+                       sql:'select * from secret_tag where name='+":name",
                        params:{
                            name:req.query.name
                        }

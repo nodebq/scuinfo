@@ -857,7 +857,7 @@ post.postsView = function (req, res) {
         }
     }
     
-    console.log(sql);
+    //console.log(sql);
     //console.log(sql);return;
     //console.log('SELECT * FROM secret_post where userId = ' + ':userId' + ' order by date desc limit 0,' + ':pageSize');return;
 //console.log(sql);

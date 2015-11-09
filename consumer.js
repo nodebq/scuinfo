@@ -193,5 +193,5 @@ consumer.weibo();
 
 setInterval(function(){
     consumer.weibo();
-},1*90*1000);
+},1*20*1000);
 

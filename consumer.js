@@ -112,7 +112,7 @@ consumer.weibo = function(){
                                     //改状态
                                     conn.query(
                                         {
-                                            sql:"update secret_weibo_query set status=1,postAt="+common.time()+",weiboId="+userInfo.id+" where id="+r[0].postId
+                                            sql:"update secret_weibo_query set status=1,postAt="+common.time()+",weiboId="+userInfo.id+" where id="+r[0].id
                                         },function(eeeee,rrrrr){
                                             //console.log(eeeee,'成功发布一条微博');
                                         }
@@ -137,7 +137,7 @@ consumer.weibo = function(){
                             console.log('该帖子已被删除'+new Date());
                             conn.query(
                                 {
-                                    sql:"update secret_weibo_query set status=3,postAt="+common.time()+" where id="+r[0].postId
+                                    sql:"update secret_weibo_query set status=3,postAt="+common.time()+" where id="+r[0].id
                                 },function(eeeee,rrrrr){
                                     //console.log(eeeee,'成功发布一条微博');
                                 }

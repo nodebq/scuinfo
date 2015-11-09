@@ -102,11 +102,7 @@ consumer.weibo = function(){
                                             error_code:20000
                                         }
                                     }
-                                    //console.log(userInfo);
 
-                                    //todo 判断是否能拿到用户资料，如果能拿到的话，正常执行登录/注册流程
-                                    // 如果拿不到的话，跳到redirect页，并设置 session.userStatus:wechatNotFans
-                                    //
 
                                     if(userInfo.error_code){
                                         console.log(userInfo+new Date());
@@ -116,11 +112,11 @@ consumer.weibo = function(){
                                     //改状态
                                     conn.query(
                                         {
-                                            sql:"update secret_weibo_query set status=1,postAt="+common.time()+",weiboId="+userInfo.id
+                                            sql:"update secret_weibo_query set status=1,postAt="+common.time()+",weiboId="+userInfo.id+" where id="+r[0].postId
                                         },function(eeeee,rrrrr){
                                             //console.log(eeeee,'成功发布一条微博');
                                         }
-                                    )
+                                    );
 
 
                     }
@@ -139,6 +135,13 @@ consumer.weibo = function(){
                             
                         }else{
                             console.log('该帖子已被删除'+new Date());
+                            conn.query(
+                                {
+                                    sql:"update secret_weibo_query set status=3,postAt="+common.time()+" where id="+r[0].postId
+                                },function(eeeee,rrrrr){
+                                    //console.log(eeeee,'成功发布一条微博');
+                                }
+                            );
                         }
 
                     }

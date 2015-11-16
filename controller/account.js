@@ -451,7 +451,7 @@ account.luckyAuth = function(req,res){
         return;
     }
 
-
+var luckyUrl = config.luckyUrl;
     oauth.getAccessToken(req.query.code,function(er,resu){
         console.log(er,resu);
         if(er){
@@ -481,7 +481,7 @@ account.luckyAuth = function(req,res){
                         console.log(result);
 
                         var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(result))).toString('base64'));
-                        res.redirect(luckyUri+'/storage?i='+info);
+                        res.redirect(luckyUrl+'/storage?i='+info);
                     });
                 }else{
 
@@ -528,7 +528,7 @@ account.luckyAuth = function(req,res){
                                     result.r = stat.r;
                                     //console.log(result);
                                     var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(result))).toString('base64'));
-                                    res.redirect(luckyUri + '/storage?i=' + info);
+                                    res.redirect(luckyUrl + '/storage?i=' + info);
                                 });
 
                             }

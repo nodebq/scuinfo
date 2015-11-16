@@ -21,7 +21,7 @@ var account = {
 
 var oauth = new OAUTH(config.wechatWeb.appId,config.wechatWeb.appSecret, function (openid,callback) {
     // 传入一个获取全局token的方法
-    fs.readFile('./token/'+oepnid+'AccessToken.txt', 'utf8', function (err, txt) {
+    fs.readFile('./token/'+openid+'AccessToken.txt', 'utf8', function (err, txt) {
         //console.log(err,txt);//return;
         if (err) {return callback(err);}
         callback(null, JSON.parse(txt));

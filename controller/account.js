@@ -471,7 +471,7 @@ var luckyUrl = config.luckyUrl;
                     AuthLib.generate(profile._id,function(ee,rr){
                         console.log(req.query);
 
-                        var stat = decodeURIComponent(req.query.stat);
+                        var stat = decodeURIComponent(req.query.state);
                         console.log(stat);
                         if(!stat){
                             stat="/";
@@ -516,7 +516,7 @@ var luckyUrl = config.luckyUrl;
                             } else {
                                 AuthLib.generate(r1._id, function (ee, rr) {
                                     console.log(req.query);
-                                    var stat = decodeURIComponent(req.query.stat);
+                                    var stat = decodeURIComponent(req.query.state);
 
                                     if(!stat){
                                         stat="/";

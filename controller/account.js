@@ -469,11 +469,14 @@ var luckyUrl = config.luckyUrl;
                 }
                 if(profile){
                     AuthLib.generate(profile._id,function(ee,rr){
+                        console.log(req.query);
+
                         var stat = decodeURIComponent(req.query.stat);
                         console.log(stat);
                         if(!stat){
                             stat="/";
                         }
+                        console.log(stat);
                         var rrrr = {
                             r:stat,
                             access_token:rr.access_token,
@@ -512,7 +515,7 @@ var luckyUrl = config.luckyUrl;
                                 res.status(500).end();
                             } else {
                                 AuthLib.generate(r1._id, function (ee, rr) {
-
+                                    console.log(req.query);
                                     var stat = decodeURIComponent(req.query.stat);
 
                                     if(!stat){

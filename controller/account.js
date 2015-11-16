@@ -492,23 +492,15 @@ var luckyUrl = config.luckyUrl;
                             res.status(500).json({message: "内部错误"});
                             return;
                         }
-                        var accessToken = 'debugToken';
-                        var result = {
-                            nickname:req.query.code,
-                            avatar:"http://tp2.sinaimg.cn/5668968461/180/5736696167/1",
-                            open_id:req.query.code,
-                            gender:1,
-                            union_id:req.query.code
-                        };
 
                         var _profile = new Profile({
                             activityId: '1',
                             createAt: common.time(),
-                            gender: result.gender,
-                            avatar: result.avatar,
-                            nickname: result.nickname,
-                            open_id: result.open_id,
-                            union_id: result.union_id
+                            gender: userinfo.sex,
+                            avatar: userinfo.headimgurl,
+                            nickname: userinfo.nickname,
+                            open_id: userinfo.openid,
+                            union_id: userinfo.unionid
                         });
 
                         _profile.save(function (e, r) {

@@ -14,22 +14,22 @@ Auth.generate = function(uid,cb){
     var md5 = crypto.createHash('md5').update(name).digest('hex');
 
     console.log(md5);
-    AuthModel.findOneAndUpdate({user_id:uid},{access_token:md5,user_id:uid,update_at:common.time()},function(e,r){
+    AuthModel.findOneAndUpdate({user_id:uid},{access_token:md5,update_at:common.time()},function(e,r){
         console.log('1',e, r);
         
     if(e){
         cb(e);
     }else{
         if(r){
+            r.access_token = md5;
+            console.log(e,r);
             cb(e,r);
         }else{
             console.log(md5);
             var user = new AuthModel({access_token:md5,user_id:uid,update_at:common.time()});
 user.save(function(ee,rr){
-
-    console.log('2',ee,rr);
     cb(ee,rr);
-
+    console.log(rr);
 })
         }
     }

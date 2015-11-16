@@ -461,7 +461,7 @@ var luckyUrl = config.luckyUrl;
 
         var result = resu.data;
         Profile.findOne(
-            {open_id:result.open_id},function(errr,profile){
+            {open_id:result.openid},function(errr,profile){
                 if(errr){
                     res.status(500).json({message:"内部错误"});
                     return;

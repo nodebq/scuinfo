@@ -468,19 +468,20 @@ var luckyUrl = config.luckyUrl;
 
                 }
                 if(profile){
-                    profile.group_counts= profile.group.length;
-                    profile.user_id = profile._id;
                     AuthLib.generate(result.user_id,function(ee,rr){
-                        profile.access_token =rr.access_token;
                         try{
                             var stat = JSON.parse(decodeURIComponent(req.query.stat));
                         }catch(e){
                             var stat = {r:"/"}
                         }
-                        profile.r = stat.r;
-                        console.log(profile);
-
-                        var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(profile))).toString('base64'));
+                        var rrrr = {
+                            access_token:rr.access_token,
+                            user_id:profile._id,
+                            nickname:profile.nickname,
+                            avatar:profile.avatar,
+                            group_counts: profile.group.length
+                            };
+                        var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(rrrr))).toString('base64'));
                         res.redirect(luckyUrl+'/storage?i='+info);
                     });
                 }else{
@@ -519,8 +520,16 @@ var luckyUrl = config.luckyUrl;
                                         var stat = {r: "/"}
                                     }
                                     r1.r = stat.r;
-                                    console.log(r1);
-                                    var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(r1))).toString('base64'));
+
+                                    var rrrr = {
+                                        access_token:rr.access_token,
+                                        user_id:r1._id,
+                                        nickname:r1.nickname,
+                                        avatar:r1.avatar,
+                                        group_counts = r.group.length
+                                    };
+                                    console.log(rrrr);
+                                    var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(rrrr))).toString('base64'));
                                     res.redirect(luckyUrl + '/storage?i=' + info);
                                 });
 

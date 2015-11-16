@@ -469,13 +469,13 @@ var luckyUrl = config.luckyUrl;
                 }
                 if(profile){
                     AuthLib.generate(profile._id,function(ee,rr){
-                        try{
-                            var stat = JSON.parse(decodeURIComponent(req.query.stat));
-                        }catch(e){
-                            var stat = {r:"/"}
+                        var stat = decodeURIComponent(req.query.stat);
+
+                        if(!stat){
+                            stat="/";
                         }
                         var rrrr = {
-                            r:stat.r,
+                            r:stat,
                             access_token:rr.access_token,
                             user_id:profile._id,
                             nickname:profile.nickname,
@@ -512,14 +512,15 @@ var luckyUrl = config.luckyUrl;
                                 res.status(500).end();
                             } else {
                                 AuthLib.generate(r1._id, function (ee, rr) {
-                                    try {
-                                        var stat = JSON.parse(decodeURIComponent(req.query.stat));
-                                    } catch (e) {
-                                        var stat = {r: "/"}
+
+                                    var stat = decodeURIComponent(req.query.stat);
+
+                                    if(!stat){
+                                        stat="/";
                                     }
 
                                     var rrrr = {
-                                        r:stat.r,
+                                        r:stat,
                                         access_token:rr.access_token,
                                         user_id:r1._id,
                                         nickname:r1.nickname,

@@ -508,18 +508,19 @@ var luckyUrl = config.luckyUrl;
                                 console.log(e);
                                 res.status(500).end();
                             } else {
-                                result.group_counts = r.group.length;
-                                result.user_id = r._id;
-                                AuthLib.generate(result.user_id, function (ee, rr) {
+
+                                userinfo.group_counts = r.group.length;
+                                userinfo.user_id = r._id;
+                                AuthLib.generate(userinfo.user_id, function (ee, rr) {
                                     result.access_token = rr.access_token;
                                     try {
                                         var stat = JSON.parse(decodeURIComponent(req.query.stat));
                                     } catch (e) {
                                         var stat = {r: "/"}
                                     }
-                                    result.r = stat.r;
+                                    userinfo.r = stat.r;
                                     //console.log(result);
-                                    var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(result))).toString('base64'));
+                                    var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(userinfo))).toString('base64'));
                                     res.redirect(luckyUrl + '/storage?i=' + info);
                                 });
 

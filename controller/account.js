@@ -475,6 +475,7 @@ var luckyUrl = config.luckyUrl;
                             var stat = {r:"/"}
                         }
                         var rrrr = {
+                            r:stat.r,
                             access_token:rr.access_token,
                             user_id:profile._id,
                             nickname:profile.nickname,
@@ -510,18 +511,15 @@ var luckyUrl = config.luckyUrl;
                                 console.log(e1);
                                 res.status(500).end();
                             } else {
-                                r1.group_counts = r1.group.length;
                                 AuthLib.generate(userinfo.user_id, function (ee, rr) {
-                                    r1.access_token = rr.access_token;
-                                    r1.user_id = r1._id;
                                     try {
                                         var stat = JSON.parse(decodeURIComponent(req.query.stat));
                                     } catch (e) {
                                         var stat = {r: "/"}
                                     }
-                                    r1.r = stat.r;
 
                                     var rrrr = {
+                                        r:stat.r,
                                         access_token:rr.access_token,
                                         user_id:r1._id,
                                         nickname:r1.nickname,

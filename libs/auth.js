@@ -1,9 +1,9 @@
 'use strict';
 
-const crypto = require('crypto');
-const common = require('./common.js');
+var crypto = require('crypto');
+var common = require('./common.js');
 var mongoose = require('mongoose');
-let AuthModel = mongoose.model('Auth');
+var AuthModel = mongoose.model('Auth');
 let Auth = {
 
 };

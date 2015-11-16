@@ -453,7 +453,7 @@ account.luckyAuth = function(req,res){
 
 var luckyUrl = config.luckyUrl;
     oauth.getAccessToken(req.query.code,function(er,resu){
-        console.log(er,resu);
+        //console.log(er,resu);
         if(er){
             res.status(403).json({message:"code不正确"});
             return;
@@ -488,8 +488,8 @@ var luckyUrl = config.luckyUrl;
                 }else{
 
                     oauth.getUser(result.openid,function(exx,userinfo) {
-                        console.log(exx, userinfo);
-                        console.log(userinfo);
+                        //console.log(exx, userinfo);
+                        //console.log(userinfo);
                         if (exx) {
                             res.status(500).json({message: "内部错误"});
                             return;
@@ -506,7 +506,7 @@ var luckyUrl = config.luckyUrl;
                         });
 
                         _profile.save(function (e1, r1) {
-                            console.log(e1,r1);
+                            //console.log(e1,r1);
                             if (e1) {
                                 console.log(e1);
                                 res.status(500).end();
@@ -526,7 +526,7 @@ var luckyUrl = config.luckyUrl;
                                         avatar:r1.avatar,
                                         group_counts:r1.group.length
                                     };
-                                    console.log(rrrr);
+                                    //console.log(rrrr);
                                     var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(rrrr))).toString('base64'));
                                     res.redirect(luckyUrl + '/storage?i=' + info);
                                 });

@@ -127,8 +127,8 @@ account.updateUserInfo = function(accessToken,openId,userId,cb){
     request('https://api.weixin.qq.com/sns/userinfo?access_token='+accessToken+'&openid='+openId,function(eee21,rrr21,bbb21){
 
         if(eee21){
-            res.end(code.getUserInfoError);
-            console.log(eee21);return;
+            console.log(eee21);
+            return;
         }
         try{
 
@@ -519,7 +519,7 @@ var luckyUrl = config.luckyUrl;
                                         var stat = {r: "/"}
                                     }
                                     r1.r = stat.r;
-                                    //console.log(result);
+                                    console.log(r1);
                                     var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(r1))).toString('base64'));
                                     res.redirect(luckyUrl + '/storage?i=' + info);
                                 });

@@ -1,5 +1,14 @@
-var express = require('express');
 var path = require('path');
+var fs= require('fs');
+var config = require('./config.js');
+const mongoose = require('mongoose');
+mongoose.connect(config.db);
+var models_path = __dirname + '/models';
+fs.readdirSync(models_path).forEach(function (file) {
+    if (~file.indexOf('.js')) require(models_path + '/' + file)
+});
+
+var express = require('express');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -7,6 +16,7 @@ var bodyParser = require('body-parser');
 var datas = require('./libs/datas.js');
 var routes = require('./routes/index');
 var session = require('express-session');
+
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

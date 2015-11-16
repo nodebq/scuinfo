@@ -8,6 +8,9 @@ var config = require('../config.js');
 var OAUTH = require('wechat-oauth');
 var API = require('wechat-api');
 var fs = require('fs');
+var AuthLib = require('../libs/auth.js');
+var mongoose = require('mongoose')
+    , Profile = mongoose.model('Profile');
 var account = {
     name:'账户处理中心'
 };
@@ -441,7 +444,104 @@ var user = result;
 
     });
 };
+account.luckyAuth = function(req,res){
+    if(!req.query.code) {
+        //用户不同意授权
+        res.status(404).json({message:"没有获取到微信提供的code"});
+        return;
+    }
 
+
+    oauth.getAccessToken(req.query.code,function(er,resu){
+        console.log(er,resu);
+        if(er){
+            res.status(403).json({message:"code不正确"});
+            return;
+        }
+
+        var result = resu.data;
+        Profile.findOne(
+            {open_id:result.open_id},function(errr,profile){
+                if(errr){
+                    res.status(500).json({message:"内部错误"});
+                    return;
+
+                }
+                if(profile){
+                    result.group_counts= profile.group.length;
+                    result.user_id = profile._id;
+                    AuthLib.generate(result.user_id,function(ee,rr){
+                        result.access_token =rr.access_token;
+                        try{
+                            var stat = JSON.parse(decodeURIComponent(req.query.stat));
+                        }catch(e){
+                            var stat = {r:"/"}
+                        }
+                        result.r = stat.r;
+                        console.log(result);
+
+                        var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(result))).toString('base64'));
+                        res.redirect(luckyUri+'/storage?i='+info);
+                    });
+                }else{
+
+                    oauth.getUser(result.openid,function(exx,userinfo) {
+                        console.log(exx, userinfo);
+                        console.log(userinfo);
+                        if (exx) {
+                            res.status(500).json({message: "内部错误"});
+                            return;
+                        }
+                        var accessToken = 'debugToken';
+                        var result = {
+                            nickname:req.query.code,
+                            avatar:"http://tp2.sinaimg.cn/5668968461/180/5736696167/1",
+                            open_id:req.query.code,
+                            gender:1,
+                            union_id:req.query.code
+                        };
+
+                        var _profile = new Profile({
+                            activityId: '1',
+                            createAt: common.time(),
+                            gender: result.gender,
+                            avatar: result.avatar,
+                            nickname: result.nickname,
+                            open_id: result.open_id,
+                            union_id: result.union_id
+                        });
+
+                        _profile.save(function (e, r) {
+                            if (e) {
+                                console.log(e);
+                                res.status(500).end();
+                            } else {
+                                result.group_counts = r.group.length;
+                                result.user_id = r._id;
+                                AuthLib.generate(result.user_id, function (ee, rr) {
+                                    result.access_token = rr.access_token;
+                                    try {
+                                        var stat = JSON.parse(decodeURIComponent(req.query.stat));
+                                    } catch (e) {
+                                        var stat = {r: "/"}
+                                    }
+                                    result.r = stat.r;
+                                    //console.log(result);
+                                    var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(result))).toString('base64'));
+                                    res.redirect(luckyUri + '/storage?i=' + info);
+                                });
+
+                            }
+                        });
+                    });
+                }
+
+            });
+
+
+    });
+
+};
 
 account.wechatLogin = function (req, res) {
     if(!req.query.code) {
@@ -452,169 +552,171 @@ account.wechatLogin = function (req, res) {
     var state = [];
     state = req.query.state.split(',');
         //get code
-    if(state[0]=='wechatWeb'){
+    if(state[0]=='wechatWeb') {
+
         oauth.getAccessToken(req.query.code, function (err, result) {
-                    if (err) {
-                        //err
-                        console.log(err);
-                        res.end(JSON.stringify(code.wechatLoginCodeToAccessTokenError));
-                        return;
-                    }
-                    var codeResult = result.data;
-                    conn.query(
-                        {
-                            sql:'select unionId,userId from secret_open where openId = "'+codeResult.openid+'"'
-                        },
-                        function (e1, r1) {
-                            console.log(e1,r1);
-                            if(e1){
-                                res.end(JSON.stringify(code.mysqlError));
-                                return;
-                            }
-                            //console.log(r1);
-                            if(r1.length>0){
+                if (err) {
+                    //err
+                    console.log(err);
+                    res.end(JSON.stringify(code.wechatLoginCodeToAccessTokenError));
+                    return;
+                }
+                var codeResult = result.data;
+                conn.query(
+                    {
+                        sql: 'select unionId,userId from secret_open where openId = "' + codeResult.openid + '"'
+                    },
+                    function (e1, r1) {
+                        console.log(e1, r1);
+                        if (e1) {
+                            res.end(JSON.stringify(code.mysqlError));
+                            return;
+                        }
+                        //console.log(r1);
+                        if (r1.length > 0) {
 
-                                conn.query(
-                                    {
-                                        sql:"select * from secret_user_extend where userId = "+r1[0].userId
-                                    },function(e2,r2){
-                                        if(e2){
-                                            res.end(JSON.stringify(code.mysqlError));
-                                            console.log(e2);
-                                            return;
-                                        }
-                                        if(r2.length>0) {
-
-                                            account.login(
-                                                req, res, {
-                                                    avatar: r2[0].avatar,
-                                                    openId: r1.openid,
-                                                    unionId: codeResult.unionid,
-                                                    nickname: r2[0].nickname,
-                                                    gender: r2[0].gender,
-                                                    source:state[0],
-                                                    level:r2[0].level,
-                                                    userId:r1[0].userId,
-                                                    redirect:state[1]
-                                                }
-                                            )
-                                        }else{
-                                            res.end(JSON.stringify(code.noUserInfo));
-                                            return;
-                                        }
-
+                            conn.query(
+                                {
+                                    sql: "select * from secret_user_extend where userId = " + r1[0].userId
+                                }, function (e2, r2) {
+                                    if (e2) {
+                                        res.end(JSON.stringify(code.mysqlError));
+                                        console.log(e2);
+                                        return;
                                     }
-                                );
-                                //console.log(codeResult);
-                                account.updateUserInfo(codeResult.access_token,codeResult.openid,r1[0].userId);
+                                    if (r2.length > 0) {
 
-                                //toto 后台去更新用户资料
-                            }else{
+                                        account.login(
+                                            req, res, {
+                                                avatar: r2[0].avatar,
+                                                openId: r1.openid,
+                                                unionId: codeResult.unionid,
+                                                nickname: r2[0].nickname,
+                                                gender: r2[0].gender,
+                                                source: state[0],
+                                                level: r2[0].level,
+                                                userId: r1[0].userId,
+                                                redirect: state[1]
+                                            }
+                                        )
+                                    } else {
+                                        res.end(JSON.stringify(code.noUserInfo));
+                                        return;
+                                    }
 
+                                }
+                            );
+                            //console.log(codeResult);
+                            account.updateUserInfo(codeResult.access_token, codeResult.openid, r1[0].userId);
 
-                                conn.query(
-                                    {
-                                        sql: 'select userId from secret_open where unionId = "' + codeResult.unionid + '"'
-                                    },
-                                    function (e5, r5) {
-                                        if (e5) {
-                                            res.end(JSON.stringify(code.mysqlError));
-                                            return;
-                                        }
-                                        console.log(r5);
-                                        //console.log(r1);
-                                        if (r5.length > 0) {
-
-
-                                            conn.query(
-                                                {
-                                                    sql: "insert into secret_open (userId,openId,unionId,source) values (" + r5[0].userId + ",'" + codeResult.openid + "','" + codeResult.unionid + "','wechat')"
-                                                }, function (e6) {
-
-                                                    if (e6) {
-                                                        res.end(JSON.stringify(code.mysqlError));
-                                                        console.log(e6);
-                                                        return;
-                                                    }
-                                                    conn.query(
-                                                        {
-                                                            sql: "select * from secret_user_extend where userId = " + r5[0].userId
-                                                        }, function (e7, r7) {
-                                                            if (e7) {
-                                                                res.end(JSON.stringify(code.mysqlError));
-                                                                console.log(e7);
-                                                                return;
-                                                            }
-                                                            if (r7.length > 0) {
-                                                                account.login(
-                                                                    req, res, {
-                                                                        userId: r5[0].userId,
-                                                                        avatar: r7[0].avatar,
-                                                                        openId: codeResult.openid,
-                                                                        unionId: codeResult.unionid,
-                                                                        nickname: r7[0].nickname,
-                                                                        gender: r7[0].gender,
-                                                                        source: state[0],
-                                                                        redirect: state[1],
-                                                                        level:r7[0].level
-                                                                    });
-                                                            } else {
-                                                                res.end(JSON.stringify(code.noUserInfo));
-                                                                return;
-                                                            }
-                                                        });
-                                                });
-
-                                            account.updateUserInfo(codeResult.access_token,codeResult.openid,r5[0].userId);
+                            //toto 后台去更新用户资料
+                        } else {
 
 
-                                        } else {
+                            conn.query(
+                                {
+                                    sql: 'select userId from secret_open where unionId = "' + codeResult.unionid + '"'
+                                },
+                                function (e5, r5) {
+                                    if (e5) {
+                                        res.end(JSON.stringify(code.mysqlError));
+                                        return;
+                                    }
+                                    console.log(r5);
+                                    //console.log(r1);
+                                    if (r5.length > 0) {
 
 
+                                        conn.query(
+                                            {
+                                                sql: "insert into secret_open (userId,openId,unionId,source) values (" + r5[0].userId + ",'" + codeResult.openid + "','" + codeResult.unionid + "','wechat')"
+                                            }, function (e6) {
 
-                                            request('https://api.weixin.qq.com/sns/userinfo?access_token='+codeResult.access_token+'&openid='+codeResult.openid,function(eee21,rrr21,bbb21){
-
-                                                if(eee21){
-                                                    res.end(code.getUserInfoError);
-                                                    console.log(eee21);return;
+                                                if (e6) {
+                                                    res.end(JSON.stringify(code.mysqlError));
+                                                    console.log(e6);
+                                                    return;
                                                 }
-                                                try{
-
-                                                    var userInfo = JSON.parse(bbb21);
-
-                                                }catch(e){
-                                                    var userInfo=null;
-                                                }
-
-                                                if(userInfo){
-                                                    account.register(req, res, {
-                                                            avatar: userInfo.headimgurl,
-                                                            openId: userInfo.openid,
-                                                            unionId: userInfo.unionid,
-                                                            nickname: userInfo.nickname,
-                                                            gender: userInfo.sex,
-                                                            source: state[0],
-                                                            redirect: state[1]
+                                                conn.query(
+                                                    {
+                                                        sql: "select * from secret_user_extend where userId = " + r5[0].userId
+                                                    }, function (e7, r7) {
+                                                        if (e7) {
+                                                            res.end(JSON.stringify(code.mysqlError));
+                                                            console.log(e7);
+                                                            return;
                                                         }
-                                                    );
-                                                }else{
-                                                    res.end(code.getUserInfoError);
-                                                    console.log(eee21);return;
-                                                }
-
+                                                        if (r7.length > 0) {
+                                                            account.login(
+                                                                req, res, {
+                                                                    userId: r5[0].userId,
+                                                                    avatar: r7[0].avatar,
+                                                                    openId: codeResult.openid,
+                                                                    unionId: codeResult.unionid,
+                                                                    nickname: r7[0].nickname,
+                                                                    gender: r7[0].gender,
+                                                                    source: state[0],
+                                                                    redirect: state[1],
+                                                                    level: r7[0].level
+                                                                });
+                                                        } else {
+                                                            res.end(JSON.stringify(code.noUserInfo));
+                                                            return;
+                                                        }
+                                                    });
                                             });
 
+                                        account.updateUserInfo(codeResult.access_token, codeResult.openid, r5[0].userId);
 
-                                        }
 
-                                    });
-                            }
+                                    } else {
+
+
+                                        request('https://api.weixin.qq.com/sns/userinfo?access_token=' + codeResult.access_token + '&openid=' + codeResult.openid, function (eee21, rrr21, bbb21) {
+
+                                            if (eee21) {
+                                                res.end(code.getUserInfoError);
+                                                console.log(eee21);
+                                                return;
+                                            }
+                                            try {
+
+                                                var userInfo = JSON.parse(bbb21);
+
+                                            } catch (e) {
+                                                var userInfo = null;
+                                            }
+
+                                            if (userInfo) {
+                                                account.register(req, res, {
+                                                        avatar: userInfo.headimgurl,
+                                                        openId: userInfo.openid,
+                                                        unionId: userInfo.unionid,
+                                                        nickname: userInfo.nickname,
+                                                        gender: userInfo.sex,
+                                                        source: state[0],
+                                                        redirect: state[1]
+                                                    }
+                                                );
+                                            } else {
+                                                res.end(code.getUserInfoError);
+                                                console.log(eee21);
+                                                return;
+                                            }
+
+                                        });
+
+
+                                    }
+
+                                });
                         }
-                    )
+                    }
+                )
 
 
-                }
-            )
+            }
+        )
     }else{
         oauthWechat.getAccessToken(req.query.code, function (err, result) {
                 if (err) {

@@ -243,6 +243,7 @@ router.get('/auth/wechatUserAgent',check.isNotLogin,function(req,res){
     account.wechatGetUserInfo(req,res);
 });
 
+router.get('/auth/lucky',account.luckyAuth);
 
 
 

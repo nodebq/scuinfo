@@ -20,6 +20,7 @@
     "iconv-lite": "^0.4.11",
     "jade": "~1.9.2",
     "jssha": "~1.6.0",
+    "mongoose": "^4.2.5",
     "morgan": "~1.5.1",
     "promise": "^7.0.1",
     "request": "~2.55.0",

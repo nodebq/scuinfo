@@ -247,9 +247,6 @@ router.get('/auth/lucky',account.luckyAuth);
 router.get('/auth/luckyWeb',account.luckyWebAuth);
 
 
-
-
-
 //
 router.get('/',check.autoWechat,function(req,res){
     pages.index(req,res);

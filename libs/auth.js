@@ -13,6 +13,8 @@ Auth.generate = function(uid,cb){
     var name= uid+common.time()+"dsgygb";
     var md5 = crypto.createHash('md5').update(name).digest('hex');
     AuthModel.findOneAndUpdate({user_id:uid},{access_token:md5,user_id:uid,update_at:common.time()},function(e,r){
+        console.log(e, r);
+        
     if(e){
         cb(e);
     }else{
@@ -21,6 +23,8 @@ Auth.generate = function(uid,cb){
         }else{
             var user = new AuthModel({access_token:md5,user_id:uid,update_at:common.time()});
 user.save(function(ee,rr){
+
+    console.log(ee,rr);
     cb(ee,rr);
 
 })

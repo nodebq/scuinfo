@@ -468,19 +468,19 @@ var luckyUrl = config.luckyUrl;
 
                 }
                 if(profile){
-                    result.group_counts= profile.group.length;
-                    result.user_id = profile._id;
+                    profile.group_counts= profile.group.length;
+                    profile.user_id = profile._id;
                     AuthLib.generate(result.user_id,function(ee,rr){
-                        result.access_token =rr.access_token;
+                        profile.access_token =rr.access_token;
                         try{
                             var stat = JSON.parse(decodeURIComponent(req.query.stat));
                         }catch(e){
                             var stat = {r:"/"}
                         }
-                        result.r = stat.r;
-                        console.log(result);
+                        profile.r = stat.r;
+                        console.log(profile);
 
-                        var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(result))).toString('base64'));
+                        var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(profile))).toString('base64'));
                         res.redirect(luckyUrl+'/storage?i='+info);
                     });
                 }else{
@@ -503,25 +503,24 @@ var luckyUrl = config.luckyUrl;
                             union_id: userinfo.unionid
                         });
 
-                        _profile.save(function (e, r) {
-                            console.log(e,r);
+                        _profile.save(function (e1, r1) {
+                            console.log(e1,r1);
                             if (e) {
                                 console.log(e);
                                 res.status(500).end();
                             } else {
-
-                                userinfo.group_counts = r.group.length;
-                                userinfo.user_id = r._id;
+                                r1.group_counts = r1.group.length;
                                 AuthLib.generate(userinfo.user_id, function (ee, rr) {
-                                    result.access_token = rr.access_token;
+                                    r1.access_token = rr.access_token;
+                                    r1.user_id = r1._id;
                                     try {
                                         var stat = JSON.parse(decodeURIComponent(req.query.stat));
                                     } catch (e) {
                                         var stat = {r: "/"}
                                     }
-                                    userinfo.r = stat.r;
+                                    r1.r = stat.r;
                                     //console.log(result);
-                                    var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(userinfo))).toString('base64'));
+                                    var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(r1))).toString('base64'));
                                     res.redirect(luckyUrl + '/storage?i=' + info);
                                 });
 

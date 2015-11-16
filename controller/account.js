@@ -468,7 +468,7 @@ var luckyUrl = config.luckyUrl;
 
                 }
                 if(profile){
-                    AuthLib.generate(result.user_id,function(ee,rr){
+                    AuthLib.generate(profile._id,function(ee,rr){
                         try{
                             var stat = JSON.parse(decodeURIComponent(req.query.stat));
                         }catch(e){
@@ -511,7 +511,7 @@ var luckyUrl = config.luckyUrl;
                                 console.log(e1);
                                 res.status(500).end();
                             } else {
-                                AuthLib.generate(userinfo.user_id, function (ee, rr) {
+                                AuthLib.generate(r1._id, function (ee, rr) {
                                     try {
                                         var stat = JSON.parse(decodeURIComponent(req.query.stat));
                                     } catch (e) {

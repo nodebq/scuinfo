@@ -505,8 +505,8 @@ var luckyUrl = config.luckyUrl;
 
                         _profile.save(function (e1, r1) {
                             console.log(e1,r1);
-                            if (e) {
-                                console.log(e);
+                            if (e1) {
+                                console.log(e1);
                                 res.status(500).end();
                             } else {
                                 r1.group_counts = r1.group.length;

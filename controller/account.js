@@ -444,6 +444,112 @@ var user = result;
 
     });
 };
+
+account.luckyWebAuth = function(req,res){
+    if(!req.query.code) {
+        //用户不同意授权
+        res.status(404).json({message:"没有获取到微信提供的code"});
+        return;
+    }
+
+    var luckyUrl = config.luckyUrl;
+    oauth.getAccessToken(req.query.code,function(er,resu){
+        //console.log(er,resu);
+        if(er){
+            res.status(403).json({message:"code不正确"});
+            return;
+        }
+
+        var result = resu.data;
+        Profile.findOne(
+            {open_id:result.openid},function(errr,profile){
+                if(errr){
+                    res.status(500).json({message:"内部错误"});
+                    return;
+
+                }
+                if(profile){
+                    AuthLib.generate(profile._id,function(ee,rr){
+                        //console.log(req.query);
+
+                        var stat = decodeURIComponent(req.query.state);
+                        //console.log(stat);
+                        if(!stat){
+                            stat="/";
+                        }
+                        //console.log(stat);
+                        var rrrr = {
+                            r:stat,
+                            access_token:rr.access_token,
+                            user_id:profile._id,
+                            nickname:profile.nickname,
+                            avatar:profile.avatar,
+                            group_counts: profile.group.length
+                        };
+                        var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(rrrr))).toString('base64'));
+                        res.redirect(luckyUrl+'/storage?i='+info);
+                    });
+                }else{
+
+                    oauth.getUser(result.openid,function(exx,userinfo) {
+                        //console.log(exx, userinfo);
+                        //console.log(userinfo);
+                        if (exx) {
+                            res.status(500).json({message: "内部错误"});
+                            return;
+                        }
+
+                        var _profile = new Profile({
+                            activityId: '1',
+                            createAt: common.time(),
+                            gender: userinfo.sex,
+                            avatar: userinfo.headimgurl,
+                            nickname: userinfo.nickname,
+                            open_id: userinfo.openid,
+                            union_id: userinfo.unionid
+                        });
+
+                        _profile.save(function (e1, r1) {
+                            //console.log(e1,r1);
+                            if (e1) {
+                                console.log(e1);
+                                res.status(500).end();
+                            } else {
+                                AuthLib.generate(r1._id, function (ee, rr) {
+                                    //console.log(req.query);
+                                    var stat = decodeURIComponent(req.query.state);
+
+                                    if(!stat){
+                                        stat="/";
+                                    }
+                                    //console.log(stat);
+
+                                    var rrrr = {
+                                        r:stat,
+                                        access_token:rr.access_token,
+                                        user_id:r1._id,
+                                        nickname:r1.nickname,
+                                        avatar:r1.avatar,
+                                        group_counts:r1.group.length
+                                    };
+                                    //console.log(rrrr);
+                                    var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(rrrr))).toString('base64'));
+                                    res.redirect(luckyUrl + '/storage?i=' + info);
+                                });
+
+                            }
+                        });
+                    });
+                }
+
+            });
+
+
+    });
+
+};
+
+
 account.luckyAuth = function(req,res){
     if(!req.query.code) {
         //用户不同意授权

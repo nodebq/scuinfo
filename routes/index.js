@@ -244,6 +244,7 @@ router.get('/auth/wechatUserAgent',check.isNotLogin,function(req,res){
 });
 
 router.get('/auth/lucky',account.luckyAuth);
+router.get('/auth/luckyWeb',account.luckyWebAuth);
 
 
 

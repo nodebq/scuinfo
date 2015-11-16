@@ -504,6 +504,7 @@ var luckyUrl = config.luckyUrl;
                         });
 
                         _profile.save(function (e, r) {
+                            console.log(e,r);
                             if (e) {
                                 console.log(e);
                                 res.status(500).end();

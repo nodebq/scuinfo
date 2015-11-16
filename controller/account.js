@@ -452,7 +452,7 @@ account.luckyAuth = function(req,res){
     }
 
 var luckyUrl = config.luckyUrl;
-    oauth.getAccessToken(req.query.code,function(er,resu){
+    oauthWechat.getAccessToken(req.query.code,function(er,resu){
         //console.log(er,resu);
         if(er){
             res.status(403).json({message:"code不正确"});
@@ -487,7 +487,7 @@ var luckyUrl = config.luckyUrl;
                     });
                 }else{
 
-                    oauth.getUser(result.openid,function(exx,userinfo) {
+                    oauthWechat.getUser(result.openid,function(exx,userinfo) {
                         //console.log(exx, userinfo);
                         //console.log(userinfo);
                         if (exx) {

@@ -526,7 +526,7 @@ var luckyUrl = config.luckyUrl;
                                         user_id:r1._id,
                                         nickname:r1.nickname,
                                         avatar:r1.avatar,
-                                        group_counts:r.group.length
+                                        group_counts:r1.group.length
                                     };
                                     console.log(rrrr);
                                     var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(rrrr))).toString('base64'));

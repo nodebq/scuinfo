@@ -25,6 +25,8 @@ var api = new API(config.wechat.appId,config.wechat.appSecret, function (callbac
 
 
 wechatApi.sendTemplate = function(req,res,next){
+
+    //console.log(req.body);
     if(!req.body.template){
         res.end(JSON.stringify(code.lackParamsTemplate));
         return;
@@ -40,7 +42,8 @@ wechatApi.sendTemplate = function(req,res,next){
         'test':"KLL80FIDc-_dBn8LWfEPcGKZ_cSD61XD_r609NgSibo",
         'fail':"PcIpvvuG3BaF8rjITDsCC6j62MgLN-UjX3w_zD8A-EQ",
         'ok':"PcIpvvuG3BaF8rjITDsCC6j62MgLN-UjX3w_zD8A-EQ",
-        'examAgain':"Sye0p4-H58oZiIsmXdSgeXCpcr5DLU9XKASogFEiFdI"
+        'examAgain':"Sye0p4-H58oZiIsmXdSgeXCpcr5DLU9XKASogFEiFdI",
+        "prize":"pJ8a3Pa0FYR47lRYHRSADTyMCEeRF0t71fwmmbXXj6s"
     };
 
     var templateId=req.body.template?template[req.body.template]:'PcIpvvuG3BaF8rjITDsCC6j62MgLN-UjX3w_zD8A-EQ';
@@ -93,6 +96,17 @@ wechatApi.sendTemplate = function(req,res,next){
             };
             data.keyword4={
                 "value":req.body.keyword4,
+                "color":"#173177"
+            };
+            break;
+
+        case 'prize':
+            data.keyword1={
+                "value":req.body.keyword1,
+                "color":"#173177"
+            };
+            data.keyword2={
+                "value":req.body.keyword2,
                 "color":"#173177"
             };
             break;

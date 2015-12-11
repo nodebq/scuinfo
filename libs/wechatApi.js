@@ -309,8 +309,8 @@ var menu1 ={
                 },
                 {
                     "type":"click",
-                    "name":"补考缓考",
-                    "key":"examAgain"
+                    "name":"考试查询",
+                    "key":"exam"
                 },
                 {
                     "type":"click",

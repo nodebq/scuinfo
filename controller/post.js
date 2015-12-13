@@ -88,7 +88,7 @@ post.createWechat = function(req,res){
                     if (user.errcode) {
                         //没有拿到用户资料
 
-                        res.end(JSON.stringify(code.notSubscribe));
+                        res.end(JSON.stringify(user));
                         return;
 
                     } else {

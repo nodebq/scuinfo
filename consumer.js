@@ -3,6 +3,8 @@ var common= require('./libs/common.js');
 var request = require('request');
 var config = require('./config.js');
 var fs= require('fs');
+var FormData = require('form-data');
+
 /**
  * 消费者
  * @type {{}}
@@ -79,48 +81,46 @@ consumer.weibo = function(){
                                 }
 //console.log(result);
                                 if(result.code==200){
-                                    
+                                    var form = new FormData();
+                                    form.append('status', (rr[0].content.substr(0,120)+config.site.url+"/p/"+rr[0].id));
+                                    form.append('access_token',weiboToken.access_token);
+                                    form.append('pic', request(result.data.url));
+                                    form.submit('https://upload.api.weibo.com/2/statuses/upload.json', function(err, res) {
+                                        // res – response object (http.IncomingMessage)  //
+                                        res.resume();
 
-                            request.post(
-                                {
-                                    url:"https://api.weibo.com/2/statuses/upload_url_text.json",
-                                    form:{
-                                        status: (rr[0].content.substr(0,120)+config.site.url+"/p/"+rr[0].id),
-                                        access_token:weiboToken.access_token,
-                                        url:result.data.url
-                                        //annotations:JSON.stringify({
-                                        //    secret: rr[0].secret,
-                                        //    userId:rr[0].userId
-                                        //})
-                                    }
-                                },function(eee,rrr,bbb){
-
-                                    try{
-                                        var userInfo = JSON.parse(rrr.body);
-                                    }catch(e){
-                                        var userInfo = {
-                                            error_code:20000
-                                        }
-                                    }
+                                        var body = '';
+                                        res.on('data', function(chunk) {
+                                            //console.log(chunk);
+                                            body += chunk;
+                                        });
+                                        res.on('end', function() {
+                                            try {
+                                                var userInfo = JSON.parse(body);
+                                            } catch (e) {
+                                                var userInfo = {
+                                                    error_code: 20000
+                                                }
+                                            }
 
 
-                                    if(userInfo.error_code){
-                                        console.log(userInfo+new Date());
-                                        return;
-                                    }
+                                            if (userInfo.error_code) {
+                                                console.log(userInfo + new Date());
+                                                return;
+                                            }
+                                            conn.query(
+                                                {
+                                                    sql: "update secret_weibo_query set status=1,postAt=" + common.time() + ",weiboId=" + userInfo.id + " where id=" + r[0].id
+                                                }, function (eeeee, rrrrr) {
+                                                    //console.log(eeeee,'成功发布一条微博');
+                                                }
+                                            );
+                                        });
 
-                                    //改状态
-                                    conn.query(
-                                        {
-                                            sql:"update secret_weibo_query set status=1,postAt="+common.time()+",weiboId="+userInfo.id+" where id="+r[0].id
-                                        },function(eeeee,rrrrr){
-                                            //console.log(eeeee,'成功发布一条微博');
-                                        }
-                                    );
+                                    });
 
 
-                    }
-                            );
+
 
 
                                 }else{

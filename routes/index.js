@@ -1,4 +1,5 @@
 var express = require('express');
+var multer = require('multer');
 var router = express.Router();
 var api = require('./api.js');
 var common = require('../libs/common.js');
@@ -458,7 +459,8 @@ router.get('/signout',check.isLogin,function(req,res){
     account.logout(req,res);
 });
 
-router.get('/test',function(req,res){
+var upload = multer()
+router.post('/test',upload.single('pic'),function(req,res){
    account.test(req,res);
 });
 

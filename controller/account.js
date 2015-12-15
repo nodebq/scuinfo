@@ -196,16 +196,11 @@ account.login = function(req,res,data){
 };
 
 
-account.test = function(req,res){
-    if(!req.query.code) {
-        //用户不同意授权
-        res.end(JSON.stringify(code.lackParamsCode));
-        return;
-    }
 
-    //console.log(req.query.code);
-    res.end(req.query.code);
-return;
+account.test = function(req,res){
+    console.log(req.body);
+    console.log(req.file);
+    res.end(req.toString());
 };
 
 

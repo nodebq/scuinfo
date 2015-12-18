@@ -482,7 +482,7 @@ account.luckyWebAuth = function(req,res){
                             group_counts: profile.group.length
                         };
                         var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(rrrr))).toString('base64'));
-                        res.redirect(luckyUrl+'/storage?i='+info);
+                        res.redirect(luckyUrl+'/storage.html?i='+info);
                     });
                 }else{
 
@@ -529,7 +529,7 @@ account.luckyWebAuth = function(req,res){
                                     };
                                     //console.log(rrrr);
                                     var info = encodeURIComponent(new Buffer(encodeURIComponent(JSON.stringify(rrrr))).toString('base64'));
-                                    res.redirect(luckyUrl + '/storage?i=' + info);
+                                    res.redirect(luckyUrl + '/storage.html?i=' + info);
                                 });
 
                             }

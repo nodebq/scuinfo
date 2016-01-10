@@ -241,7 +241,8 @@ right:2px;
 
 .posts{
   width: 100%;
-  background-color: rgba(233,98,113,1.0);
+  /*background-color: rgba(233,98,113,1.0);*/
+  background-color: #fe938c;
   display: inline-block;
   color:rgba(255,255,255,1.0);
   position: relative;
@@ -251,7 +252,15 @@ right:2px;
   line-height: 1.5;
   border-bottom: thin solid rgba(236, 240, 241,1.0);
 }
+.girl{
+  background-color: rgba(233,98,113,1.0);
+}
 
+.boy{
+  /*background-color: rgba(52, 73, 94,1.0);*/
+  background-color:#687177 ;
+  color:rgba(255,255,255,1.0);
+}
 
 .girl-form textarea{
   background-color: rgba(233,98,113,1.0);
@@ -1011,14 +1020,7 @@ color:rgba(0,0,0,0.8);
 
 
 
-.girl{
-  background-color: rgba(233,98,113,1.0);
-}
 
-.boy{
-  background-color: rgba(52, 73, 94,1.0);
-  color:rgba(255,255,255,1.0);
-}
 
 @media only screen and (min-width:641px) {
   #comment-post {

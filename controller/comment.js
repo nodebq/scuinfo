@@ -29,7 +29,7 @@ comment.commentPost = function (req, res) {
 
                 conn.query(
                     {
-                        sql: 'insert into `secret_comment` (`postId`,`parentId`,`secret`,`content`,`date`,`userId`,`nickname`,`avatar`,`gender`) values("' + ':postId' + '","' + ':parentId' + '","' + 0 + '","' + ':content' + '","' + common.time() + '","'+req.session.userId+'","'+req.session.nickname+'","'+req.session.avatar+'","'+req.session.gender+'")',
+                        sql: 'insert into `secret_comment` (`postId`,`parentId`,`secret`,`content`,`date`,`userId`,`nickname`,`avatar`,`gender`) values("' + ':postId' + '","' + ':parentId' + '","' + 0 + ',' + ":content" + ',' + common.time() + '","'+req.session.userId+'","'+req.session.nickname+'","'+req.session.avatar+'","'+req.session.gender+'")',
                         params:{
                             postId:parseInt(req.body.postId),
                             parentId:parseInt(req.body.parentId),

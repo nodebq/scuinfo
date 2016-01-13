@@ -253,7 +253,7 @@ right:2px;
   border-bottom: thin solid rgba(236, 240, 241,1.0);
 }
 .girl{
-  background-color: rgba(233,98,113,1.0);
+  background-color: #fe938c;
 }
 
 .boy{
@@ -519,6 +519,8 @@ right:2px;
 
 #comments{
  background-color:rgba(236, 240, 241,1.0) ;
+  padding-bottom: 30px;
+
 
 }
 

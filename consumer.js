@@ -83,7 +83,7 @@ consumer.weibo = function(){
                                 if(result.code==200){
                                     var form = new FormData();
 
-                                    var content = ((rr[0].content.substr(0,120)+config.site.url+"/p/"+rr[0].id)).split("\n").join("\r\n<br>");
+                                    var content = ((rr[0].content.substr(0,120)+config.site.url+"/p/"+rr[0].id)).split("\n").join("\n\r%0A");
                                     console.log(content);
                                     form.append('status', content);
                                     form.append('access_token',weiboToken.access_token);

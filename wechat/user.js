@@ -85,7 +85,7 @@ conn.query(
 
 };
 
-user.score2 = function(msg,req,res,next){
+user.score = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
             if(e){
 
@@ -501,7 +501,7 @@ user.score2 = function(msg,req,res,next){
 
 };
 
-user.score = function(msg,req,res,next){
+user.score2 = function(msg,req,res,next){
     user.valid(msg,req,res,function(e,r){
 // console.log(e,r);
         if(e){

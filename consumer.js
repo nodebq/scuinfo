@@ -82,7 +82,7 @@ consumer.weibo = function(){
 //console.log(result);
                                 if(result.code==200){
                                     var form = new FormData();
-                                    form.append('status', ((rr[0].content.substr(0,120)+config.site.url+"/p/"+rr[0].id)).split("\n").join("\n "));
+                                    form.append('status', ((rr[0].content.substr(0,120)+config.site.url+"/p/"+rr[0].id)).split("\n").join("\n\t"));
                                     form.append('access_token',weiboToken.access_token);
                                     form.append('pic', request(result.data.url));
                                     form.submit('https://upload.api.weibo.com/2/statuses/upload.json', function(err, res) {

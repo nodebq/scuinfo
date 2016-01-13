@@ -848,7 +848,7 @@ post.postsView = function (req, res) {
                 sql = 'SELECT * FROM secret_post where top=0 and id<' + ':id' + ' and userId = ' + ':userId' + ' order by id desc limit 0,' + ':pageSize';
             }
         } else {
-            if (!':id') {
+            if (!req.query.fromId) {
                 sql= 'select * from(SELECT * FROM secret_post where userId = ' + ':userId' + ' and secret=0 order by id desc limit 0,'+ ':pageSize'+') t1 union select * from secret_post where top=1'
 
             } else {

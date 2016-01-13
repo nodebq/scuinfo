@@ -25,8 +25,9 @@ conn.query(
                     console.log(rr[0].content);
 
 
-                    var x = rr[0].content.split("\n");
-                    console.log(x.join("\n "));
+                    var x = rr[0].content;
+
+                    console.log(encodeURIComponent(x));
                 }
             )
         }

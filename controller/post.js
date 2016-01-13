@@ -16,7 +16,7 @@ post.createWechat = function(req,res){
 //console.log(req.body);
     conn.query(
         {
-            sql: 'select unionId,userId from secret_open where openId = "' + ":openId" + '"',
+            sql: 'select unionId,userId from secret_open where openId = ' + ":openId",
             params:{
                 openId:req.body.openId
             }
@@ -244,6 +244,8 @@ post.createWechat = function(req,res){
 
 
 post.createArticle = function(req,res,data){
+
+    console.log(data);
     check.postCreate({
         content:data.content,
         secret:data.secret,
@@ -287,7 +289,7 @@ post.createArticle = function(req,res,data){
 //                console.log(datas.tag);
                 
                 //console.log('2');
-                
+                //console.log(rr);
                 if (r.tags.length > 0) {
                     //console.log(r.tags);
                     var newTags = [];
